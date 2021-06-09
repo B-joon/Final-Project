@@ -1,0 +1,23 @@
+Servers
+
+# Eclipse #
+.project
+.metadata
+.classpath
+.settings/
+.loadpath
+
+# OS Files #
+.DS_Store
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
+
+# Maven
+log/
+target/
