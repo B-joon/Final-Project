@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="nodice">
+
+	<select id="selectList" resultType="noticeDto">
+		SELECT BOARDSEQ, BOARDNAME, BOARDTITLE, BOARDCONTENT, USERSEQ, BOARDDATE
+		FORM NOTICEBOARD
+		ORDER BY BOARDSEQ DESC
+	</select>
+	
+	<select id="selectOne" resultType="noticeDto" parameterType="int">
+		SELECT BOARDSEQ, BOARDNAME, BOARDTITLE, BOARDCONTENT, USERSEQ, BOARDDATE
+		FORM NOTICEBOARD
+		WHERE BOARDSEQ = #{BOARDSEQ}
+	</select>
+	
+	<insert id="insert" parameterType="noticeDto">
+		INSERT INTO NOTICEBOARD
+		VALUES(NOTICESEQ.NEXTVAL, #{boardname}, #{boardtitle}, #{boardcontent}, #{userseq}, SYSDATE)
+	</insert>
+	
+	<update id="update" parameterType="noticeDto">
+		UPDATE NOTICEBOARD
+		SET BOARDTITLE = #{boardtitle}, BOARDCONTENT = #{boardcontent}
+		WHERE BOARDSEQ = #{boardseq}
+	</update>
+	
+	<delete id="delete" parameterType="noticeDto">
+		DELETE FROM NOTICEBOARD
+		WHERE BOARDSEQ = #{boardseq}
+	</delete>
+	
+</mapper>
