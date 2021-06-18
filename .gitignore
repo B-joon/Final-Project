@@ -21,3 +21,6 @@ Servers
 # Maven
 log/
 target/
+
+#node
+node_modules/

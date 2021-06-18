@@ -10,10 +10,9 @@
 </head>
 <body>
 
-	<a href="fullcalendar.do">fullcalendar</a>
 	<a href="noticelist.do">공지</a>
 	<a href="reservation.do">티켓예매</a>
-	
+	<a href="loginform.do">login...</a>
 	<!-- 축제 정보를 ajax로 받기 -->
 	<select class="areaCode" name="areaCode"  onchange="getPartyList();">
 		<option value="1" selected>서울</option>
@@ -37,11 +36,10 @@
 	
 	<input type="button" value="callList" onclick="getPartyList();">
 	<div id="partylist">
-	
 	</div>
-	
+
 </body>
 <script type="text/javascript" src="resources/js/index.js"></script>
-<link rel="stylesheet" type="text​/css" href="/css/index.css">
+<link rel="stylesheet" type="text/css" href="/css/index.css">
 </html>
 
