@@ -50,7 +50,7 @@ public class UserController {
 	
 	@RequestMapping("userInsert.do")
 	public String insertForm() {
-		return "";
+		return "userInsert";
 	}
 	
 	@RequestMapping(value="/userInsertres.do", method=RequestMethod.POST)
@@ -74,7 +74,7 @@ public class UserController {
 		
 		session.invalidate();
 		
-		return "redirect:.do";
+		return "redirect:main.do";
 	}
 	
 	@RequestMapping(value="/ajaxidChk.do", method=RequestMethod.POST)
