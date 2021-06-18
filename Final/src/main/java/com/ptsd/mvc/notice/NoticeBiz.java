@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface NoticeBiz {
 
-	public List<NoticeDto> selectList();
+	public List<NoticeDto> selectList(PagingCriteria paging);
+	public int totalCnt();
 	public NoticeDto selectOne(int boardseq);
 	public int insert(NoticeDto dto);
 	public int update(NoticeDto dto);

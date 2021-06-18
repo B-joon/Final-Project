@@ -3,21 +3,9 @@
 <mapper namespace="notice">
 
 	<select id="selectList" resultType="noticeDto">
-		<![CDATA[
-		SELECT B.RN, B.BOARDSEQ, B.BOARDNAME, B.BOARDTITLE, B.BOARDCONTENT, B.USERSEQ, B.BOARDDATE
-		FROM (SELECT
-		ROWNUM AS RN, A.BOARDSEQ, A.BOARDNAME, A.BOARDTITLE, A.BOARDCONTENT, A.USERSEQ, A.BOARDDATE
-		FROM (
-		SELECT BOARDSEQ, BOARDNAME, BOARDTITLE, BOARDCONTENT, USERSEQ, BOARDDATE FROM NOTICEBOARD
-		ORDER BY BOARDSEQ DESC ) A
-		WHERE ROWNUM <= #{pageNum} * #{amount}) B
-		WHERE RN > (#{pageNum} - 1) * #{amount}
-		]]>
-	</select>
-	
-	<select id="totalCnt" resultType="int">
-		SELECT COUNT(*)
-		FROM NOTICEBOARD
+		SELECT BOARDSEQ, BOARDNAME, BOARDTITLE, BOARDCONTENT, USERSEQ, BOARDDATE
+		FORM NOTICEBOARD
+		ORDER BY BOARDSEQ DESC
 	</select>
 	
 	<select id="selectOne" resultType="noticeDto" parameterType="int">

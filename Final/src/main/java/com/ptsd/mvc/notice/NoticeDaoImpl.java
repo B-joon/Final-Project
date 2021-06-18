@@ -14,17 +14,31 @@ public class NoticeDaoImpl implements NoticeDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<NoticeDto> selectList() {
+	public List<NoticeDto> selectList(PagingCriteria paging) {
 		
 		List<NoticeDto> list = new ArrayList<NoticeDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE + "selectList");
+			list = sqlSession.selectList(NAMESPACE + "selectList", paging);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return list;
+	}
+	
+	@Override
+	public int totalCnt() {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "totalCnt");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override

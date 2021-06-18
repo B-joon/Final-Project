@@ -12,8 +12,13 @@ public class NoticeBizImpl implements NoticeBiz {
 	private NoticeDao dao;
 
 	@Override
-	public List<NoticeDto> selectList() {
-		return dao.selectList();
+	public List<NoticeDto> selectList(PagingCriteria paging) {
+		return dao.selectList(paging);
+	}
+	
+	@Override
+	public int totalCnt() {
+		return dao.totalCnt();
 	}
 
 	@Override

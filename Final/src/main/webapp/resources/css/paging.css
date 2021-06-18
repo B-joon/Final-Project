@@ -1,0 +1,40 @@
+
+#pagingDiv{
+margin-top: 30px;
+text-align: center;
+color: black;
+font-size: 0;
+cursor: pointer;
+}
+
+#pagingDiv a:hover {
+background: #F0F8FF;
+}
+
+#pagingDiv a{
+display: inline-block;
+width: 40px;
+height: 36px;
+box-sizing: border-box;
+border: 1px solid #ddd;
+border-left: 0;
+vertical-align: middle;
+line-height: 100%;
+padding-top: 10px;
+font-size: 1.0rem;
+letter-spacing: -1px;
+text-decoration-line: none;
+}
+
+#pagingDiv a:link {
+color: dimgray;
+}
+
+#pagingDiv a:visited {
+color: dimgray;
+}
+
+
+#pagingDiv a:first-child {
+border-left: 1px solid #ddd;
+}
