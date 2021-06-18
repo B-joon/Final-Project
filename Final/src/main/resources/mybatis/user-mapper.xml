@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="user">
+
+	<select id="login" resultType="userDto">
+		SELECT USERSEQ, USERID, USERPW, EMAIL, ADDRESS, PHONE, USERROLE, NICKNAME, AVATAR, PROOF
+		FROM PTSD_USER
+		WHERE USERID = #{userid}
+		AND USERPW = #{userpw}
+	</select>
+	
+	<insert id="insertUser" parameterType="userDto">
+		INSERT INTO PTSD_USER
+		VALUES(USERSEQ.NEXTVAL, #{userid}, #{userpw}, #{email}, #{address}, #{phone}, 'USER', NULL, NULL, DEFAULT)
+	</insert>
+	
+	<select id="idChk" resultType="String">
+		SELECT USERID
+		FROM PTSD_USER
+		WHERE USERID = #{userid}
+	</select> 
+	
+	<select id="emailChk" resultType="String">
+		SELECT EMAIL
+		FROM PTSD_USER
+		WHERE EMAIL = #{email}
+	</select> 
+	
+	<select id="phoneChk" resultType="String">
+		SELECT PHONE
+		FROM PTSD_USER
+		WHERE PHONE = #{phone}
+	</select> 
+	
+</mapper>
