@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	response.setContentType("text/html; charset=UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<a href="fullcalendar.do">fullcalendar</a>
-	<a href="noticelist.do">공지</a>
-	<a href="loginform.do">login...</a>
+	
+	<h1>로그인 성공!</h1>
+	
 </body>
 </html>

@@ -4,10 +4,12 @@
 
 	<typeAliases>
 		<typeAlias type="com.ptsd.mvc.notice.NoticeDto" alias="noticeDto" />
+		<typeAlias type="com.mvc.test.dto.UserDto" alias="userDto" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="/mybatis/notice-mapper.xml" />
+		<mapper resource="/mybatis/user-mapper.xml" />
 	</mappers>
 
 </configuration>
