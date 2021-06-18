@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -34,7 +36,7 @@
                     <tr>
                         <td>${dto.boardseq }</td>
                         <td>${dto.boardname }</td>
-                        <td><a href="selectone.do?myno=${dto.boardseq}">${dto.boardtitle }</a></td>
+                         <td><a href="${dto.boardseq}">${dto.boardtitle }</a></td>
                         <td>${dto.boarddate }</td>
                     </tr>
                 
@@ -48,6 +50,56 @@
         </tr>
         
     </table>
+        <!-- 페이지 앞으로 이동 -->
+    	<div id="pagingDiv">
+		<c:if test="${paging.prev}">
+			<a id="prev" href="${paging.startPage - 1 }">◀</a>
+		</c:if>
+		<c:forEach var="num" begin="${paging.startPage}"
+			end="${paging.endPage }">
+				&nbsp;<a href="${num }">${num }</a>&nbsp;
+			</c:forEach>
+		<!-- 페이지 뒤로 이동 -->
+		<c:if test="${paging.next}">
+			<a id="next" href="${paging.endPage + 1 }">▶</a>
+		</c:if>
+	</div>
+
+	<form id="pagingFrm" name="pagingForm" action="noticelist.do" method="get">
+		<input type="hidden" id="pageNum" name="pageNum"
+			value="${paging.cri.pageNum }"> <input type="hidden"
+			id="amount" name="amount" value="${paging.cri.amount }">
+	</form>
+</body>
+
+<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+
+						//페이지 번호 이동
+						$('#pagingDiv a').click(function(e) {
+							e.preventDefault();
+							$('#pageNum').val($(this).attr("href"));
+							pagingForm.submit();
+
+						});
+
+						//게시글에 pageNum넘기기
+						$('table a')
+								.click(
+										function(e) {
+											e.preventDefault();
+											var html = "<input type='hidden' name='boardseq' value='"
+													+ $(this).attr("href")
+													+ "'>";
+											$('#pagingFrm').append(html);
+											$('#pagingFrm').attr("action",
+													"noticeone.do");
+											$('#pagingFrm').submit();
+										});
+					});
+</script>
 
 </body>
 </html>
