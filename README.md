@@ -13,7 +13,7 @@
 - Front & Back 통합 구현으로 FullStack 간접 체험
 
 ## Documents
-- [프로젝트명세서](https://www.notion.so/01-b6f2643d30a742d981f6d00166ccf7d2)
+- [개발예정보고서](https://www.notion.so/01-b6f2643d30a742d981f6d00166ccf7d2)
 - [개발표준안](https://www.notion.so/02-f58042202a9944d9adbbf3e8cb667c34)
 - [기능정의서](https://www.notion.so/03-2502e0adc4ac4d1fae17b0b7d1dd914c)
 - [업무분해도](https://www.notion.so/04-a2016f5d0ff049dc8120f49cf43dad71)
