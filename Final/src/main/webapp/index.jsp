@@ -11,6 +11,7 @@
 <body>
 
 	<a href="noticelist.do">공지</a>
+	<a href="eventlist.do">이벤트</a>
 	<a href="reservation.do">티켓예매</a>
 	<a href="loginform.do">login...</a>
 	<!-- 축제 정보를 ajax로 받기 -->

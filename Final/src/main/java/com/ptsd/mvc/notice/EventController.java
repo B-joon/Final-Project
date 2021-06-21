@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class NoticeController {
-
+public class EventController {
 	@Autowired
 	private NoticeBiz biz;
 	
-	@RequestMapping("/noticelist.do")
+	@RequestMapping("/eventlist.do")
 	public String selectList(Model model, PagingCriteria cri) {
 		
 		List<NoticeDto> list = biz.selectList(cri);
@@ -25,64 +24,57 @@ public class NoticeController {
 		model.addAttribute("paging", new PageMaker(cri, total));
 		
 		
-		return "noticelist";
+		return "eventlist";
 	}
 	
-	
-	
-	
-	@RequestMapping("/noticeone.do")
+	@RequestMapping("/eventone.do")
 	public String selectOne(Model model, int boardseq, @ModelAttribute("cri") PagingCriteria cri) {
 		
 		model.addAttribute("dto", biz.selectOne(boardseq));
 		
-		return "noticeone";
+		return "eventone";
 	}
 	
-	
-	
-	@RequestMapping("/insertform.do")
+	@RequestMapping("/eventinsertform.do")
 	public String insertForm() {
-		return "noticeinsert";
+		return "eventinsert";
 	}
-	
-	
-	@RequestMapping("/insertres.do")
+	@RequestMapping("/eventinsertres.do")
 	public String insertRes(NoticeDto dto) {
 		
 		if (biz.insert(dto) > 0) {
-			return "redirect:noticelist.do";
+			return "redirect:eventlist.do";
 		}
 		
-		return "redirect:insertform.do";
+		return "redirect:eventinsertform.do";
 	}
 	
-	@RequestMapping("/updateform.do")
+	@RequestMapping("/eventupdateform.do")
 	public String updateForm(Model model, int boardseq) {
 		
 		model.addAttribute("dto", biz.selectOne(boardseq));
 		
-		return "noticeupdate";
+		return "eventupdate";
 	}
 	
-	@RequestMapping("/updateres.do")
+	@RequestMapping("/eventupdateres.do")
 	public String updateRes(NoticeDto dto) {
 		
 		if (biz.update(dto) > 0) {
-			return "redirect:noticeone.do?boardseq=" + dto.getBoardseq();
+			return "redirect:eventone.do?boardseq=" + dto.getBoardseq();
 		}
 		
-		return "redirect:updateform.do";
+		return "redirect:eventupdateform.do";
 	}
 	
-	@RequestMapping("/delete.do")
+	@RequestMapping("/eventdelete.do")
 	public String delete(Model model, int boardseq) {
 		
 		if (biz.delete(boardseq) > 0) {
-			return "redirect:noticelist.do";
+			return "redirect:eventlist.do";
 		}
 		
-		return "redirect:noticeone.do";
+		return "redirect:eventone.do";
 	}
-	
+
 }
