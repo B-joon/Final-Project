@@ -32,15 +32,18 @@
             
             </c:when>
             <c:otherwise>
+            	
                 <c:forEach items="${list }" var="dto">
+                <c:if test="${dto.boardkind == 'NOTICE'}">
                     <tr>
                         <td>${dto.boardseq }</td>
                         <td>${dto.boardname }</td>
                          <td><a href="${dto.boardseq}">${dto.boardtitle }</a></td>
                         <td>${dto.boarddate }</td>
                     </tr>
-                
+                </c:if>
                 </c:forEach>
+                
             </c:otherwise>
         </c:choose>
         <tr>
