@@ -8,14 +8,26 @@
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 <link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="resources/js/notice.js"></script>
 </head>
 <body>
 
+
+<input type="hidden" value="${login.userseq }" id="loginseq">
+<input type="hidden" value="${login.userrole }" id="loginrole">
 <table border="1">
+
+
         <col width="50"> 
         <col width="100"> 
         <col width="500"> 
-        <col width="100"> 
+        <col width="100">
+       
+       
+        <tr>
+        	<td>${login.userseq }</td>
+        
+        </tr>
     
         <tr>
             <th>번호</th>
@@ -45,9 +57,10 @@
                 
             </c:otherwise>
         </c:choose>
+        
         <tr>
             <td colspan="4" align="right">
-                <input type="button" value="글작성" onclick="location.href='eventinsertform.do'">
+                <input type="button" value="글작성" class ="insertControl" onclick="location.href='eventinsertform.do'">
             </td>
         </tr>
         
@@ -73,6 +86,14 @@
 			value="${paging.cri.pageNum }"> <input type="hidden"
 			id="amount" name="amount" value="${paging.cri.amount }">
 	</form>
+	
+	--------쿠폰 다운로드 영역 ----------<br>
+	<input type="button" value="쿠폰 다운로드" onclick="">
+	<input type="button" value="쿠폰 다운로드" onclick="">
+	<input type="button" value="쿠폰 다운로드" onclick="">
+	
+	
+	
 </body>
 
 <script type="text/javascript">
