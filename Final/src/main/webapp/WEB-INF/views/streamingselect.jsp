@@ -12,16 +12,20 @@
 
 	<h1 id="selectRoom">${dto.streamingname }</h1>
 	
-	<ul id="messages" type="none">
-        <li id="usercount"></li>
-    </ul>
-
-    <form id="msgform">
-        <input id="msginput" autocomplete="off" type="text">
-        <button type="submit">전송</button>
-    </form>
-    <input type="button" value="방송 종료" onclick="location.href='streamingdel.do?streamingseq=${dto.streamingseq}'">
+	<div>webRTC 화면 송출 부분 입니다.</div>
 	
+	<div>
+		<ul id="messages" type="none">
+	        <li id="usercount"></li>
+	    </ul>
+	
+	    <form id="msgform">
+	        <input id="msginput" autocomplete="off" type="text">
+	        <button type="submit">전송</button>
+	    </form>
+	    <input type="button" value="방송 종료" onclick="location.href='streamingdel.do?streamingseq=${dto.streamingseq}'">
+	</div>
+
 	<script type="text/javascript" src="resources/js/chat.js"></script>
 </body>
 </html>
