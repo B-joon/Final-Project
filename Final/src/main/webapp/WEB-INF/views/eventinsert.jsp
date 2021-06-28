@@ -8,8 +8,9 @@
 </head>
 <body>
 
-	<form action="insertres.do" method="post">
-	<input type="hidden" value="NOTICE" name="boardkind">
+
+	<form action="eventinsertres.do" method="post">
+	<input type="hidden" value="EVENT" name="boardkind">
 		<table border="1">
 			
 			<tr>
@@ -23,7 +24,7 @@
 			<tr>
 				<td colspan="2" align="right">
 					<input type="submit" value="글작성">
-					<input type="button" value="취소" onclick="location.href='noticelist.do'">
+					<input type="button" value="취소" onclick="location.href='eventlist.do'">
 				</td>
 			</tr>
 		</table>
