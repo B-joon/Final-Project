@@ -9,18 +9,17 @@ public class UserDto {
 	private String address;
 	private String phone;
 	private String userrole;
-	private String nickname;
+	private String name;
 	private String avatar;
 	private String femail;
 	private String bemail;
-	private String proof;
 	
 	public UserDto() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public UserDto(int userseq, String userid, String userpw, String email, String address, String phone,
-			String userrole, String nickname, String avatar, String femail, String bemail, String proof) {
+			String userrole, String name, String avatar, String femail, String bemail) {
 		super();
 		this.userseq = userseq;
 		this.userid = userid;
@@ -29,11 +28,10 @@ public class UserDto {
 		this.address = address;
 		this.phone = phone;
 		this.userrole = userrole;
-		this.nickname = nickname;
+		this.name = name;
 		this.avatar = avatar;
 		this.femail = femail;
 		this.bemail = bemail;
-		this.proof = proof;
 	}
 
 	public int getUserseq() {
@@ -92,12 +90,12 @@ public class UserDto {
 		this.userrole = userrole;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getName() {
+		return name;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getAvatar() {
@@ -124,13 +122,6 @@ public class UserDto {
 		this.bemail = bemail;
 	}
 
-	public String getProof() {
-		return proof;
-	}
-
-	public void setProof(String proof) {
-		this.proof = proof;
-	}
 	
 	
 }
