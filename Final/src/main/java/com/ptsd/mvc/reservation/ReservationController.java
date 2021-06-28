@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReservationController {
 
 	@RequestMapping("/reservation.do")
-	public String selectList(Model model) {
+	public String selectList(Model model, int productseq) {
+		
+		
 		
 		return "reservation";
 	}
