@@ -27,6 +27,12 @@ public class UserController {
 		return "../../index";
 	}
 	
+	@RequestMapping("/admin.do")
+	public String Admin() {
+		
+		return "adminpage";
+	}
+	
 	@RequestMapping("/loginform.do")
 	public String loginForm() {
 		return "userlogin";
@@ -74,7 +80,7 @@ public class UserController {
 		
 		session.invalidate();
 		
-		return "redirect:main.do";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/ajaxidChk.do", method=RequestMethod.POST)
