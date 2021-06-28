@@ -64,9 +64,26 @@ response.setContentType("text/html; charset=UTF-8");
 			submitChk();
 			setTimeout(function() {
 				$("#checkPwd2").hide();
-				}, 3000);
+				}, 2000);
 		}
 
+	}
+	
+	function checkfemail(){
+		var femail = $("#femail").val();
+		var chkfemail = femail + "@null";
+		var bemail = $("#bemail").val();
+		var email = femail + "@" + bemail;
+		
+		if (email == chkfemail){ 
+			$("#emailChk").show();
+			document.getElementById('emailChk').style.color = "red";
+			document.getElementById('emailChk').innerHTML = "이메일을 다 작성해주세요";
+			$("#Chk4").val('false');
+			setTimeout(function() {
+				$("#emailChk").hide();
+				}, 1000);
+		}
 	}
 	
 	
@@ -152,6 +169,11 @@ response.setContentType("text/html; charset=UTF-8");
 				</td>
 			</tr>
 			<tr>
+				<td colspan="2" align="center"><script src="doomcaptcha/script.js?version=17" countdown="on" label="Captcha" enemies="4"></script>
+				<input type="hidden" id="Chk6" value="false"></td>
+				
+			</tr>
+			<tr>
 				<td colspan="2" align="right"><input type="button" value="취소" onclick="location.href='loginform.do'" /></td>
 			</tr>
 			<tr>
@@ -163,7 +185,7 @@ response.setContentType("text/html; charset=UTF-8");
 </body>
 <script type="text/javascript">
 
-$("#userid").blur(function(){
+$("#userid").keyup(function(){
 	var userid = $("#userid").val().trim();
 	console.log(userid)
 	if (userid == null || userid == "") {
@@ -239,13 +261,23 @@ $("#userid").blur(function(){
         })
     });
 	
+	$("#textEmail").keyup(function(event){
+		// 좌우 방향키, 백스페이스, 딜리트, 탭키에 대한 예외
+		var inputVal = $(this).val();
+		if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode ==  46){ 
+			return;
+		}
+		$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+	});
+	
 	$("#bemail").blur(function(){
 		var femail = $("#femail").val();
 		var femailChk = femail + "@null";
 		var bemail = $("#bemail").val();
+		var bemailChk = "null@"+ bemail;
 		var email = femail + "@" + bemail;
 		console.log(email)
-		if (email == null || email == "@null" ||email == femailChk) {
+		if (email == null || email == "@null" ||email == femailChk || email == bemailChk) {
 			$("#emailChk").show();
 			$("#emailChk").html('email을 입력해 주세요.');
 			$("#emailChk").css("color", "red");
@@ -258,7 +290,7 @@ $("#userid").blur(function(){
 				dataType : "text",
 				success : function(check) {
 					console.log(check)
-					$("#addressChkres").show();
+					$("#emailChk").show();
 					if (check == "false") {
 						$("#emailChk").html('사용 가능한 email입니다.');
 						$("#emailChk").css("color", "blue");
@@ -285,7 +317,7 @@ $("#userid").blur(function(){
 	    $(this).val(inputVal.replace(/[^0-9]/gi,''));
 	});
 	
-	$("#phone").blur(function(){
+	$("#phone").keyup(function(){
 		var phone = $("#phone").val();
 		var fphone = phone.substring(0,3);
 		console.log(phone)
@@ -353,7 +385,7 @@ $("#userid").blur(function(){
 	
 	function submitChk() {
 		
-		if($("#Chk1").val() == 'true' && $("#Chk2").val() == 'true' && $("#Chk3").val() == 'true' && $("#Chk4").val() == 'true' && $("#Chk5").val() == 'true'){
+		if($("#Chk1").val() == 'true' && $("#Chk2").val() == 'true' && $("#Chk3").val() == 'true' && $("#Chk4").val() == 'true' && $("#Chk5").val() == 'true' && $("#Chk6").val() == 'true'){
 			$("#submitRes").attr("disabled", false);
 		} else{
 			$("#submitRes").attr("disabled", true);
