@@ -84,7 +84,20 @@
 	<div id="partylist">
 	</div>
 
+	<%-- 상단으로 이동하기 버튼 시작 --%>
+	<div class="top">
+		<button id="btn" onClick="GoTop()">▲</button>
+	</div>
+	<%-- 상단으로 이동하기 버튼 끝 --%>
+
 </body>
+
+<script type="text/javascript" src="resources/js/index.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<script type="text/javascript" src="resources/js/gotop.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/gotop.css">
 <link rel="stylesheet" type="text/css" href="resources/css/index.css">
 </html>
 
+
+</html>

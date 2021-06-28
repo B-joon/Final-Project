@@ -1,0 +1,23 @@
+.top{
+    margin-bottom: 50px;
+}
+
+#btn {
+    position: fixed; /* 버튼 위치 고정 */
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 20px;
+    padding: 15px;
+    background-color: white;
+    color: rgb(0, 183, 255);
+    cursor: pointer;
+    transition: 0.5s;
+    border: 1px solid;
+}
+
+#btn:hover {
+    background-color:rgb(0, 183, 255);
+    color: white;
+    border: 2px solid;
+}

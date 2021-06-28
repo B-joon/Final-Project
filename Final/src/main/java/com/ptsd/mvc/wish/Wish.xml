@@ -1,0 +1,34 @@
+
+<mapper namespace="wish">
+
+<!-- 찜하기 추가 -->
+	<insert id="insertwish" parameterType="wishDto">
+		INSERT INTO WISH
+		VALUES(WISHNOSEQ.NEXTVAL, #{wish_user_no}, #{wish_post_id})
+	</insert>
+
+<!-- 찜하기 삭제 -->
+	<delete id="deletewish" parameterType="int">
+		DELETE FROM WISH
+		WHERE WISH_USER_NO = #{wish_user_no}
+	</delete>
+
+<!-- 찜하기 목록 -->
+	<select id="wishList" parameterType="BoardDto">
+		SELECT 
+	
+	
+	</select>
+
+<!-- 찜하기 체크 -->
+	<select id="wishchk" parameterType="wishDto" resultType="int">
+		SELECT COUNT(*) FROM WISH
+		WHERE WISH_USER_NO = #{wish_user_no}
+		AND WISH_POST_ID = #{wish_user_id}
+	</select>
+	
+</mapper>
+
+
+
+

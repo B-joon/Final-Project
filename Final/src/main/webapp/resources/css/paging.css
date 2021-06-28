@@ -38,3 +38,6 @@ color: dimgray;
 #pagingDiv a:first-child {
 border-left: 1px solid #ddd;
 }
+#pagingDiv a:active {
+background: #F0F8FF;
+}
