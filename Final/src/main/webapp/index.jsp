@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="resources/js/index.js" charset="UTF-8"></script>
 </head>
 <body>
 
@@ -94,7 +93,4 @@
 <script type="text/javascript" src="resources/js/gotop.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/gotop.css">
 <link rel="stylesheet" type="text/css" href="resources/css/index.css">
-</html>
-
-
 </html>
