@@ -5,6 +5,8 @@ import java.util.Date;
 public class NoticeDto {
 
 	private int boardseq;
+	private String boardkind;
+	
 	private String boardname;
 	private String boardtitle;
 	private String boardcontent;
@@ -16,6 +18,15 @@ public class NoticeDto {
 	public void setBoardseq(int boardseq) {
 		this.boardseq = boardseq;
 	}
+	
+	public String getBoardkind() {
+		return boardkind;
+	}
+	public void setBoardkind(String boardkind) {
+		this.boardkind = boardkind;
+	}
+	
+	
 	public String getBoardname() {
 		return boardname;
 	}

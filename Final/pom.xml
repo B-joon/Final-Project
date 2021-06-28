@@ -173,6 +173,7 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
+
 		
 		<!-- file upload -->
 		<dependency>
@@ -180,6 +181,22 @@
 			  <artifactId>commons-fileupload</artifactId>
  		      <version>1.4</version>
 		</dependency>	
+
+
+		<!-- STMP 메일 전송 라이브러리 -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
+		<!-- 메일 라이브러리 사용을 수월하게 한다. -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>
