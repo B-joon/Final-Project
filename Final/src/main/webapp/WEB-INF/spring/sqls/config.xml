@@ -4,7 +4,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.ptsd.mvc.notice.NoticeDto" alias="noticeDto" />
-		<typeAlias type="com.mvc.test.dto.UserDto" alias="userDto" />
+		<typeAlias type="com.ptsd.mvc.user.UserDto" alias="userDto" />
 	</typeAliases>
 
 	<mappers>
