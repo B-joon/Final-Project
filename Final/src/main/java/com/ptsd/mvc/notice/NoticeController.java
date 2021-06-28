@@ -28,6 +28,9 @@ public class NoticeController {
 		return "noticelist";
 	}
 	
+	
+	
+	
 	@RequestMapping("/noticeone.do")
 	public String selectOne(Model model, int boardseq, @ModelAttribute("cri") PagingCriteria cri) {
 		
@@ -36,10 +39,13 @@ public class NoticeController {
 		return "noticeone";
 	}
 	
+	
+	
 	@RequestMapping("/insertform.do")
 	public String insertForm() {
 		return "noticeinsert";
 	}
+	
 	
 	@RequestMapping("/insertres.do")
 	public String insertRes(NoticeDto dto) {
