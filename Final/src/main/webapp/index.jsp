@@ -1,5 +1,13 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.ptsd.mvc.user.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	if((UserDto)session.getAttribute("login") != null){
+		UserDto login = (UserDto)session.getAttribute("login");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +15,36 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<%
+	UserDto login = (UserDto)session.getAttribute("login"); 
+%>
 <body>
 
 	<a href="noticelist.do">공지</a>
 	<a href="eventlist.do">이벤트</a>
 	<a href="reservation.do">티켓예매</a>
-	<a href="loginform.do">login...</a>
+	
 	<a href="streaming.do">streaming</a>
-
+	<%
+	
+	if(login != null){
+		
+	%>
+	<a href="logout.do">logout</a>
+	<% 
+		if(login.getUserrole().equals("admin")){
+			
+	%>
+	<a href="admin.do">adminpage</a>
+	
+	<%
+		}
+	}else{
+	%>
+		<a href="loginform.do">login...</a>
+	<%
+	}
+	%>
 	<!-- 상품 등록 페이지 (어드민 권한이 있는 경우에만 나타나게 해야함) -->
 	<a href="product.do">상품등록</a>
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
