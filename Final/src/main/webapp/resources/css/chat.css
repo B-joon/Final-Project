@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+#messages {
+	width: 400px;
+	min-width: 400px;
+	height: 300px;
+	min-height: 300px;
+	border: 1px solid black;
+	overflow-y: auto;
+}
+
+#msg {
+	width: 300px;
+}
+
+#msg_process {
+	width: 90px;
+}

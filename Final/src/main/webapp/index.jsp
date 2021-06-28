@@ -13,6 +13,7 @@
 	<a href="noticelist.do">공지</a>
 	<a href="reservation.do">티켓예매</a>
 	<a href="loginform.do">login...</a>
+	<a href="streaming.do">streaming</a>
 	<!-- 축제 정보를 ajax로 받기 -->
 	<select class="areaCode" name="areaCode"  onchange="getPartyList();">
 		<option value="1" selected>서울</option>

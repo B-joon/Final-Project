@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="streaming">
+
+	<select id="selectList" resultType="streamingDto">
+		SELECT STREAMINGSEQ, STREAMINGNAME
+		FROM STREAMING
+		ORDER BY STREAMINGSEQ DESC
+	</select>
+	
+	<select id="selectOne" resultType="streamingDto" parameterType="int">
+		SELECT STREAMINGSEQ, STREAMINGNAME
+		FROM STREAMING
+		WHERE STREAMINGSEQ = #{streamingseq}
+	</select>
+	
+	<insert id="insert" parameterType="streamingDto">
+		INSERT INTO STREAMING
+		VALUES(STREAMINGSEQ.NEXTVAL, #{streamingname})
+	</insert>
+	
+	<delete id="delete" parameterType="streamingDto">
+		DELETE FROM STREAMING
+		WHERE STREAMINGSEQ = #{streamingseq}
+	</delete>
+
+</mapper>
