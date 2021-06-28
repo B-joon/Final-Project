@@ -14,6 +14,7 @@
 	<a href="eventlist.do">이벤트</a>
 	<a href="reservation.do">티켓예매</a>
 	<a href="loginform.do">login...</a>
+	<a href="streaming.do">streaming</a>
 
 	<!-- 상품 등록 페이지 (어드민 권한이 있는 경우에만 나타나게 해야함) -->
 	<a href="product.do">상품등록</a>
@@ -41,12 +42,8 @@
 		<option value="6">부산</option>
 		<option value="39">제주</option>
 	</select>
-		<select name="productareaCode"  onchange="getProductList();">
-
-	<a href="streaming.do">streaming</a>
+	<select name="productareaCode"  onchange="getProductList();">
 	<!-- 축제 정보를 ajax로 받기 -->
-	<select class="areaCode" name="areaCode"  onchange="getPartyList();">
-
 		<option value="1" selected>서울</option>
 		<option value="31">경기</option>
 		<option value="2">인천</option>
