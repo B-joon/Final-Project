@@ -1,13 +1,16 @@
+
+
 $(function(){
 
 	getPartyList();
 	
 })
 
-
 function getPartyList() {
 	
-	var area = document.getElementsByName("areaCode")[0];
+	$("#partylist").children().remove();
+	
+	var area = document.getElementsByName("partyareaCode")[0];
 	var idx = area.selectedIndex;
 	var areaCode = area.options[idx].value;
 	console.log(areaCode)
@@ -70,6 +73,67 @@ function getPartyList() {
 		}
 		
 	})
+	
+	
+}
+
+function getProductList() {
+	
+	$("#partylist").children().remove();
+	
+	var area = document.getElementsByName("productareaCode")[0];
+	var idx = area.selectedIndex;
+	var areaCode = area.options[idx].value;
+	
+	$.ajax({
+		url: "getProductList.do?areaCode="+areaCode,
+		method: "post",
+		contentType : "application/json",
+		dataType: "json",
+		success:function(data) {
+			console.log(data)
+			console.log("예매하기");
+			const partylist = document.querySelector('#partylist');
+			
+			for (var i = 0; i < data.length; i++) {
+				
+				const div = document.createElement('div');
+
+				div.setAttribute("class","partyDiv");
+				const productname = document.createElement('div');
+				productname.append(data[i].productname);
+				const address = document.createElement('div');
+				address.append(data[i].address);
+				const img = document.createElement('img');
+				img.src = data[i].thumbimg;
+				img.style.witdh = "10em";
+				img.style.height = "10em";
+				const productcontent = document.createElement('div');
+				productcontent.append(data[i].productcontent);
+				const tellnumber = document.createElement('div');
+				tellnumber.append(data[i].tellnumber);
+				const button = document.createElement('input');
+				button.setAttribute("type","button");
+				button.setAttribute("value","예매하기");
+				button.setAttribute("onclick","location.href='reservation.do?productseq="+data[i].productseq+"'");
+
+				div.append(productname);
+				div.append(address);
+				div.append(img);
+				div.append(productcontent);
+				div.append(tellnumber);
+				div.append(button);
+
+				partylist.append(div);
+				
+			}
+			
+
+		},
+		error:function() {
+			alert("실패")
+		}
+		})
 	
 	
 }
