@@ -23,14 +23,19 @@ public class ProductController {
 	@Autowired
 	private ProductBiz biz;
 	
-	@RequestMapping("/product.do")
+	@RequestMapping("/productinsert.do")
 	public String product() {
 		
 		return "productinsert";
 	}
 	
-	@RequestMapping(value = "/productinsert.do", method=RequestMethod.POST)
+	@RequestMapping(value = "/productinsertres.do", method=RequestMethod.POST)
 	public String productInsert(@RequestParam("img")MultipartFile file, ProductDto dto, Model model, HttpServletRequest request) throws IllegalStateException, IOException {
+		
+		System.out.println(request.getContextPath());
+		System.out.println(request.getServletPath());
+		System.out.println(request.getSession().getServletContext().getContextPath());
+		System.out.println(request.getSession().getServletContext().getRealPath(""));
 		
 		String path = request.getSession().getServletContext().getRealPath("/resources/image/");
 		System.out.println(path);
@@ -41,7 +46,7 @@ public class ProductController {
 		if(!file.getOriginalFilename().isEmpty()) {
 			file.transferTo(new File(path, fileName));
 		} else {
-			model.addAttribute("msg", "��ȿ���� ���� �����Դϴ�.");
+			model.addAttribute("msg", "유효하지 않은 파일입니다.");
 			return "productinsert";
 		}
 		
@@ -62,6 +67,55 @@ public class ProductController {
 		List<ProductDto> list = biz.selectAreaList(areaCode);
 		
 		return list;
+	}
+	
+	@RequestMapping("productupdate.do")
+	public String productUpdateForm(Model model, int productseq) {
+		
+		model.addAttribute("dto", biz.selectOne(productseq));
+		
+		return "productupdate";
+	}
+	
+	@RequestMapping(value="productupdateres.do", method=RequestMethod.POST)
+	public String productUpdateRes(@RequestParam("img")MultipartFile file, ProductDto dto, Model model, HttpServletRequest request) throws IllegalStateException, IOException {
+		
+		String path = request.getSession().getServletContext().getRealPath("/resources/image/");
+		System.out.println(path);
+		String fileName = file.getOriginalFilename();
+		
+		dto.setAreacode(getAreacode(dto.getAddress()));
+
+//		if(!file.getOriginalFilename().isEmpty()) {
+//			file.transferTo(new File(path, fileName));
+//			dto.setThumbimg(FILE_PATH+fileName);
+//		} else {
+//			model.addAttribute("msg", "유효하지 않은 파일입니다.");
+//			return "redirect:productupdate.do?productseq="+dto.getProductseq();
+//		}
+		
+		int res = biz.update(dto);
+		
+		if (res > 0) {
+			return "redirect:admin.do";
+		} else {
+			return "redirect:productupdate.do?productseq="+dto.getProductseq();
+		}
+
+	}
+	
+	@RequestMapping("productdelete.do")
+	public String productDelete(int productseq) {
+		
+		int res = biz.delete(productseq);
+		
+		if (res > 0) {
+			return "redirect:admin.do";
+		} else {
+			return "redirect:admin.do";
+		}
+		
+		
 	}
 	
 	private int getAreacode(String addr) {

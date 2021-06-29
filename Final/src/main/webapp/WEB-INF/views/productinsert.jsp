@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- ajax로 insert해야할 것 같은 느낌적인 느낌 -->
-	<form action="productinsert.do" method="post" enctype="multipart/form-data">
+
+	<form action="productinsertres.do" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>카테고리</th>

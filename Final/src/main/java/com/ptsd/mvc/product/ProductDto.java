@@ -3,35 +3,35 @@ package com.ptsd.mvc.product;
 public class ProductDto {
 
 	private int productseq;
-	// »óÇ° ¹øÈ£
+	// ìƒí’ˆë²ˆí˜¸
 	private String category;
-	// Ä«Å×°í¸® (¹ÂÁöÄÃ, ÄÜ¼­Æ®, ¿¬±Ø, Å¬·¡½Ä/¹«¿ë, ½ºÆ÷Ã÷, ·¹Àú, Àü½Ã/Çà»ç, ¾Æµ¿/°¡Á·)
+	// ì¹´í…Œê³ ë¦¬
 	private String productname;
-	// »óÇ° ÀÌ¸§
+	// ìƒí’ˆëª…
 	private String startdate;
-	// ½ÃÀÛÀÏ
+	// ì‹œì‘ì¼
 	private String enddate;
-	// Á¾·áÀÏ
+	// ì¢…ë£Œì¼
 	private String thumbimg;
-	// ½æ³×ÀÏ ÀÌ¹ÌÁö URL
+	// ì´ë¯¸ì§€ URL
 	private String productcontent;
-	// »óÇ° ¼³¸í (HTML ÇüÅÂ·Î ½ºÆ®¸µÀ¸·Î ³Ö¾î¾ßÇÒµí?)
+	// ìƒí’ˆë‚´ìš©
 	private int areacode;
-	// ÇÑ±¹°ü±¤°ø»ç areacode¿Í µ¿ÀÏÇÏ°Ô ¸ÂÃá´Ù. (¿ø·¡ db¿¡¼­´Â locationÀÌ¾úÀ½)
+	// ì§€ì—­ë²ˆí˜¸
 	private String address;
-	// °³ÃÖ Àå¼Ò
+	// ì£¼ì†Œ
 	private String tellnumber;
-	// ¾÷Ã¼ ¿¬¶ôÃ³
+	// ì „í™”ë²ˆí˜¸
 	private String runtime;
-	// °ü¶÷½Ã°£
+	// ê´€ëŒì‹œê°„
 	private String rating;
-	// °ü¶÷µî±Ş
+	// ê´€ëŒë“±ê¸‰
 	private int likecount;
-	// ÁÁ¾Æ¿ä °³¼ö
+	// ì¢‹ì•„ìš”ìˆ˜
 	private int wishcount;
-	// ÂòÇÏ±â °³¼ö
+	// ì°œí•˜ê¸°ìˆ˜
 	private int productcount;
-	// Á¶È¸¼ö
+	// ì¡°íšŒìˆ˜
 
 	
 	public ProductDto() {

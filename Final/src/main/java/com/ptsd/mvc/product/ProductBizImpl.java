@@ -20,6 +20,11 @@ public class ProductBizImpl implements ProductBiz {
 	public List<ProductDto> selectAreaList(int areaCode) {
 		return dao.selectAreaList(areaCode);
 	}
+	
+	@Override
+	public ProductDto selectOne(int productseq) {
+		return dao.selectOne(productseq);
+	}
 
 	@Override
 	public int insert(ProductDto dto) {
@@ -28,14 +33,14 @@ public class ProductBizImpl implements ProductBiz {
 
 	@Override
 	public int update(ProductDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
 	public int delete(int boardseq) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(boardseq);
 	}
+
+
 
 }

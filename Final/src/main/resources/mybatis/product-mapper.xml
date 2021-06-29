@@ -2,10 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="product">
 
-	<select id="select" parameterType="int" resultType="productDto">
+	<select id="selectlist" parameterType="int" resultType="productDto">
 		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
 		FROM PRODUCT
 		WHERE AREACODE = #{areaCode}
+	</select>
+	
+	<select id="selectone" parameterType="int" resultType="productDto">
+		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
+		FROM PRODUCT
+		WHERE PRODUCTSEQ = #{productseq}
 	</select>
 
 	<insert id="insert" parameterType="productDto">
@@ -14,5 +20,26 @@
 		VALUES 
 		(PRODUCTSEQ.NEXTVAL, #{category}, #{productname}, #{startdate}, #{enddate}, #{thumbimg}, #{productcontent}, #{areacode}, #{address}, #{tellnumber}, #{runtime}, #{rating})
 	</insert>
+	
+	<update id="update" parameterType="productDto">
+		UPDATE PRODUCT
+		SET 
+		CATEGORY = #{category}, 
+		PRODUCTNAME = #{productname}, 
+		STARTDATE = #{startdate}, 
+		ENDDATE = #{enddate}, 
+		PRODUCTCONTENT = #{productcontent}, 
+		AREACODE = #{areacode}, 
+		ADDRESS = #{address}, 
+		TELLNUMBER = #{tellnumber}, 
+		RUNTIME = #{runtime}, 
+		RATING = #{rating}
+		WHERE PRODUCTSEQ = #{productseq}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM PRODUCT
+		WHERE PRODUCTSEQ = #{productseq}
+	</delete>
 
 </mapper>
