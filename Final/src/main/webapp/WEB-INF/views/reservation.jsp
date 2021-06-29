@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PSTD / 상품 예매 페이지</title>
 </head>
 <body>
+
+	
 
 </body>
 </html>
