@@ -9,6 +9,7 @@
 <body>
 
 	<h1>ADMIN</h1>
+	<a href="coupon.do">쿠폰생성하기</a>
 
 </body>
 </html>

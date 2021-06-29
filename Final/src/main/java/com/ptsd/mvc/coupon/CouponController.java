@@ -3,6 +3,7 @@ package com.ptsd.mvc.coupon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class CouponController {
@@ -10,14 +11,49 @@ public class CouponController {
 	@Autowired
 	private CouponBiz biz;
 	
-	//°ü¸®ÀÚ°¡ µî·ÏÇÑ ÄíÆù ¸®½ºÆ®¸¦ º¸¿©ÁØ´Ù 
+	
+	//ê´€ë¦¬ìê°€ ì¿ í°ì„ ë§Œë“¤ì—ˆì„ ë•Œ 
+	//ê´€ë¦¬ìí˜ì´ì§€ì—ì„œ ì¿ í°ìƒì„±í˜ì´ì§€ ì´ë™
+	@RequestMapping("/coupon.do")
+	public String createCoupon() {
+		return "admincoupon";
+	}
+	
+	//ì¿ í° ë“±ë¡ (í™”ë©´ì— ì¿ í° ë¿Œë ¤ì£¼ê¸°) 
+	@RequestMapping("createcoupon.do")
+	public String createCoupon(int discount, Model model,CouponDto dto) {
+		model.addAttribute("discount", discount);
+		if(biz.insert(dto)>0) {
+			return "eventlist";
+		}
+		System.out.println(discount);
+		return "couponinsert";
+	}
+	
+	
+	
+	
+	
+	
+	@RequestMapping("createcouponres.do")
+	public String createCouponRes() {
+		return "";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String selectList(Model model) {
 		model.addAttribute("list", biz.selectList());
 		return "";
 	}
 	
-	//°ü¸®ÀÚ·Î ·Î±×ÀÎÇßÀ» °æ¿ì, ÄíÆù»ı¼ºÇÏ´Â ÄÚµå (ÄíÆù¹øÈ£´Â ¾È»ı±ä´Ù)  
-	// °ü¸®ÀÚ°¡ ÄíÆù »ı¼º½Ã¿¡´Â html ÄÚµå·Î ¹öÆ°¸¸ »ı¼ºµÇ°Ô ±¸ÇöÇÑ´Ù. 
+	
 	
 	
 	public String insertForm() {
