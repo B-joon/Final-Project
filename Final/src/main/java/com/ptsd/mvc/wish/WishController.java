@@ -1,4 +1,4 @@
-package com.ptsd.mvc.wish.biz;
+/*package com.ptsd.mvc.wish.biz;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,4 +46,4 @@ public class WishController {
 	
 
 
-}
+}*/

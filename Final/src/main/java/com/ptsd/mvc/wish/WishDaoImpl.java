@@ -1,4 +1,4 @@
-package com.ptsd.mvc.wish;
+/*package com.ptsd.mvc.wish;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,3 +70,4 @@ public class WishDaoImpl implements WishDao {
 	}
 
 }
+*/

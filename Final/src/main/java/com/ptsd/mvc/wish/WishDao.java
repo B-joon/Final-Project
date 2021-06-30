@@ -1,4 +1,4 @@
-package com.ptsd.mvc.wish;
+/*package com.ptsd.mvc.wish;
 
 import java.util.List;
 
@@ -20,3 +20,4 @@ public interface WishDao {
 	
 	
 }
+*/

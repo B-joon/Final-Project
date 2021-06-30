@@ -1,4 +1,4 @@
-package com.ptsd.mvc.wish;
+/*package com.ptsd.mvc.wish;
 
 import java.util.List;
 
@@ -16,3 +16,4 @@ public interface WishBiz {
 	// 찜하기 유무 체크
 	public int wishChk(WishDto dto);
 }
+*/
