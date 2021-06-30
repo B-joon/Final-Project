@@ -112,17 +112,29 @@ function getProductList() {
 				productcontent.append(data[i].productcontent);
 				const tellnumber = document.createElement('div');
 				tellnumber.append(data[i].tellnumber);
-				const button = document.createElement('input');
-				button.setAttribute("type","button");
-				button.setAttribute("value","예매하기");
-				button.setAttribute("onclick","location.href='reservation.do?productseq="+data[i].productseq+"'");
+				const button1 = document.createElement('input');
+				button1.setAttribute("type","button");
+				button1.setAttribute("value","예매하기");
+				button1.setAttribute("onclick","location.href='reservation.do?productseq="+data[i].productseq+"'");
 
+				const button2 = document.createElement('input');
+				button2.setAttribute("type","button");
+				button2.setAttribute("value","좋아요");
+				button2.setAttribute("onclick","");
+				
+				const button3 = document.createElement('input');
+				button3.setAttribute("type","button");
+				button3.setAttribute("value","찜하기");
+				button3.setAttribute("onclick","");
+				
 				div.append(productname);
 				div.append(address);
 				div.append(img);
 				div.append(productcontent);
 				div.append(tellnumber);
-				div.append(button);
+				div.append(button1);
+				div.append(button2);
+				div.append(button3);
 
 				partylist.append(div);
 				
