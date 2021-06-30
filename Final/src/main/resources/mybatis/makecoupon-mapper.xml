@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="makecoupon">
+
+	<select id="selectList" resultType="makeCouponDto">
+		SELECT MAKESEQ,COUPONTITLE,DISCOUNT,USERSEQ
+		FROM MAKECOUPON 
+	</select>
+	
+	<select id="selectOne" resultType="makeCouponDto">
+	
+	</select>
+	
+	
+	<insert id="insert" parameterType="makeCouponDto">
+	</insert>
+	
+	<update id="update" parameterType="makeCouponDto">
+	</update>
+	
+	<delete id="delete" parameterType="makeCouponDto">
+	</delete>
+
+
+
+
+
+
+
+
+</mapper>
