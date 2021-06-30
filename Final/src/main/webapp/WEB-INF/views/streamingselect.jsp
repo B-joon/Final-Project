@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="resources/css/chat.css">
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
 </head>
@@ -23,9 +24,10 @@
 	        <input id="msginput" autocomplete="off" type="text">
 	        <button type="submit">전송</button>
 	    </form>
-	    <input type="button" value="방송 종료" onclick="location.href='streamingdel.do?streamingseq=${dto.streamingseq}'">
+	    <input id="dtn" type="button" value="방송 종료" onclick="location.href='streamingdel.do?streamingseq=${dto.streamingseq}'">
 	</div>
-
+	<input type="hidden" value="${login.name }" id="username">
+	<input type="hidden" value="${login.userrole }" id="userrole">
 	<script type="text/javascript" src="resources/js/chat.js"></script>
 </body>
 </html>

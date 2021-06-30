@@ -7,7 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/chat.css">
+
 </head>
 <body>
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
@@ -24,10 +26,11 @@
             </c:otherwise>
         </c:choose>
 	</div>
-	
-	<input type="button" value="방송 생성" onclick="location.href='streaminginsert.do'">
-	
-	<script type="text/javascript" src="resources/js/chat.js"></script>
+	<c:choose>
+		<c:when test="${login.userrole eq 'admin' }">
+			<input id="btn" type="button" value="방송 생성" onclick="location.href='streaminginsert.do'">
+		</c:when>
+	</c:choose>
 
 </body>
 </html>
