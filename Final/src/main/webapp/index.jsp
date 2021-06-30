@@ -22,7 +22,6 @@
 
 	<a href="noticelist.do">공지</a>
 	<a href="eventlist.do">이벤트</a>
-	<a href="reservation.do">티켓예매</a>
 	
 	<a href="streaming.do">streaming</a>
 	<%
@@ -45,12 +44,11 @@
 	<%
 	}
 	%>
-	<!-- 상품 등록 페이지 (어드민 권한이 있는 경우에만 나타나게 해야함) -->
-	<a href="product.do">상품등록</a>
+
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
 	<br/>
 	<hr/>
-	<button>축제</button> <button>공연</button>
+	<button>축제</button><button>공연</button>
 	<br/>
 	<select name="partyareaCode"  onchange="getPartyList();">
 		<option value="1" selected>서울</option>
@@ -105,7 +103,6 @@
 		<option value="8">아동/가족</option>
 	</select>
 	
-	
 	<hr/>
 	<div id="partylist">
 	</div>
@@ -117,7 +114,6 @@
 	<%-- 상단으로 이동하기 버튼 끝 --%>
 
 </body>
-
 <script type="text/javascript" src="resources/js/index.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/index.css">
 <script type="text/javascript" src="resources/js/gotop.js"></script>

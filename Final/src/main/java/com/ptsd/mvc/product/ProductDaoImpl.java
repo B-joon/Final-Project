@@ -23,12 +23,26 @@ public class ProductDaoImpl implements ProductDao {
 		List<ProductDto> list = new ArrayList<ProductDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"select", areaCode);			
+			list = sqlSession.selectList(NAMESPACE+"selectlist", areaCode);			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		return list;
+	}
+	
+	@Override
+	public ProductDto selectOne(int productseq) {
+		
+		ProductDto dto = new ProductDto();
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"selectone", productseq);			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 
 	@Override
@@ -48,14 +62,31 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public int update(ProductDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "update", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override
 	public int delete(int boardseq) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "delete", boardseq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
+
+
 
 }
