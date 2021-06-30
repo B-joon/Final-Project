@@ -21,6 +21,9 @@ public class UserController {
 	@Autowired
 	private UserBiz biz;
 	
+	@Autowired
+	private EmailSender emailSender;
+	
 	@RequestMapping("/main.do")
 	public String Main() {
 		
@@ -123,6 +126,38 @@ public class UserController {
 			check = "true";
 		} 
 		return check;
+	}
+	
+	@RequestMapping(value="/proofChk.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String proofChk(@RequestBody String email){
+		String subject ="";
+		String content = "";
+		String receiver = "";
+		String sender = "";
+		
+		int authCode = 0;
+		String authCodes = "";
+		boolean bool = false;
+		
+		for(int i=0; i<6; i++) {
+			authCode = (int)(Math.random()*9+1);
+			authCodes += Integer.toString(authCode);
+		}
+		System.out.println(authCodes);
+		subject = "안녕하세요 PTSD입니다. 이메일 인증번호입니다.";
+		content = DM.dmCertification(authCodes);
+		receiver = email;
+		sender = "admin@gmail.com";
+		
+		try {
+			emailSender.sendMail(subject, content, receiver, sender);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return authCodes;
 	}
 	
 }
