@@ -14,11 +14,27 @@ response.setContentType("text/html; charset=UTF-8");
 <script type="text/javascript">
 	
 	
+	
 	$(function() {
 		$("#idChkres").hide();
 		$("#checkPwd1").hide();
 		$("#checkPwd2").hide();
 	});
+	
+	function nameChk(){
+		var username = $("#username").val().trim();
+		
+		if(name != null){
+			$("#Chk7").val('true');
+			submitChk();
+			console.log(name)
+		} else{
+			$("#Chk7").val('false');
+			submitChk();
+		}
+		
+	}
+	
 	// 비밀번호
 	
 	function checkPwd1(){
@@ -39,6 +55,7 @@ response.setContentType("text/html; charset=UTF-8");
 			$("#checkPwd1").hide();
 			$("#Chk2").val('true');
 			submitChk();
+			console.log(pw)
 		}
 		
 	}
@@ -62,28 +79,12 @@ response.setContentType("text/html; charset=UTF-8");
 			document.getElementById('checkPwd2').innerHTML = "암호가 일치합니다.";
 			$("#Chk3").val('true');
 			submitChk();
+			console.log(pw2)
 			setTimeout(function() {
 				$("#checkPwd2").hide();
 				}, 2000);
 		}
 
-	}
-	
-	function checkfemail(){
-		var femail = $("#femail").val();
-		var chkfemail = femail + "@null";
-		var bemail = $("#bemail").val();
-		var email = femail + "@" + bemail;
-		
-		if (email == chkfemail){ 
-			$("#emailChk").show();
-			document.getElementById('emailChk').style.color = "red";
-			document.getElementById('emailChk').innerHTML = "이메일을 다 작성해주세요";
-			$("#Chk4").val('false');
-			setTimeout(function() {
-				$("#emailChk").hide();
-				}, 1000);
-		}
 	}
 	
 	
@@ -94,6 +95,13 @@ response.setContentType("text/html; charset=UTF-8");
 
 	<form action="userInsertres.do" method="post">
 		<table>
+			<tr>
+				<th>이름</th>
+				<td>
+					<input type="text" name="name" id="username" placeholder="이름을 적어주세요" onkeyup="nameChk();">
+					<input type="hidden" id="Chk7" value="false">
+				</td>
+			</tr>
 			<tr>
 				<th>아이디</th>
 				<td>
@@ -125,10 +133,7 @@ response.setContentType("text/html; charset=UTF-8");
 			<tr>
 				<td colspan="2" align="center" id="checkPwd2"></td>
 			</tr>
-			
-			<tr>
-
-			</tr>
+		
 			<tr>
 				<th>EMAIL</th>
 				<td>
@@ -143,11 +148,22 @@ response.setContentType("text/html; charset=UTF-8");
 						<option value="gmail.com">gmail.com</option>
 						<option value="directly">직접입력</option>  
 					</select>
-					<input type="hidden" id="Chk4" value="false">
+					<input type="button" id="emailChkBtn" value="이메일 중복 확인">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center" id="emailChk"></td>
+			</tr>
+			<tr>
+				<th>인증 번호 확인</th>
+				<td>
+					<input type="text" id="prooftext" placeholder="이메일로 보낸 인증번호를 입력해주세요">
+					<input type="hidden" id="proofBtn" value="인증번호 발송">
+					<input type="hidden" id="Chk4" value="false">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center" id="proofChk"></td>
 			</tr>
 			
 			<tr>
@@ -208,7 +224,10 @@ $("#userid").keyup(function(){
 						$("#idChkres").css("color", "blue");
 						$("#Chk1").val('true');
 						submitChk();
-						
+						console.log(userid)
+						setTimeout(function() {
+							$("#idChkres").hide();
+							}, 2000);
 					} else {
 						$("#idChkres").html('이미 존재하는 ID입니다.');
 						$("#idChkres").css("color", "red");
@@ -270,7 +289,7 @@ $("#userid").keyup(function(){
 		$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
 	});
 	
-	$("#bemail").blur(function(){
+	$("#emailChkBtn").click(function(){
 		var femail = $("#femail").val();
 		var femailChk = femail + "@null";
 		var bemail = $("#bemail").val();
@@ -294,13 +313,16 @@ $("#userid").keyup(function(){
 					if (check == "false") {
 						$("#emailChk").html('사용 가능한 email입니다.');
 						$("#emailChk").css("color", "blue");
-						$("#Chk4").val('true');
-						submitChk();
+						$("#femail").attr('readonly', true);
+						$("#bemail").attr('disabled', true);
+						$("#emailChkBtn").attr('type', 'hidden');
+						$("#proofBtn").attr('type', 'button');
+						setTimeout(function() {
+							$("#emailChk").hide();
+							}, 2000);
 					} else {
 						$("#emailChk").html('이미 존재하는 email입니다.');
 						$("#emailChk").css("color", "red");
-						$("#Chk4").val('false');
-						submitChk();
 					}
 				},
 				error : function() {
@@ -310,7 +332,57 @@ $("#userid").keyup(function(){
 		}
 
 	});
+	
+	$("#proofBtn").click(function(){
+		var femail = $("#femail").val();
+		var bemail = $("#bemail").val();
+		var email = femail + "@" + bemail;
+		$("#proofBtn").val("인증번호 재발송");
+		var key;
+		var bool = true;
+		
+		if (bool) {
+			$.ajax({
+				type : "post",
+				url : "proofChk.do?email=",
+				data : email,
+				contentType : "application/text",
+				dataType : "text",
+				success : function(authCodes) {
+					console.log(authCodes)
+					key = authCodes;
+					bool = false;
+				},
+				error : function() {
+					alert("이메일 인증 통신 실패");
+				}
+			});
+			$("#prooftext").keyup(function() {
+				var proof = $("#prooftext").val();
+				if(proof.length == 6){
+					if(proof == key){
+						$("#proofChk").html('인증완료');
+						$("#proofBtn").attr('type', 'hidden');
+						$("#prooftext").attr('readonly', true);
+						$("#Chk4").val('true');
+						submitChk();
+						console.log(proof)
+						setTimeout(function() {
+							$("#proofChk").hide();
+							}, 2000);
+					} else{
+						$("#proofChk").html('인증번호를 다시 확인해주시거나 재발송을 눌러주세요.');
+						event.preventDefault();
+					}
+				}
+				
+			});
+		} else{
+			event.preventDefault();
+		}
 
+	});
+	
 	
 	$("#phone").keyup(function(event){
 	    var inputVal = $(this).val();
@@ -334,7 +406,13 @@ $("#userid").keyup(function(){
 			$("#phoneChk").css("color", "red");
 			$("#Chk5").val('false');
 			submitChk();
-		} else {
+		} else if(phone.length < 11 || phone.length > 11 ) {
+			$("#phoneChk").show();
+			$("#phoneChk").html('핸드폰 번호 11자리를 제대로 입력해 주세요.');
+			$("#phoneChk").css("color", "red");
+			$("#Chk5").val('false');
+			submitChk();
+		} else{
 			$.ajax({
 				type : "post",
 				url : "ajaxphoneChk.do?phone=",
@@ -348,7 +426,12 @@ $("#userid").keyup(function(){
 						$("#phoneChk").html('사용 가능한 번호입니다.');
 						$("#phoneChk").css("color", "blue");
 						$("#Chk5").val('true');
+						$("#phone").attr('readonly', true);
 						submitChk();
+						console.log(phone)
+						setTimeout(function() {
+							$("#phoneChk").hide();
+							}, 2000);
 					} else if(check == "true") {
 						$("#phoneChk").html('이미 존재하는 번호입니다.');
 						$("#phoneChk").css("color", "red");
@@ -385,7 +468,13 @@ $("#userid").keyup(function(){
 	
 	function submitChk() {
 		
-		if($("#Chk1").val() == 'true' && $("#Chk2").val() == 'true' && $("#Chk3").val() == 'true' && $("#Chk4").val() == 'true' && $("#Chk5").val() == 'true' && $("#Chk6").val() == 'true'){
+		if($("#Chk1").val() == 'true' 
+				&& $("#Chk2").val() == 'true' 
+				&& $("#Chk3").val() == 'true' 
+				&& $("#Chk4").val() == 'true' 
+				&& $("#Chk5").val() == 'true'
+				&& $("#Chk6").val() == 'true' 
+				&& $("#Chk7").val() == 'true'){
 			$("#submitRes").attr("disabled", false);
 		} else{
 			$("#submitRes").attr("disabled", true);

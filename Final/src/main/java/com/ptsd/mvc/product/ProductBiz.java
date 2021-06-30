@@ -5,9 +5,11 @@ import java.util.List;
 public interface ProductBiz {
 
 	public List<ProductDto> selectAllList();
-	// ÀüÃ¼ »óÇ° ¸®½ºÆ®
+	// ì „ì²´ ìƒí’ˆ ë¦¬ìŠ¤íŠ¸
 	public List<ProductDto> selectAreaList(int areaCode);
-	// Æ¯Á¤ Áö¿ª »óÇ° ¸®½ºÆ®
+	// ì§€ì—­ë³„ ìƒí’ˆ ë¦¬ìŠ¤íŠ¸
+	public ProductDto selectOne(int productseq);
+	// ìƒí’ˆ 1ê°œ ì…€ë ‰íŠ¸
 	public int insert(ProductDto dto);
 	public int update(ProductDto dto);
 	public int delete(int boardseq);
