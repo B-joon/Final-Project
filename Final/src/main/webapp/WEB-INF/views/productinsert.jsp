@@ -33,13 +33,13 @@
 			<tr>
 				<th>행사시작일</th>
 				<td>
-				<input type="datetime-local" name="startdate">
+				<input type="date" name="startdate">
 				</td>
 			</tr>
 			<tr>
 				<th>행사종료일</th>
 				<td>
-				<input type="datetime-local" name="enddate">
+				<input type="date" name="enddate">
 				</td>
 			</tr>
 			<tr>
@@ -78,6 +78,10 @@
 			<tr>
 				<th>관객수</th>
 				<td><input type="text" name="seatcount"></td>
+			</tr>
+			<tr>
+				<th>티켓가격</th>
+				<td><input type="text" name="price"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right"> 

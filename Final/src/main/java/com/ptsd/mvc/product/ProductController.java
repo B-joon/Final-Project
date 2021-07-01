@@ -61,9 +61,9 @@ public class ProductController {
 	
 	@RequestMapping("getProductList.do")
 	@ResponseBody
-	public List<ProductDto> getProductList(int areaCode) {
+	public List<ProductDto> getProductList(int areacode) {
 		
-		List<ProductDto> list = biz.selectAreaList(areaCode);
+		List<ProductDto> list = biz.selectAreaList(areacode);
 		
 		return list;
 	}
