@@ -16,7 +16,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <%
-	UserDto login = (UserDto)session.getAttribute("login"); 
+	UserDto login = (UserDto)session.getAttribute("login");
 %>
 <body>
 
@@ -30,12 +30,11 @@
 		
 	%>
 	<a href="logout.do">logout</a>
+		
 	<% 
 		if(login.getUserrole().equals("admin")){
-			
 	%>
-	<a href="admin.do">adminpage</a>
-	
+		<a href="admin.do">adminpage</a>
 	<%
 		}
 	}else{
@@ -44,7 +43,6 @@
 	<%
 	}
 	%>
-
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
 	<br/>
 	<hr/>
