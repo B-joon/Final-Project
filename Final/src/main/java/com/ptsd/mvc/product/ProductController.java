@@ -35,8 +35,7 @@ public class ProductController {
 		System.out.println(request.getContextPath());
 		System.out.println(request.getServletPath());
 		System.out.println(request.getSession().getServletContext().getContextPath());
-		System.out.println(request.getSession().getServletContext().getRealPath(""));
-		
+
 		String path = request.getSession().getServletContext().getRealPath("/resources/image/");
 		System.out.println(path);
 		String fileName = file.getOriginalFilename();

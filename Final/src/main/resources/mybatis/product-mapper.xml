@@ -3,22 +3,22 @@
 <mapper namespace="product">
 
 	<select id="selectlist" parameterType="int" resultType="productDto">
-		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
+		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, SEATCOUNT, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
 		FROM PRODUCT
 		WHERE AREACODE = #{areaCode}
 	</select>
 	
 	<select id="selectone" parameterType="int" resultType="productDto">
-		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
+		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, SEATCOUNT, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
 		FROM PRODUCT
 		WHERE PRODUCTSEQ = #{productseq}
 	</select>
 
 	<insert id="insert" parameterType="productDto">
 		INSERT INTO PRODUCT
-		(PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING)
+		(PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, SEATCOUNT)
 		VALUES 
-		(PRODUCTSEQ.NEXTVAL, #{category}, #{productname}, #{startdate}, #{enddate}, #{thumbimg}, #{productcontent}, #{areacode}, #{address}, #{tellnumber}, #{runtime}, #{rating})
+		(PRODUCTSEQ.NEXTVAL, #{category}, #{productname}, #{startdate}, #{enddate}, #{thumbimg}, #{productcontent}, #{areacode}, #{address}, #{tellnumber}, #{runtime}, #{rating}, #{seatcount})
 	</insert>
 	
 	<update id="update" parameterType="productDto">
@@ -33,7 +33,8 @@
 		ADDRESS = #{address}, 
 		TELLNUMBER = #{tellnumber}, 
 		RUNTIME = #{runtime}, 
-		RATING = #{rating}
+		RATING = #{rating},
+		SEATCOUNT = #{seatcount},
 		WHERE PRODUCTSEQ = #{productseq}
 	</update>
 	

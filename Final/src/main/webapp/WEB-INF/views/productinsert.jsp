@@ -76,6 +76,10 @@
 				</td>
 			</tr>
 			<tr>
+				<th>관객수</th>
+				<td><input type="text" name="seatcount"></td>
+			</tr>
+			<tr>
 				<td colspan="2" align="right"> 
 				<input type="submit" value="상품등록">
 				<input type="button" onclick="history.back();" value="등록취소">
