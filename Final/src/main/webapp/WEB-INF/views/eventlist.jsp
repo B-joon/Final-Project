@@ -116,10 +116,10 @@
 			<c:forEach items="${couponlist }" var="dto">
 
 				<tr>
-					<td>${dto.makeseq }</td>
-					<td><a href="#" onclick="couponVal()">${dto.coupontitle }</a></td>
-					<td>${dto.discount }</td>
-					<td>${dto.endday }</td>
+					<td><input type="text" value="${dto.makeseq }" name="makeseq" readonly="readonly"></td>
+					<td><a href="#" onclick="couponVal()"><input type="text" value="${dto.coupontitle }" name="coupontitle" readonly="readonly"></a></td>
+					<td><input type="text" value="${dto.endday }" name="endday" readonly="readonly"></td>
+					<td><input type="text" value="${dto.discount }" name="discount" readonly="readonly"></td>
 					
 
 				</tr>
