@@ -10,7 +10,7 @@ public class LikeBizImpl implements LikeBiz {
 	private LikeDao dao;
 	
 	@Override
-	public int likeCount(LikeDto dto) {
+	public LikeDto likeCount(LikeDto dto) {
 		return dao.likeCount(dto);
 	}
 

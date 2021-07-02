@@ -11,35 +11,59 @@ public class LikeDaoImpl implements LikeDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public int likeCount(LikeDto dto) {
+	public LikeDto likeCount(LikeDto dto) {		// 좋아요 카운팅
 		
+		LikeDto cntDto = new LikeDto();
 		
+		try {
+			cntDto = sqlSession.selectOne(NAMESPACE + "likeCnt", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		return 0;
+		return cntDto;
 	}
 
 	@Override
-	public int likeInsert(LikeDto dto) {
+	public int likeInsert(LikeDto dto) { // 좋아요 + 1
 		
+		int res = 0;
 		
+		try {
+			res = sqlSession.insert(NAMESPACE + "likeInsert", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		return 0;
+		return res;
 	}
 
 	@Override
 	public int likeUpdate(int productseq) {
 		
+		int res = 0;
 		
+		try {
+			res = sqlSession.update(NAMESPACE + "likeUpdate", productseq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		return 0;
+		return res;
 	}
 
 	@Override
 	public int likeDel(LikeDto dto) {
 		
+		int res = 0;
 		
+		try {
+			res = sqlSession.delete(NAMESPACE + "likeDel", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		return 0;
+		return res;
 	}
 
 }
