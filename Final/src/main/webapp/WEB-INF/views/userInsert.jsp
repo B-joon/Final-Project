@@ -255,14 +255,7 @@ $("#userid").keyup(function(){
 		$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
 	}); 
 	
-	$("#femail").keyup(function(event){
-		// 좌우 방향키, 백스페이스, 딜리트, 탭키에 대한 예외
-		var inputVal = $(this).val();
-		if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode ==  46){ 
-			return;
-		}
-		$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
-	}); 
+
 	
 	$(function() {
         $('#bemail').change(function() {
@@ -277,14 +270,7 @@ $("#userid").keyup(function(){
         })
     });
 	
-	$("#textEmail").keyup(function(event){
-		// 좌우 방향키, 백스페이스, 딜리트, 탭키에 대한 예외
-		var inputVal = $(this).val();
-		if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode ==  46){ 
-			return;
-		}
-		$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
-	});
+
 	
 	$("#emailChkBtn").click(function(){
 		var femail = $("#femail").val();
@@ -423,7 +409,6 @@ $("#userid").keyup(function(){
 						$("#phoneChk").html('사용 가능한 번호입니다.');
 						$("#phoneChk").css("color", "blue");
 						$("#Chk5").val('true');
-						$("#phone").attr('readonly', true);
 						submitChk();
 						console.log(phone)
 						setTimeout(function() {

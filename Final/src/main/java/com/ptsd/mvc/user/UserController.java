@@ -88,7 +88,7 @@ public class UserController {
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½'); </script>");
+			out.println("<script>alert('¿À·ù'); </script>");
 			out.flush();
 		}
 		return "redirect:userInsert.do";
@@ -160,7 +160,7 @@ public class UserController {
 			authCodes += Integer.toString(authCode);
 		}
 		System.out.println(authCodes);
-		subject = "ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ PTSDï¿½Ô´Ï´ï¿½. ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½Ô´Ï´ï¿½.";
+		subject = "PTSD ÀÎÁõ¹øÈ£ÀÔ´Ï´Ù.";
 		content = DM.dmCertification(authCodes);
 		receiver = email;
 		sender = "admin@gmail.com";
