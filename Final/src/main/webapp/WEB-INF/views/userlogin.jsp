@@ -11,7 +11,6 @@
 <meta name = "google-signin-client_id"content = "598123668214-i2590f1kq85bg1lm2u1hga0ilps88h69.apps.googleusercontent.com">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
@@ -58,7 +57,7 @@
 
 </head>
 <body>
-	
+<%@include file="./common.jsp" %>	
 	<table align="center">
 		<tr>
 			<th>아이디</th>

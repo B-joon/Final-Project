@@ -8,6 +8,7 @@
 <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 <title>Talk with Chatbot</title>
 </head>
+<%@include file="./common.jsp" %>
 <body>
 
 <h1>이용가이드 챗봇과 대화하기</h1>

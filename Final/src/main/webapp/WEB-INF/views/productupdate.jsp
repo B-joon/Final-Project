@@ -8,7 +8,7 @@
 <title>PTSD / 상품정보수정</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<form action="productupdateres.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="productseq" value="${dto.productseq }">
 		<input type="text" name="" value="${dto.category }">

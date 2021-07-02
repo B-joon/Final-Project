@@ -26,9 +26,6 @@
             margin: 0px 100px;
         }
     </style>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         function getCity(name) {
             return 'http://api.openweathermap.org/data/2.5/weather?q=' + name + '&appid=9ba126a5c7dd531b326056c2482af0b1&units=metric';
@@ -75,7 +72,7 @@
 
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
  <div>
         <ul id="roller" class="roller">
             <li>
