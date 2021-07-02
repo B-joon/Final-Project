@@ -11,6 +11,10 @@ public class CouponController {
 	@Autowired
 	private CouponBiz biz;
 	
+	@Autowired
+	private MakeCouponBiz couponbiz;
+	
+	
 	
 	//관리자가 쿠폰을 만들었을 때 
 	//관리자페이지에서 쿠폰생성페이지 이동
@@ -21,10 +25,10 @@ public class CouponController {
 	
 	//쿠폰 등록 (화면에 쿠폰 뿌려주기) 
 	@RequestMapping("createcoupon.do")
-	public String createCoupon(int discount, Model model,CouponDto dto) {
+	public String createCoupon(int discount, Model model, MakeCouponDto dto) {
 		model.addAttribute("discount", discount);
-		if(biz.insert(dto)>0) {
-			return "eventlist";
+		if(couponbiz.insert(dto)>0) {
+			return "redirect:eventlist.do";
 		}
 		System.out.println(discount);
 		return "couponinsert";
@@ -33,11 +37,14 @@ public class CouponController {
 	
 	
 	
-	
-	
-	@RequestMapping("createcouponres.do")
-	public String createCouponRes() {
-		return "";
+	//다운로드 쿠폰 
+	@RequestMapping("downloadcoupon.do")
+	public String downloadcoupon(CouponDto dto) {
+		if(biz.insert(dto)>0) {
+			return "redirect:main.do";
+		}
+		
+		return "mypage";
 	}
 	
 	

@@ -3,22 +3,31 @@
 <mapper namespace="makecoupon">
 
 	<select id="selectList" resultType="makeCouponDto">
-		SELECT MAKESEQ,COUPONTITLE,DISCOUNT,USERSEQ
+		SELECT MAKESEQ,COUPONTITLE,DISCOUNT,USERSEQ,ENDDAY
 		FROM MAKECOUPON 
 	</select>
 	
 	<select id="selectOne" resultType="makeCouponDto">
-	
+		SELECT MAKESEQ,COUPONTITLE,DISCOUNT,USERSEQ,ENDDAY
+		FROM MAKECOUPON 
+		WHERE MAKESEQ = #{makeseq}
 	</select>
 	
 	
 	<insert id="insert" parameterType="makeCouponDto">
+		INSERT INTO MAKECOUPON
+		VALUES(MAKESEQ.NEXTVAL,#{coupontitle},#{discount},#{userseq},#{endday})
 	</insert>
 	
 	<update id="update" parameterType="makeCouponDto">
+		UPDATE MAKECOUPON
+		SET COUPONTITLE = #{coupontitle},DISCOUNT = #{discount}
+		WHERE MAKESEQ = #{makeseq}
 	</update>
 	
 	<delete id="delete" parameterType="makeCouponDto">
+		DELETE FROM MAKECOUPON
+		WHERE MAKESEQ = #{makeseq}
 	</delete>
 
 

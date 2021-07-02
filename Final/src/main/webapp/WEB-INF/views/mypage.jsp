@@ -15,6 +15,7 @@
 
 <p>${login.getUserid() }</p>
 
+<a href="">내 쿠폰함</a>
 
 </body>
 </html>
