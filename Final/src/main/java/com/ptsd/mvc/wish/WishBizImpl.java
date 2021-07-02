@@ -1,37 +1,42 @@
-/*package com.ptsd.mvc.wish;
+package com.ptsd.mvc.wish;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ptsd.mvc.product.ProductDto;
+
 @Service
 public class WishBizImpl implements WishBiz {
 
 	@Autowired
 	private WishDao dao;
-	
+
 	@Override
-	public int insertWish(WishDto dto) {
-		return dao.insertWish(dto);
-	}
-	
-	@Override
-	public int deleteWish(int wish_user_no) {
-		return dao.deleteWish(wish_user_no);
+	public List<ProductDto> listWish(int wishuserseq) {
+		// TODO Auto-generated method stub
+		return dao.listWish(wishuserseq);
 	}
 
-
+	@Override
+	public int addWish(WishDto dto) {
+		// TODO Auto-generated method stub
+		return dao.addWish(dto);
+	}
 
 	@Override
-	public List<BoardDto> listWish(int wish_user_no) {
-		return dao.listWish(wish_user_no);
+	public int delWish(int wishuserseq) {
+		// TODO Auto-generated method stub
+		return dao.delWish(wishuserseq);
 	}
 
 	@Override
 	public int wishChk(WishDto dto) {
+		// TODO Auto-generated method stub
 		return dao.wishChk(dto);
 	}
+	
+
 
 }
-*/
