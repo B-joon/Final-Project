@@ -8,7 +8,7 @@ public interface ProductDao {
 	
 	public List<ProductDto> selectAllList();
 	// 전체 상품 리스트
-	public List<ProductDto> selectAreaList(int areaCode);
+	public List<ProductDto> selectAreaList(int areacode);
 	// 지역별 상품 리스트
 	public ProductDto selectOne(int productseq);
 	// 상품 1개 셀렉트

@@ -35,8 +35,7 @@ public class ProductController {
 		System.out.println(request.getContextPath());
 		System.out.println(request.getServletPath());
 		System.out.println(request.getSession().getServletContext().getContextPath());
-		System.out.println(request.getSession().getServletContext().getRealPath(""));
-		
+
 		String path = request.getSession().getServletContext().getRealPath("/resources/image/");
 		System.out.println(path);
 		String fileName = file.getOriginalFilename();
@@ -62,9 +61,9 @@ public class ProductController {
 	
 	@RequestMapping("getProductList.do")
 	@ResponseBody
-	public List<ProductDto> getProductList(int areaCode) {
+	public List<ProductDto> getProductList(int areacode) {
 		
-		List<ProductDto> list = biz.selectAreaList(areaCode);
+		List<ProductDto> list = biz.selectAreaList(areacode);
 		
 		return list;
 	}

@@ -35,6 +35,10 @@ public class UserController {
 		
 		return "adminpage";
 	}
+	@RequestMapping("/mypage.do")
+	public String User() {
+		return "mypage";
+	}
 	
 	@RequestMapping("/loginform.do")
 	public String loginForm() {
