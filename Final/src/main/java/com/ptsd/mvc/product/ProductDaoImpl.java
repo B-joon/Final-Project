@@ -15,15 +15,23 @@ public class ProductDaoImpl implements ProductDao {
 	
 	@Override
 	public List<ProductDto> selectAllList() {
-		return null;
-	}
-
-	@Override
-	public List<ProductDto> selectAreaList(int areaCode) {
 		List<ProductDto> list = new ArrayList<ProductDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectlist", areaCode);			
+			list = sqlSession.selectList(NAMESPACE+"selectAllList");			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
+	public List<ProductDto> selectAreaList(int areacode) {
+		List<ProductDto> list = new ArrayList<ProductDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"selectlist", areacode);			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

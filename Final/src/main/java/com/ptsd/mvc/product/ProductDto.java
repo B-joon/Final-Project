@@ -28,6 +28,8 @@ public class ProductDto {
 	// 관람등급
 	private int seatcount;
 	// 관객수
+	private int price;
+	// 티켓가격
 	private int likecount;
 	// 좋아요수
 	private int wishcount;
@@ -40,7 +42,7 @@ public class ProductDto {
 		
 	}
 	public ProductDto(int productseq, String category, String productname, String startdate, String enddate,
-			String thumbimg, String productcontent, int areacode, String address, String tellnumber, String runtime, String rating, int seatcount, int likecount,
+			String thumbimg, String productcontent, int areacode, String address, String tellnumber, String runtime, String rating, int seatcount, int price, int likecount,
 			int wishcount, int productcount) {
 		this.productseq = productseq;
 		this.category = category;
@@ -55,6 +57,7 @@ public class ProductDto {
 		this.runtime = runtime;
 		this.rating = rating;
 		this.seatcount = seatcount;
+		this.price = price;
 		this.likecount = likecount;
 		this.wishcount = wishcount;
 		this.productcount = productcount;
@@ -136,6 +139,12 @@ public class ProductDto {
 	}
 	public void setSeatcount(int seatcount) {
 		this.seatcount = seatcount;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public int getLikecount() {
 		return likecount;

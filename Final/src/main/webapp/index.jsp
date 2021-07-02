@@ -19,7 +19,7 @@
 	UserDto login = (UserDto)session.getAttribute("login"); 
 %>
 <body>
-
+	<input type="hidden" id="sessionLogin" value="${login }">
 	<a href="noticelist.do">공지</a>
 	<a href="eventlist.do">이벤트</a>
 	<a href="chatbot.do">챗봇대화</a>
@@ -52,8 +52,9 @@
 	<hr/>
 	<button>축제</button><button>공연</button>
 	<br/>
-	<select name="partyareaCode"  onchange="getPartyList();">
-		<option value="1" selected>서울</option>
+	<select name="partyareaCode"  onchange="chkPartyAreaCode();">
+		<option value="0" selected>전체</option>
+		<option value="1">서울</option>
 		<option value="31">경기</option>
 		<option value="2">인천</option>
 		<option value="34">충남</option>
@@ -71,9 +72,10 @@
 		<option value="6">부산</option>
 		<option value="39">제주</option>
 	</select>
-	<select name="productareaCode"  onchange="getProductList();">
+	<select name="productareaCode"  onchange="chkProductAreaCode();">
 	<!-- 축제 정보를 ajax로 받기 -->
-		<option value="1" selected>서울</option>
+		<option value="0" selected>전체</option>
+		<option value="1">서울</option>
 		<option value="31">경기</option>
 		<option value="2">인천</option>
 		<option value="34">충남</option>
@@ -116,7 +118,7 @@
 	<%-- 상단으로 이동하기 버튼 끝 --%>
 
 </body>
-<script type="text/javascript" src="resources/js/index.js"></script>
+<script type="text/javascript" src="resources/js/party.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/index.css">
 <script type="text/javascript" src="resources/js/gotop.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/gotop.css">

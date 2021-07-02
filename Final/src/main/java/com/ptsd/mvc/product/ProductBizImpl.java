@@ -13,12 +13,12 @@ public class ProductBizImpl implements ProductBiz {
 	
 	@Override
 	public List<ProductDto> selectAllList() {
-		return null;
+		return dao.selectAllList();
 	}
 
 	@Override
-	public List<ProductDto> selectAreaList(int areaCode) {
-		return dao.selectAreaList(areaCode);
+	public List<ProductDto> selectAreaList(int areacode) {
+		return dao.selectAreaList(areacode);
 	}
 	
 	@Override

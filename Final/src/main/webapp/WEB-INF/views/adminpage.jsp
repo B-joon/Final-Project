@@ -17,9 +17,10 @@
 	<a href="productinsert.do">상품등록</a>
 	
 	<h3>상품리스트</h3>
-	<select name="productareaCode"  onchange="getProductList();">
+	<select name="productareaCode"  onchange="chkProductAreaCode();">
 	<!-- 축제 정보를 ajax로 받기 -->
-		<option value="1" selected>서울</option>
+		<option value="0" selected>전체</option>
+		<option value="1">서울</option>
 		<option value="31">경기</option>
 		<option value="2">인천</option>
 		<option value="34">충남</option>
@@ -53,7 +54,7 @@
 	
 	<div id="partylist">
 	
-	
+		
 	
 	</div>
 
