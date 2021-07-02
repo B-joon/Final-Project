@@ -13,7 +13,7 @@ response.setContentType("text/html; charset=UTF-8");
 <body>
 <%@include file="./common.jsp" %>
 	<form action="userInsertres.do" method="post">
-		<table>
+		<table align="center">
 			<tr>
 				<th>이름</th>
 				<td>
@@ -90,6 +90,7 @@ response.setContentType("text/html; charset=UTF-8");
 				<td>
 					<input type="text" name="phone" id="phone" placeholder="숫자만 입력하세요" style="ime-mode: disabled">
 					<input type="hidden" id="Chk5" value="false">
+					<input type="hidden" id="Chk6" value="false">
 				</td>
 					
 			</tr>
@@ -104,19 +105,21 @@ response.setContentType("text/html; charset=UTF-8");
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><script src="doomcaptcha/script.js?version=17" countdown="on" label="Captcha" enemies="4"></script>
-				<input type="hidden" id="Chk6" value="false"></td>
-				
+				<td id="submitBtn" colspan="2" align="center" >
+					<input type="button" value="회원가입" disabled="disabled">
+				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="right"><input type="button" value="취소" onclick="location.href='loginform.do'" /></td>
+				<td id="submitRes" colspan="2" align="center">
+					<input type="submit" value="회원가입">
+				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" id="submitRes" value="회원가입" disabled="disabled"></td>
+				<td colspan="2" align="center"><input type="button" value="취소" onclick="location.href='loginform.do'" /></td>
 			</tr>
 		</table>
 	</form>
-
+	<div align="center"><script src="doomcaptcha/script.js?version=17" countdown="on" label="Captcha" enemies="4"></script></div>
 </body>
 <script type="text/javascript">
 	
@@ -126,6 +129,7 @@ response.setContentType("text/html; charset=UTF-8");
 		$("#idChkres").hide();
 		$("#checkPwd1").hide();
 		$("#checkPwd2").hide();
+		$("#submitRes").hide();
 	});
 	
 	function nameChk(){
@@ -224,7 +228,7 @@ $("#userid").keyup(function(){
 						console.log(userid)
 						setTimeout(function() {
 							$("#idChkres").hide();
-							}, 2000);
+							}, 1500);
 					} else {
 						$("#idChkres").html('이미 존재하는 ID입니다.');
 						$("#idChkres").css("color", "red");
@@ -345,6 +349,7 @@ $("#userid").keyup(function(){
 				if(proof.length == 6){
 					if(proof == key){
 						$("#proofChk").html('인증완료');
+						$("#proofChk").css("color", "blue");
 						$("#proofBtn").attr('type', 'hidden');
 						$("#prooftext").attr('readonly', true);
 						$("#Chk4").val('true');
@@ -391,7 +396,7 @@ $("#userid").keyup(function(){
 			submitChk();
 		} else if(phone.length < 11 || phone.length > 11 ) {
 			$("#phoneChk").show();
-			$("#phoneChk").html('핸드폰 번호 11자리를 제대로 입력해 주세요.');
+			$("#phoneChk").html('핸드폰 번호 11자리까지 입력해 주세요.');
 			$("#phoneChk").css("color", "red");
 			$("#Chk5").val('false');
 			submitChk();
@@ -457,9 +462,11 @@ $("#userid").keyup(function(){
 				&& $("#Chk5").val() == 'true'
 				&& $("#Chk6").val() == 'true' 
 				&& $("#Chk7").val() == 'true'){
-			$("#submitRes").attr("disabled", false);
+			$("#submitBtn").hide();
+			$("#submitRes").show();
 		} else{
-			$("#submitRes").attr("disabled", true);
+			$("#submitBtn").show();
+			$("#submitRes").hide();
 		}
 	}
 	
