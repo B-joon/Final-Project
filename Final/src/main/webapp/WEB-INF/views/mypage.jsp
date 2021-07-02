@@ -1,6 +1,7 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.ptsd.mvc.user.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>MYPAGE</h1>
 
-<a>"${discount }"</a>
 
 
-<form action="createcouponres.do" method="post">
-	
-	
-	
-	
-		
-</form>
+<p>${login.getUserid() }</p>
+
+<a href="">내 쿠폰함</a>
 
 </body>
 </html>

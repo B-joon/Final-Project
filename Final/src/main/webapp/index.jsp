@@ -30,6 +30,7 @@
 		
 	%>
 	<a href="logout.do">logout</a>
+	<a href="mypage.do">mypage</a>
 	<% 
 		if(login.getUserrole().equals("admin")){
 			

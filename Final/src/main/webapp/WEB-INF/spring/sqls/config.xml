@@ -8,6 +8,7 @@
 		<typeAlias type="com.ptsd.mvc.product.ProductDto" alias="productDto" />
 		<typeAlias type="com.ptsd.mvc.streaming.StreamingDto" alias="streamingDto"/>
 		<typeAlias type="com.ptsd.mvc.coupon.MakeCouponDto" alias="makeCouponDto"/>
+		<typeAlias type="com.ptsd.mvc.coupon.CouponDto" alias="couponDto"/>
 		<typeAlias type="com.ptsd.mvc.like.LikeDto" alias="likeDto"/>
 	</typeAliases>
 
@@ -17,6 +18,7 @@
 		<mapper resource="/mybatis/product-mapper.xml"/>
 		<mapper resource="/mybatis/streaming-mapper.xml"/>
 		<mapper resource="/mybatis/makecoupon-mapper.xml"/>
+		<mapper resource="/mybatis/downloadcoupon-mapper.xml"/>
 		<mapper resource="/mybatis/like-mapper.xml"/>
 	</mappers>
 
