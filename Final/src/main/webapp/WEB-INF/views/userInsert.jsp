@@ -9,85 +9,6 @@ response.setContentType("text/html; charset=UTF-8");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	
-	
-	
-	$(function() {
-		$("#idChkres").hide();
-		$("#checkPwd1").hide();
-		$("#checkPwd2").hide();
-	});
-	
-	function nameChk(){
-		var username = $("#username").val().trim();
-		
-		if(name != null){
-			$("#Chk7").val('true');
-			submitChk();
-			console.log(name)
-		} else{
-			$("#Chk7").val('false');
-			submitChk();
-		}
-		
-	}
-	
-	// 비밀번호
-	
-	function checkPwd1(){
-		var f1 = document.forms[0];
-		var pw = f1.pw1.value;
-		
-		if (pw.length < 4 || pw.length > 15){
-			$("#checkPwd1").show();
-			document.getElementById('checkPwd1').style.color = "red";
-			document.getElementById('checkPwd1').innerHTML = "비밀번호를 4~ 15자로 작성하세요.";
-			$("#Chk2").val('false');
-			submitChk();
-		} else if(pw.length == 0 || pw == null){
-			$("#checkPwd1").hide();
-			$("#Chk2").val('false');
-			submitChk();
-		} else {
-			$("#checkPwd1").hide();
-			$("#Chk2").val('true');
-			submitChk();
-			console.log(pw)
-		}
-		
-	}
-	
-	
-	// 비밀번호 확인
-	function checkPwd2() {
-		var f1 = document.forms[0];
-		var pw1 = f1.pw1.value;
-		var pw2 = f1.pw2.value;
-		
-		if (pw1 != pw2) {
-			$("#checkPwd2").show();
-			document.getElementById('checkPwd2').style.color = "red";
-			document.getElementById('checkPwd2').innerHTML = "암호가 불일치합니다";
-			$("#Chk3").val('false');
-			submitChk();
-		} else {
-			$("#checkPwd2").show();
-			document.getElementById('checkPwd2').style.color = "blue";
-			document.getElementById('checkPwd2').innerHTML = "암호가 일치합니다.";
-			$("#Chk3").val('true');
-			submitChk();
-			console.log(pw2)
-			setTimeout(function() {
-				$("#checkPwd2").hide();
-				}, 2000);
-		}
-
-	}
-	
-	
-</script>
-
 </head>
 <body>
 <%@include file="./common.jsp" %>
@@ -197,6 +118,84 @@ response.setContentType("text/html; charset=UTF-8");
 	</form>
 
 </body>
+<script type="text/javascript">
+	
+	
+	
+	$(function() {
+		$("#idChkres").hide();
+		$("#checkPwd1").hide();
+		$("#checkPwd2").hide();
+	});
+	
+	function nameChk(){
+		var username = $("#username").val().trim();
+		
+		if(name != null){
+			$("#Chk7").val('true');
+			submitChk();
+			console.log(name)
+		} else{
+			$("#Chk7").val('false');
+			submitChk();
+		}
+		
+	}
+	
+	// 비밀번호
+	
+	function checkPwd1(){
+		var f1 = document.forms[0];
+		var pw = f1.pw1.value;
+		
+		if (pw.length < 4 || pw.length > 15){
+			$("#checkPwd1").show();
+			document.getElementById('checkPwd1').style.color = "red";
+			document.getElementById('checkPwd1').innerHTML = "비밀번호를 4~ 15자로 작성하세요.";
+			$("#Chk2").val('false');
+			submitChk();
+		} else if(pw.length == 0 || pw == null){
+			$("#checkPwd1").hide();
+			$("#Chk2").val('false');
+			submitChk();
+		} else {
+			$("#checkPwd1").hide();
+			$("#Chk2").val('true');
+			submitChk();
+			console.log(pw)
+		}
+		
+	}
+	
+	
+	// 비밀번호 확인
+	function checkPwd2() {
+		var f1 = document.forms[0];
+		var pw1 = f1.pw1.value;
+		var pw2 = f1.pw2.value;
+		
+		if (pw1 != pw2) {
+			$("#checkPwd2").show();
+			document.getElementById('checkPwd2').style.color = "red";
+			document.getElementById('checkPwd2').innerHTML = "암호가 불일치합니다";
+			$("#Chk3").val('false');
+			submitChk();
+		} else {
+			$("#checkPwd2").show();
+			document.getElementById('checkPwd2').style.color = "blue";
+			document.getElementById('checkPwd2').innerHTML = "암호가 일치합니다.";
+			$("#Chk3").val('true');
+			submitChk();
+			console.log(pw2)
+			setTimeout(function() {
+				$("#checkPwd2").hide();
+				}, 2000);
+		}
+
+	}
+	
+	
+</script>
 <script type="text/javascript">
 
 $("#userid").keyup(function(){

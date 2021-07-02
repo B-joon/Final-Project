@@ -7,8 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="resources/js/notice.js"></script>
 </head>
 <body>
 <%@include file="./common.jsp" %>
@@ -112,4 +110,6 @@
 </script>
 
 </body>
+<link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="resources/js/notice.js"></script>
 </html>
