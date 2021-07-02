@@ -9,6 +9,9 @@ public class LikeController {
 	private LikeBiz biz;
 	
 	public String likeCnt(Model model) {
+		
+		
+		
 		return "";
 	}
 }

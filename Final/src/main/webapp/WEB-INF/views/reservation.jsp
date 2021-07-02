@@ -79,5 +79,7 @@
 	<input type="submit" value="결제하기">
 	<input type="button" value="돌아가기" onclick="location.href='main.do'">
 	</form>
+	<!-- 댓글 후기 -->
+	
 </body>
 </html>
