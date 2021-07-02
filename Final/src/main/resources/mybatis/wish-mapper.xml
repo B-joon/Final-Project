@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="wish">
+
+	<resultMap type="ProductDto" id="ProductDto">
+		<result column="PRODUCTSEQ" property="productseq" />
+		<result column="CATEGORY" property="category" />
+		<result column="PRODUCTNAME" property="productname" />
+		<result column="STARTDATE" property="startdate" />
+		<result column="ENDDATE" property="enddate" />
+		<result column="THUMBIMG" property="thumbimg" />
+		<result column="PRODUCTCONTENT" property="productcontent" />
+		<result column="AREACODE" property="areacode" />
+		<result column="ADDRESS" property="address" />
+		<result column="TELLNUMBER" property="tellnumber" />
+		<result column="RUNTIME" property="runtime" />
+		<result column="RATING" property="rating" />
+		<result column="LIKECOUNT" property="likecount" />
+		<result column="WISHCOUNT" property="wishcount" />
+		<result column="PRODUCTCOUNT" property="productcount" />
+	</resultMap>
+
+	<!-- 1. 찜하기 추가 -->
+	<insert id="addwish" parameterType="wishDto">
+		INSERT INTO WISH
+		VALUES(WISHNOSEQ.NEXTVAL, #{wishuserseq}, #{wishproductseq})
+	</insert>
+	<!-- 2. 찜하기 목록 -->
+	<delete id="delwish" parameterType="int">
+		DELETE FROM WISH
+		WHERE
+		WISHUSERSEQ = #{wishuserseq}
+	</delete>
+	<!-- 3. 찜하기 삭제 -->
+	<select id="wishList" parameterType="int"
+		resultType="ProductDto">
+		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE,
+		ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER,
+		RUNTIME, RATING, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
+		FROM PRODUCT
+		JOIN
+		WISH ON(PRODUCTSEQ = WISHPRODUCTSEQ)
+		WHERE WISHUSERSEQ = #{wishuserseq}
+	</select>
+
+	<select id="wishchk" resultType="int">
+		SELECT COUNT(*) FROM WISH
+		WHERE
+		WISHUSERSEQ = #{wishuserseq}
+		AND WISHPRODUCTSEQ = ${wishproductseq}
+	</select>
+
+</mapper>

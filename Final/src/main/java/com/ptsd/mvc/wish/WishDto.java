@@ -1,45 +1,45 @@
-/*package com.ptsd.mvc.wish;
+package com.ptsd.mvc.wish;
 
 public class WishDto {
 
-	private int wish_user_no;
-	private int wish_no;
-	private int wish_post_id;
+	private int wishno;
+	private int wishuserseq;
+	private int wishproductseq;
 
 	public WishDto() {
-	
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public WishDto(int wish_user_no, int wish_no, int wish_post_id) {
-
-		this.wish_user_no = wish_user_no;
-		this.wish_no = wish_no;
-		this.wish_post_id = wish_post_id;
+	public WishDto(int wishno, int wishuserseq, int wishproductseq) {
+		super();
+		this.wishno = wishno;
+		this.wishuserseq = wishuserseq;
+		this.wishproductseq = wishproductseq;
 	}
 
-	public int getWish_user_no() {
-		return wish_user_no;
+	public int getWishno() {
+		return wishno;
 	}
 
-	public void setWish_user_no(int wish_user_no) {
-		this.wish_user_no = wish_user_no;
+	public void setWishno(int wishno) {
+		this.wishno = wishno;
 	}
 
-	public int getWish_no() {
-		return wish_no;
+	public int getWishuserseq() {
+		return wishuserseq;
 	}
 
-	public void setWish_no(int wish_no) {
-		this.wish_no = wish_no;
+	public void setWishuserseq(int wishuserseq) {
+		this.wishuserseq = wishuserseq;
 	}
 
-	public int getWish_post_id() {
-		return wish_post_id;
+	public int getWishproductseq() {
+		return wishproductseq;
 	}
 
-	public void setWish_post_id(int wish_post_id) {
-		this.wish_post_id = wish_post_id;
+	public void setWishproductseq(int wishproductseq) {
+		this.wishproductseq = wishproductseq;
 	}
 
 }
-*/
