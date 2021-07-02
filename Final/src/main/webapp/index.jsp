@@ -22,6 +22,7 @@
 
 	<a href="noticelist.do">공지</a>
 	<a href="eventlist.do">이벤트</a>
+	<a href="chatbot.do">챗봇대화</a>
 	
 	<a href="streaming.do">streaming</a>
 	<%
