@@ -51,11 +51,15 @@ public class UserController {
 		
 		return "adminpage";
 	}
+	@RequestMapping("/mypage.do")
+	public String User() {
+		return "mypage";
+	}
 	
 	
 	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String , Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto){ //@RequestBody°¡ jsonÀ¸·Î ¿Â °´Ã¼¸¦ java Object·Î ¹Ù²ãÁØ´Ù
+	public Map<String , Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto){ //@RequestBodyï¿½ï¿½ jsonï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ java Objectï¿½ï¿½ ï¿½Ù²ï¿½ï¿½Ø´ï¿½
 		UserDto login = biz.login(dto);
 		boolean check = false;
 		if (login != null) {
@@ -84,7 +88,7 @@ public class UserController {
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('¸ðµç Ç×¸ñÀ» ÀÛ¼ºÇÏ½Å ÈÄ Å¬¸¯ÇØÁÖ¼¼¿ä'); </script>");
+			out.println("<script>alert('ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½'); </script>");
 			out.flush();
 		}
 		return "redirect:userInsert.do";
@@ -156,7 +160,7 @@ public class UserController {
 			authCodes += Integer.toString(authCode);
 		}
 		System.out.println(authCodes);
-		subject = "¾È³çÇÏ¼¼¿ä PTSDÀÔ´Ï´Ù. ÀÌ¸ÞÀÏ ÀÎÁõ¹øÈ£ÀÔ´Ï´Ù.";
+		subject = "ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ PTSDï¿½Ô´Ï´ï¿½. ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½Ô´Ï´ï¿½.";
 		content = DM.dmCertification(authCodes);
 		receiver = email;
 		sender = "admin@gmail.com";

@@ -1,3 +1,4 @@
+<%@page import="com.ptsd.mvc.product.ProductDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>찜하기 목록</title>
 </head>
 <body>
 	<table border="1">
@@ -16,21 +17,20 @@
 			<th>사진</th>
 			<th>전화번호</th>
 		</tr>
-
 		<c:choose>
 			<c:when test="${empty list }">
 				<tr>
-					<td colspan="4">----------찜한 공연 및 축제가 없습니다----------</td>
+					<td colspan="4">----------찜한 축제가 없습니다----------</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${list }" var="dto">
-					<c:if test="${dto.postDlflag eq 'N'}">
+					<c:if test="${dto.postDelflag eq 'N'}">
 						<tr>
-							<td>${dto.title }</td>
-							<td>${dto.addr }</td>
-							<td><a href="/"></a></td>
-							<td>${dto.tel }</td>
+							<td>${dto.productName }</td>
+							<td>${dto.address }</td>
+							<td>${dto.thumbing }</td>
+							<td>${dto.address }</td>
 						</tr>
 					</c:if>
 				</c:forEach>

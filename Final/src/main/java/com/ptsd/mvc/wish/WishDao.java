@@ -1,23 +1,23 @@
-/*package com.ptsd.mvc.wish;
+package com.ptsd.mvc.wish;
 
 import java.util.List;
 
+import com.ptsd.mvc.product.ProductDto;
+
 public interface WishDao {
 
-	String NAMESPACE = "board.";
-	
-	// 찜하기 추가
-	public int insertWish(WishDto dto);
-	
-	// 찜하기 삭제
-	public int deleteWish(int wish_user_no);
+	String NAMESPACE = "wish.";
 	
 	// 찜하기 목록
-	public List<BoardDto> listWish(int wish_user_no);
+	public List<ProductDto> listWish(int wishuserseq);
 	
-	// 찜하기 체크
-	public int scrapChk(WishDto dto);
+	// 찜하기 추가
+	public int addWish(WishDto dto);
 	
+	// 찜하기 삭제
+	public int delWish(int wishuserseq);
+	
+	// 찜하기 유무 체크
+	public int wishChk(WishDto dto);
 	
 }
-*/

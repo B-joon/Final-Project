@@ -1,11 +1,15 @@
-/*package com.ptsd.mvc.wish;
+package com.ptsd.mvc.wish;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.ptsd.mvc.product.ProductDto;
 
 @Repository
 public class WishDaoImpl implements WishDao {
@@ -14,49 +18,46 @@ public class WishDaoImpl implements WishDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public int insertWish(WishDto dto) {
+	public List<ProductDto> listWish(int wishuserseq) {
 		
-		int res = 0;
+		List<ProductDto> list = new ArrayList<ProductDto>();
 		
 		try {
-			res = sqlSession.insert(NAMESPACE + "wishinsert", dto);
+			list = sqlSession.selectList(NAMESPACE + "wishList", wishuserseq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return res;
-	}
-	
-	@Override
-	public int deleteWish(int wish_user_no) {
-		
-		int res = 0;
-		
-		try {
-			res = sqlSession.delete(NAMESPACE + "wishdelete", wish_user_no);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return res;
-	}
-
-	@Override
-	public <BoardDto> void listWish(int wish_user_no) {
-		
-		List<BoardDto> list = new ArrayList<BoardDto>();
-		
-		try {
-			list = sqlSession.selectList(NAMESPACE + "wishlist", wish_user_no);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 		return list;
 	}
 
 	@Override
-	public int scrapChk(WishDto dto) {
+	public int addWish(WishDto dto) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "addwish", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int delWish(int wishuserseq) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "delwish", wishuserseq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int wishChk(WishDto dto) {
 		
 		int res = 0;
 		
@@ -65,9 +66,8 @@ public class WishDaoImpl implements WishDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return res;
 	}
 
+
 }
-*/

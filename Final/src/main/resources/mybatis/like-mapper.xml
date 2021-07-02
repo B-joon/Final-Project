@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="like">
+
+	<insert id="likeInsert" parameterType="likeDto">
+		INSERT INTO PRODUCTLIKE
+		VALUES(PRODUCTLIKESEQ.NEXTVAL, #{productseq}, #{userseq})
+	</insert>
+	
+	<delete id="likeDel" parameterType="likeDto">
+		DELETE FROM PRODUCTLIKE
+		WHERE PRODUCTSEQ = #{productseq} AND USERSEQ = #{userseq}
+	</delete>
+	
+	<update id="likeUpdate" parameterType="likeDto">
+		UPDATE PRODUCT
+		SET
+		LIKECOUNT = (SELECT COUNT(*)
+		FROM PRODUCTLIKE
+		WHERE PRODUCTSEQ = #{productseq})
+		WHERE PRODUCTSEQ = #{productseq}
+	</update>
+	
+	<select id="likeCnt" resultType="int">
+		SELECT COUNT(LIKESEQ)
+		FROM PRODUCTLIKE
+		WHERE PRODUCTSEQ = #{productseq} AND USERSEQ = #{userseq}
+	</select>
+
+</mapper>

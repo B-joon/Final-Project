@@ -1,8 +1,6 @@
 package com.ptsd.mvc.like;
 
-public interface LikeDao {
-	
-	String NAMESPACE = "like.";
+public interface LikeBiz {
 
 	public LikeDto likeCount(LikeDto dto);
 	public int likeInsert(LikeDto dto);

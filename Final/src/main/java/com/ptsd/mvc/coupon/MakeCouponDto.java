@@ -1,22 +1,32 @@
 package com.ptsd.mvc.coupon;
 
+
+
 public class MakeCouponDto {
 	
 	private int makeseq;
 	private String coupontitle;
 	private int discount; 
 	private int userseq;
-	
-	
+	private String endday;
 	
 	public MakeCouponDto() {
 		
 	}
-	public MakeCouponDto(int makeseq, String coupontitle, int discount, int userseq) {
+	public MakeCouponDto(int makeseq, String coupontitle, int discount, int userseq, String endday) {
+		super();
 		this.makeseq = makeseq;
 		this.coupontitle = coupontitle;
 		this.discount = discount;
 		this.userseq = userseq;
+		this.endday = endday;
+	}
+	public String getEndday() {
+		return endday;
+	}
+
+	public void setEndday(String endday) {
+		this.endday = endday;
 	}
 	public int getMakeseq() {
 		return makeseq;
