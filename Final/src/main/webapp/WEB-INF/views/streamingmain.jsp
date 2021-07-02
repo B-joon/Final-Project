@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="resources/css/chat.css">
+
 
 </head>
 <body>
@@ -33,4 +33,5 @@
 	</c:choose>
 
 </body>
+<link rel="stylesheet" type="text/css" href="resources/css/chat.css">
 </html>

@@ -3,7 +3,8 @@
     pageEncoding="UTF-8"%>
 <%
 	UserDto login = (UserDto)session.getAttribute("login");
-%>   
+%> 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
 <script type="text/javascript" src="resources/js/gotop.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/gotop.css">
 
@@ -42,5 +43,5 @@
 	}
 	%>   
     
-<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
+
 <h1>COMMON 파일</h1>
