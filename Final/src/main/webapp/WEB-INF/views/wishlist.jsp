@@ -10,6 +10,7 @@
 <title>찜하기 목록</title>
 </head>
 <body>
+<%@include file="./common.jsp" %>
 	<table border="1">
 		<tr>
 			<th>제목</th>

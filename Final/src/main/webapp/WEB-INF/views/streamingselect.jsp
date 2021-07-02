@@ -5,12 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="resources/css/chat.css">
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<h1 id="selectRoom">${dto.streamingname }</h1>
 	
 	<div>webRTC 화면 송출 부분 입니다.</div>

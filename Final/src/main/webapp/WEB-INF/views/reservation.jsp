@@ -8,7 +8,7 @@
 <title>PSTD / 상품 예매 페이지</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 <h1>예매하기</h1>
 	
 <input type="text" name="productseq" value="${dto.productseq }" />

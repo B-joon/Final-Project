@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<%@include file="./common.jsp" %>
 <script type="text/javascript">
 	function createCoupon() {
 		var selected = $("#discount option:selected").val();

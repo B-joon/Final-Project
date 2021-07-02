@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<form action="productinsertres.do" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>

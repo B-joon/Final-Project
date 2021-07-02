@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="./common.jsp" %>
 
 
 	<form action="eventinsertres.do" method="post">

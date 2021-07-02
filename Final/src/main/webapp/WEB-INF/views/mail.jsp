@@ -7,7 +7,7 @@
 <title>Send a Mail</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<h1>메일 보내기</h1>
 	
 	<form action="mailSending.do" method="post">
