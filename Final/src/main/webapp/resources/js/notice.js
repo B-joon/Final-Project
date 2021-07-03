@@ -1,3 +1,5 @@
+
+
 $(function(){
 	
 	insertControl();
@@ -17,17 +19,7 @@ function insertControl(){
 	
 }
 
-function couponVal(){
-	var userseq = $("#loginseq").val();
-	var makeseq = $("#makeseq").val();
-	var coupontitle = $("#coupontitle").val(); 
-	var discount = $("#discount").val(); 
-	var endday = $("#endday").val(); 
-	
-    let queryString = "userseq="+userseq+"&"+"makeseq="+makeseq
-	+"&"+"coupontitle="+coupontitle+"&"+"discount="+discount+"&"+"endday="+endday
-	
-	location.href="downloadcoupon.do?"+queryString
-}
 
- $ajax
+
+
+

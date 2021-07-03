@@ -4,9 +4,8 @@
 
 	<!-- 내 쿠폰함 들어가면 보이는것  -->
 	<select id="selectList" resultType="couponDto">
-		SELECT MAKESEQ,COUPONSEQ,USERSEQ,DISCOUNT,USECHK,ENDDAY
-		FROM COUPON JOIN MAKECOUPON USING(MAKESEQ)
-	
+	SELECT A.MAKESEQ,A.COUPONSEQ,A.COUPONTITLE,A.USERSEQ,A.DISCOUNT,A.USECHK,A.ENDDAY  
+	FROM COUPON A JOIN MAKECOUPON B ON A.MAKESEQ = B.MAKESEQ
 	</select>
 	
 	<select id="selectOne" resultType="couponDto">
@@ -16,12 +15,20 @@
 	<!-- 다운로드 누르자마자 다운되는거  -->
 	<insert id="insert" parameterType="couponDto">
 		INSERT INTO COUPON
-		VALUES(#{makeseq},COUPONSEQ.NEXTVAL,#{coupontitle},#{userseq},#{discount},'N',SYSDATE)
+		VALUES(#{makeseq},COUPONSEQ.NEXTVAL,#{coupontitle},#{userseq},#{discount},'N',#{endday})
 	</insert>
 	<!-- 사용한것  -->
-	<update id="update" parameterType="couponDto"></update>
+	<update id="update" parameterType="couponDto">
+		UADATE COUPON
+		SET USECHK ='Y'
+		WHERE COUPONSEQ = #{COUPONSEQ} 
+	
+	</update>
 	
 	<!-- 삭제되는거  -->
-	<delete id="delete" parameterType="couponDto"></delete>
+	<delete id="delete" parameterType="couponDto">
+		DELETE FROM COUPON
+		WHERE COUPONSEQ = #{COUPONSEQ}
+	</delete>
   
 </mapper>

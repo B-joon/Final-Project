@@ -35,8 +35,6 @@ public class CouponController {
 	}
 	
 	
-	
-	
 	//다운로드 쿠폰 
 	@RequestMapping("downloadcoupon.do")
 	public String downloadcoupon(CouponDto dto) {
@@ -47,32 +45,15 @@ public class CouponController {
 		return "mypage";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	//내 쿠폰함 보유 쿠폰 리스트
+	@RequestMapping("mycoupon.do")
 	public String selectList(Model model) {
 		model.addAttribute("list", biz.selectList());
-		return "";
+		return "mycoupon";
 	}
 	
 	
-	
-	
-	public String insertForm() {
-		return "";
-	}
-	
-	public String insertRes(CouponDto dto) {
-		if(biz.insert(dto)>0) {
-			return "";
-		}
-		return "";
-	}
+
 	
 	public String updateForm(Model model, int couponseq) {
 		model.addAttribute("dto", biz.selectOne(couponseq));

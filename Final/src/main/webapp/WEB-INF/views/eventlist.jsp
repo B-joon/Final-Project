@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 <%@include file="./common.jsp" %>
 
@@ -113,19 +114,20 @@
 
 			<c:forEach items="${couponlist }" var="dto">
 
-				<tr>
-					<td>${dto.makeseq }</td>
-					<td><a href="#" onclick="couponVal()">${dto.coupontitle }</a></td>
-					<td>${dto.discount }</td>
-					<td>${dto.endday }</td>
+				<ul>
+					<li>${dto.makeseq }</li>
+					<li><a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">${dto.coupontitle }</a></li>
+					<li>${dto.endday }</li>
+					<li>${dto.discount }</li>
 					
 
-				</tr>
+				</ul>
 				
 					<input type="hidden" value="${dto.makeseq }" id="makeseq">
 					<input type="hidden" value="${dto.coupontitle }" id="coupontitle">
 					<input type="hidden" value="${dto.endday }" id="endday">
 					<input type="hidden" value="${dto.discount }" id="discount">
+					<input type="hidden" name="userseq" value="${login.userseq }">
 
 			</c:forEach>
 
