@@ -6,7 +6,7 @@ public interface ReviewDao {
 
 	String NAMESPACE = "review.";
 	
-	public List<String> selectList();
+	public List<ReviewDto> selectList(int productseq);
 	public int reviewInsert(ReviewDto dto);
 	public int reviewUpdate(ReviewDto dto);
 	public int reviewDel(int reviewseq);

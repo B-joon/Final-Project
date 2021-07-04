@@ -1,11 +1,19 @@
 <%@page import="com.ptsd.mvc.product.ProductDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>PSTD / 상품 예매 페이지</title>
+<script type="text/javascript">
+	var userrole = ${login.userseq};
+	if (userrole == ${review}) {
+		
+	}
+</script>
 </head>
 <body>
 <%@include file="./common.jsp" %>
@@ -79,7 +87,33 @@
 	<input type="submit" value="결제하기">
 	<input type="button" value="돌아가기" onclick="location.href='main.do'">
 	</form>
+	
+	<br><br><br>
 	<!-- 댓글 후기 -->
+	${cnt.reviewcnt }개의 후기가 있습니다.<br>
+		<c:choose>
+			<c:when test="${empty reviewlist }">
+----------작성된 글이 존재하지 않습니다---------
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${reviewlist }" var="reviewdto">
+				<div style="border: 1px">
+					${reviewdto.reviewname }<br>
+					${reviewdto.reviewcontent }
+					<div class="review-btn">
+					<button onclick="location.href='reviewupdate.do?reviewseq=${reviewdto.reviewseq}'">수정</button>
+					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}'">삭제</button>
+					</div><br>
+					<span>${reviewdto.reviewdate }</span><br>
+					<div>좋아요</div>
+				</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+
+			<input type="button" value="댓글 작성" class ="reviewinsert"
+				onclick="location.href='reviewinsert.do'">
+
 	
 </body>
 </html>
