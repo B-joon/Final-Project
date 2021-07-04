@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" type="text/css" href="resources/css/chat.css">
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
 </head>
 <body>
 <%@include file="./common.jsp" %>
@@ -28,6 +29,5 @@
 	<input type="hidden" value="${login.userrole }" id="userrole">
 	<script type="text/javascript" src="resources/js/chat.js"></script>
 </body>
-<link rel="stylesheet" type="text/css" href="resources/css/chat.css">
-<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
 </html>
