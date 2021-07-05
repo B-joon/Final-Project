@@ -20,7 +20,10 @@
 <script type="text/javascript" src="resources/js/gotop.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/gotop.css">
 
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark justify-content-center fixed-top">
+<script type="text/javascript" src="resources/js/weather.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/weather.css">
+
+<nav class="navbar navbar-expand-lg bg-light navbar-light fixed-top">
 	<a class="navbar-brand" href="#">Logo</a>
 	 <ul class="navbar-nav">
     <li class="nav-item">
@@ -92,11 +95,10 @@
 	  </form>
     </li>
   </ul>
+	<div id="weatherarea">
+        
 
-
-
-
-	
+    </div>
 </nav>
 
 	<%-- 상단으로 이동하기 버튼 시작 --%>
