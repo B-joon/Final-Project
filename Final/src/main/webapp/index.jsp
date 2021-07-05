@@ -32,6 +32,7 @@
 	%>
 	<a href="logout.do">logout</a>
 	<a href="mypage.do">mypage</a>
+	<a href="wishList.do">wish</a>
 	<% 
 		if(login.getUserrole().equals("admin")){
 			
