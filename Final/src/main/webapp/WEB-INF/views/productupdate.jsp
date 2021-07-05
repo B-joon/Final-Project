@@ -52,7 +52,7 @@
 			</tr>			
 			<tr>
 				<th>상품내용</th>
-				<td><textarea rows="10" cols="60" name="productcontent">${dto.productcontent }</textarea></td>
+				<td><textarea id="summernote" name="productcontent">${dto.productcontent }</textarea></td>
 			</tr>	
 			<tr>
 				<th>장소</th>
@@ -89,4 +89,5 @@
 	</form>
 
 </body>
+<script type="text/javascript" src="resources/js/setsummernote.js" ></script>
 </html>

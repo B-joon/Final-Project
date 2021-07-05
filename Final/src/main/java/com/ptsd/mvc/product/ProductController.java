@@ -83,7 +83,7 @@ public class ProductController {
 		
 		String pastImgUrl = biz.selectOne(dto.getProductseq()).getThumbimg();
 		pastImgUrl = request.getSession().getServletContext().getRealPath("") + pastImgUrl;
-		//pastImgUrl.replace("resources\\image\\", "");
+
 		System.out.println("삭제할 경로 : " + pastImgUrl);
 		if(!file.getOriginalFilename().isEmpty()) {
 			new File(pastImgUrl).delete();
