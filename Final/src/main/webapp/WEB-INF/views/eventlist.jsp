@@ -114,14 +114,14 @@
 
 			<c:forEach items="${couponlist }" var="dto">
 
-				<ul>
-					<li>${dto.makeseq }</li>
-					<li><a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">${dto.coupontitle }</a></li>
-					<li>${dto.endday }</li>
-					<li>${dto.discount }</li>
+				<div class="container">
+					<div class="item">${dto.makeseq }</div>
+					<div class="item"><a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">${dto.coupontitle }</a></div>
+					<div class="item">${dto.endday }</div>
+					<div class="item">${dto.discount }</div>
 					
 
-				</ul>
+				</div>
 				
 					<input type="hidden" value="${dto.makeseq }" id="makeseq">
 					<input type="hidden" value="${dto.coupontitle }" id="coupontitle">
@@ -171,5 +171,6 @@
 
 </body>
 <link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="resources/css/coupon.css">
 <script type="text/javascript" src="resources/js/notice.js"></script>
 </html>

@@ -57,6 +57,7 @@
 
 
 <body>
+<%@include file="./common.jsp" %>
 		
     <button onclick="requestPay();">결제하기</button>
 </body>
