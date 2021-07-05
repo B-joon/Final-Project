@@ -13,7 +13,7 @@
 	</delete>
 	
 	<update id="likeUpdate" parameterType="likeDto">
-		UPDATE PRODUCT
+		UPDATE REVIEW
 		SET
 		LIKECOUNT = (SELECT COUNT(*)
 		FROM PRODUCTLIKE

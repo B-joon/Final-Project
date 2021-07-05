@@ -11,6 +11,7 @@
 		<typeAlias type="com.ptsd.mvc.coupon.MakeCouponDto" alias="makeCouponDto"/>
 		<typeAlias type="com.ptsd.mvc.coupon.CouponDto" alias="couponDto"/>
 		<typeAlias type="com.ptsd.mvc.like.LikeDto" alias="likeDto"/>
+		<typeAlias type="com.ptsd.mvc.review.ReviewDto" alias="reviewDto"/>
 	</typeAliases>
 
 	<mappers>
@@ -22,6 +23,7 @@
 		<mapper resource="/mybatis/makecoupon-mapper.xml"/>
 		<mapper resource="/mybatis/downloadcoupon-mapper.xml"/>
 		<mapper resource="/mybatis/like-mapper.xml"/>
+		<mapper resource="/mybatis/review-mapper.xml"/>
 	</mappers>
 
 </configuration>
