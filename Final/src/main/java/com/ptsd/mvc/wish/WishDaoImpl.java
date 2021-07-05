@@ -1,15 +1,12 @@
 package com.ptsd.mvc.wish;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.ArrayList;  
+
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.ptsd.mvc.product.ProductDto;
 
 @Repository
 public class WishDaoImpl implements WishDao {
@@ -18,12 +15,12 @@ public class WishDaoImpl implements WishDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<ProductDto> listWish(int wishuserseq) {
-		
-		List<ProductDto> list = new ArrayList<ProductDto>();
-		
+	public List<WishDto> wishList() {
+
+		List<WishDto> list = new ArrayList<WishDto>();
+
 		try {
-			list = sqlSession.selectList(NAMESPACE + "wishList", wishuserseq);
+			list = sqlSession.selectList(NAMESPACE + "wishList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,12 +28,12 @@ public class WishDaoImpl implements WishDao {
 	}
 
 	@Override
-	public int addWish(WishDto dto) {
+	public int wishInsert(WishDto dto) {
 		
 		int res = 0;
 		
 		try {
-			res = sqlSession.insert(NAMESPACE + "addwish", dto);
+			res = sqlSession.insert(NAMESPACE + "wishInsert", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -44,30 +41,17 @@ public class WishDaoImpl implements WishDao {
 	}
 
 	@Override
-	public int delWish(int wishuserseq) {
+	public int wishDelete(int wishseq) {
 		
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE + "delwish", wishuserseq);
+			res = sqlSession.delete(NAMESPACE + "wishDelete", wishseq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return res;
 	}
-
-	@Override
-	public int wishChk(WishDto dto) {
 		
-		int res = 0;
-		
-		try {
-			res = sqlSession.selectOne(NAMESPACE + "wishchk", dto);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return res;
-	}
-
 
 }

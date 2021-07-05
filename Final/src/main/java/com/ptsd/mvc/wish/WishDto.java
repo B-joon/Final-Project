@@ -1,45 +1,105 @@
 package com.ptsd.mvc.wish;
 
+
 public class WishDto {
 
-	private int wishno;
-	private int wishuserseq;
-	private int wishproductseq;
+	private int wishseq;
+	private int productseq;
+	private int userseq;
+	private String productname;
+	private String thumbimg;
+	private String address;
+	private String tellnumber;
+	private int price;
 
 	public WishDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public WishDto(int wishno, int wishuserseq, int wishproductseq) {
+	public WishDto(int wishseq, int productseq, int userseq, String productname, String thumbimg, String address,
+			String tellnumber, int price) {
 		super();
-		this.wishno = wishno;
-		this.wishuserseq = wishuserseq;
-		this.wishproductseq = wishproductseq;
+		this.wishseq = wishseq;
+		this.productseq = productseq;
+		this.userseq = userseq;
+		this.productname = productname;
+		this.thumbimg = thumbimg;
+		this.address = address;
+		this.tellnumber = tellnumber;
+		this.price = price;
 	}
 
-	public int getWishno() {
-		return wishno;
+	public int getWishseq() {
+		return wishseq;
 	}
 
-	public void setWishno(int wishno) {
-		this.wishno = wishno;
+	public void setWishseq(int wishseq) {
+		this.wishseq = wishseq;
 	}
 
-	public int getWishuserseq() {
-		return wishuserseq;
+	public int getProductseq() {
+		return productseq;
 	}
 
-	public void setWishuserseq(int wishuserseq) {
-		this.wishuserseq = wishuserseq;
+	public void setProductseq(int productseq) {
+		this.productseq = productseq;
 	}
 
-	public int getWishproductseq() {
-		return wishproductseq;
+	public int getUserseq() {
+		return userseq;
 	}
 
-	public void setWishproductseq(int wishproductseq) {
-		this.wishproductseq = wishproductseq;
+	public void setUserseq(int userseq) {
+		this.userseq = userseq;
 	}
+
+	public String getProductname() {
+		return productname;
+	}
+
+	public void setProductname(String productname) {
+		this.productname = productname;
+	}
+
+	public String getThumbimg() {
+		return thumbimg;
+	}
+
+	public void setThumbimg(String thumbimg) {
+		this.thumbimg = thumbimg;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getTellnumber() {
+		return tellnumber;
+	}
+
+	public void setTellnumber(String tellnumber) {
+		this.tellnumber = tellnumber;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "WishDto [wishseq=" + wishseq + ", productseq=" + productseq + ", userseq=" + userseq + ", productname="
+				+ productname + ", thumbimg=" + thumbimg + ", address=" + address + ", tellnumber=" + tellnumber
+				+ ", price=" + price + "]";
+	}
+
 
 }

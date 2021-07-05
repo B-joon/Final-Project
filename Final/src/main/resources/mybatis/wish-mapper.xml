@@ -19,35 +19,24 @@
 		<result column="WISHCOUNT" property="wishcount" />
 		<result column="PRODUCTCOUNT" property="productcount" />
 	</resultMap>
-
-	<!-- 1. 찜하기 추가 -->
-	<insert id="addwish" parameterType="wishDto">
+	
+	<insert id="wishInsert">
 		INSERT INTO WISH
-		VALUES(WISHNOSEQ.NEXTVAL, #{wishuserseq}, #{wishproductseq})
+		VALUES (WISHSEQ.NEXTVAL, #(userseq), #(productseq)		
 	</insert>
-	<!-- 2. 찜하기 목록 -->
-	<delete id="delwish" parameterType="int">
-		DELETE FROM WISH
-		WHERE
-		WISHUSERSEQ = #{wishuserseq}
-	</delete>
-	<!-- 3. 찜하기 삭제 -->
-	<select id="wishList" parameterType="int"
-		resultType="ProductDto">
-		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE,
-		ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER,
-		RUNTIME, RATING, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
-		FROM PRODUCT
-		JOIN
-		WISH ON(PRODUCTSEQ = WISHPRODUCTSEQ)
-		WHERE WISHUSERSEQ = #{wishuserseq}
-	</select>
 
-	<select id="wishchk" resultType="int">
-		SELECT COUNT(*) FROM WISH
-		WHERE
-		WISHUSERSEQ = #{wishuserseq}
-		AND WISHPRODUCTSEQ = ${wishproductseq}
+	<select id="wishList" resultType="wishDto">
+		SELECT W.WISHSEQ, P.PRODUCTSEQ,
+		U.USERSEQ, P.PRODUCTNAME, P.THUMBIMG, P.ADDRESS, P.TELLNUMBER, P.PRICE
+		FROM WISH W, PTSD_USER U, PRODUCT P
+		WHERE U.USERSEQ = W.USERSEQ AND
+		W.PRODUCTSEQ = P.PRODUCTSEQ
+		ORDER BY WISHSEQ
 	</select>
+	
+	<delete id="wishDelete" parameterType="wishDto">
+		DELETE FROM WISH 
+		WHERE WISHSEQ = #{wishseq}
+	</delete>
 
 </mapper>
