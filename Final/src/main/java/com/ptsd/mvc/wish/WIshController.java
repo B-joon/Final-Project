@@ -22,16 +22,10 @@ public class WIshController {
 	WishBiz wishbiz;
 
 	@RequestMapping("/wishList.do")
-	public ModelAndView wishList(ModelAndView mav, HttpSession session) {
+	public ModelAndView wishList(ModelAndView mav) {
 
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();	
 		
-		UserDto login = <UserDto> session.getAttribute("login");
-		
-		dto.setLogin(login);
-		
-		if(login != null) {
-			
 		List<WishDto> list = wishbiz.wishList();
 
 		map.put("list", list);
@@ -45,23 +39,6 @@ public class WIshController {
 		}
 		
 		
-	}
-
-	@RequestMapping("/wishInsert.do")
-	public String wishInsert(@ModelAttribute UserDto dto, HttpSession session) {
-
-		UserDto login = (UserDto) session.getAttribute("login");
-		dto.setUserseq();
-		if (login == null) {
-			return "redirtect:login.do";
-		}
-		
-		dto.setUserseq(login);
-		wishbiz.wishInsert(dto);
-		return "redirect:wishList.do";
-		
-	}
-
 	@RequestMapping("/wishDelete.do")
 	public String wishDelete(@RequestParam int wishseq) {
 
