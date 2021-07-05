@@ -1,18 +1,26 @@
 <%@page import="com.ptsd.mvc.product.ProductDto"%>
+<%@page import="com.ptsd.mvc.user.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
-<%@ page session="true" %>
-<% String userseq = (String) session.getAttribute("userid"); %>
-
+<%@ page session="true"%>
+<%
+	if((UserDto)session.getAttribute("login") != null){
+		UserDto login = (UserDto)session.getAttribute("login");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>찜하기 목록</title>
 </head>
+<%
+	UserDto login = (UserDto)session.getAttribute("login"); 
+%>
 <body>
+	<input type="hidden" id="sessionLogin" value="${login }">
 	<h2>찜한 공연</h2>
 	<table border="1">
 		<tr>
@@ -20,11 +28,13 @@
 			<th>주소</th>
 			<th>사진</th>
 			<th>전화번호</th>
-			<th></th>
+			<th>삭제</th>
 		</tr>
 		<c:choose>
 			<c:when test="${map.count == 0 }">
-				----------찜한 공연이 없습니다----------
+				<tr>
+					<td colspan="5" align="center">----------찜한 공연이 없습니다----------<//td>
+				</tr>
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${map.list }" var="row" varStatus="status">

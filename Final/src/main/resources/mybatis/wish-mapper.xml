@@ -21,8 +21,8 @@
 	</resultMap>
 	
 	<insert id="wishInsert">
-		INSERT INTO WISH (WISHSEQ, PRODUCTSEQ, WISHSEQ)
-		VALUES (WISHSEQ.NEXTVAL, #(productseq), #(wishseq)		
+		INSERT INTO WISH
+		VALUES (WISHSEQ.NEXTVAL, #(userseq), #(productseq)		
 	</insert>
 
 	<select id="wishList" resultType="wishDto">
