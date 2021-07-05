@@ -36,7 +36,10 @@ const listener = {
     remon = new Remon({ config, listener });
   },
   onError(error) { console.log(`EVENT FIRED: onError: ${error}`); },
-  onStat(result) { console.log(`EVENT FIRED: onStat: ${result}`); }
+  onStat(result) { console.log(`EVENT FIRED: onStat: ${result}`); },
+  onMessage(msg) {
+    addMesssage(false, msg);
+}
 };
 
 remon = new Remon({ config, listener });
@@ -48,3 +51,34 @@ $('#mystop').click(function(){
 $('#mystart').click(function(){
   remon.joinCast(streamingseq);
 });
+
+function sendMessage() {
+
+    const name = searchParam('name');
+
+    // if (nameInput.value) {
+    //     name = nameInput.value;
+    // }
+
+    if (chatmessage.value){
+        msg = chatmessage.value;
+        chatmessage.value="";
+    }else{
+        if (!msg) {}msg = "Test Message";
+    }
+    remon.sendMessage(name + '-' + msg);
+    addMesssage(true, msg);
+}
+
+function addMesssage(isMine, msg) {
+
+    const chatarea = document.getElementById("chatarea");
+
+    var msgItem = document.createElement("p");
+    msgItem.style.textShadow = "0 0 7px #ffffff";
+    msgItem.style.lineHeight = 0.9;
+    if (!isMine) msgItem.style.color = "Blue";
+
+    msgItem.innerHTML = isMine ? "Me : " + msg : msg.split('-')[0] + " : " + msg.split('-')[1];
+    chatarea.appendChild(msgItem);
+}

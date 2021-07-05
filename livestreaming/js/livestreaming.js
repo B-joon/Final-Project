@@ -17,6 +17,10 @@ const config = {
   },
   view: {
     local: '#localVideo'
+  },
+  media: {
+    audio: true,
+    video: true
   }
 };
 
@@ -31,7 +35,10 @@ const listener = {
     remon = new Remon({ config, listener });
   },
   onError(error) { console.log(`EVENT FIRED: onError: ${error}`); },
-  onStat(result) { console.log(`EVENT FIRED: onStat: ${result}`); }
+  onStat(result) { console.log(`EVENT FIRED: onStat: ${result}`); },
+  onMessage(msg) {
+    addMesssage(false, msg);
+}
 };
 
 remon = new Remon({ config, listener });
@@ -44,3 +51,34 @@ $('#mystart').click(function(){
   // createCast의 인자는 방송채널의 ID입니다. 실제 서비스에서는 동일한 방송채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
   remon.createCast(streamingseq);
 });
+
+function sendMessage() {
+
+    const name = searchParam('name');
+
+    // if (nameInput.value) {
+    //     name = nameInput.value;
+    // }
+
+    if (chatmessage.value){
+        msg = chatmessage.value;
+        chatmessage.value="";
+    }else{
+        if (!msg) {}msg = "Test Message";
+    }
+    remon.sendMessage(name + '-' + msg);
+    addMesssage(true, msg);
+}
+
+function addMesssage(isMine, msg) {
+
+    const chatarea = document.getElementById("chatarea");
+
+    var msgItem = document.createElement("p");
+    msgItem.style.textShadow = "0 0 7px #ffffff";
+    msgItem.style.lineHeight = 0.9;
+    if (!isMine) msgItem.style.color = "Blue";
+
+    msgItem.innerHTML = isMine ? "Me : " + msg : msg.split('-')[0] + " : " + msg.split('-')[1];
+    chatarea.appendChild(msgItem);
+}

@@ -30,7 +30,7 @@
 					</c:when>
 					<c:when test="${login.userrole eq 'user' }">
 						<h3>${dto.streamingname }</h3>
-						<a href="https://b-joon.github.io/Final-Project/livestreaming/livewatch.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }">방송하기</a><br>
+						<a href="https://b-joon.github.io/Final-Project/livestreaming/livewatch.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }">시청하기</a><br>
 						
 					</c:when>
 					</c:choose>
