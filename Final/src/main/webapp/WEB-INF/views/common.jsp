@@ -24,11 +24,8 @@
 <link rel="stylesheet" type="text/css" href="resources/css/weather.css">
 
 <nav class="navbar navbar-expand-lg bg-light navbar-light fixed-top">
-	<a class="navbar-brand" href="#">Logo</a>
+	<a class="navbar-brand" href="main.do" style="width:3em;"><img class="img-fluid" src="resources/img/logo.png" ></img></a>
 	 <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="main.do"><i class="fas fa-home"></i>&nbsp;&nbsp;메인</a>
-    </li>
     <li class="nav-item">
       <a class="nav-link" href="noticelist.do"><i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;공지</a>
     </li>

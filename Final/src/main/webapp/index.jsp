@@ -12,6 +12,7 @@
 
 <body>
 <%@include file="WEB-INF/views/common.jsp" %>
+	<br/>
 	<hr/>	
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
 	<div class="btn-group">
