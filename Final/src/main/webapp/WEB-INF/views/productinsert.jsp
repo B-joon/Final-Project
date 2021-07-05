@@ -48,7 +48,7 @@
 			</tr>			
 			<tr>
 				<th>상품내용</th>
-				<td><textarea rows="10" cols="60" name="productcontent"></textarea></td>
+				<td><textarea id="summernote" name="productcontent"></textarea></td>
 			</tr>	
 			<tr>
 				<th>장소</th>
@@ -68,7 +68,7 @@
 				<td>
 					<select name="rating">
 						<option value="" disabled selected>등급 선택</option>
-						<option value="ALL">전체이용가</option>
+						<option value="0">전체이용가</option>
 						<option value="12">12세 이상 관람가</option>
 						<option value="15">15세 이상 관람가</option>
 						<option value="19">청소년 관람불가</option>
@@ -91,6 +91,6 @@
 			</tr>																	
 		</table>
 	</form>
-
 </body>
+<script type="text/javascript" src="resources/js/setsummernote.js" ></script>
 </html>
