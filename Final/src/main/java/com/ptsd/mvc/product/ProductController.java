@@ -32,10 +32,6 @@ public class ProductController {
 	@RequestMapping(value = "/productinsertres.do", method=RequestMethod.POST)
 	public String productInsert(@RequestParam("img")MultipartFile file, ProductDto dto, Model model, HttpServletRequest request) throws IllegalStateException, IOException {
 		
-		System.out.println(request.getContextPath());
-		System.out.println(request.getServletPath());
-		System.out.println(request.getSession().getServletContext().getContextPath());
-
 		String path = request.getSession().getServletContext().getRealPath("/resources/image/");
 		System.out.println(path);
 		String fileName = file.getOriginalFilename();
@@ -84,14 +80,19 @@ public class ProductController {
 		String fileName = file.getOriginalFilename();
 		
 		dto.setAreacode(getAreacode(dto.getAddress()));
-
-//		if(!file.getOriginalFilename().isEmpty()) {
-//			file.transferTo(new File(path, fileName));
-//			dto.setThumbimg(FILE_PATH+fileName);
-//		} else {
-//			model.addAttribute("msg", "유효하지 않은 파일입니다.");
-//			return "redirect:productupdate.do?productseq="+dto.getProductseq();
-//		}
+		
+		String pastImgUrl = biz.selectOne(dto.getProductseq()).getThumbimg();
+		pastImgUrl = request.getSession().getServletContext().getRealPath("") + pastImgUrl;
+		//pastImgUrl.replace("resources\\image\\", "");
+		System.out.println("삭제할 경로 : " + pastImgUrl);
+		if(!file.getOriginalFilename().isEmpty()) {
+			new File(pastImgUrl).delete();
+			file.transferTo(new File(path, fileName));
+			dto.setThumbimg(FILE_PATH+fileName);
+		} else {
+			model.addAttribute("msg", "유효하지 않은 파일입니다.");
+			return "redirect:productupdate.do?productseq="+dto.getProductseq();
+		}
 		
 		int res = biz.update(dto);
 		
@@ -104,11 +105,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping("productdelete.do")
-	public String productDelete(int productseq) {
-		
+	public String productDelete(HttpServletRequest request, int productseq) {
+
+		String pastImgUrl = biz.selectOne(productseq).getThumbimg();
+		pastImgUrl = request.getSession().getServletContext().getRealPath("") + pastImgUrl;
+		boolean fileDelete = new File(pastImgUrl).delete();
 		int res = biz.delete(productseq);
 		
-		if (res > 0) {
+		if (res > 0 && fileDelete == true) {
 			return "redirect:admin.do";
 		} else {
 			return "redirect:admin.do";
