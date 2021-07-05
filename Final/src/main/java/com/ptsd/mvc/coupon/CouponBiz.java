@@ -8,6 +8,6 @@ public interface CouponBiz {
 	public CouponDto selectOne(int couponseq);
 	public int insert(CouponDto dto);
 	public int update(CouponDto dto);
-	public int delete(int couponseq);
+	public int DailyDelete(String endday);
 
 }

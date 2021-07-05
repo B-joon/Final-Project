@@ -66,12 +66,20 @@ public class CouponDaoImpl implements CouponDao {
 		return res;
 	}
 
+
 	@Override
-	public int delete(int couponseq) {
-		
+	public int DailyDelete(String endday) {
 		int res = 0 ; 
-		
-		res = sqlSession.delete(NAMESPACE+"delete",couponseq);
+		try {
+			res= sqlSession.delete(NAMESPACE+"dailydelete",endday); 
+				
+				
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+		}
 		return res;
 	}
 

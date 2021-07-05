@@ -32,7 +32,7 @@
 
 		</p>
 		쿠폰 만료일 : <br>
-		<input type="datetime-local" name="endday"><br>
+		<input type="date" name="endday"><br>
 		<input type="submit" value="생성하기">
 
 	</form>
