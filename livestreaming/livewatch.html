@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PTSD LiveWatch</title>
+  <style rel="stylesheet" type="text/css" href="css/livewatch.css"></style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+</head>
+<body>
+  <div id="wingleft"></div>
+  <div id="mymain">
+    <h2>시청</h2>
+    <video id="remoteVideo" autoplay muted></video>
+    <br>
+    <button id="mystart" class="btn btn-main">Start</button>
+    <button id="mystop" class="btn btn-main" disabled>Stop</button>
+  </div>
+  <div id="wingright"></div>
+
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@remotemonster/sdk/remon.min.js"></script>
+  <script src="js/livewatch.js"></script>
+</body>
+</html>
