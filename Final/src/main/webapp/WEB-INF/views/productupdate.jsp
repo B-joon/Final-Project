@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,12 +11,11 @@
 <%@include file="./common.jsp" %>
 	<form action="productupdateres.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="productseq" value="${dto.productseq }">
-		<input type="text" name="" value="${dto.category }">
 		<table border="1">
 			<tr>
 				<th>카테고리</th>
 				<td>
-					<select name="category" name="catagory">
+					<select name="category">
 						<option value="" disabled>카테고리 선택</option>
 						<option value="1" <c:if test="${dto.category == 1}">selected</c:if>>뮤지컬</option>
 						<option value="2" <c:if test="${dto.category == 2}">selected</c:if>>콘서트</option>
@@ -36,13 +35,13 @@
 			<tr>
 				<th>행사시작일</th>
 				<td>
-				<input type="datetime-local" name="startdate" value="${dto.startdate }">
+				<input type="date" name="startdate" value="${dto.startdate }">
 				</td>
 			</tr>
 			<tr>
 				<th>행사종료일</th>
 				<td>
-				<input type="datetime-local" name="enddate" value="${dto.enddate }">
+				<input type="date" name="enddate" value="${dto.enddate }">
 				</td>
 			</tr>
 			<tr>
@@ -73,7 +72,7 @@
 				<td>
 					<select name="rating">
 						<option value="" disabled>등급 선택</option>
-						<option value="ALL" <c:if test="${dto.rating == ALL}">selected</c:if>>전체이용가</option>
+						<option value="0" <c:if test="${dto.rating == 0}">selected</c:if>>전체이용가</option>
 						<option value="12" <c:if test="${dto.rating == 12}">selected</c:if>>12세 이상 관람가</option>
 						<option value="15" <c:if test="${dto.rating == 15}">selected</c:if>>15세 이상 관람가</option>
 						<option value="19" <c:if test="${dto.rating == 19}">selected</c:if>>청소년 관람불가</option>
