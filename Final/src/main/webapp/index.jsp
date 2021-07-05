@@ -12,66 +12,54 @@
 
 <body>
 <%@include file="WEB-INF/views/common.jsp" %>
-	
+	<hr/>	
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
-	<br/>
-	<hr/>
-	<button>축제</button><button>공연</button>
-	<br/>
-	<select name="partyareaCode"  onchange="chkPartyAreaCode();">
-		<option value="0" selected>전체</option>
-		<option value="1">서울</option>
-		<option value="31">경기</option>
-		<option value="2">인천</option>
-		<option value="34">충남</option>
-		<option value="33">충북</option>
-		<option value="3">대전</option>
-		<option value="8">세종</option>
-		<option value="32">강원</option>
-		<option value="38">전남</option>
-		<option value="37">전북</option>
-		<option value="5">광주</option>
-		<option value="7">울산</option>
-		<option value="4">대구</option>
-		<option value="36">경남</option>
-		<option value="35">경북</option>
-		<option value="6">부산</option>
-		<option value="39">제주</option>
-	</select>
-	<select name="productareaCode"  onchange="chkProductAreaCode();">
-	<!-- 축제 정보를 ajax로 받기 -->
-		<option value="0" selected>전체</option>
-		<option value="1">서울</option>
-		<option value="31">경기</option>
-		<option value="2">인천</option>
-		<option value="34">충남</option>
-		<option value="33">충북</option>
-		<option value="3">대전</option>
-		<option value="8">세종</option>
-		<option value="32">강원</option>
-		<option value="38">전남</option>
-		<option value="37">전북</option>
-		<option value="5">광주</option>
-		<option value="7">울산</option>
-		<option value="4">대구</option>
-		<option value="36">경남</option>
-		<option value="35">경북</option>
-		<option value="6">부산</option>
-		<option value="39">제주</option>
-	</select>
-	
-	<select name="category">
-		<option value="" disabled selected>카테고리 선택</option>
-		<option value="0">전체</option>
-		<option value="1">뮤지컬</option>
-		<option value="2">콘서트</option>
-		<option value="3">연극</option>
-		<option value="4">클래식/무용</option>
-		<option value="5">스포츠</option>
-		<option value="6">레저</option>
-		<option value="7">전시/행사</option>
-		<option value="8">아동/가족</option>
-	</select>
+	<div class="btn-group">
+  	<button type="button" class="btn btn-outline-warning btn-lg dropdown-toggle" data-toggle="dropdown">축제정보</button>
+  	<div class="dropdown-menu">
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(0);">전체</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(1);">서울</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(31);">경기</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(2);">인천</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(34);">충남</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(33);">충북</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(3);">대전</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(8);">세종</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(32);">강원</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(38);">전남</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(37);">전북</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(5);">광주</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(7);">울산</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(4);">대구</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(36);">경남</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(35);">경북</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(6);">부산</a>
+  		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(39);">제주</a>
+    </div>
+  	<div class="btn-group">
+    <button type="button" class="btn btn-outline-info btn-lg dropdown-toggle" data-toggle="dropdown">공연정보</button>
+    <div class="dropdown-menu">
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(0);">전체</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(1);">서울</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(31);">경기</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(2);">인천</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(34);">충남</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(33);">충북</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(3);">대전</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(8);">세종</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(32);">강원</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(38);">전남</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(37);">전북</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(5);">광주</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(7);">울산</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(4);">대구</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(36);">경남</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(35);">경북</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(6);">부산</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(39);">제주</a>
+    </div>
+  </div>
+</div>
 	
 	<hr/>
 	<div id="partylist">
