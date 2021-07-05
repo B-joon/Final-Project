@@ -113,8 +113,33 @@
 		<c:otherwise>
 
 			<c:forEach items="${couponlist }" var="dto">
+			
+				<c:choose>
+				<c:when test="${dto.discount == 10000 }">
+					<div>${dto.coupontitle}</div>
+					<a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
+					<img alt="10000원 쿠폰" class="coupon" src="resources/img/10000.png">
+					</a>
+					<div>사용기간 : ${dto.endday }</div>
+				</c:when>
+				<c:when test="${dto.discount == 5000 }">
+					<div>${dto.coupontitle}</div>
+					<a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
+					<img alt="5000원 쿠폰" class="coupon" src="resources/img/5000.png">
+					</a>
+					<div>사용기간 : ${dto.endday }</div>
+				</c:when>
+				<c:otherwise>
+					<div>${dto.coupontitle}</div>
+					<a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
+					<img alt="2000원 쿠폰" class="coupon" src="resources/img/2000.png">
+					</a>
+					<div>사용기간 : ${dto.endday }</div>
+				
+				</c:otherwise>
+				</c:choose>
 
-				<div class="container">
+				<%-- <div class="container">
 					<div class="item">${dto.makeseq }</div>
 					<div class="item"><a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">${dto.coupontitle }</a></div>
 					<div class="item">${dto.endday }</div>
@@ -128,7 +153,7 @@
 					<input type="hidden" value="${dto.endday }" id="endday">
 					<input type="hidden" value="${dto.discount }" id="discount">
 					<input type="hidden" name="userseq" value="${login.userseq }">
-
+ --%>
 			</c:forEach>
 
 		</c:otherwise>
