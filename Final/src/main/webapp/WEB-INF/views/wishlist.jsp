@@ -16,11 +16,7 @@
 <meta charset="UTF-8">
 <title>찜하기 목록</title>
 </head>
-<%
-	UserDto login = (UserDto)session.getAttribute("login"); 
-%>
 <body>
-	<input type="hidden" id="sessionLogin" value="${login }">
 	<h2>찜한 공연</h2>
 <%@include file="./common.jsp" %>
 	<table border="1">
