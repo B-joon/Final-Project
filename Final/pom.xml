@@ -224,7 +224,16 @@
 			<artifactId>spring-social-google</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
-	
+
+		<!-- 스프링 스케줄러 -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
+
+
 	</dependencies>
 	<build>
 		<plugins>

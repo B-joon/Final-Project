@@ -22,6 +22,7 @@
 	<a href="chatbot.do">챗봇대화</a>
 	
 	<a href="streaming.do">streaming</a>
+	<a href="pay.do">결제테스트</a>
 	<%
 	
 	if(login != null){

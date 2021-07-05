@@ -55,6 +55,10 @@ public class UserController {
 	public String User() {
 		return "mypage";
 	}
+	@RequestMapping("pay.do")
+	public String pay() {
+		return "payment";
+	}
 	
 	
 	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
@@ -88,7 +92,7 @@ public class UserController {
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('¿À·ù'); </script>");
+			out.println("<script>alert('ï¿½ï¿½ï¿½ï¿½'); </script>");
 			out.flush();
 		}
 		return "redirect:userInsert.do";
@@ -160,7 +164,7 @@ public class UserController {
 			authCodes += Integer.toString(authCode);
 		}
 		System.out.println(authCodes);
-		subject = "PTSD ÀÎÁõ¹øÈ£ÀÔ´Ï´Ù.";
+		subject = "PTSD ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½Ô´Ï´ï¿½.";
 		content = DM.dmCertification(authCodes);
 		receiver = email;
 		sender = "admin@gmail.com";
@@ -184,42 +188,42 @@ public class UserController {
         this.naverLoginBO = naverLoginBO;
     }
 	
-	 //·Î±×ÀÎ Ã¹ È­¸é ¿äÃ» ¸Þ¼Òµå
+	 //ï¿½Î±ï¿½ï¿½ï¿½ Ã¹ È­ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½Þ¼Òµï¿½
     @RequestMapping(value = "/loginform.do", method = { RequestMethod.GET, RequestMethod.POST })
     public String login(Model model, HttpSession session) {
 		
-        /* ³×ÀÌ¹ö¾ÆÀÌµð·Î ÀÎÁõ URLÀ» »ý¼ºÇÏ±â À§ÇÏ¿© naverLoginBOÅ¬·¡½ºÀÇ getAuthorizationUrl¸Þ¼Òµå È£Ãâ */
+        /* ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ URLï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ naverLoginBOÅ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getAuthorizationUrlï¿½Þ¼Òµï¿½ È£ï¿½ï¿½ */
         String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
         
         //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
         //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-        System.out.println("³×ÀÌ¹ö:" + naverAuthUrl);
+        System.out.println("ï¿½ï¿½ï¿½Ì¹ï¿½:" + naverAuthUrl);
         
-        //³×ÀÌ¹ö 
+        //ï¿½ï¿½ï¿½Ì¹ï¿½ 
         model.addAttribute("url", naverAuthUrl);
  
-        /* »ý¼ºÇÑ ÀÎÁõ URLÀ» View·Î Àü´Þ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ URLï¿½ï¿½ Viewï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
         return "userlogin";
     }
  
-    //³×ÀÌ¹ö ·Î±×ÀÎ ¼º°ø½Ã callbackÈ£Ãâ ¸Þ¼Òµå
+    //ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ callbackÈ£ï¿½ï¿½ ï¿½Þ¼Òµï¿½
     @RequestMapping(value = "/callback.do", method = { RequestMethod.GET, RequestMethod.POST })
     public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
             throws IOException, ParseException{
-        System.out.println("¿©±â´Â callback");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ callback");
         OAuth2AccessToken oauthToken;
         oauthToken = naverLoginBO.getAccessToken(session, code, state);
-        //·Î±×ÀÎ »ç¿ëÀÚ Á¤º¸¸¦ ÀÐ¾î¿Â´Ù.
+        //ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½Â´ï¿½.
         apiResult = naverLoginBO.getUserProfile(oauthToken);
         model.addAttribute("result", apiResult);
         
         JSONParser parser = new JSONParser();
         Object obj = parser.parse(apiResult);
         JSONObject jsonObj = (JSONObject) obj;
-        //3. µ¥ÀÌÅÍ ÆÄ½Ì
-        //Top·¹º§ ´Ü°è _response ÆÄ½Ì
+        //3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä½ï¿½
+        //Topï¿½ï¿½ï¿½ï¿½ ï¿½Ü°ï¿½ _response ï¿½Ä½ï¿½
         JSONObject response_obj = (JSONObject)jsonObj.get("response");
-        //responseÀÇ °ª ÆÄ½Ì
+        //responseï¿½ï¿½ ï¿½ï¿½ ï¿½Ä½ï¿½
         String userid = (String)response_obj.get("id");
         String email = (String)response_obj.get("email");
         String name = (String)response_obj.get("name");
@@ -227,7 +231,7 @@ public class UserController {
         UserDto login = new UserDto(0, userid, null, email, null, null, "user", name, null, null, null);
         
         session.setAttribute("login", login);
-        /* ³×ÀÌ¹ö ·Î±×ÀÎ ¼º°ø ÆäÀÌÁö View È£Ãâ */
+        /* ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ View È£ï¿½ï¿½ */
         return "redirect:/";
     }
     
@@ -235,7 +239,7 @@ public class UserController {
     @RequestMapping(value = "/googlelogin.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String googleLogin(@RequestBody String userid, String email, String name, HttpSession session) {
 		
-    	System.out.println("±¸±Û ·Î±×ÀÎ");
+    	System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½");
     	System.out.println(email);
     	
     	
@@ -256,7 +260,7 @@ public class UserController {
     @RequestMapping(value = "/kakaologin.do", method = { RequestMethod.GET, RequestMethod.POST })
    	public String kakaoLogin(@RequestBody String email, String userid, HttpSession session) {
    		
-       	System.out.println("Ä«Ä«¿À ·Î±×ÀÎ");
+       	System.out.println("Ä«Ä«ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½");
        	System.out.println("email=" + email);
        	System.out.println("id=" + userid);
        	
