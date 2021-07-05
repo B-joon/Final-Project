@@ -11,13 +11,6 @@
 </head>
 
 <body>
-	<input type="hidden" id="sessionLogin" value="${login }">
-	<a href="noticelist.do">공지</a>
-	<a href="eventlist.do">이벤트</a>
-	<a href="chatbot.do">챗봇대화</a>
-	
-	<a href="streaming.do">streaming</a>
-
 <%@include file="WEB-INF/views/common.jsp" %>
 	
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->

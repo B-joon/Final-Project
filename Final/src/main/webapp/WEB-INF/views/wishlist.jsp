@@ -5,11 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml"%>
 <%@ page session="true"%>
-<%
-	if((UserDto)session.getAttribute("login") != null){
-		UserDto login = (UserDto)session.getAttribute("login");
-	}
-%>
 <!DOCTYPE html>
 <html>
 <head>
