@@ -42,5 +42,5 @@ $('#mystop').click(function(){
 
 $('#mystart').click(function(){
   // createCast의 인자는 방송채널의 ID입니다. 실제 서비스에서는 동일한 방송채널의 ID가 아닌, 고유하고 예측이 어려운 ID를 사용해야합니다.
-  remon.createCast(streamingseq+streamingname);
+  remon.createCast(streamingseq);
 });

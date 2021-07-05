@@ -46,5 +46,5 @@ $('#mystop').click(function(){
 });
 
 $('#mystart').click(function(){
-  remon.joinCast(streamingseq+streamingname);
+  remon.joinCast(streamingseq);
 });
