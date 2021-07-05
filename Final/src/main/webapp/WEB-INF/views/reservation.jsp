@@ -8,12 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>PSTD / 상품 예매 페이지</title>
-<script type="text/javascript">
-	var userrole = ${login.userseq};
-	if (userrole == ${review}) {
-		
-	}
-</script>
 </head>
 <body>
 <%@include file="./common.jsp" %>
@@ -90,7 +84,50 @@
 	
 	<br><br><br>
 	<!-- 댓글 후기 -->
-	${cnt.reviewcnt }개의 후기가 있습니다.<br>
+	
+	<script type="text/javascript">
+	// 좋아요
+	$(document).ready(function () {
+		var likeseq = ${likeseq};
+		var productseq = $('input[name=inputName]').val();
+		
+		if (likeseq > 0) {
+			console.log(likeseq);
+			$(".likeseq").prop("value", "♥")
+			$(".like").prop('name', likeseq);
+		} else {
+			console.log(likeseq);
+			$(".likeseq").prop("value", "♡")
+			$(".like").prop('name', likeseq);
+		}
+		
+		$(".like").on("click", function () {
+			
+			var that = $(".like");
+			
+			var sendData = {'productseq' : productseq, 'like' : that.prop('name')};
+			
+			$.ajax({
+				url : 'reservation.do',
+				type : 'POST',
+				data : sendData,
+				success: function () {
+					that.prop('name', data);
+					if (data == 1) {
+						$(".likeseq").prop("value", "https://e7.pngegg.com/pngimages/22/527/png-clipart-heart-open-free-content-heart.png");
+					} else {
+						$(".likeseq").prop("value", "https://w7.pngwing.com/pngs/518/473/png-transparent-heart-symbol-heart-line-love-text-heart.png")
+					}
+				}
+			});
+			
+		});
+		
+	});
+	</script>
+	
+	<input type="button" value="댓글 작성" class ="reviewinsert"
+		onclick="location.href='reviewinsert.do'">
 		<c:choose>
 			<c:when test="${empty reviewlist }">
 ----------작성된 글이 존재하지 않습니다---------
@@ -105,14 +142,17 @@
 					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}'">삭제</button>
 					</div><br>
 					<span>${reviewdto.reviewdate }</span><br>
-					<div>좋아요</div>
+					<div style="text-align: right;">
+						<a class="like">
+							<input class="likeseq" type="text" value="" readonly="readonly">
+						</a>
+					</div>
 				</div>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 
-			<input type="button" value="댓글 작성" class ="reviewinsert"
-				onclick="location.href='reviewinsert.do'">
+			
 
 	
 </body>

@@ -9,12 +9,6 @@
 		ORDER BY REVIEWSEQ
 	</select>
 	
-	<select id="reviewCnt" parameterType="int" resultType="reviewDto">
-		SELECT COUNT(REVIEWSEQ)
-		FROM REVIEW
-		WHERE PRODUCTSEQ = #{productseq}
-	</select>
-	
 	<insert id="reivewInsert" parameterType="reviewDto">
 		INSERT INTO REVIEW
 		VALUES(REIVEWSEQ.NEXTVAL, #{productseq}, #{userseq}, #{reivewname}, #{reviewcontent}, 0, SYSDATE)
