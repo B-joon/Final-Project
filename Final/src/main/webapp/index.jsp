@@ -1,23 +1,15 @@
-<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.ptsd.mvc.user.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%
-	if((UserDto)session.getAttribute("login") != null){
-		UserDto login = (UserDto)session.getAttribute("login");
-	}
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<title>PTSD</title>
 </head>
-<%
-	UserDto login = (UserDto)session.getAttribute("login"); 
-%>
+
 <body>
 	<input type="hidden" id="sessionLogin" value="${login }">
 	<a href="noticelist.do">공지</a>
@@ -47,6 +39,7 @@
 	<%
 	}
 	%>
+<%@include file="WEB-INF/views/common.jsp" %>
 	
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
 	<br/>
@@ -112,16 +105,8 @@
 	<div id="partylist">
 	</div>
 
-	<%-- 상단으로 이동하기 버튼 시작 --%>
-	<div class="top">
-		<button id="btn" onClick="GoTop()">▲</button>
-	</div>
-	<%-- 상단으로 이동하기 버튼 끝 --%>
-
 </body>
 <script type="text/javascript" src="resources/js/party.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/index.css">
-<script type="text/javascript" src="resources/js/gotop.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/css/gotop.css">
 <link rel="stylesheet" type="text/css" href="resources/css/index.css">
+
 </html>

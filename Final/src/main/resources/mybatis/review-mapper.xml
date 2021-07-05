@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="review">
+
+	<select id="reviewList" resultType="reviewDto" parameterType="int">
+		SELECT REVIEWSEQ, PRODUCTSEQ, REVIEWNAME, REVIEWCONTENT, REVIEWLIKECNT, REVIEWDATE
+		FROM REVIEW
+		WHERE PRODUCTSEQ = #{productseq}
+		ORDER BY REVIEWSEQ
+	</select>
+	
+	<insert id="reivewInsert" parameterType="reviewDto">
+		INSERT INTO REVIEW
+		VALUES(REIVEWSEQ.NEXTVAL, #{productseq}, #{userseq}, #{reivewname}, #{reviewcontent}, 0, SYSDATE)
+	</insert>
+	
+	<delete id="reviewDel" parameterType="reviewDto">
+		DELETE FROM REVIEW
+		WHERE REVIEWSEQ = #{reviewseq}
+	</delete>
+	
+</mapper>

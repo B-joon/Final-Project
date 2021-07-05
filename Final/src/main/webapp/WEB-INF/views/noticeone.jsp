@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<table border="1">
 		<tr>
 			<th>작성자</th>

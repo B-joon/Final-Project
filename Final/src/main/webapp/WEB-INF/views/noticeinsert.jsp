@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<form action="insertres.do" method="post">
 	<input type="hidden" value="NOTICE" name="boardkind">
 		<table border="1">

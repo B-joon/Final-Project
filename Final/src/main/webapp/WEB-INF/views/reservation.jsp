@@ -1,6 +1,8 @@
 <%@page import="com.ptsd.mvc.product.ProductDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
 <title>PSTD / 상품 예매 페이지</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 <h1>예매하기</h1>
 	
 <input type="text" name="productseq" value="${dto.productseq }" />
@@ -79,5 +81,79 @@
 	<input type="submit" value="결제하기">
 	<input type="button" value="돌아가기" onclick="location.href='main.do'">
 	</form>
+	
+	<br><br><br>
+	<!-- 댓글 후기 -->
+	
+	<script type="text/javascript">
+	// 좋아요
+	$(document).ready(function () {
+		var likeseq = ${likeseq};
+		var productseq = $('input[name=inputName]').val();
+		
+		if (likeseq > 0) {
+			console.log(likeseq);
+			$(".likeseq").prop("value", "♥")
+			$(".like").prop('name', likeseq);
+		} else {
+			console.log(likeseq);
+			$(".likeseq").prop("value", "♡")
+			$(".like").prop('name', likeseq);
+		}
+		
+		$(".like").on("click", function () {
+			
+			var that = $(".like");
+			
+			var sendData = {'productseq' : productseq, 'like' : that.prop('name')};
+			
+			$.ajax({
+				url : 'reservation.do',
+				type : 'POST',
+				data : sendData,
+				success: function () {
+					that.prop('name', data);
+					if (data == 1) {
+						$(".likeseq").prop("value", "https://e7.pngegg.com/pngimages/22/527/png-clipart-heart-open-free-content-heart.png");
+					} else {
+						$(".likeseq").prop("value", "https://w7.pngwing.com/pngs/518/473/png-transparent-heart-symbol-heart-line-love-text-heart.png")
+					}
+				}
+			});
+			
+		});
+		
+	});
+	</script>
+	
+	<input type="button" value="댓글 작성" class ="reviewinsert"
+		onclick="location.href='reviewinsert.do'">
+		<c:choose>
+			<c:when test="${empty reviewlist }">
+----------작성된 글이 존재하지 않습니다---------
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${reviewlist }" var="reviewdto">
+				<div style="border: 1px">
+					${reviewdto.reviewname }<br>
+					${reviewdto.reviewcontent }
+					<div class="review-btn">
+					<button onclick="location.href='reviewupdate.do?reviewseq=${reviewdto.reviewseq}'">수정</button>
+					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}'">삭제</button>
+					</div><br>
+					<span>${reviewdto.reviewdate }</span><br>
+					<div style="text-align: right;">
+						<a class="like">
+							<input class="likeseq" type="text" value="" readonly="readonly">
+						</a>
+					</div>
+				</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+
+			
+
+	
 </body>
 </html>

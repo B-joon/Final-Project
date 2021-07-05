@@ -22,6 +22,7 @@
 <body>
 	<input type="hidden" id="sessionLogin" value="${login }">
 	<h2>찜한 공연</h2>
+<%@include file="./common.jsp" %>
 	<table border="1">
 		<tr>
 			<th>이름</th>

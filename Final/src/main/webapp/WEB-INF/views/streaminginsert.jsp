@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<form action="streamingres.do" method="get">
 		<input type="text" name="streamingname">
 		<input type="submit" value="생성">

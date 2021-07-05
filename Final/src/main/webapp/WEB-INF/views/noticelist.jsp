@@ -7,12 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-<link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="resources/js/notice.js"></script>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 
 	<input type="hidden" value="${login.userseq }" id="loginseq">
 	<input type="hidden" value="${login.userrole }" id="loginrole">
@@ -113,4 +110,6 @@
 </script>
 
 </body>
+<link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="resources/js/notice.js"></script>
 </html>
