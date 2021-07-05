@@ -27,20 +27,8 @@
 	</insert>
 	
 	<update id="update" parameterType="productDto">
-		UPDATE PRODUCT
-		SET 
-		CATEGORY = #{category}, 
-		PRODUCTNAME = #{productname}, 
-		STARTDATE = #{startdate}, 
-		ENDDATE = #{enddate}, 
-		PRODUCTCONTENT = #{productcontent}, 
-		AREACODE = #{areacode}, 
-		ADDRESS = #{address}, 
-		TELLNUMBER = #{tellnumber}, 
-		RUNTIME = #{runtime}, 
-		RATING = #{rating},
-		SEATCOUNT = #{seatcount},
-		PRICE = #{price},	
+		UPDATE PRODUCT SET 
+		CATEGORY = #{category}, PRODUCTNAME = #{productname}, STARTDATE = #{startdate}, ENDDATE = #{enddate}, THUMBIMG = #{thumbimg}, PRODUCTCONTENT = #{productcontent}, AREACODE = #{areacode}, ADDRESS = #{address}, TELLNUMBER = #{tellnumber},	RUNTIME = #{runtime}, RATING = #{rating}, SEATCOUNT = #{seatcount},	PRICE = #{price}	
 		WHERE PRODUCTSEQ = #{productseq}
 	</update>
 	
