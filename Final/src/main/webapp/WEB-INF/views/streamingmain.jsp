@@ -15,12 +15,26 @@
 	
 	<div>
 		<c:choose>
+
+
             <c:when test="${empty list }">
             	<h2>현제 방송중인 공연 및 축제가 없습니다.</h2>
             </c:when>
             <c:otherwise>
                 <c:forEach items="${list }" var="dto">
-                	<a href="streamingselect.do?streamingseq=${dto.streamingseq }" class="roomoptions" onclick="joinRoom(this)"><h3>${dto.streamingname }</h3></a><br>
+                	<c:choose>
+                	<c:when test="${login.userrole eq 'admin' }">
+                		<h3>${dto.streamingname }</h3>
+                		<a href="https://b-joon.github.io/Final-Project/livestreaming/livestreaming.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }">방송하기</a><br>
+						
+					</c:when>
+					<c:when test="${login.userrole eq 'user' }">
+						<h3>${dto.streamingname }</h3>
+						<a href="https://b-joon.github.io/Final-Project/livestreaming/livewatch.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }">방송하기</a><br>
+						
+					</c:when>
+					</c:choose>
+                	
                 </c:forEach>
             </c:otherwise>
         </c:choose>
