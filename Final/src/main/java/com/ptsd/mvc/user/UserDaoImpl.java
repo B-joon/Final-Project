@@ -115,5 +115,17 @@ public class UserDaoImpl implements UserDao {
 		
 		return res;
 	}
-
+	
+	@Override
+	public String idFind(String name, String email) {
+		
+		return null;
+	}
+	
+	@Override
+	public String pwFind(String userid, String email) {
+		
+		return null;
+	}
+	
 }

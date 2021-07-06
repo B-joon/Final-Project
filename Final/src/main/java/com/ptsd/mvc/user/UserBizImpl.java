@@ -75,5 +75,17 @@ public class UserBizImpl implements UserBiz {
 		
 		return dao.phoneCheck(phone);
 	}
+	
+	@Override
+	public String idFind(String name, String email) {
+		
+		return dao.idFind(name, email);
+	}
+	
+	@Override
+	public String pwFind(String userid, String email) {
+		
+		return dao.pwFind(userid, email);
+	}
 
 }

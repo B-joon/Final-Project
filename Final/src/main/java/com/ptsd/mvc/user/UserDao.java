@@ -17,5 +17,6 @@ String NAMESPACE = "user.";
 	public UserDto nicnameCheck(String nickname);
 	public List<UserDto> userSearch(String userid);
 	public String phoneCheck(String phone);
-	
+	public String idFind(String name, String email);
+	public String pwFind(String userid, String email);
 }

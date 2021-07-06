@@ -92,7 +92,7 @@ public class UserController {
 		}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('����'); </script>");
+			out.println("<script>alert('���� �� �ۼ����ּ���'); </script>");
 			out.flush();
 		}
 		return "redirect:userInsert.do";
@@ -164,7 +164,7 @@ public class UserController {
 			authCodes += Integer.toString(authCode);
 		}
 		System.out.println(authCodes);
-		subject = "PTSD ������ȣ�Դϴ�.";
+		subject = "PTSD ������ȣ �Դϴ�.";
 		content = DM.dmCertification(authCodes);
 		receiver = email;
 		sender = "admin@gmail.com";
@@ -188,42 +188,40 @@ public class UserController {
         this.naverLoginBO = naverLoginBO;
     }
 	
-	 //�α��� ù ȭ�� ��û �޼ҵ�
+	
     @RequestMapping(value = "/loginform.do", method = { RequestMethod.GET, RequestMethod.POST })
     public String login(Model model, HttpSession session) {
 		
-        /* ���̹����̵�� ���� URL�� �����ϱ� ���Ͽ� naverLoginBOŬ������ getAuthorizationUrl�޼ҵ� ȣ�� */
+       
         String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
         
         //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
         //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-        System.out.println("���̹�:" + naverAuthUrl);
+        System.out.println("���̹��α���:" + naverAuthUrl);
         
-        //���̹� 
         model.addAttribute("url", naverAuthUrl);
  
-        /* ������ ���� URL�� View�� ���� */
+    
         return "userlogin";
     }
  
-    //���̹� �α��� ������ callbackȣ�� �޼ҵ�
+   
     @RequestMapping(value = "/callback.do", method = { RequestMethod.GET, RequestMethod.POST })
     public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
             throws IOException, ParseException{
-        System.out.println("����� callback");
+        
         OAuth2AccessToken oauthToken;
         oauthToken = naverLoginBO.getAccessToken(session, code, state);
-        //�α��� ����� ������ �о�´�.
+       
         apiResult = naverLoginBO.getUserProfile(oauthToken);
         model.addAttribute("result", apiResult);
         
         JSONParser parser = new JSONParser();
         Object obj = parser.parse(apiResult);
         JSONObject jsonObj = (JSONObject) obj;
-        //3. ������ �Ľ�
-        //Top���� �ܰ� _response �Ľ�
+        
         JSONObject response_obj = (JSONObject)jsonObj.get("response");
-        //response�� �� �Ľ�
+      
         String userid = (String)response_obj.get("id");
         String email = (String)response_obj.get("email");
         String name = (String)response_obj.get("name");
@@ -231,7 +229,7 @@ public class UserController {
         UserDto login = new UserDto(0, userid, null, email, null, null, "user", name, null, null, null);
         
         session.setAttribute("login", login);
-        /* ���̹� �α��� ���� ������ View ȣ�� */
+       
         return "redirect:/";
     }
     
@@ -239,7 +237,6 @@ public class UserController {
     @RequestMapping(value = "/googlelogin.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String googleLogin(@RequestBody String userid, String email, String name, HttpSession session) {
 		
-    	System.out.println("���� �α���");
     	System.out.println(email);
     	
     	
