@@ -1,15 +1,15 @@
 $(function(){
 
-	chkPartyAreaCode();
+	//chkPartyAreaCode();
 	
 })
 
 // 축제정보 전체인지 아니면 특정지역인지 체크
-function chkPartyAreaCode() {
+function chkPartyAreaCode(areacode) {
 	
-	var area = document.getElementsByName("partyareaCode")[0];
-	var idx = area.selectedIndex;
-	var areacode = area.options[idx].value;
+//	var area = document.getElementsByName("partyareaCode")[0];
+//	var idx = area.selectedIndex;
+//	var areacode = area.options[idx].value;
 	
 	if (areacode == 0) {
 		getPartyAllList();
@@ -20,11 +20,11 @@ function chkPartyAreaCode() {
 }
 
 // 상품정보 전체인지 아니면 특정지역인지 체크
-function chkProductAreaCode() {
+function chkProductAreaCode(areacode) {
 	
-	var area = document.getElementsByName("productareaCode")[0];
-	var idx = area.selectedIndex;
-	var areacode = area.options[idx].value;
+//	var area = document.getElementsByName("productareaCode")[0];
+//	var idx = area.selectedIndex;
+//	var areacode = area.options[idx].value;
 	
 	if (areacode == 0) {
 		getProductAllList();
@@ -54,7 +54,7 @@ function getPartyAllList() {
 			dataType: 'json',
 			async:false,
 			success:function(data) {
-				
+				console.log(data)
 				console.log(data.response.body.items)
 				const list = data.response.body.items.item;
 				const partylist = document.querySelector('#partylist');
@@ -97,14 +97,14 @@ function getPartyAllList() {
 }
 
 // 해당 지역의 축제정보 가져오기
-function getPartyList() {
+function getPartyList(areacode) {
 	
 	$("#partylist").children().remove();
 	
-	var area = document.getElementsByName("partyareaCode")[0];
-	var idx = area.selectedIndex;
-	var areaCode = area.options[idx].value;
-	console.log(areaCode)
+//	var area = document.getElementsByName("partyareaCode")[0];
+//	var idx = area.selectedIndex;
+//	var areaCode = area.options[idx].value;
+	console.log(areacode)
 	var url = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival'; /*URL*/
 	
 	function getParams() {
@@ -117,7 +117,7 @@ function getPartyList() {
 		queryParams += '&' + encodeURIComponent('arrange') + '=' + encodeURIComponent('A'); /**/
 		queryParams += '&' + encodeURIComponent('eventStartDate') + '=' + encodeURIComponent('20210101'); /**/
 		queryParams += '&' + encodeURIComponent('eventEndDate') + '=' + encodeURIComponent('20211231'); /**/
-		queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent(areaCode); /**/
+		queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent(areacode); /**/
 		queryParams += '&' + encodeURIComponent('_type=json');
 		
 		return queryParams;
@@ -129,6 +129,7 @@ function getPartyList() {
 		method: 'get',
 		dataType: 'json',
 		success:function(data) {
+			console.log(data)
 			console.log(data.response.body.items)
 			const list = data.response.body.items.item;
 			const partylist = document.querySelector('#partylist');

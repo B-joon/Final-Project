@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+#weatherarea {	
+	position: absolute;
+	right: 10px;
+}
+
+#roller {
+	height: 50px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#roller li {
+	height: 50px;
+	padding: 10px;
+	margin: 0px px;
+}
+
+#roller li span {
+	margin: 5px;
+}
