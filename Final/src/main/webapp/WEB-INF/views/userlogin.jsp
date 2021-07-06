@@ -11,12 +11,21 @@
 <meta name = "google-signin-client_id"content = "598123668214-i2590f1kq85bg1lm2u1hga0ilps88h69.apps.googleusercontent.com">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<script src="https://apis.google.com/js/client:platform.js?onload=init" async defer></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
+<style type="text/css">
+
+	#table.static{
+		position:static;
+		top: 200px;
+	}
+
+</style>
+
 <body>
 <%@include file="./common.jsp" %>	
-	<table align="center">
+	<table id="table" align="center">
 		<tr>
 			<th>아이디</th>
 			<td><input type="text" id="userid" /></td>
@@ -123,9 +132,7 @@
 				Kakao.API.request({
 					url : '/v2/user/me',
 					success : function(res) {
-						alert(JSON.stringify(res));
 						const email = res.kakao_account.email;
-						alert(email);
 						var userid = res.id;
 						location.href = 'kakaologin.do?email='+ email + "&userid=" + userid;
 					}

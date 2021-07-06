@@ -87,5 +87,11 @@ public class UserBizImpl implements UserBiz {
 		
 		return dao.pwFind(userid, email);
 	}
-
+	
+	@Override
+	public UserDto snsCheck(UserDto dto) {
+		
+		return dao.snsCheck(dto);
+	}
+	
 }

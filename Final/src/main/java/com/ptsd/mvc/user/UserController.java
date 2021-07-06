@@ -90,12 +90,8 @@ public class UserController {
 		if (biz.insertUser(dto) > 0) {
 			return "userlogin";
 		}else {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('���� �� �ۼ����ּ���'); </script>");
-			out.flush();
+			return "redirect:userInsert.do";
 		}
-		return "redirect:userInsert.do";
 	}
 	
 	@RequestMapping("logout.do")
@@ -164,7 +160,7 @@ public class UserController {
 			authCodes += Integer.toString(authCode);
 		}
 		System.out.println(authCodes);
-		subject = "PTSD ������ȣ �Դϴ�.";
+		subject = "안녕하세요 PTSD입니다. 이메일 인증번호입니다.";
 		content = DM.dmCertification(authCodes);
 		receiver = email;
 		sender = "admin@gmail.com";
@@ -197,7 +193,7 @@ public class UserController {
         
         //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
         //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-        System.out.println("���̹��α���:" + naverAuthUrl);
+        
         
         model.addAttribute("url", naverAuthUrl);
  
@@ -212,7 +208,7 @@ public class UserController {
         
         OAuth2AccessToken oauthToken;
         oauthToken = naverLoginBO.getAccessToken(session, code, state);
-       
+        
         apiResult = naverLoginBO.getUserProfile(oauthToken);
         model.addAttribute("result", apiResult);
         
@@ -225,47 +221,79 @@ public class UserController {
         String userid = (String)response_obj.get("id");
         String email = (String)response_obj.get("email");
         String name = (String)response_obj.get("name");
-
-        UserDto login = new UserDto(0, userid, null, email, null, null, "user", name, null, null, null);
+        String userids = userid + "@n";
+        UserDto res = new UserDto(0, userids, null, email, null, null, "user", name, null, null, null);
+        UserDto login = biz.snsCheck(res);
         
-        session.setAttribute("login", login);
-       
-        return "redirect:/";
+        if(login != null) {
+        	session.setAttribute("login", login);
+        	return "redirect:/";
+        } else {
+        	model.addAttribute("res", res);
+        	return "usersnsinsert";
+        }
+        
     }
     
  
     @RequestMapping(value = "/googlelogin.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String googleLogin(@RequestBody String userid, String email, String name, HttpSession session) {
+	public String googleLogin(Model model, @RequestBody String userid, String email, String name, HttpSession session) {
 		
     	System.out.println(email);
     	
     	
     	String userid2 = email.substring(0, email.indexOf("@"));
-    	
+    	String userids = userid2+ "@g";
     	System.out.println("userid="+ userid);
     	System.out.println(userid2);
     	
     	System.out.println(name);
     	
-    	UserDto login = new UserDto(0, userid2, null, email, null, null, "user", name, null, null, null);
+    	UserDto res = new UserDto(0, userids, null, email, null, null, "user", name, null, null, null);
     	
-    	session.setAttribute("login", login);
+    	UserDto login = biz.snsCheck(res);
+        
+        if(login != null) {
+        	session.setAttribute("login", login);
+        	return "redirect:/";
+        } else {
+        	model.addAttribute("res", res);
+        	return "usersnsinsert";
+        }
     	
-		return "redirect:/";
 	}
     
     @RequestMapping(value = "/kakaologin.do", method = { RequestMethod.GET, RequestMethod.POST })
-   	public String kakaoLogin(@RequestBody String email, String userid, HttpSession session) {
+   	public String kakaoLogin(Model model, @RequestBody String email, String userid, HttpSession session) {
    		
-       	System.out.println("īī�� �α���");
        	System.out.println("email=" + email);
        	System.out.println("id=" + userid);
+       	String userids = userid + "@k";
        	
-       	UserDto login = new UserDto(0, userid, null, email, null, null, "user", null, null, null, null);
-       	session.setAttribute("login", login);
+       	UserDto res = new UserDto(0, userids, null, email, null, null, "user", null, null, null, null);
+       	UserDto login = biz.snsCheck(res);
+        
+        if(login != null) {
+        	session.setAttribute("login", login);
+        	return "redirect:/";
+        } else {
+        	model.addAttribute("res", res);
+        	return "usersnsinsert";
+        }
        	
-   		return "redirect:/";
    	}
+    
+    @RequestMapping(value="/usersnsInsertres.do", method=RequestMethod.POST)
+	public String snsinsertUserRes(HttpServletResponse response, UserDto dto, HttpSession session) throws IOException {
+		System.out.println("snsinsert:"+dto);
+		if (biz.insertUser(dto) > 0) {
+			UserDto login = biz.snsCheck(dto);
+			session.setAttribute("login", login);
+			return "redirect:main.do";
+		}else {
+			return "redirect:userInsert.do";
+		}
+	}
     
     
 	

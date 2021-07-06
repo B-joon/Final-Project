@@ -10,10 +10,18 @@ response.setContentType("text/html; charset=UTF-8");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style type="text/css">
+
+	#table{
+		position:static;
+		top: 200px;
+	}
+
+</style>
 <body>
 <%@include file="./common.jsp" %>
 	<form action="userInsertres.do" method="post">
-		<table align="center">
+		<table id="table" align="center">
 			<tr>
 				<th>이름</th>
 				<td>

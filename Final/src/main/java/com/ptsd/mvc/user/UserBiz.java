@@ -17,4 +17,6 @@ public interface UserBiz {
 	public String phoneCheck(String phone);
 	public String idFind(String name, String email);
 	public String pwFind(String userid, String email);
+	public UserDto snsCheck(UserDto dto);
+	
 }

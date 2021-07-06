@@ -15,7 +15,7 @@
 	</insert>
 	
 	<select id="idChk" resultType="String">
-		SELECT USERID
+		SELECT USERSEQ, USERID, USERPW, EMAIL, ADDRESS, PHONE, USERROLE, NAME, AVATAR
 		FROM PTSD_USER
 		WHERE USERID = #{userid}
 	</select> 
@@ -30,6 +30,12 @@
 		SELECT PHONE
 		FROM PTSD_USER
 		WHERE PHONE = #{phone}
+	</select> 
+	
+	<select id="snsChk" resultType="userDto">
+		SELECT USERSEQ, USERID, USERPW, EMAIL, ADDRESS, PHONE, USERROLE, NAME, AVATAR
+		FROM PTSD_USER
+		WHERE USERID = #{userid}
 	</select> 
 	
 </mapper>
