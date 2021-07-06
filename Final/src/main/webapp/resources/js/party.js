@@ -6,11 +6,7 @@ $(function(){
 
 // 축제정보 전체인지 아니면 특정지역인지 체크
 function chkPartyAreaCode(areacode) {
-	
-//	var area = document.getElementsByName("partyareaCode")[0];
-//	var idx = area.selectedIndex;
-//	var areacode = area.options[idx].value;
-	
+
 	if (areacode == 0) {
 		getPartyAllList();
 	} else {
@@ -21,11 +17,7 @@ function chkPartyAreaCode(areacode) {
 
 // 상품정보 전체인지 아니면 특정지역인지 체크
 function chkProductAreaCode(areacode) {
-	
-//	var area = document.getElementsByName("productareaCode")[0];
-//	var idx = area.selectedIndex;
-//	var areacode = area.options[idx].value;
-	
+
 	if (areacode == 0) {
 		getProductAllList();
 	} else {
@@ -61,25 +53,53 @@ function getPartyAllList() {
 				
 				for (var i = 0; i < list.length; i++) {
 					
-					const div = document.createElement('div');
-
-					div.setAttribute("class","partyDiv");
-					const title = document.createElement('div');
-					title.append(list[i].title);
-					const addr = document.createElement('div');
-					addr.append(list[i].addr1);
+					const cardDeck = document.createElement('div');
+					cardDeck.setAttribute("class","col-sm-2 mb-3");
+					cardDeck.style.wordBreak = 'break-all';
+					
+					const card = document.createElement('div');
+					card.setAttribute("class","card border-warning");
+					
 					const img = document.createElement('img');
+					img.setAttribute("class","card-img-top");
+					img.setAttribute("alt","Card image cap");
 					img.src = list[i].firstimage;
 					img.style.witdh = "10em";
 					img.style.height = "10em";
+					
+					const div = document.createElement('div');
+					div.setAttribute("class","card-body");
+			
+					const title = document.createElement('h5');
+					title.append(list[i].title);
+					title.setAttribute("class","card-header bg-warning mb-3");
+					title.style.fontweight = 'bold';
+					
+					const addr = document.createElement('div');
+					addr.append(list[i].addr1);
+
 					const tel = document.createElement('div');
 					tel.append(list[i].tel);
-					div.append(title);
-					div.append(addr);
-					div.append(img);
-					div.append(tel);
 					
-					partylist.append(div);
+					const a = document.createElement('a');
+					a.href = "partydetail.do?title=" + list[i].title
+						   + "&addr=" + list[i].addr1
+						   + "&tel=" + list[i].tel
+						   + "&imgsrc=" + list[i].firstimage
+				    a.append("지도보기")
+					// 지도정보를 미리 불러온다음에 모달로 표현해도 될듯?
+				    
+					card.append(title);
+					div.append(addr);
+					div.append(tel);
+					div.append(a);
+					
+					card.append(img);
+					card.append(div);
+
+					cardDeck.append(card);
+					
+					partylist.append(cardDeck)
 					
 				}
 					
@@ -100,10 +120,7 @@ function getPartyAllList() {
 function getPartyList(areacode) {
 	
 	$("#partylist").children().remove();
-	
-//	var area = document.getElementsByName("partyareaCode")[0];
-//	var idx = area.selectedIndex;
-//	var areaCode = area.options[idx].value;
+
 	console.log(areacode)
 	var url = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival'; /*URL*/
 	
@@ -133,30 +150,59 @@ function getPartyList(areacode) {
 			console.log(data.response.body.items)
 			const list = data.response.body.items.item;
 			const partylist = document.querySelector('#partylist');
-			
+
 			for (var i = 0; i < list.length; i++) {
 				
-				const div = document.createElement('div');
-
-				div.setAttribute("class","partyDiv");
-				const title = document.createElement('div');
-				title.append(list[i].title);
-				const addr = document.createElement('div');
-				addr.append(list[i].addr1);
+				const cardDeck = document.createElement('div');
+				cardDeck.setAttribute("class","col-sm-2 mb-3");
+				cardDeck.style.wordBreak = 'break-all';
+				
+				const card = document.createElement('div');
+				card.setAttribute("class","card border-warning");
+				
 				const img = document.createElement('img');
+				img.setAttribute("class","card-img-top");
+				img.setAttribute("alt","Card image cap");
 				img.src = list[i].firstimage;
 				img.style.witdh = "10em";
 				img.style.height = "10em";
+				
+				const div = document.createElement('div');
+				div.setAttribute("class","card-body");
+		
+				const title = document.createElement('h5');
+				title.append(list[i].title);
+				title.setAttribute("class","card-header bg-warning mb-3");
+				title.style.fontweight = 'bold';
+				
+				const addr = document.createElement('div');
+				addr.append(list[i].addr1);
+
 				const tel = document.createElement('div');
 				tel.append(list[i].tel);
-				div.append(title);
-				div.append(addr);
-				div.append(img);
-				div.append(tel);
 				
-				partylist.append(div);
+				const a = document.createElement('a');
+				a.href = "partydetail.do?title=" + list[i].title
+					   + "&addr=" + list[i].addr1
+					   + "&tel=" + list[i].tel
+					   + "&imgsrc=" + list[i].firstimage
+			    a.append("지도보기")
+				
+				card.append(title);
+				div.append(addr);
+				div.append(tel);
+				div.append(a);
+				
+				card.append(img);
+				card.append(div);
+
+				cardDeck.append(card);
+				
+				partylist.append(cardDeck)
 				
 			}
+			
+			
 				
 			
 		},

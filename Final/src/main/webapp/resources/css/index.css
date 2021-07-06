@@ -5,11 +5,13 @@
 	margin: 0;
 }
 
+/*
 #partylist {
-display: grid;
+	display: grid;
 	grid-template-columns: repeat(auto-fill, 300px);
     grid-auto-rows: 300px;
 }
+*/
 
 .partyDiv {
 	

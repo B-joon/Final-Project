@@ -11,9 +11,7 @@
 </head>
 
 <body>
-<%@include file="WEB-INF/views/common.jsp" %>
-	<br/>
-	<hr/>	
+<%@include file="WEB-INF/views/common.jsp" %>	
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
 	<div class="btn-group">
   	<button type="button" class="btn btn-outline-warning btn-lg dropdown-toggle" data-toggle="dropdown">축제정보</button>
@@ -63,7 +61,7 @@
 </div>
 	
 	<hr/>
-	<div id="partylist">
+	<div id="partylist" class="row">
 	</div>
 
 </body>
