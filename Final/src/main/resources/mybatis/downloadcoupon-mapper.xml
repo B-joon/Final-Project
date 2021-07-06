@@ -26,9 +26,9 @@
 	</update>
 	
 	<!-- 삭제되는거  -->
-	<delete id="delete" parameterType="couponDto">
+	<delete id="dailydelete" parameterType="couponDto">
 		DELETE FROM COUPON
-		WHERE COUPONSEQ = #{COUPONSEQ}
+		WHERE ENDDAY = #{endday}
 	</delete>
   
 </mapper>

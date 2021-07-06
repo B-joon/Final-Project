@@ -26,15 +26,17 @@ public class CouponBizImpl implements CouponBiz {
 		return dao.update(dto);
 	}
 
-	@Override
-	public int delete(int couponseq) {
-		return dao.delete(couponseq);
-	}
 
 	@Override
 	public CouponDto selectOne(int couponseq) {
 		// TODO Auto-generated method stub
 		return dao.selectOne(couponseq);
+	}
+
+	@Override
+	public int DailyDelete(String endday) {
+		
+		return dao.DailyDelete(endday);
 	}
 
 }
