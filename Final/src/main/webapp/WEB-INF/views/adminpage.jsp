@@ -11,7 +11,7 @@
 
 	<h1>ADMIN</h1>
 
-	<a href="coupon.do">쿠폰생성</a>
+	<a href="coupon.do">쿠폰관리</a>
 	<a href="mailform.do">email..</a>
 	<!-- 상품 등록 페이지 (어드민 권한이 있는 경우에만 나타나게 해야함) -->
 	<a href="productinsert.do">상품등록</a>

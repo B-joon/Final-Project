@@ -37,6 +37,11 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script type="text/javascript" src="resources/js/weather.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/weather.css">
 
+<script type="text/javascript" src="resources/js/darkmode.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/darkmode.css">
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between sticky-top">
 	<a class="navbar-brand" href="main.do"> <font
 		style="vertical-align: inherit;"><font
@@ -97,6 +102,10 @@ UserDto login = (UserDto) session.getAttribute("login");
 	<button id="btn" onClick="GoTop()">▲</button>
 </div>
 <%-- 상단으로 이동하기 버튼 끝 --%>
+
+<div>
+	<input type="button" id="darkbtn" onclick="dayAndNight(this);" value="다크모드"></input>
+</div>
 
 <input type="hidden" id="sessionLogin" value="${login }">
 

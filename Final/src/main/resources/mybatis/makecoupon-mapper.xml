@@ -4,7 +4,8 @@
 
 	<select id="selectList" resultType="makeCouponDto">
 		SELECT MAKESEQ,COUPONTITLE,DISCOUNT,USERSEQ,ENDDAY
-		FROM MAKECOUPON 
+		FROM MAKECOUPON
+		ORDER BY MAKESEQ DESC
 	</select>
 	
 	<select id="selectOne" resultType="makeCouponDto">

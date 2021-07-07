@@ -1,25 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%@include file="./common.jsp" %>
-<script type="text/javascript">
-	function createCoupon() {
-		var selected = $("#discount option:selected").val();
-		alert(selected);
-		
-	}
-</script>
-
-
 <body>
+<%@include file="./common.jsp" %>
 
 
-	<form action="createcoupon.do">
+<form action="createcoupon.do">
 	<input type="hidden" name="userseq" value="${login.userseq }">
 		<h2>쿠폰생성</h2>
 		<input type="text" name="coupontitle" placeholder="쿠폰명을 입력하세요">
@@ -36,7 +27,6 @@
 		<input type="submit" value="생성하기">
 
 	</form>
-
 
 </body>
 </html>
