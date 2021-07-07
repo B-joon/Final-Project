@@ -14,13 +14,13 @@ public class DM {
 		sb+= "<body>";
 		sb+= "<div>";
 		sb+= "<p>";
-		sb+= " ¾È³çÇÏ¼¼¿ä! <strong>PTSD</strong> ÀÔ´Ï´Ù. <br>";
-		sb+= "ÀÎÁõ¹øÈ£´Â ´ÙÀ½°ú °°½À´Ï´Ù.";
+		sb+= " ì•ˆë…•í•˜ì„¸ìš”! <strong>PTSD</strong> ìž…ë‹ˆë‹¤. <br>";
+		sb+= "ì¸ì¦ë²ˆí˜¸ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.";
 		sb+= "</p>";
 		sb+= "<p>";
-		sb+= "ÀÎÁõ¹øÈ£ : <strong>"+authCodes +"<strong>";
+		sb+= "ì¸ì¦ë²ˆí˜¸ : <strong>"+authCodes +"<strong>";
 		sb+= "</p>";
-		sb+= "<p> °¨»çÇÕ´Ï´Ù.</p>";
+		sb+= "<p> ê°ì‚¬í•©ë‹ˆë‹¤.</p>";
 		sb+= "</div>";
 		sb+= "</body>";
 		sb+= "</html>";

@@ -128,4 +128,18 @@ public class UserDaoImpl implements UserDao {
 		return null;
 	}
 	
+	@Override
+	public UserDto snsCheck(UserDto dto) {
+		UserDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "snsChk", dto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
 }
