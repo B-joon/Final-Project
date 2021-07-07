@@ -11,8 +11,17 @@
 </head>
 <body>
 <%@include file="./common.jsp" %>
-<h1>예매하기</h1>
-	
+
+	<div class="row">
+	<div class="col-sm-8">
+	공연정보
+	</div>
+	<div class="col-sm-4 border border-primary text-center rounded">
+		<div class="font-weight-bold m-2">예약날짜 선택</div>
+        <div id="datetimepicker"></div>
+        <div class=""></div>
+	</div>
+	</div>
 <input type="text" name="productseq" value="${dto.productseq }" />
 <input type="text" name="category" value="${dto.category }" />
 <input type="text" name="productname" value="${dto.productname }" />
@@ -152,8 +161,8 @@
 			</c:otherwise>
 		</c:choose>
 
-			
-
-	
+		
+</div>	
 </body>
+<script type="text/javascript" src="resources/js/datepicker.js"></script>
 </html>
