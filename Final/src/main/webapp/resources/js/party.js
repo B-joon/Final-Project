@@ -54,7 +54,7 @@ function getPartyAllList() {
 				for (var i = 0; i < list.length; i++) {
 					
 					const cardDeck = document.createElement('div');
-					cardDeck.setAttribute("class","col-sm-2 mb-3");
+					cardDeck.setAttribute("class","col-sm-3 mb-3");
 					cardDeck.style.wordBreak = 'break-all';
 					
 					const card = document.createElement('div');
@@ -155,7 +155,7 @@ function getPartyList(areacode) {
 			for (var i = 0; i < list.length; i++) {
 				
 				const cardDeck = document.createElement('div');
-				cardDeck.setAttribute("class","col-sm-2 mb-3");
+				cardDeck.setAttribute("class","col-sm-3 mb-3");
 				cardDeck.style.wordBreak = 'break-all';
 				
 				const card = document.createElement('div');
@@ -241,46 +241,90 @@ function getProductAllList() {
 					
 					for (var i = 0; i < data.length; i++) {
 						
-						const div = document.createElement('div');
-
-						div.setAttribute("class","partyDiv");
-						const productname = document.createElement('div');
-						productname.append(data[i].productname);
-						const address = document.createElement('div');
-						address.append(data[i].address);
+//						const div = document.createElement('div');
+//
+//						div.setAttribute("class","partyDiv");
+//						const productname = document.createElement('div');
+//						productname.append(data[i].productname);
+//						const address = document.createElement('div');
+//						address.append(data[i].address);
+//						const img = document.createElement('img');
+//						img.src = data[i].thumbimg;
+//						img.style.witdh = "10em";
+//						img.style.height = "10em";
+//						const productcontent = document.createElement('div');
+//						productcontent.append(data[i].productcontent);
+//						const tellnumber = document.createElement('div');
+//						tellnumber.append(data[i].tellnumber);
+//						const button1 = document.createElement('input');
+//						button1.setAttribute("type","button");
+//						button1.setAttribute("value","예매하기");
+//						button1.setAttribute("onclick","chkReservation("+data[i].productseq+");");
+//
+//						const button2 = document.createElement('input');
+//						button2.setAttribute("type","button");
+//						button2.setAttribute("value","좋아요");
+//						button2.setAttribute("onclick","");
+//						
+//						const button3 = document.createElement('input');
+//						button3.setAttribute("type","button");
+//						button3.setAttribute("value","찜하기");
+//						button3.setAttribute("onclick","");
+						
+						
+						const cardDeck = document.createElement('div');
+						cardDeck.setAttribute("class","col-sm-3 mb-3");
+						cardDeck.style.wordBreak = 'break-all';
+						
+						const card = document.createElement('div');
+						card.setAttribute("class","card border-info");
+						
 						const img = document.createElement('img');
+						img.setAttribute("class","card-img-top");
+						img.setAttribute("alt","Card image cap");
 						img.src = data[i].thumbimg;
 						img.style.witdh = "10em";
 						img.style.height = "10em";
-						const productcontent = document.createElement('div');
-						productcontent.append(data[i].productcontent);
-						const tellnumber = document.createElement('div');
-						tellnumber.append(data[i].tellnumber);
+						
+						const div = document.createElement('div');
+						div.setAttribute("class","card-body");
+				
+						const title = document.createElement('h5');
+						title.append(data[i].productname);
+						title.setAttribute("class","card-header bg-info mb-3");
+						title.style.fontweight = 'bold';
+						
+						const addr = document.createElement('div');
+						addr.append(data[i].address);
+
+						const tel = document.createElement('div');
+						tel.append(data[i].tellnumber);
+						
+						const button = document.createElement('button');
+						button.setAttribute("onclick", 'getAddress("'+data[i].address+'","'+data[i].productname+'");')
+						button.setAttribute("type","button");
+						button.setAttribute("class","btn btn-info");
+						button.setAttribute("data-toggle","modal");
+						button.setAttribute("data-target","#addrModal");
+						button.append("지도보기")
+						
 						const button1 = document.createElement('input');
 						button1.setAttribute("type","button");
 						button1.setAttribute("value","예매하기");
 						button1.setAttribute("onclick","chkReservation("+data[i].productseq+");");
-
-						const button2 = document.createElement('input');
-						button2.setAttribute("type","button");
-						button2.setAttribute("value","좋아요");
-						button2.setAttribute("onclick","");
 						
-						const button3 = document.createElement('input');
-						button3.setAttribute("type","button");
-						button3.setAttribute("value","찜하기");
-						button3.setAttribute("onclick","");
-						
-						div.append(productname);
-						div.append(address);
-						div.append(img);
-						div.append(productcontent);
-						div.append(tellnumber);
+						card.append(title);
+						div.append(addr);
+						div.append(tel);
+						div.append(button);
 						div.append(button1);
-						div.append(button2);
-						div.append(button3);
+						
+						card.append(img);
+						card.append(div);
 
-						partylist.append(div);
+						cardDeck.append(card);
+						
+						partylist.append(cardDeck)
 						
 					}
 
@@ -313,46 +357,60 @@ function getProductList(areacode) {
 			
 			for (var i = 0; i < data.length; i++) {
 				
-				const div = document.createElement('div');
-
-				div.setAttribute("class","partyDiv");
-				const productname = document.createElement('div');
-				productname.append(data[i].productname);
-				const address = document.createElement('div');
-				address.append(data[i].address);
+				const cardDeck = document.createElement('div');
+				cardDeck.setAttribute("class","col-sm-3 mb-3");
+				cardDeck.style.wordBreak = 'break-all';
+				
+				const card = document.createElement('div');
+				card.setAttribute("class","card border-info");
+				
 				const img = document.createElement('img');
+				img.setAttribute("class","card-img-top");
+				img.setAttribute("alt","Card image cap");
 				img.src = data[i].thumbimg;
 				img.style.witdh = "10em";
 				img.style.height = "10em";
-				const productcontent = document.createElement('div');
-				productcontent.append(data[i].productcontent);
-				const tellnumber = document.createElement('div');
-				tellnumber.append(data[i].tellnumber);
-				const button1 = document.createElement('input');
+				
+				const div = document.createElement('div');
+				div.setAttribute("class","card-body");
+		
+				const title = document.createElement('h5');
+				title.append(data[i].productname);
+				title.setAttribute("class","card-header bg-info mb-3");
+				title.style.fontweight = 'bold';
+				
+				const addr = document.createElement('div');
+				addr.append(data[i].address);
+
+				const tel = document.createElement('div');
+				tel.append(data[i].tellnumber);
+				
+				const button = document.createElement('button');
+				button.setAttribute("onclick", 'getAddress("'+data[i].address+'","'+data[i].productname+'");')
+				button.setAttribute("type","button");
+				button.setAttribute("class","btn btn-info mr-3");
+				button.setAttribute("data-toggle","modal");
+				button.setAttribute("data-target","#addrModal");
+				button.append("지도보기")
+				
+				const button1 = document.createElement('button');
 				button1.setAttribute("type","button");
-				button1.setAttribute("value","예매하기");
+				button1.setAttribute("class","btn btn-info mr-3");
+				button1.append("예매하기")
 				button1.setAttribute("onclick","chkReservation("+data[i].productseq+");");
-
-				const button2 = document.createElement('input');
-				button2.setAttribute("type","button");
-				button2.setAttribute("value","좋아요");
-				button2.setAttribute("onclick","");
 				
-				const button3 = document.createElement('input');
-				button3.setAttribute("type","button");
-				button3.setAttribute("value","찜하기");
-				button3.setAttribute("onclick","");
-				
-				div.append(productname);
-				div.append(address);
-				div.append(img);
-				div.append(productcontent);
-				div.append(tellnumber);
+				card.append(title);
+				div.append(addr);
+				div.append(tel);
+				div.append(button);
 				div.append(button1);
-				div.append(button2);
-				div.append(button3);
+				
+				card.append(img);
+				card.append(div);
 
-				partylist.append(div);
+				cardDeck.append(card);
+				
+				partylist.append(cardDeck)
 				
 			}
 			
