@@ -63,9 +63,34 @@
 	<hr/>
 	<div id="partylist" class="row">
 	</div>
+	
+<div class="modal fade" id="addrModal" tabindex="-1" role="dialog" aria-labelledby="addrModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addrModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	      <div class="container-fluid">
+	      	<div class="row">
+	      		<div class="col" id="map" style="width: 400px; height: 400px; display:none;"></div>
+	      	</div>
+	      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 <script type="text/javascript" src="resources/js/party.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/index.css">
+<script type="text/javascript" src="resources/js/map.js"></script>
 
 </html>

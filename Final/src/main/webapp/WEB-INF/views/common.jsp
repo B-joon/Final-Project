@@ -31,11 +31,17 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
+<!-- 최상단으로 가기 -->
 <script type="text/javascript" src="resources/js/gotop.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/gotop.css">
 
+<!-- 날씨 -->
 <script type="text/javascript" src="resources/js/weather.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/weather.css">
+
+<!-- 지도정보 -->
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dfb6f83c1347ebbcf6cbda00be7c7b6f&libraries=services,clusterer,drawing"></script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between sticky-top">
 	<a class="navbar-brand" href="main.do"> <font

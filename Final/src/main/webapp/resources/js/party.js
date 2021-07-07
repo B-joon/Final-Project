@@ -81,18 +81,19 @@ function getPartyAllList() {
 					const tel = document.createElement('div');
 					tel.append(list[i].tel);
 					
-					const a = document.createElement('a');
-					a.href = "partydetail.do?title=" + list[i].title
-						   + "&addr=" + list[i].addr1
-						   + "&tel=" + list[i].tel
-						   + "&imgsrc=" + list[i].firstimage
-				    a.append("지도보기")
+					const button = document.createElement('button');
+					button.setAttribute("onclick", 'getAddress("'+list[i].addr1+'","'+list[i].title+'");')
+					button.setAttribute("type","button");
+					button.setAttribute("class","btn btn-warning");
+					button.setAttribute("data-toggle","modal");
+					button.setAttribute("data-target","#addrModal");
+					button.append("지도보기")
 					// 지도정보를 미리 불러온다음에 모달로 표현해도 될듯?
 				    
 					card.append(title);
 					div.append(addr);
 					div.append(tel);
-					div.append(a);
+					div.append(button);
 					
 					card.append(img);
 					card.append(div);
@@ -181,17 +182,18 @@ function getPartyList(areacode) {
 				const tel = document.createElement('div');
 				tel.append(list[i].tel);
 				
-				const a = document.createElement('a');
-				a.href = "partydetail.do?title=" + list[i].title
-					   + "&addr=" + list[i].addr1
-					   + "&tel=" + list[i].tel
-					   + "&imgsrc=" + list[i].firstimage
-			    a.append("지도보기")
+				const button = document.createElement('button');
+				button.setAttribute("onclick", 'getAddress("'+list[i].addr1+'","'+list[i].title+'");')
+				button.setAttribute("type","button");
+				button.setAttribute("class","btn btn-warning");
+				button.setAttribute("data-toggle","modal");
+				button.setAttribute("data-target","#addrModal");
+				button.append("지도보기")
 				
 				card.append(title);
 				div.append(addr);
 				div.append(tel);
-				div.append(a);
+				div.append(button);
 				
 				card.append(img);
 				card.append(div);
