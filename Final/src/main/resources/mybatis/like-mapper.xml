@@ -3,28 +3,28 @@
 <mapper namespace="like">
 
 	<insert id="likeInsert" parameterType="likeDto">
-		INSERT INTO PRODUCTLIKE
-		VALUES(PRODUCTLIKESEQ.NEXTVAL, #{productseq}, #{userseq})
+		INSERT INTO REIVEWLIKE
+		VALUES(REIVEWLIKESEQ.NEXTVAL, #{reviewseq}, #{userseq})
 	</insert>
 	
 	<delete id="likeDel" parameterType="likeDto">
-		DELETE FROM PRODUCTLIKE
-		WHERE PRODUCTSEQ = #{productseq} AND USERSEQ = #{userseq}
+		DELETE FROM REIVEWLIKE
+		WHERE REIVEWSEQ = #{reviewseq} AND USERSEQ = #{userseq}
 	</delete>
 	
 	<update id="likeUpdate" parameterType="likeDto">
 		UPDATE REVIEW
 		SET
 		LIKECOUNT = (SELECT COUNT(*)
-		FROM PRODUCTLIKE
-		WHERE PRODUCTSEQ = #{productseq})
-		WHERE PRODUCTSEQ = #{productseq}
+		FROM REIVEWLIKE
+		WHERE REIVEWSEQ = #{reviewseq})
+		WHERE REIVEWSEQ = #{reviewseq}
 	</update>
 	
 	<select id="likeCnt" resultType="int">
 		SELECT COUNT(LIKESEQ)
-		FROM PRODUCTLIKE
-		WHERE PRODUCTSEQ = #{productseq} AND USERSEQ = #{userseq}
+		FROM REIVEWLIKE
+		WHERE REIVEWSEQ = #{reviewseq} AND USERSEQ = #{userseq}
 	</select>
 
 </mapper>

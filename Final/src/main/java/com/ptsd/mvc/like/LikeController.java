@@ -20,21 +20,21 @@ public class LikeController {
 	public int likeCnt(Model model, HttpServletRequest request) {
 		
 		int likeseq = Integer.parseInt(request.getParameter("like"));
-		int productseq = Integer.parseInt(request.getParameter("productseq"));
+		int reviewseq = Integer.parseInt(request.getParameter("reviewseq"));
 		int userseq = ((UserDto) request.getSession().getAttribute("login")).getUserseq();
 		
 		LikeDto dto = new LikeDto();
 		
-		dto.setProductseq(productseq);
+		dto.setReviewseq(reviewseq);
 		dto.setUserseq(userseq);
 		
 		if (likeseq >= 1) {
 			biz.likeDel(dto);
-			biz.likeUpdate(productseq);
+			biz.likeUpdate(reviewseq);
 			likeseq = 0;
 		} else {
 			biz.likeInsert(dto);
-			biz.likeUpdate(productseq);
+			biz.likeUpdate(reviewseq);
 			likeseq = 1;
 		}
 		

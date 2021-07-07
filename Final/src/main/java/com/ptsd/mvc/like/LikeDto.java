@@ -3,7 +3,7 @@ package com.ptsd.mvc.like;
 public class LikeDto {
 
 	private int likeseq;
-	private int productseq;
+	private int reviewseq;
 	private int userseq;
 	
 	public int getLikeseq() {
@@ -12,11 +12,11 @@ public class LikeDto {
 	public void setLikeseq(int likeseq) {
 		this.likeseq = likeseq;
 	}
-	public int getProductseq() {
-		return productseq;
+	public int getReviewseq() {
+		return reviewseq;
 	}
-	public void setProductseq(int productseq) {
-		this.productseq = productseq;
+	public void setReviewseq(int reviewseq) {
+		this.reviewseq = reviewseq;
 	}
 	public int getUserseq() {
 		return userseq;

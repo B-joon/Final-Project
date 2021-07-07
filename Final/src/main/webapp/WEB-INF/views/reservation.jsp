@@ -89,15 +89,14 @@
 	// 좋아요
 	$(document).ready(function () {
 		var likeseq = ${likeseq};
-		var productseq = $('input[name=inputName]').val();
 		
 		if (likeseq > 0) {
 			console.log(likeseq);
-			$(".likeseq").prop("value", "♥")
+			$(".likeseq").prop("value", "♥ " + likeseq)
 			$(".like").prop('name', likeseq);
 		} else {
 			console.log(likeseq);
-			$(".likeseq").prop("value", "♡")
+			$(".likeseq").prop("value", "♡ " + likeseq)
 			$(".like").prop('name', likeseq);
 		}
 		
@@ -105,18 +104,18 @@
 			
 			var that = $(".like");
 			
-			var sendData = {'productseq' : productseq, 'like' : that.prop('name')};
+			var sendData = {'reviewseq' : productseq, 'like' : that.prop('name')};
 			
 			$.ajax({
 				url : 'reservation.do',
 				type : 'POST',
 				data : sendData,
-				success: function () {
+				success: function (data) {
 					that.prop('name', data);
 					if (data == 1) {
-						$(".likeseq").prop("value", "https://e7.pngegg.com/pngimages/22/527/png-clipart-heart-open-free-content-heart.png");
+						$(".likeseq").prop("value", "♡ " + likeseq);
 					} else {
-						$(".likeseq").prop("value", "https://w7.pngwing.com/pngs/518/473/png-transparent-heart-symbol-heart-line-love-text-heart.png")
+						$(".likeseq").prop("value", "♥ " + likeseq)
 					}
 				}
 			});
@@ -125,9 +124,13 @@
 		
 	});
 	</script>
-	
-	<input type="button" value="댓글 작성" class ="reviewinsert"
-		onclick="location.href='reviewinsert.do'">
+	<form action="reviewinsert.do">
+		<input type="hidden" name="productseq" value="${dto.productseq }">
+		<input type="hidden" name="userseq" value="${login.userseq }">
+		<input type="text" name="reviewname" value="${login.name }">
+		<textarea rows="2" cols="80" name="reviewcontent"></textarea>
+		<input type="button" value="댓글 작성" onclick="location.href='reviewinsert.do'">
+	</form>
 		<c:choose>
 			<c:when test="${empty reviewlist }">
 ----------작성된 글이 존재하지 않습니다---------
@@ -147,6 +150,13 @@
 							<input class="likeseq" type="text" value="" readonly="readonly">
 						</a>
 					</div>
+				</div>
+				<div>
+				<form action="reviewupdate.do">
+					<input type="hidden" name="reviewseq" value="${reviewdto.reviewseq}">
+					<input type="text" name="reviewname" value="${reviewdto.reviewname }">
+					<input type="text">
+				</form>
 				</div>
 				</c:forEach>
 			</c:otherwise>

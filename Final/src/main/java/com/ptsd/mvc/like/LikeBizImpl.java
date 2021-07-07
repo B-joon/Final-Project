@@ -20,8 +20,8 @@ public class LikeBizImpl implements LikeBiz {
 	}
 
 	@Override
-	public int likeUpdate(int productseq) {
-		return dao.likeUpdate(productseq);
+	public int likeUpdate(int reviewseq) {
+		return dao.likeUpdate(reviewseq);
 	}
 
 	@Override

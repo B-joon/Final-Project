@@ -11,8 +11,14 @@
 	
 	<insert id="reivewInsert" parameterType="reviewDto">
 		INSERT INTO REVIEW
-		VALUES(REIVEWSEQ.NEXTVAL, #{productseq}, #{userseq}, #{reivewname}, #{reviewcontent}, 0, SYSDATE)
+		VALUES(REVIEWSEQ.NEXTVAL, #{productseq}, #{userseq}, #{reviewname}, #{reviewcontent}, 0, SYSDATE)
 	</insert>
+	
+	<update id="reviewUpdate" parameterType="reviewDto">
+		UPDATE REVIEW
+		SET REVIEWCONTENT = ${reviewcontent}
+		WHERE REVIEWSEQ = ${reviewseq}
+	</update>
 	
 	<delete id="reviewDel" parameterType="reviewDto">
 		DELETE FROM REVIEW
