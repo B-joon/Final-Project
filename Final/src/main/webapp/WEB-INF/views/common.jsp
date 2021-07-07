@@ -23,6 +23,7 @@ UserDto login = (UserDto) session.getAttribute("login");
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <!-- include summernote css/js -->
 
 <link
@@ -35,6 +36,10 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script type="text/javascript" src="resources/js/gotop.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/gotop.css">
 
+<!-- datepicker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+
 <!-- 날씨 -->
 <script type="text/javascript" src="resources/js/weather.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/weather.css">
@@ -42,7 +47,7 @@ UserDto login = (UserDto) session.getAttribute("login");
 <!-- 지도정보 -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dfb6f83c1347ebbcf6cbda00be7c7b6f&libraries=services,clusterer,drawing"></script>
-
+<div class="container-lg">
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between sticky-top">
 	<a class="navbar-brand" href="main.do"> <font
 		style="vertical-align: inherit;"><font
@@ -93,9 +98,13 @@ UserDto login = (UserDto) session.getAttribute("login");
 				}				
 				%>
 			</ul>	
-			<div id="weatherarea"></div>
+			
 	</div>
 </nav>
+<div class="container mt-3 mb-3">
+<div id="weatherarea" class=""></div>
+</div>
+
 
 
 <%-- 상단으로 이동하기 버튼 시작 --%>
