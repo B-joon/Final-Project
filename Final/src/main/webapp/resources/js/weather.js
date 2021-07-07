@@ -21,13 +21,14 @@ function getWeather() {
 	const weatherarea = document.getElementById("weatherarea");
 	const ul = document.createElement("ul");
 	ul.setAttribute("id", "roller");
-	ul.setAttribute("class", "form-control");
+	ul.setAttribute("class", "");
 
 for (let i = 0; i < cityName.length; i++) {
 
 	$.getJSON(getCity(cityName[i]), function(result) {
 		
 		var li = document.createElement("li");
+		ul.setAttribute("class", "border border-primary text-center rounded");
 		
 		var weather = document.createElement("span");
 		weather.innerHTML = weatherIcon(result.weather[0].icon);

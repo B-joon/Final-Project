@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-#weatherarea {	
-	position: absolute;
-	right: 10px;
-}
-
 #roller {
 	height: 50px;
 	overflow: hidden;
