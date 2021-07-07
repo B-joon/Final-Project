@@ -30,12 +30,12 @@ public class LikeDaoImpl implements LikeDao {
 	}
 
 	@Override
-	public int likeUpdate(int productseq) {
+	public int likeUpdate(int reviewseq) {
 		
 		int res = 0;
 		
 		try {
-			res = sqlSession.update(NAMESPACE + "likeUpdate", productseq);
+			res = sqlSession.update(NAMESPACE + "likeUpdate", reviewseq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
