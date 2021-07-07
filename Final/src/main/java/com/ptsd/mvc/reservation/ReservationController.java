@@ -27,7 +27,7 @@ public class ReservationController {
 	private LikeBiz likebiz;
 	
 	@RequestMapping("/reservation.do")
-	public String selectList(Model model, int productseq, HttpServletRequest HttpRequest) {
+	public String selectList(Model model, int productseq, int reviewseq, HttpServletRequest HttpRequest) {
 		
 		model.addAttribute("dto", Pbiz.selectOne(productseq));
 		
@@ -39,7 +39,7 @@ public class ReservationController {
 		int userseq = ((UserDto) HttpRequest.getSession().getAttribute("login")).getUserseq();
 		
 		LikeDto likeDto = new LikeDto();
-		likeDto.setProductseq(productseq);
+		likeDto.setReviewseq(reviewseq);
 		likeDto.setUserseq(userseq);
 		
 		int likeseq = likebiz.likeCount(likeDto);
