@@ -89,68 +89,7 @@
 
 	<!-- 댓글 후기 -->
 
-	<script type="text/javascript">
-	// 좋아요
-	$(document).ready(function () {
-		
-		var userSeq = $("[name='userseq']").val();
-		console.log(userSeq)
-		
-		var likeArray = $("*[name^='like']");
-
-		for (var i = 0; i < likeArray.length; i++) {
-		   var reviewseq = likeArray[i].value.substring(4);
-		   like(reviewseq, userSeq);
-		}
-
-	});
-	
-	function like(reviewseq, userseq) {
-		
-		var likeCntData = {'userseq': userseq, 'reviewseq': reviewseq};
-		console.log(likeCntData);
-		
-		$.ajax({
-			url: "likecnt.do",
-			type: "POST",
-			data: likeCntData,
-			success: function(data) {
-				var likecnt = data;
-				if (likecnt > 0) {
-					$(".likeseq"+reviewseq).children().remove();
-					$(".likeseq"+reviewseq).append('<i class="fas fa-heart"></i>');
-				} else {
-					$(".likeseq"+reviewseq).children().remove();
-					$(".likeseq"+reviewseq).append('<i class="far fa-heart"></i>');
-				}
-			}
-			
-		});
-	}
-	
-	function likeEvent(reviewseq, userseq) {
-		
-		var that = $(".like"+reviewseq);
-		
-		var sendData = {'reviewseq' : reviewseq, 'like' : that.prop('name')};
-		
-		$.ajax({
-			url : 'like.do',
-			type : 'POST',
-			data : sendData,
-			success: function (data) {
-				that.prop('name', data);
-				if (data == 1) {
-					$(".likeseq"+reviewseq).append('<i class="fas fa-heart"></i>');
-				} else {
-					$(".likeseq"+reviewseq).append('<i class="far fa-heart"></i>');
-				}
-			}
-		});
-		
-	}
-
-	</script>
+	<script type="text/javascript" src="resources/js/reviewandlike.js"></script>
 	<form action="reviewinsert.do">
 		<input type="hidden" name="productseq" value="${dto.productseq }">
 		<input type="hidden" name="userseq" value="${login.userseq }">
@@ -165,29 +104,30 @@
 			</c:when>
 		<c:otherwise>
 			<c:forEach items="${reviewlist }" var="reviewdto">
-				<div style="border: 1px">
-					${reviewdto.reviewname }<br> ${reviewdto.reviewcontent }
-					<div class="review-btn">
-
-					<button onclick="location.href='reviewupdate.do?reviewseq=${reviewdto.reviewseq}'">수정</button>
-					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
-					</div><br>
-					<span>${reviewdto.reviewdate }</span><br>
+				<div class="list${reviewdto.reviewseq }" style="display: block">
 					<div onclick="like(${reviewdto.reviewseq }, ${login.userseq });">
-						<div style="text-align: right;" onclick="likeEvent(${reviewdto.reviewseq }, ${login.userseq });">
+						<div style="text-align: right;" onclick="likeEvent(${reviewdto.reviewseq });">
 							<input name="like${reviewdto.reviewseq }" value="like${reviewdto.reviewseq }" type="hidden">
-							<div class="likeseq${reviewdto.reviewseq }"></div>
+							<input class="like${reviewdto.reviewseq }" name="" type="hidden">
+							<div class="likeseq${reviewdto.reviewseq }">${reviewdto.reviewlikecnt } </div>
 						</div>
 					</div>
-					
+					${reviewdto.reviewname }<br> ${reviewdto.reviewcontent }
+					<div class="review-btn">
+					<button onclick="Update(${reviewdto.reviewseq });">수정</button>
+					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
+					</div>
+					<span>${reviewdto.reviewdate }</span><br>
 				</div>
-				<div style="display: none">
-
+				<div class="update${reviewdto.reviewseq }" style="display: none">
 				<form action="reviewupdate.do">
-					<input type="hidden" name="reviewseq" value="${reviewdto.reviewseq}"><br>
+					<input type="hidden" name="reviewseq" value="${reviewdto.reviewseq}">
+					<input type="hidden" name="productseq" value="${reviewdto.productseq }">
 					<input type="text" name="reviewname" value="${reviewdto.reviewname }" readonly="readonly"><br>
+					<textarea rows="2" cols="80" name="reviewcontent"></textarea><br>
 					<input type="submit" value="수정">
-					<input type="text">
+					<input type="button" value="취소" onclick="NoUpdate(${reviewdto.reviewseq });">
+					
 				</form>
 				</div>
 			</c:forEach>
