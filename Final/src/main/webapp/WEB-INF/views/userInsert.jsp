@@ -64,6 +64,7 @@ response.setContentType("text/html; charset=UTF-8");
 			<tr>
 				<th>EMAIL</th>
 				<td>
+					<input type="hidden" name="email" id="email">
 					<input type="text" name="femail" id="femail" style="ime-mode: disabled" placeholder="이메일을 적어주세요">@
 					 <input id="textEmail" placeholder="이메일을 선택하세요" readonly="readonly"> 
 					<select name="bemail" id="bemail">
@@ -79,6 +80,7 @@ response.setContentType("text/html; charset=UTF-8");
 				</td>
 			</tr>
 			<tr>
+				
 				<td colspan="2" align="center" id="emailChk"></td>
 			</tr>
 			<tr>
@@ -141,15 +143,12 @@ response.setContentType("text/html; charset=UTF-8");
 	});
 	
 	function nameChk(){
-		var username = $("#username").val().trim();
+		var name = $("#username").val().trim();
 		
-		if(name != null){
-			$("#Chk7").val('true');
-			submitChk();
-			console.log(name)
+		if(name != null || name != ""){
+			$("#Chk7").val('true');	
 		} else{
 			$("#Chk7").val('false');
-			submitChk();
 		}
 		
 	}
@@ -236,7 +235,7 @@ $("#userid").keyup(function(){
 						console.log(userid)
 						setTimeout(function() {
 							$("#idChkres").hide();
-							}, 1500);
+							}, 2000);
 					} else {
 						$("#idChkres").html('이미 존재하는 ID입니다.');
 						$("#idChkres").css("color", "red");
@@ -287,7 +286,8 @@ $("#userid").keyup(function(){
 	$("#emailChkBtn").click(function(){
 		var femail = $("#femail").val();
 		var femailChk = femail + "@null";
-		var bemail = $("#bemail").val();
+		var bemail = $("#bemail option:selected").val();
+		console.log(bemail);
 		var bemailChk = "null@"+ bemail;
 		var email = femail + "@" + bemail;
 		console.log(email)
@@ -306,6 +306,9 @@ $("#userid").keyup(function(){
 					console.log(check)
 					$("#emailChk").show();
 					if (check == "false") {
+						$("#email").val(email);
+						console.log("이메일")
+						console.log(email)
 						$("#emailChk").html('사용 가능한 email입니다.');
 						$("#emailChk").css("color", "blue");
 						$("#femail").attr('readonly', true);
@@ -361,6 +364,7 @@ $("#userid").keyup(function(){
 						$("#proofBtn").attr('type', 'hidden');
 						$("#prooftext").attr('readonly', true);
 						$("#Chk4").val('true');
+						
 						submitChk();
 						console.log(proof)
 						setTimeout(function() {

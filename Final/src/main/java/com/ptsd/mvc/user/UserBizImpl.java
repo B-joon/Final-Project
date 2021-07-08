@@ -77,15 +77,21 @@ public class UserBizImpl implements UserBiz {
 	}
 	
 	@Override
-	public String idFind(String name, String email) {
+	public UserDto idFind(UserDto dto) {
 		
-		return dao.idFind(name, email);
+		return dao.idFind(dto);
 	}
 	
 	@Override
-	public String pwFind(String userid, String email) {
+	public UserDto pwFind(UserDto dto) {
 		
-		return dao.pwFind(userid, email);
+		return dao.pwFind(dto);
+	}
+	
+	@Override
+	public int pwUpdate(UserDto pwUpdate) {
+		
+		return dao.pwUpdate(pwUpdate);
 	}
 	
 	@Override
