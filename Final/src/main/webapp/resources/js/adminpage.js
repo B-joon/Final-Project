@@ -45,31 +45,29 @@ function getProductAllList() {
 	const th6 = document.createElement('th');
 	th6.append("이미지");
 	const th7 = document.createElement('th');
-	th7.append("상품내용");
+	th7.append("지역번호");
 	const th8 = document.createElement('th');
-	th8.append("지역번호");
+	th8.append("주소");
 	const th9 = document.createElement('th');
-	th9.append("주소");
+	th9.append("전화번호");
 	const th10 = document.createElement('th');
-	th10.append("전화번호");
+	th10.append("관람시간");
 	const th11 = document.createElement('th');
-	th11.append("관람시간");
+	th11.append("관람등급");
 	const th12 = document.createElement('th');
-	th12.append("관람등급");
+	th12.append("관객수");
 	const th13 = document.createElement('th');
-	th13.append("관객수");
+	th13.append("티켓가격");
 	const th14 = document.createElement('th');
-	th14.append("티켓가격");
+	th14.append("좋아요수");
 	const th15 = document.createElement('th');
-	th15.append("좋아요수");
+	th15.append("찜하기수");
 	const th16 = document.createElement('th');
-	th16.append("찜하기수");
+	th16.append("조회수");
 	const th17 = document.createElement('th');
-	th17.append("조회수");
+	th17.append("관리");
 	const th18 = document.createElement('th');
-	th18.append("관리");
-	const th19 = document.createElement('th');
-	th19.append("찜하기");
+	th18.append("찜하기");
 	tr.append(th1);
 	tr.append(th2);
 	tr.append(th3);
@@ -88,7 +86,6 @@ function getProductAllList() {
 	tr.append(th16);
 	tr.append(th17);
 	tr.append(th18);
-	tr.append(th19);
 	table.append(tr);
 	
 	for (var i = 0; i < arrCode.length; i++) {
@@ -104,7 +101,7 @@ function getProductAllList() {
 				dataType: "json",
 				async:false,
 				success:function(data) {
-					
+					console.log(data)
 					for (var i = 0; i < data.length; i++) {
 						
 						const tr = document.createElement('tr');
@@ -125,8 +122,6 @@ function getProductAllList() {
 						img.style.witdh = "3em";
 						img.style.height = "3em";
 						thumbimg.append(img);
-						const productcontent = document.createElement('td');
-						productcontent.append(data[i].productcontent);
 						const areacode = document.createElement('td');
 						areacode.append(data[i].areacode);
 						const address = document.createElement('td');
@@ -190,7 +185,6 @@ function getProductAllList() {
 						tr.append(startdate);
 						tr.append(enddate);
 						tr.append(thumbimg);
-						tr.append(productcontent);
 						tr.append(areacode);
 						tr.append(address);
 						tr.append(tellnumber);
@@ -234,6 +228,7 @@ function getProductList(areacode) {
 		contentType : "application/json",
 		dataType: "json",
 		success:function(data) {
+			console.log(data)
 			const partylist = document.querySelector('#partylist');
 			
 			const table = document.createElement('table');
@@ -253,31 +248,29 @@ function getProductList(areacode) {
 			const th6 = document.createElement('th');
 			th6.append("이미지");
 			const th7 = document.createElement('th');
-			th7.append("상품내용");
+			th7.append("지역번호");
 			const th8 = document.createElement('th');
-			th8.append("지역번호");
+			th8.append("주소");
 			const th9 = document.createElement('th');
-			th9.append("주소");
+			th9.append("전화번호");
 			const th10 = document.createElement('th');
-			th10.append("전화번호");
+			th10.append("관람시간");
 			const th11 = document.createElement('th');
-			th11.append("관람시간");
+			th11.append("관람등급");
 			const th12 = document.createElement('th');
-			th12.append("관람등급");
+			th12.append("관객수");
 			const th13 = document.createElement('th');
-			th13.append("관객수");
+			th13.append("티켓가격");
 			const th14 = document.createElement('th');
-			th14.append("티켓가격");
+			th14.append("좋아요수");
 			const th15 = document.createElement('th');
-			th15.append("좋아요수");
+			th15.append("찜하기수");
 			const th16 = document.createElement('th');
-			th16.append("찜하기수");
+			th16.append("조회수");
 			const th17 = document.createElement('th');
-			th17.append("조회수");
+			th17.append("관리");
 			const th18 = document.createElement('th');
-			th18.append("관리");
-			const th19 = document.createElement('th');
-			th19.append("찜하기");
+			th18.append("찜하기");
 			tr.append(th1);
 			tr.append(th2);
 			tr.append(th3);
@@ -296,7 +289,6 @@ function getProductList(areacode) {
 			tr.append(th16);
 			tr.append(th17);
 			tr.append(th18);
-			tr.append(th19);
 			table.append(tr);
 			
 			for (var i = 0; i < data.length; i++) {
@@ -319,8 +311,6 @@ function getProductList(areacode) {
 				img.style.witdh = "3em";
 				img.style.height = "3em";
 				thumbimg.append(img);
-				const productcontent = document.createElement('td');
-				productcontent.append(data[i].productcontent);
 				const areacode = document.createElement('td');
 				areacode.append(data[i].areacode);
 				const address = document.createElement('td');
@@ -383,7 +373,6 @@ function getProductList(areacode) {
 				tr.append(startdate);
 				tr.append(enddate);
 				tr.append(thumbimg);
-				tr.append(productcontent);
 				tr.append(areacode);
 				tr.append(address);
 				tr.append(tellnumber);
