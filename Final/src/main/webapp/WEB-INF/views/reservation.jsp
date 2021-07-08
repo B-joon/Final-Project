@@ -7,6 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PSTD / 상품 예매 페이지</title>
 </head>
 <body>
@@ -39,6 +41,7 @@
 									<p class="card-text">${dto.runtime }</p>
 									<p class="card-text">${dto.rating }</p>
 									<p class="card-text">${dto.price } 원</p>
+									<input type="hidden" id="ticketprice" value="${dto.price }">
 								</div>
 							</div>
 							
@@ -62,7 +65,7 @@
 						</div>
 						<select class="custom-select" id="inputGroupSelect01"
 							name="ticketcount">
-							<option value="" disabled selected>인원수 선택</option>
+							<option value="" disabled selected>인원선택</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>

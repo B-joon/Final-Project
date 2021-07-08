@@ -13,3 +13,15 @@ function chkReservation(productseq) {
 	
 	
 }
+
+function goPayment() {
+	
+	var ticketprice = $("#ticketprice").val();
+	var num = $("[name='ticketcount'] option:selected").val();
+	var name = $("[name='reviewname']").val();
+	var price = ticketprice * num;
+	
+	location.href='pay.do?name='+name+'&price='+price;
+	
+	
+}
