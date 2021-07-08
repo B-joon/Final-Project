@@ -63,7 +63,7 @@ public class UserController {
 	@RequestMapping("chart.do")
 	public String chart() {
 		return "chart";
-
+	}
 	@RequestMapping("/idpwFind.do")
 	public String idpwFind() {
 		return "userfind";

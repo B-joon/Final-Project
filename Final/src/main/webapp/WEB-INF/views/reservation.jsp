@@ -34,7 +34,7 @@
 									<p class="card-text">가격</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="card-text">${dto.address }</p>
+									<p class="card-text"><a href="#" class="text-reset">${dto.address }</a></p>
 									<p class="card-text">${dto.startdate } ~ ${dto.enddate }</p>
 									<p class="card-text">${dto.runtime }</p>
 									<p class="card-text">${dto.rating }</p>
@@ -58,7 +58,7 @@
 				<div class="m-2">
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
-							<label class="input-group-text" for="inputGroupSelect01">성인</label>
+							<label class="input-group-text" for="inputGroupSelect01">성인기준</label>
 						</div>
 						<select class="custom-select" id="inputGroupSelect01"
 							name="ticketcount">
@@ -76,32 +76,6 @@
 						</select>
 					</div>
 				</div>
-				<%
-				ProductDto dto = (ProductDto) request.getAttribute("dto");
-				if (dto.getRating().equals("ALL")) {
-				%>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<label class="input-group-text" for="inputGroupSelect02">어린이</label>
-					</div>
-					<select class="custom-select" id="inputGroupSelect02"
-						name="ticketcountKids">
-						<option value="" disabled selected>인원수 선택</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
-					</select>
-				</div>
-				<%
-				}
-				%>
 					<div class="m-2 border-bottom">
 						<p class="font-weight-bold">남은좌석수</p><p class="font-weight-normal">0 / ${dto.seatcount }</p>
 						
@@ -119,28 +93,41 @@
 	// 좋아요
 	$(document).ready(function () {
 		
-		function like(reviewseq, userseq) {
-			
-			var likeCntData = {'userseq': userseq, 'reviewseq': reviewseq};
-			console.log(likeCntData);
-			
-			$.ajax({
-				url: "likecnt.do",
-				type: "POST",
-				data: likeCntData,
-				success: function(data) {
-					var likecnt = data;
-					if (likecnt > 0) {
-						$(".likeseq"+reviewseq).prop("value", "♥");
-					} else {
-						$(".likeseq"+reviewseq).prop("value", "♡");
-					}
-				}
-				
-			});
-		}
+		var userSeq = $("[name='userseq']").val();
+		console.log(userSeq)
 		
+		var likeArray = $("*[name^='like']");
+
+		for (var i = 0; i < likeArray.length; i++) {
+		   var reviewseq = likeArray[i].value.substring(4);
+		   like(reviewseq, userSeq);
+		}
+
 	});
+	
+	function like(reviewseq, userseq) {
+		
+		var likeCntData = {'userseq': userseq, 'reviewseq': reviewseq};
+		console.log(likeCntData);
+		
+		$.ajax({
+			url: "likecnt.do",
+			type: "POST",
+			data: likeCntData,
+			success: function(data) {
+				var likecnt = data;
+				if (likecnt > 0) {
+					$(".likeseq"+reviewseq).children().remove();
+					$(".likeseq"+reviewseq).append('<i class="fas fa-heart"></i>');
+				} else {
+					$(".likeseq"+reviewseq).children().remove();
+					$(".likeseq"+reviewseq).append('<i class="far fa-heart"></i>');
+				}
+			}
+			
+		});
+	}
+	
 	function likeEvent(reviewseq, userseq) {
 		
 		var that = $(".like"+reviewseq);
@@ -154,9 +141,9 @@
 			success: function (data) {
 				that.prop('name', data);
 				if (data == 1) {
-					$(".likeseq"+reviewseq).prop("value", "♡");
+					$(".likeseq"+reviewseq).append('<i class="fas fa-heart"></i>');
 				} else {
-					$(".likeseq"+reviewseq).prop("value", "♥")
+					$(".likeseq"+reviewseq).append('<i class="far fa-heart"></i>');
 				}
 			}
 		});
@@ -186,10 +173,10 @@
 					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
 					</div><br>
 					<span>${reviewdto.reviewdate }</span><br>
-					<div onclick="like(${reviewdto.reviewseq }, ${reviewdto.userseq });">
-						<div style="text-align: right;" onclick="likeEvent(${reviewdto.reviewseq }, ${reviewdto.userseq });">
-							<input name="like${reviewdto.reviewseq }" value="" type="hidden">
-							<input class="likeseq${reviewdto.reviewseq }" type="text" value="" readonly="readonly">
+					<div onclick="like(${reviewdto.reviewseq }, ${login.userseq });">
+						<div style="text-align: right;" onclick="likeEvent(${reviewdto.reviewseq }, ${login.userseq });">
+							<input name="like${reviewdto.reviewseq }" value="like${reviewdto.reviewseq }" type="hidden">
+							<div class="likeseq${reviewdto.reviewseq }"></div>
 						</div>
 					</div>
 					
