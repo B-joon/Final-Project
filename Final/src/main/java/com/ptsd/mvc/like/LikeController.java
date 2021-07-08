@@ -43,10 +43,15 @@ public class LikeController {
 		return likeseq;
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "likecnt.do", method = RequestMethod.POST)
-	public int like(Model model, int reviewseq, int userseq, HttpServletRequest request) {
+	public int like(Model model, HttpServletRequest request) {
 		// 좋아요
 		
+		int reviewseq = Integer.parseInt(request.getParameter("reviewseq"));
+		int userseq = Integer.parseInt(request.getParameter("userseq"));
+		System.out.println(reviewseq);
+		System.out.println(userseq);
 		
 		LikeDto likeDto = new LikeDto();
 		likeDto.setReviewseq(reviewseq);
