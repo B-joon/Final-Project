@@ -59,9 +59,15 @@ public class UserController {
 	public String pay() {
 		return "payment";
 	}
+
 	@RequestMapping("chart.do")
 	public String chart() {
 		return "chart";
+
+	@RequestMapping("/idpwFind.do")
+	public String idpwFind() {
+		return "userfind";
+
 	}
 	
 	
@@ -88,8 +94,6 @@ public class UserController {
 	
 	@RequestMapping(value="/userInsertres.do", method=RequestMethod.POST)
 	public String insertUserRes(HttpServletResponse response, UserDto dto) throws IOException {
-		
-		dto.setEmail(dto.getFemail() + "@" + dto.getBemail());
 		
 		if (biz.insertUser(dto) > 0) {
 			return "userlogin";
@@ -299,6 +303,74 @@ public class UserController {
 		}
 	}
     
-    
+    @RequestMapping(value="/idFind.do", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String , String> idFind(@RequestBody UserDto dto){ 
+    	System.out.println("DTO : "+ dto.getEmail());
+    	System.out.println("DTO : "+ dto.getName());
+    	String userid = null;
+    	UserDto find = biz.idFind(dto);
+    	System.out.println("find : " + find);
+    	System.out.println("find: " + find.getName());
+    	System.out.println(dto.getName().equals(find.getName()));
+    	if(dto.getName().equals(find.getName()) == true) {
+    		userid = find.getUserid();
+    	}
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userid", userid);
+		System.out.println(userid);
+		return map;
+	}
 	
+    @RequestMapping(value="/pwFind.do", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String , Boolean> pwFind(@RequestBody UserDto dto){ 
+		UserDto find = biz.pwFind(dto);
+		boolean check = false;
+		String finduserid = find.getUserid();
+
+		String dtouserid = dto.getUserid();
+
+		String email = find.getEmail();
+		String subject ="";
+		String content = "";
+		String receiver = "";
+		String sender = "";
+		
+		int authCode = 0;
+		String authCodes = "";
+		
+		for(int i=0; i<6; i++) {
+			authCode = (int)(Math.random()*9+1);
+			authCodes += Integer.toString(authCode);
+		}
+		System.out.println(authCodes);
+		UserDto pwUpdate = new UserDto(0, null, authCodes, email, null, null, null, null, null, null, null);
+		System.out.println(finduserid.equals(dtouserid));
+		if(finduserid.equals(dtouserid) == true ) {
+		
+			if(biz.pwUpdate(pwUpdate) > 0) {
+				check = true;
+				
+				subject = "안녕하세요 PTSD입니다. 새롭게 바뀐 비밀번호입니다.";
+				content = PwDM.dmCertification(authCodes);
+				receiver = email;
+				sender = "admin@gmail.com";
+				
+				try {
+					emailSender.sendMail(subject, content, receiver, sender);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		System.out.println(authCodes);
+		
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		map.put("check", check);
+		
+		return map;
+	}
+	
+    
 }
