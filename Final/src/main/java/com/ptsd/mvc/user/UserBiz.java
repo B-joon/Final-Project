@@ -15,8 +15,9 @@ public interface UserBiz {
 	public UserDto nicnameCheck(String nickname);
 	public List<UserDto> userSearch(String userid);
 	public String phoneCheck(String phone);
-	public String idFind(String name, String email);
-	public String pwFind(String userid, String email);
+	public UserDto idFind(UserDto dto);
+	public UserDto pwFind(UserDto dto);
+	public int pwUpdate(UserDto pwUpdate);
 	public UserDto snsCheck(UserDto dto);
 	
 }

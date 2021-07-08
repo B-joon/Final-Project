@@ -35,7 +35,8 @@
 			<td><input type="text" id="userpw"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="button" value="로그인" onclick="login();"></td>
+			<td><input type="button" value="로그인" onclick="login();"></td>
+			<td align="center"><input type="button" value="아이디/비빌번호찾기" onclick="location.href='idpwFind.do'"></td>
 			<td><input type="button" value="회원가입" onclick="location.href='userInsert.do'"></td>
 		</tr>
 		<tr>
