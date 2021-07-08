@@ -303,14 +303,15 @@ function getProductAllList() {
 						const button = document.createElement('button');
 						button.setAttribute("onclick", 'getAddress("'+data[i].address+'","'+data[i].productname+'");')
 						button.setAttribute("type","button");
-						button.setAttribute("class","btn btn-info");
+						button.setAttribute("class","btn btn-info m-1");
 						button.setAttribute("data-toggle","modal");
 						button.setAttribute("data-target","#addrModal");
 						button.append("지도보기")
 						
-						const button1 = document.createElement('input');
+						const button1 = document.createElement('button');
 						button1.setAttribute("type","button");
-						button1.setAttribute("value","예매하기");
+						button1.setAttribute("class","btn btn-info m-1");
+						button1.append("예매하기")
 						button1.setAttribute("onclick","chkReservation("+data[i].productseq+");");
 						
 						card.append(title);
@@ -388,14 +389,14 @@ function getProductList(areacode) {
 				const button = document.createElement('button');
 				button.setAttribute("onclick", 'getAddress("'+data[i].address+'","'+data[i].productname+'");')
 				button.setAttribute("type","button");
-				button.setAttribute("class","btn btn-info mr-3");
+				button.setAttribute("class","btn btn-info m-1");
 				button.setAttribute("data-toggle","modal");
 				button.setAttribute("data-target","#addrModal");
 				button.append("지도보기")
 				
 				const button1 = document.createElement('button');
 				button1.setAttribute("type","button");
-				button1.setAttribute("class","btn btn-info mr-3");
+				button1.setAttribute("class","btn btn-info m-1");
 				button1.append("예매하기")
 				button1.setAttribute("onclick","chkReservation("+data[i].productseq+");");
 				
