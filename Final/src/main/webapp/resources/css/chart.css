@@ -1,0 +1,17 @@
+#svg-area {
+  position: relative;
+}
+
+#tooltip {
+  position: absolute;
+  opacity: 0;
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+  transition: all 0.3s;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}

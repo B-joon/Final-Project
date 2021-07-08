@@ -41,6 +41,12 @@ UserDto login = (UserDto) session.getAttribute("login");
 <link rel="stylesheet" type="text/css" href="resources/css/darkmode.css">
 
 
+<script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/chart.css">
+
+
+
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between sticky-top">
 	<a class="navbar-brand" href="main.do"> <font
