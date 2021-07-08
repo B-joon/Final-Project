@@ -2,6 +2,7 @@ package com.ptsd.mvc.like;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import com.ptsd.mvc.user.UserDto;
 @Controller
 public class LikeController {
 
+	@Autowired
 	private LikeBiz biz;
 	
 	@ResponseBody
@@ -37,6 +39,22 @@ public class LikeController {
 			biz.likeUpdate(reviewseq);
 			likeseq = 1;
 		}
+		
+		return likeseq;
+	}
+	
+	@RequestMapping(value = "likecnt.do", method = RequestMethod.POST)
+	public int like(Model model, int reviewseq, int userseq, HttpServletRequest request) {
+		// 좋아요
+		
+		
+		LikeDto likeDto = new LikeDto();
+		likeDto.setReviewseq(reviewseq);
+		likeDto.setUserseq(userseq);
+		
+		int likeseq = biz.likeCount(likeDto);
+		
+		model.addAttribute("likeseq", likeseq);
 		
 		return likeseq;
 	}

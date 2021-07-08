@@ -11,8 +11,17 @@
 </head>
 <body>
 <%@include file="./common.jsp" %>
-<h1>예매하기</h1>
-	
+
+	<div class="row">
+	<div class="col-sm-8">
+	공연정보
+	</div>
+	<div class="col-sm-4 border border-primary text-center rounded">
+		<div class="font-weight-bold m-2">예약날짜 선택</div>
+        <div id="datetimepicker"></div>
+        <div class=""></div>
+	</div>
+	</div>
 <input type="text" name="productseq" value="${dto.productseq }" />
 <input type="text" name="category" value="${dto.category }" />
 <input type="text" name="productname" value="${dto.productname }" />
@@ -88,7 +97,24 @@
 	<script type="text/javascript">
 	// 좋아요
 	$(document).ready(function () {
-		var likeseq = ${likeseq};
+		
+		var userseq = $(".userseq").val();
+		console.log("userseq" + userseq);
+		var reviewseq = $(".reviewseq").val();
+		console.log("reviewseq"+reviewseq);
+		
+		var likeCntData = {'userseq': userseq, 'reviewseq': reviewseq};
+		console.log(likeCntData);
+		
+		$.ajax({
+			url: "likecnt.do?userseq="+userseq+"&reviewseq="+reviewseq,
+			type: "POST",
+			success: function(likeseq) {
+				var likecnt = likeseq;
+				console.log("likeseq"+likeseq);
+			}
+			
+		});
 		
 		if (likeseq > 0) {
 			console.log(likeseq);
@@ -104,10 +130,10 @@
 			
 			var that = $(".like");
 			
-			var sendData = {'reviewseq' : productseq, 'like' : that.prop('name')};
+			var sendData = {'reviewseq' : reviewseq, 'like' : that.prop('name')};
 			
 			$.ajax({
-				url : 'reservation.do',
+				url : 'like.do',
 				type : 'POST',
 				data : sendData,
 				success: function (data) {
@@ -127,9 +153,9 @@
 	<form action="reviewinsert.do">
 		<input type="hidden" name="productseq" value="${dto.productseq }">
 		<input type="hidden" name="userseq" value="${login.userseq }">
-		<input type="text" name="reviewname" value="${login.name }">
-		<textarea rows="2" cols="80" name="reviewcontent"></textarea>
-		<input type="button" value="댓글 작성" onclick="location.href='reviewinsert.do'">
+		<input type="text" name="reviewname" value="${login.name }" readonly="readonly"><br>
+		<textarea rows="2" cols="80" name="reviewcontent"></textarea><br>
+		<input type="submit" value="댓글 작성">
 	</form>
 		<c:choose>
 			<c:when test="${empty reviewlist }">
@@ -142,19 +168,21 @@
 					${reviewdto.reviewcontent }
 					<div class="review-btn">
 					<button onclick="location.href='reviewupdate.do?reviewseq=${reviewdto.reviewseq}'">수정</button>
-					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}'">삭제</button>
+					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
 					</div><br>
 					<span>${reviewdto.reviewdate }</span><br>
 					<div style="text-align: right;">
 						<a class="like">
+							<input type="hidden" class="userseq" value="${reviewdto.userseq }">
+							<input type="hidden" class="reviewseq" value="${reviewdto.reviewseq }">
 							<input class="likeseq" type="text" value="" readonly="readonly">
 						</a>
 					</div>
 				</div>
-				<div>
+				<div style="display: none">
 				<form action="reviewupdate.do">
-					<input type="hidden" name="reviewseq" value="${reviewdto.reviewseq}">
-					<input type="text" name="reviewname" value="${reviewdto.reviewname }">
+					<input type="hidden" name="reviewseq" value="${reviewdto.reviewseq}"><br>
+					<input type="text" name="reviewname" value="${reviewdto.reviewname }" readonly="readonly"><br>
 					<input type="text">
 				</form>
 				</div>
@@ -162,8 +190,8 @@
 			</c:otherwise>
 		</c:choose>
 
-			
-
-	
+		
+</div>	
 </body>
+<script type="text/javascript" src="resources/js/datepicker.js"></script>
 </html>

@@ -10,6 +10,6 @@ public interface ReviewDao {
 	public int reviewInsert(ReviewDto dto);
 	public int reviewUpdate(ReviewDto dto);
 	public int reviewDel(int reviewseq);
-	
+	public ReviewDto reviewOne(int reviewseq);
 	
 }

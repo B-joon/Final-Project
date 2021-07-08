@@ -31,4 +31,9 @@ public class ReviewBizImpl implements ReviewBiz {
 		return dao.reviewDel(reviewseq);
 	}
 
+	@Override
+	public ReviewDto reviewOne(int reviewseq) {
+		return dao.reviewOne(reviewseq);
+	}
+
 }

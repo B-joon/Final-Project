@@ -13,6 +13,8 @@
 <body>
 <%@include file="WEB-INF/views/common.jsp" %>	
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
+	<div class="container-lg">
+	<div id="weatherarea" class="float-right"></div>
 	<div class="btn-group">
   	<button type="button" class="btn btn-outline-warning btn-lg dropdown-toggle" data-toggle="dropdown">축제정보</button>
   	<div class="dropdown-menu">
@@ -63,9 +65,34 @@
 	<hr/>
 	<div id="partylist" class="row">
 	</div>
-
+	
+<div class="modal fade" id="addrModal" tabindex="-1" role="dialog" aria-labelledby="addrModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addrModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	      <div class="container-fluid">
+	      	<div class="row">
+	      		<div class="col" id="map" style="width: 400px; height: 400px; display:none;"></div>
+	      	</div>
+	      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 </body>
 <script type="text/javascript" src="resources/js/party.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/index.css">
+<script type="text/javascript" src="resources/js/map.js"></script>
 
 </html>

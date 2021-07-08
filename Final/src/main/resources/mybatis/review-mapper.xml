@@ -25,4 +25,10 @@
 		WHERE REVIEWSEQ = #{reviewseq}
 	</delete>
 	
+	<select id="reviewOne" resultType="reviewDto">
+		SELECT REVIEWSEQ, PRODUCTSEQ, REVIEWNAME, REVIEWCONTENT, REVIEWLIKECNT, REVIEWDATE
+		FROM REVIEW
+		WHERE REVIEWSEQ = #{reviewseq}
+	</select>
+	
 </mapper>
