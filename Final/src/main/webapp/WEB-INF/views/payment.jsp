@@ -26,13 +26,10 @@
             pg: "html5_inicis",
             pay_method: "card", //결제 수단 
             merchant_uid: "ORD20180131-0000011",
-            name: "노르웨이 회전 의자", //상품이름
+            name: "ptsd 티켓 결제", //상품이름
             amount: 64900, //상품가격
-            buyer_email: "gildong@gmail.com",
-            buyer_name: "홍길동",
-            buyer_tel: "010-4242-4242",
-            buyer_addr: "서울특별시 강남구 신사동",
-            buyer_postcode: "01181"
+            buyer_name: "홍길동", // userseq or username
+            
         }, function (rsp) { // callback (rsp는 결제의 성공여부, 결제 정보, 에러정보 등을 담고있다. )
             if (rsp.success) {
             	var msg = '결제가 완료되었습니다.';
