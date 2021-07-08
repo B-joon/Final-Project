@@ -33,7 +33,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		int res = 0;
 		
 		try {
-			res = session.insert(NAMESPACE + "reviewInsert", dto);
+			res = session.insert(NAMESPACE + "reivewInsert", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -67,6 +67,20 @@ public class ReviewDaoImpl implements ReviewDao {
 		}
 		
 		return res;
+	}
+
+	@Override
+	public ReviewDto reviewOne(int reviewseq) {
+		
+		ReviewDto dto = new ReviewDto();
+		
+		try {
+			dto = session.selectOne(NAMESPACE + "reviewOne", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 
 }
