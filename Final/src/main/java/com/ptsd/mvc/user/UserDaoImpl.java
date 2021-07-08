@@ -117,15 +117,45 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public String idFind(String name, String email) {
+	public UserDto idFind(UserDto dto) {
+		UserDto res = null;
 		
-		return null;
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "idFind", dto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 	
 	@Override
-	public String pwFind(String userid, String email) {
+	public UserDto pwFind(UserDto dto) {
+		UserDto res = null;
 		
-		return null;
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "pwFind", dto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	@Override
+	public int pwUpdate(UserDto pwUpdate) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "pwupdate", pwUpdate);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 	
 	@Override
@@ -141,5 +171,7 @@ public class UserDaoImpl implements UserDao {
 		
 		return res;
 	}
+
+	
 	
 }
