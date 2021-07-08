@@ -9,11 +9,12 @@
 </head>
 
 <body>
-<%@include file="./common.jsp" %>
+	<%@include file="./common.jsp"%>
 
 
 	<input type="hidden" value="${login.userseq }" id="loginseq">
 	<input type="hidden" value="${login.userrole }" id="loginrole">
+	<div class="container-lg">
 	<table border="1">
 
 
@@ -59,12 +60,6 @@
 		</c:choose>
 
 
-
-
-
-
-
-
 		<tr>
 			<td colspan="4" align="right"><input type="button" value="글작성"
 				class="insertControl" onclick="location.href='eventinsertform.do'">
@@ -72,6 +67,7 @@
 		</tr>
 
 	</table>
+	</div>
 
 	<!-- 페이지 앞으로 이동 -->
 	<div id="pagingDiv">
@@ -95,69 +91,62 @@
 			id="amount" name="amount" value="${paging.cri.amount }">
 	</form>
 
-	--------쿠폰 다운로드 영역 ----------
-	<br>
-
-
-
-
-
+	
+<div class="row">
 	<c:choose>
 		<c:when test="${empty couponlist }">
-			<tr>
-				<td colspan="4" align="center">----------작성된 글이 존재하지
-					않습니다---------</td>
-			</tr>
+			<div>
+				<span>----------작성된 글이 존재하지 않습니다---------</span>
+			</div>
 
 		</c:when>
 		<c:otherwise>
+			<div class="col-sm-3 md-3">
+				<c:forEach items="${couponlist }" var="dto">
 
-			<c:forEach items="${couponlist }" var="dto">
-			
-				<c:choose>
-				<c:when test="${dto.discount == 10000 }">
-					<div>${dto.coupontitle}</div>
-					<a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
-					<img alt="10000원 쿠폰" class="coupon" src="resources/img/10000.png">
-					</a>
-					<div>사용기간 : ${dto.endday }</div>
-				</c:when>
-				<c:when test="${dto.discount == 5000 }">
-					<div>${dto.coupontitle}</div>
-					<a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
-					<img alt="5000원 쿠폰" class="coupon" src="resources/img/5000.png">
-					</a>
-					<div>사용기간 : ${dto.endday }</div>
-				</c:when>
-				<c:otherwise>
-					<div>${dto.coupontitle}</div>
-					<a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
-					<img alt="2000원 쿠폰" class="coupon" src="resources/img/2000.png">
-					</a>
-					<div>사용기간 : ${dto.endday }</div>
-				
-				</c:otherwise>
-				</c:choose>
+					<c:choose>
+						<c:when test="${dto.discount == 10000 }">
+							<div class="card-body">
+							<i>${dto.makeseq }</i>
+							<div>${dto.coupontitle}</div>
+							<a class="downControl"
+								href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
+								<img alt="10000원 쿠폰" class="coupon"
+								src="resources/img/10000.png">
+							</a>
+							<div>사용기간 : ${dto.endday }</div>
+							</div>
+						</c:when>
+						<c:when test="${dto.discount == 5000 }">
+							<div class="card-body">
+							<i>${dto.makeseq }</i>
+							<div>${dto.coupontitle}</div>
+							<a class="downControl"
+								href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
+								<img alt="5000원 쿠폰" class="coupon" src="resources/img/5000.png">
+							</a>
+							<div>사용기간 : ${dto.endday }</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="card-body">
+							<i>${dto.makeseq }</i>
+							<div>${dto.coupontitle}</div>
+							<a class="downControl"
+								href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
+								<img alt="2000원 쿠폰" class="coupon" src="resources/img/2000.png">
+							</a>
+							<div>사용기간 : ${dto.endday }</div>
+							</div>
 
-				<%-- <div class="container">
-					<div class="item">${dto.makeseq }</div>
-					<div class="item"><a href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">${dto.coupontitle }</a></div>
-					<div class="item">${dto.endday }</div>
-					<div class="item">${dto.discount }</div>
-					
-
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 				</div>
-				
-					<input type="hidden" value="${dto.makeseq }" id="makeseq">
-					<input type="hidden" value="${dto.coupontitle }" id="coupontitle">
-					<input type="hidden" value="${dto.endday }" id="endday">
-					<input type="hidden" value="${dto.discount }" id="discount">
-					<input type="hidden" name="userseq" value="${login.userseq }">
- --%>
-			</c:forEach>
-
 		</c:otherwise>
+		
 	</c:choose>
+	</div>
 
 
 

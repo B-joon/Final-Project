@@ -116,72 +116,53 @@
 	<!-- 댓글 후기 -->
 
 	<script type="text/javascript">
-		// 좋아요
-		$(document).ready(
-				function() {
-
-					var userseq = $(".userseq").val();
-					console.log("userseq" + userseq);
-					var reviewseq = $(".reviewseq").val();
-					console.log("reviewseq" + reviewseq);
-
-					var likeCntData = {
-						'userseq' : userseq,
-						'reviewseq' : reviewseq
-					};
-					console.log(likeCntData);
-
-					$.ajax({
-						url : "likecnt.do?userseq=" + userseq + "&reviewseq="
-								+ reviewseq,
-						type : "POST",
-						success : function(likeseq) {
-							var likecnt = likeseq;
-							console.log("likeseq" + likeseq);
-						}
-
-					});
-
-					if (likeseq > 0) {
-						console.log(likeseq);
-						$(".likeseq").prop("value", "♥ " + likeseq)
-						$(".like").prop('name', likeseq);
+	// 좋아요
+	$(document).ready(function () {
+		
+		function like(reviewseq, userseq) {
+			
+			var likeCntData = {'userseq': userseq, 'reviewseq': reviewseq};
+			console.log(likeCntData);
+			
+			$.ajax({
+				url: "likecnt.do",
+				type: "POST",
+				data: likeCntData,
+				success: function(data) {
+					var likecnt = data;
+					if (likecnt > 0) {
+						$(".likeseq"+reviewseq).prop("value", "♥");
 					} else {
-						console.log(likeseq);
-						$(".likeseq").prop("value", "♡ " + likeseq)
-						$(".like").prop('name', likeseq);
+						$(".likeseq"+reviewseq).prop("value", "♡");
 					}
+				}
+				
+			});
+		}
+		
+	});
+	function likeEvent(reviewseq, userseq) {
+		
+		var that = $(".like"+reviewseq);
+		
+		var sendData = {'reviewseq' : reviewseq, 'like' : that.prop('name')};
+		
+		$.ajax({
+			url : 'like.do',
+			type : 'POST',
+			data : sendData,
+			success: function (data) {
+				that.prop('name', data);
+				if (data == 1) {
+					$(".likeseq"+reviewseq).prop("value", "♡");
+				} else {
+					$(".likeseq"+reviewseq).prop("value", "♥")
+				}
+			}
+		});
+		
+	}
 
-					$(".like").on(
-							"click",
-							function() {
-
-								var that = $(".like");
-
-								var sendData = {
-									'reviewseq' : reviewseq,
-									'like' : that.prop('name')
-								};
-
-								$.ajax({
-									url : 'like.do',
-									type : 'POST',
-									data : sendData,
-									success : function(data) {
-										that.prop('name', data);
-										if (data == 1) {
-											$(".likeseq").prop("value",
-													"♡ " + likeseq);
-										} else {
-											$(".likeseq").prop("value",
-													"♥ " + likeseq)
-										}
-									}
-								});
-
-							});
-
-				});
 	</script>
 	<form action="reviewinsert.do">
 		<input type="hidden" name="productseq" value="${dto.productseq }">
@@ -200,27 +181,27 @@
 				<div style="border: 1px">
 					${reviewdto.reviewname }<br> ${reviewdto.reviewcontent }
 					<div class="review-btn">
-						<button
-							onclick="location.href='reviewupdate.do?reviewseq=${reviewdto.reviewseq}'">수정</button>
-						<button
-							onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
+
+					<button onclick="location.href='reviewupdate.do?reviewseq=${reviewdto.reviewseq}'">수정</button>
+					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
+					</div><br>
+					<span>${reviewdto.reviewdate }</span><br>
+					<div onclick="like(${reviewdto.reviewseq }, ${reviewdto.userseq });">
+						<div style="text-align: right;" onclick="likeEvent(${reviewdto.reviewseq }, ${reviewdto.userseq });">
+							<input name="like${reviewdto.reviewseq }" value="" type="hidden">
+							<input class="likeseq${reviewdto.reviewseq }" type="text" value="" readonly="readonly">
+						</div>
 					</div>
-					<br> <span>${reviewdto.reviewdate }</span><br>
-					<div style="text-align: right;">
-						<a class="like"> <input type="hidden" class="userseq"
-							value="${reviewdto.userseq }"> <input type="hidden"
-							class="reviewseq" value="${reviewdto.reviewseq }"> <input
-							class="likeseq" type="text" value="" readonly="readonly">
-						</a>
-					</div>
+					
 				</div>
 				<div style="display: none">
-					<form action="reviewupdate.do">
-						<input type="hidden" name="reviewseq"
-							value="${reviewdto.reviewseq}"><br> <input
-							type="text" name="reviewname" value="${reviewdto.reviewname }"
-							readonly="readonly"><br> <input type="text">
-					</form>
+
+				<form action="reviewupdate.do">
+					<input type="hidden" name="reviewseq" value="${reviewdto.reviewseq}"><br>
+					<input type="text" name="reviewname" value="${reviewdto.reviewname }" readonly="readonly"><br>
+					<input type="submit" value="수정">
+					<input type="text">
+				</form>
 				</div>
 			</c:forEach>
 		</c:otherwise>

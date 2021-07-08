@@ -44,10 +44,24 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script type="text/javascript" src="resources/js/weather.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/weather.css">
 
+
+<script type="text/javascript" src="resources/js/darkmode.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/darkmode.css">
+
+
+<script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/chart.css">
+
+
+
+
+
+
 <!-- 지도정보 -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dfb6f83c1347ebbcf6cbda00be7c7b6f&libraries=services,clusterer,drawing"></script>
 <div class="container-lg">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger justify-content-between sticky-top font-weight-bold">
 	<a class="navbar-brand" href="main.do">
 		<img src="resources/img/logo.png" width="100" class="d-inline-block align-top"></img>
@@ -111,6 +125,10 @@ UserDto login = (UserDto) session.getAttribute("login");
 	<button id="btn" onClick="GoTop()">▲</button>
 </div>
 <%-- 상단으로 이동하기 버튼 끝 --%>
+
+<div>
+	<input type="button" id="darkbtn" onclick="dayAndNight(this);" value="다크모드"></input>
+</div>
 
 <input type="hidden" id="sessionLogin" value="${login }">
 
