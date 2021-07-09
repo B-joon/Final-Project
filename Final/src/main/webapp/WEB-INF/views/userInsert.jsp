@@ -8,7 +8,9 @@ response.setContentType("text/html; charset=UTF-8");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSD / 회원가입</title>
 </head>
 <style type="text/css">
 

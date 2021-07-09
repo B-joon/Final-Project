@@ -119,7 +119,8 @@
 						</div>
 					</div>
 					${reviewdto.reviewname }<br> ${reviewdto.reviewcontent }
-					<div class="review-btn">
+					<div class="review-btn${reviewdto.reviewseq}">
+					<input name="resuser${reviewdto.userseq }" value="resuser${reviewdto.userseq }" type="hidden">
 					<button onclick="Update(${reviewdto.reviewseq });">수정</button>
 					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
 					</div>
