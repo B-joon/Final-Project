@@ -52,9 +52,21 @@ public class UserController {
 		return "adminpage";
 	}
 	@RequestMapping("/mypage.do")
-	public String User() {
+	public String User(Model model, int userseq) {
+		
+		model.addAttribute("dto", biz.mypage(userseq));
+		
 		return "mypage";
 	}
+	
+	@RequestMapping("/mypageupdate.do")
+	public String mypageupdate(Model model, int userseq) {
+		
+		model.addAttribute("dto", biz.mypage(userseq));
+		
+		return "mypageupdate";
+	}
+	
 	@RequestMapping("pay.do")
 	public String pay() {
 		return "payment";
@@ -63,13 +75,22 @@ public class UserController {
 	@RequestMapping("chart.do")
 	public String chart() {
 		return "chart";
-
+	}
 	@RequestMapping("/idpwFind.do")
 	public String idpwFind() {
 		return "userfind";
 
 	}
 	
+	@RequestMapping("/userdelete.do")
+	public String delete(int userseq) {
+		
+		if(biz.delete(userseq) > 0) {
+			return "../../index";
+		}
+		
+		return "redirect:mypage.do?userseq=" + userseq;
+	}
 	
 	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
 	@ResponseBody

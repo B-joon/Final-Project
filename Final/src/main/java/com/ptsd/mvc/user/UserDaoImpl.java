@@ -173,5 +173,34 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	
+	@Override
+	public UserDto mypage(int userseq) {
+		
+		UserDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "mypage", userseq);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
+	@Override
+	public int delete(int userseq) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "userdelete", userseq);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+		
+	}
 	
 }
