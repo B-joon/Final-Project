@@ -44,15 +44,17 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script type="text/javascript" src="resources/js/weather.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/weather.css">
 
-
+<!-- 다크모드 -->
 <script type="text/javascript" src="resources/js/darkmode.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/darkmode.css">
 
-
+<!-- 차트 -->
 <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/chart.css">
 
-
+<!-- 결제 -->
+<!--iamport-->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 
 
