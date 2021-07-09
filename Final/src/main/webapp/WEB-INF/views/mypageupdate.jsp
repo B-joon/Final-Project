@@ -1,63 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
 <body>
 
 <%@include file="./common.jsp" %>
-	<form action="usersnsInsertres.do" method="post">
-		<input type="hidden" name="userid" value="${res.userid }">
-		<input type="hidden" name="userpw" value="1234">
-		<table id="table" align="center">
+	<h1>MYPAGE</h1>
+
+	<p>${login.getName() }님의 정보 수정 페이지 입니다.</p>
+
+	<form action="mypageupdateres" method="post">
+		<input type="hidden" name="userseq" value="${login.getUserseq()} }">
+		<table align="center">
+<%
+	String userid = login.getUserid();
+	String temp = userid.substring(userid.length()-2, userid.length());
+	if(temp.equals("@n") || temp.equals("@k") || temp.equals("@g")){
+%>		
+
+<%
+	} else {
+%>	
+		<tr>
+			<th>아이디</th>
+			<td><input type="text" id="userid" value="${dto.userid }" readonly="readonly"></td>
+		</tr>
+		<tr>
+				<th>비밀번호</th>
+				<td>
+					<input type="password" name="userpw" id="pw1" placeholder="비밀번호를 적어주세요" onkeyup="checkPwd1();">
+					<input type="hidden" id="Chk1" value="false">	
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center" id="checkPwd1"></td>
+			</tr>
+			<tr>
+				<th>비밀번호 확인</th>
+				<td>
+					<input type="password" id="pw2" placeholder="비밀번호를 확인해주세요" onkeyup="checkPwd2();">
+					<input type="hidden" id="Chk2" value="false">
+				</td>
+			</tr>
+<%
+	}
+%>
 			<tr>
 				<th>이름</th>
 				<td><input type="text" name="name" id="username"
-					placeholder="이름을 적어주세요" onkeyup="nameChk();" value="${res.name }">
-					<input type="hidden" id="Chk1" value="false"></td>
+					placeholder="이름을 적어주세요" onkeyup="nameChk();" value="${dto.name }">
+					<input type="hidden" id="Chk3" value="false">
+					
+				</td>
 			</tr>
 			<tr>
 				<th>EMAIL</th>
 				<td><input type="text" name="email" id="email"
-					value="${res.email }"> <input type="button"
+					value="${dto.email }"> <input type="button"
 					id="emailChkBtn" value="이메일 중복 확인"> <input type="hidden"
-					id="Chk2" value="false"></td>
+					id="Chk4" value="false"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center" id="emailChk"></td>
 			</tr>
 			<tr>
 				<th>주소</th>
-				<td><input style="width: 300px;" type="text" name="address"
+				<td><input style="width: 300px;" type="text" name="address" value="${dto.address }"
 					id="address" class="form-control" readonly="readonly"
 					placeholder="주소를 입력하려면 여기를 클릭하세요" onclick="goPopup();"> <input
-					type="hidden" id="Chk3" value="false"></td>
+					type="hidden" id="Chk5" value="false"></td>
 			</tr>
 			<tr>
 				<th>핸드폰 번호</th>
-				<td><input type="text" name="phone" id="phone"
+				<td><input type="text" name="phone" id="phone" value="${dto.phone }"
 					placeholder="숫자만 입력하세요" style="ime-mode: disabled"> <input
-					type="hidden" id="Chk4" value="false"></td>
+					type="hidden" id="Chk6" value="false"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center" id="phoneChk"></td>
 			</tr>
 			<tr>
 				<td id="submitBtn" colspan="2" align="center"><input
-					type="button" value="회원가입" disabled="disabled"></td>
+					type="button" value="내 정보 수정" disabled="disabled"></td>
 			</tr>
 			<tr>
-				<td id="submitRes" colspan="2" align="center"><input
-					type="submit" value="회원가입"></td>
+				<td id="submitRes" colspan="2" align="center">
+					<input type="submit" value="내 정보 수정">
+				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="button" value="취소"
-					onclick="location.href='loginform.do'" /></td>
+				<td colspan="2" align="center">
+					<input type="button" value="취소" onclick="location.href='mypage.do?userseq=${dto.userseq }'">
+				</td>
 			</tr>
 		</table>
 	</form>
@@ -67,29 +107,71 @@
 
 $(function() {
 	$("#submitRes").hide();
-	var username = $("#username").val().trim();
-	console.log(username);
-	if(username != null){
-		$("#Chk1").val('true');
-	}
 });
-
-</script>
-
-<script type="text/javascript">
 
 $("#username").keyup(function(){
 	var username = $("#username").val().trim();
 	
 	if(name != null){
-		$("#Chk1").val('true');
+		$("#Chk3").val('true');
 		submitChk();
 	} else{
-		$("#Chk1").val('false');
+		$("#Chk3").val('false');
 		submitChk();
 	}
 
 });
+
+function checkPwd1(){
+	var f1 = document.forms[0];
+	var pw = f1.pw1.value;
+	
+	if (pw.length < 4 || pw.length > 15){
+		$("#checkPwd1").show();
+		document.getElementById('checkPwd1').style.color = "red";
+		document.getElementById('checkPwd1').innerHTML = "비밀번호를 4~ 15자로 작성하세요.";
+		$("#Chk1").val('false');
+		submitChk();
+	} else if(pw.length == 0 || pw == null){
+		$("#checkPwd1").hide();
+		$("#Chk1").val('false');
+		submitChk();
+	} else {
+		$("#checkPwd1").hide();
+		$("#Chk1").val('true');
+		submitChk();
+		console.log(pw)
+	}
+	
+}
+function checkPwd2() {
+	var f1 = document.forms[0];
+	var pw1 = f1.pw1.value;
+	var pw2 = f1.pw2.value;
+	
+	if (pw1 != pw2) {
+		$("#checkPwd2").show();
+		document.getElementById('checkPwd2').style.color = "red";
+		document.getElementById('checkPwd2').innerHTML = "암호가 불일치합니다";
+		$("#Chk2").val('false');
+		submitChk();
+	} else {
+		$("#checkPwd2").show();
+		document.getElementById('checkPwd2').style.color = "blue";
+		document.getElementById('checkPwd2').innerHTML = "암호가 일치합니다.";
+		$("#Chk2").val('true');
+		submitChk();
+		console.log(pw2)
+		setTimeout(function() {
+			$("#checkPwd2").hide();
+			}, 2000);
+	}
+
+}
+
+</script>
+
+<script type="text/javascript">
 
 $("#emailChkBtn").click(function(){
 	var email = $("#email").val();
@@ -98,7 +180,9 @@ $("#emailChkBtn").click(function(){
 		$("#emailChk").show();
 		$("#emailChk").html('email을 입력해 주세요.');
 		$("#emailChk").css("color", "red");
-	} else {
+	} else if(){
+		
+	}else {
 		$.ajax({
 			type : "post",
 			url : "ajaxemailChk.do?email=",
@@ -113,7 +197,7 @@ $("#emailChkBtn").click(function(){
 					$("#emailChk").css("color", "blue");
 					$("#email").attr('readonly', true);
 					$("#emailChkBtn").attr('type', 'hidden');
-					$("#Chk2").val('true');
+					$("#Chk4").val('true');
 					submitChk();
 					setTimeout(function() {
 						$("#emailChk").hide();
@@ -141,7 +225,7 @@ function goPopup() {
 function jusoCallBack(roadFullAddr){
 	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.	
 	document.getElementById("address").value = roadFullAddr;
-	$("#Chk3").val('true');
+	$("#Chk5").val('true');
 }
 
 $("#phone").keyup(function(){
@@ -153,19 +237,19 @@ $("#phone").keyup(function(){
 		$("#phoneChk").show();
 		$("#phoneChk").html('핸드폰 번호를 입력해 주세요.');
 		$("#phoneChk").css("color", "red");
-		$("#Chk4").val('false');
+		$("#Chk6").val('false');
 		submitChk();
 	} else if (fphone != "010"){
 		$("#phoneChk").show();
 		$("#phoneChk").html('010으로 시작하는 번호를 입력해 주세요.');
 		$("#phoneChk").css("color", "red");
-		$("#Chk4").val('false');
+		$("#Chk6").val('false');
 		submitChk();
 	} else if(phone.length < 11 || phone.length > 11 ) {
 		$("#phoneChk").show();
 		$("#phoneChk").html('핸드폰 번호 11자리까지 입력해 주세요.');
 		$("#phoneChk").css("color", "red");
-		$("#Chk4").val('false');
+		$("#Chk6").val('false');
 		submitChk();
 	} else{
 		$.ajax({
@@ -180,7 +264,7 @@ $("#phone").keyup(function(){
 				if (check == "false") {
 					$("#phoneChk").html('사용 가능한 번호입니다.');
 					$("#phoneChk").css("color", "blue");
-					$("#Chk4").val('true');
+					$("#Chk6").val('true');
 					submitChk();
 					console.log(phone)
 					setTimeout(function() {
@@ -189,13 +273,13 @@ $("#phone").keyup(function(){
 				} else if(check == "true") {
 					$("#phoneChk").html('이미 존재하는 번호입니다.');
 					$("#phoneChk").css("color", "red");
-					$("#Chk4").val('false');
+					$("#Chk6").val('false');
 					submitChk();
 					
 				} else {
 					$("#phoneChk").html('번호를 적어주세요');
 					$("#phoneChk").css("color", "red");
-					$("#Chk4").val('false');
+					$("#Chk6").val('false');
 					submitChk();
 				}
 			},
@@ -208,19 +292,36 @@ $("#phone").keyup(function(){
 });
 
 function submitChk() {
+	var userid = $("#userid").val();
+	var temp = userid.substring(userid.length()-2, userid.length());
 	
-	if($("#Chk1").val() == 'true' 
-			&& $("#Chk2").val() == 'true' 
-			&& $("#Chk3").val() == 'true' 
-			&& $("#Chk4").val() == 'true' ){
-		$("#submitBtn").hide();
-		$("#submitRes").show();
-	} else{
-		$("#submitBtn").show();
-		$("#submitRes").hide();
+	if(temp.equals("@n") || temp.equals("@k") || temp.equals("@g")){
+		if($("#Chk3").val() == 'true' 
+				&& $("#Chk4").val() == 'true'
+				&& $("#Chk5").val() == 'true'
+				&& $("#Chk6").val() == 'true'){
+			$("#submitBtn").hide();
+			$("#submitRes").show();
+		} else{
+			$("#submitBtn").show();
+			$("#submitRes").hide();
+		}
+	}else{
+		if($("#Chk1").val() == 'true' 
+			&& $("#Chk2").val() == 'true'
+			&& $("#Chk3").val() == 'true'
+			&& $("#Chk4").val() == 'true'
+			&& $("#Chk5").val() == 'true'
+			&& $("#Chk6").val() == 'true'){
+			$("#submitBtn").hide();
+			$("#submitRes").show();
+		} else{
+			$("#submitBtn").show();
+			$("#submitRes").hide();
+		}
 	}
 }
 
-
 </script>
+
 </html>

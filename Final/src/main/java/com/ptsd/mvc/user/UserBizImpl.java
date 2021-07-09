@@ -100,4 +100,16 @@ public class UserBizImpl implements UserBiz {
 		return dao.snsCheck(dto);
 	}
 	
+	@Override
+	public UserDto mypage(int userseq) {
+		
+		return dao.mypage(userseq);
+	}
+	
+	@Override
+	public int delete(int userseq) {
+		
+		return dao.delete(userseq);
+	}
+	
 }

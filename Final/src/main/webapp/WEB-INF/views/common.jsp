@@ -92,7 +92,7 @@ UserDto login = (UserDto) session.getAttribute("login");
 				<li class="nav-item"><a class="nav-link" href="logout.do"><i
 						class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;logout</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="mypage.do"><i
+				<li class="nav-item"><a class="nav-link" href="mypage.do?userseq=${login.getUserseq()}"><i
 						class="fas fa-user"></i>&nbsp;&nbsp;mypage</a></li>
 
 				<%

@@ -19,5 +19,6 @@ public interface UserBiz {
 	public UserDto pwFind(UserDto dto);
 	public int pwUpdate(UserDto pwUpdate);
 	public UserDto snsCheck(UserDto dto);
-	
+	public UserDto mypage(int userseq);
+	public int delete(int userseq);
 }
