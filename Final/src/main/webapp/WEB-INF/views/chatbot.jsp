@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width-device-width, initial-scale=1">
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-<title>Talk with Chatbot</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSD / 챗봇</title>
 </head>
 <%@include file="./common.jsp" %>
 <body>
