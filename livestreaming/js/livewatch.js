@@ -4,6 +4,13 @@ const streamingname = searchParam('streamingname');
 const userid = searchParam('userid');
 const name = searchParam('name');
 
+$(function(){
+
+  $("#streamingname").append(streamingname);
+
+});
+
+
 function searchParam(key) {
     return new URLSearchParams(location.search).get(key);
   };
@@ -60,9 +67,9 @@ function sendMessage() {
     //     name = nameInput.value;
     // }
 
-    if (chatmessage.value){
-        msg = chatmessage.value;
-        chatmessage.value="";
+    if (summernote.value){
+        msg = summernote.value;
+        summernote.value="";
     }else{
         if (!msg) {}msg = "Test Message";
     }
@@ -72,13 +79,36 @@ function sendMessage() {
 
 function addMesssage(isMine, msg) {
 
-    const chatarea = document.getElementById("chatarea");
+  const name = searchParam('name');
 
-    var msgItem = document.createElement("p");
-    msgItem.style.textShadow = "0 0 7px #ffffff";
-    msgItem.style.lineHeight = 0.9;
-    if (!isMine) msgItem.style.color = "Blue";
+  const chatarea = document.getElementById("chatarea");
 
-    msgItem.innerHTML = isMine ? "Me : " + msg : msg.split('-')[0] + " : " + msg.split('-')[1];
-    chatarea.appendChild(msgItem);
+  var media = document.createElement("div");
+  media.setAttribute("class","media m-2 border border-info rounded");
+
+  var mediaBody = document.createElement("div");
+  mediaBody.setAttribute("class","media-body");
+
+  var Username = document.createElement("h5");
+  Username.setAttribute("class","mt-0");
+  Username.innerHTML = isMine ? name : msg.split('-')[0];
+
+  var outmsg = msg.replace(/<(\/?)p>/gi, '');
+
+  var content = document.createElement("p");
+  content.innerHTML = outmsg;
+
+  mediaBody.append(Username);
+  mediaBody.append(content);
+  media.append(mediaBody);
+
+  chatarea.appendChild(media);
+
+  if (isMine) Username.setAttribute("class","mt-0 text-info");
+
+  const $messageTextBox = $('#chatarea'); 
+  $messageTextBox.scrollTop($messageTextBox[0].scrollHeight);
+
+  // msgItem.innerHTML = isMine ? "Me : " + msg : msg.split('-')[0] + " : " + msg.split('-')[1];
+  
 }
