@@ -84,8 +84,6 @@ UserDto login = (UserDto) session.getAttribute("login");
 					class="fas fa-tv"></i>&nbsp;&nbsp;Live방송</a></li>
 			<li class="nav-item"><a class="nav-link" href="chatbot.do"><i
 					class="fas fa-robot"></i>&nbsp;&nbsp;챗봇대화</a></li>
-			<li class="nav-item"><a class="nav-link" href="pay.do"><i
-					class="fas fa-money-check"></i>&nbsp;&nbsp;결제테스트</a></li>
 		</ul>
 		<ul class="navbar-nav">
 				<%

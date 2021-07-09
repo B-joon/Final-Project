@@ -16,8 +16,8 @@
 <%@include file="WEB-INF/views/common.jsp" %>	
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
 	<div class="container-lg">
-	<div id="weatherarea" class="float-right"></div>
-	<div class="btn-group">
+	<div id="weatherarea"></div>
+	<div class="btn-group dropright">
   	<button type="button" class="btn btn-outline-warning btn-lg dropdown-toggle" data-toggle="dropdown">축제정보</button>
   	<div class="dropdown-menu">
   		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(0);">전체</a>
@@ -39,8 +39,8 @@
   		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(6);">부산</a>
   		<a class="dropdown-item" href="#" onclick="chkPartyAreaCode(39);">제주</a>
     </div>
-  	<div class="btn-group">
-    <button type="button" class="btn btn-outline-info btn-lg dropdown-toggle" data-toggle="dropdown">공연정보</button>
+  	<div class="btn-group dropright">
+    <button type="button" class="btn btn-outline-danger btn-lg dropdown-toggle" data-toggle="dropdown">공연정보</button>
     <div class="dropdown-menu">
   		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(0);">전체</a>
   		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(1);">서울</a>
@@ -65,7 +65,7 @@
 </div>
 	
 	<hr/>
-	<div id="partylist" class="row">
+		<div id="partylist" class="row">
 	</div>
 	
 <div class="modal fade" id="addrModal" tabindex="-1" role="dialog" aria-labelledby="addrModalLabel" aria-hidden="true">
@@ -85,8 +85,7 @@
 	      </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
       </div>
     </div>
   </div>
