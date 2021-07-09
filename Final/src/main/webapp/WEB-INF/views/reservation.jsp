@@ -13,7 +13,10 @@
 </head>
 <body>
 	<%@include file="./common.jsp"%>
-
+	
+	<input type="hidden" value="${login.name }" id="loginname">
+	<input type="hidden" value="${dto.productname }" id="productname">
+	
 	<div class="row">
 		<div class="col-sm-9 overflow-auto">			
 			<div class="card border border-danger">
@@ -84,7 +87,7 @@
 						
 					</div>
 					<div class="m-2">
-						<button type="button" class="btn btn-danger" onclick="goPayment();">예매하기</button>
+						<button type="button" class="btn btn-danger" onclick="requestPay();">예매하기</button>
 					</div>
 			</div>
 		</div>

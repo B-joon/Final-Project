@@ -28,15 +28,15 @@
             merchant_uid: "ORD20180131-0000011",
             name: "ptsd 티켓 결제", //상품이름
             amount: 64900, //상품가격
-            buyer_name: "홍길동", // userseq or username
+            buyer_name: "user", // userseq or username
             
         }, function (rsp) { // callback (rsp는 결제의 성공여부, 결제 정보, 에러정보 등을 담고있다. )
             if (rsp.success) {
             	var msg = '결제가 완료되었습니다.';
-            	msg += "고유 ID: "+ rsp.imp_uid;
+            	msg += "고유 ID: "+ rsp.imp_uid;// 결제 주문번호라고 생각하면 될듯 
             	msg += "상점 거래 ID:"+ rsp.merchant_uid;
             	msg += "결제 금액 :"+rsp.paid_amount;
-            	msg += "카드 승인번호:" +rsp.apply_num;
+            	msg += "카드 승인번호:" +rsp.apply_num; //카드 승인번호 
             // 결제 성공 시 로직,
             
     } else {
