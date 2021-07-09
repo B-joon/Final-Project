@@ -44,15 +44,15 @@
 	
 	<select name="category">
 		<option value="" disabled selected>카테고리 선택</option>
-		<option value="0">전체</option>
-		<option value="1">뮤지컬</option>
-		<option value="2">콘서트</option>
-		<option value="3">연극</option>
-		<option value="4">클래식/무용</option>
-		<option value="5">스포츠</option>
-		<option value="6">레저</option>
-		<option value="7">전시/행사</option>
-		<option value="8">아동/가족</option>
+		<option value="전체">전체</option>
+		<option value="뮤지컬">뮤지컬</option>
+		<option value="콘서트">콘서트</option>
+		<option value="연극">연극</option>
+		<option value="클래식/무용">클래식/무용</option>
+		<option value="스포츠">스포츠</option>
+		<option value="레저">레저</option>
+		<option value="전시/행사">전시/행사</option>
+		<option value="아동/가족">아동/가족</option>
 	</select>
 	
 	<div id="partylist">
