@@ -33,11 +33,9 @@
 			success: function(data) {
 				var likecnt = data;
 				if (likecnt > 0) {
-					$(".likeseq"+reviewseq).children().remove();
 					$(".likeseq"+reviewseq).append('<i class="fas fa-heart"></i>');
 					$(".like"+reviewseq).prop("name", likecnt);
 				} else {
-					$(".likeseq"+reviewseq).children().remove();
 					$(".likeseq"+reviewseq).append('<i class="far fa-heart"></i>');
 					$(".like"+reviewseq).prop("name", likecnt);
 				}

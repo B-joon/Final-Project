@@ -119,8 +119,11 @@
 												</span>
 											</span>
 										</span>
-								    	<button class="btn btn-danger btn-sm ml-3" onclick="Update(${reviewdto.reviewseq });">수정</button>
-										<button class="btn btn-dark btn-sm" onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
+										<div class="review-btn${reviewdto.reviewseq }">
+											<input name="resuser${reviewdto.userseq }" value="resuser${reviewdto.userseq }" type="hidden">
+											<button class="btn btn-danger btn-sm ml-3" onclick="Update(${reviewdto.reviewseq });">수정</button>
+											<button class="btn btn-dark btn-sm" onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
+										</div>
 								    </div>
 							    </div>
 								<div class="update${reviewdto.reviewseq }" style="display: none">
