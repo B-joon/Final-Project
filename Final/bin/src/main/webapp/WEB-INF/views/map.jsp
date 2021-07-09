@@ -66,7 +66,7 @@ window.onload = function() {
 	
 </script>
 <body>
-
+<%@include file="./common.jsp" %>
 	<div id="map" style="width: 500px; height: 400px;"></div>
 </body>
 </html>

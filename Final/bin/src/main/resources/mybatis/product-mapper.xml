@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="product">
+
+	<select id="selectAllList" resultType="productDto">
+		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, SEATCOUNT, PRICE, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
+		FROM PRODUCT
+	</select>
+
+	<select id="selectlist" parameterType="int" resultType="productDto">
+		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, SEATCOUNT, PRICE, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
+		FROM PRODUCT
+		WHERE AREACODE = #{areacode}
+	</select>
+	
+	<select id="selectone" parameterType="int" resultType="productDto">
+		SELECT PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, SEATCOUNT, PRICE, LIKECOUNT, WISHCOUNT, PRODUCTCOUNT
+		FROM PRODUCT
+		WHERE PRODUCTSEQ = #{productseq}
+	</select>
+
+	<insert id="insert" parameterType="productDto">
+		INSERT INTO PRODUCT
+		(PRODUCTSEQ, CATEGORY, PRODUCTNAME, STARTDATE, ENDDATE, THUMBIMG, PRODUCTCONTENT, AREACODE, ADDRESS, TELLNUMBER, RUNTIME, RATING, SEATCOUNT, PRICE)
+		VALUES 
+		(PRODUCTSEQ.NEXTVAL, #{category}, #{productname}, #{startdate}, #{enddate}, #{thumbimg}, #{productcontent}, #{areacode}, #{address}, #{tellnumber}, #{runtime}, #{rating}, #{seatcount}, #{price})
+	</insert>
+	
+	<update id="update" parameterType="productDto">
+		UPDATE PRODUCT SET 
+		CATEGORY = #{category}, PRODUCTNAME = #{productname}, STARTDATE = #{startdate}, ENDDATE = #{enddate}, THUMBIMG = #{thumbimg}, PRODUCTCONTENT = #{productcontent}, AREACODE = #{areacode}, ADDRESS = #{address}, TELLNUMBER = #{tellnumber},	RUNTIME = #{runtime}, RATING = #{rating}, SEATCOUNT = #{seatcount},	PRICE = #{price}	
+		WHERE PRODUCTSEQ = #{productseq}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM PRODUCT
+		WHERE PRODUCTSEQ = #{productseq}
+	</delete>
+
+</mapper>

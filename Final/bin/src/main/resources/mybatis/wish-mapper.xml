@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="wish">
+
+	<resultMap type="ProductDto" id="ProductDto">
+		<result column="PRODUCTSEQ" property="productseq" />
+		<result column="CATEGORY" property="category" />
+		<result column="PRODUCTNAME" property="productname" />
+		<result column="STARTDATE" property="startdate" />
+		<result column="ENDDATE" property="enddate" />
+		<result column="THUMBIMG" property="thumbimg" />
+		<result column="PRODUCTCONTENT" property="productcontent" />
+		<result column="AREACODE" property="areacode" />
+		<result column="ADDRESS" property="address" />
+		<result column="TELLNUMBER" property="tellnumber" />
+		<result column="RUNTIME" property="runtime" />
+		<result column="RATING" property="rating" />
+		<result column="LIKECOUNT" property="likecount" />
+		<result column="WISHCOUNT" property="wishcount" />
+		<result column="PRODUCTCOUNT" property="productcount" />
+	</resultMap>
+	
+	<insert id="wishInsert">
+		INSERT INTO WISH
+		VALUES (WISHSEQ.NEXTVAL, #(userseq), #(productseq)		
+	</insert>
+
+	<select id="wishList" resultType="wishDto">
+		SELECT W.WISHSEQ, P.PRODUCTSEQ,
+		U.USERSEQ, P.PRODUCTNAME, P.THUMBIMG, P.ADDRESS, P.TELLNUMBER, P.PRICE
+		FROM WISH W, PTSD_USER U, PRODUCT P
+		WHERE U.USERSEQ = W.USERSEQ AND
+		W.PRODUCTSEQ = P.PRODUCTSEQ
+		ORDER BY WISHSEQ
+	</select>
+	
+	<delete id="wishDelete" parameterType="wishDto">
+		DELETE FROM WISH 
+		WHERE WISHSEQ = #{wishseq}
+	</delete>
+
+</mapper>

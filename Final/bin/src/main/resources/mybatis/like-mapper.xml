@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="like">
+
+	<insert id="likeInsert" parameterType="likeDto">
+		INSERT INTO REVIEWLIKE
+		VALUES(REVIEWLIKESEQ.NEXTVAL, #{reviewseq}, #{userseq})
+	</insert>
+	
+	<delete id="likeDel" parameterType="likeDto">
+		DELETE FROM REVIEWLIKE
+		WHERE REVIEWSEQ = #{reviewseq} AND USERSEQ = #{userseq}
+	</delete>
+	
+	<update id="likeUpdate" parameterType="likeDto">
+		UPDATE REVIEW
+		SET
+		REVIEWLIKECNT = (SELECT COUNT(*)
+		FROM REVIEWLIKE
+		WHERE REVIEWSEQ = #{reviewseq})
+		WHERE REVIEWSEQ = #{reviewseq}
+	</update>
+	
+	<select id="likeCnt" resultType="int" parameterType="reviewDto">
+		SELECT COUNT(LIKESEQ)
+		FROM REVIEWLIKE
+		WHERE REVIEWSEQ = #{reviewseq} AND USERSEQ = #{userseq}
+	</select>
+
+</mapper>

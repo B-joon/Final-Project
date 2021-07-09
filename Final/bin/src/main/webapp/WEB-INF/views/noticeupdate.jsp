@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<form action="updateres.do" method="post">
 		<input type="hidden" name="boardseq" value="${dto.boardseq }">
 		<table border="1">
