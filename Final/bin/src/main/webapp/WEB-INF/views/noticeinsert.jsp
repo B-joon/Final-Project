@@ -7,13 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<form action="insertres.do" method="post">
+	<input type="hidden" value="NOTICE" name="boardkind">
 		<table border="1">
-			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="boardname"></td>
-			</tr>
+			
 			<tr>
 				<th>제목</th>
 				<td><input type="text" name="boardtitle"></td>

@@ -1,0 +1,35 @@
+/* .container {
+	width: 400px;
+	display: grid;
+	grid-template-rows: repeat(3, 100px);
+	grid-template-columns: repeat(3, 1fr);
+	border: 1px solid black
+} */
+
+.coupon {
+	width: 280px;
+	height: 180px;
+	
+	
+}
+
+/* .container {
+        
+        height: 100vh;
+        display: flex;
+        flex-direction: row; 
+        flex-wrap: wrap;
+        flex-flow: row nowrap; 이렇게 한줄로 작성 가능 
+        justify-content: space-evenly;
+        margin: 0px;
+        text-align: center;
+        
+        
+        }
+    .item {
+        width: 350px;
+        height: 350px;
+        border: 1px solid black;
+        
+
+    } */

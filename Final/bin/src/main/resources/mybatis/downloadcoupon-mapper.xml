@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="coupon">
+
+	<!-- 내 쿠폰함 들어가면 보이는것  -->
+	<select id="selectList" resultType="couponDto">
+	SELECT A.MAKESEQ,A.COUPONSEQ,A.COUPONTITLE,A.USERSEQ,A.DISCOUNT,A.USECHK,A.ENDDAY  
+	FROM COUPON A JOIN MAKECOUPON B ON A.MAKESEQ = B.MAKESEQ
+	</select>
+	
+	<select id="selectOne" resultType="couponDto">
+	
+	</select>
+	
+	<!-- 다운로드 누르자마자 다운되는거  -->
+	<insert id="insert" parameterType="couponDto">
+		INSERT INTO COUPON
+		VALUES(#{makeseq},COUPONSEQ.NEXTVAL,#{coupontitle},#{userseq},#{discount},'N',#{endday})
+	</insert>
+	<!-- 사용한것  -->
+	<update id="update" parameterType="couponDto">
+		UADATE COUPON
+		SET USECHK ='Y'
+		WHERE COUPONSEQ = #{COUPONSEQ} 
+	
+	</update>
+	
+	<!-- 삭제되는거  -->
+	<delete id="dailydelete" parameterType="couponDto">
+		DELETE FROM COUPON
+		WHERE ENDDAY = #{endday}
+	</delete>
+  
+</mapper>

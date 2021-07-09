@@ -1,0 +1,11 @@
+#darkbtn {
+    position: fixed; /* 버튼 위치 고정 */
+    bottom: 20px;
+    right: 100px;
+    z-index: 99;
+    font-size: 20px;
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+    
+}

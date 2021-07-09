@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+<%@include file="./common.jsp" %>	
 	<h1>로그인 성공!</h1>
 	
 </body>
