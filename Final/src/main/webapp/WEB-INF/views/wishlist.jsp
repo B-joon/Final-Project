@@ -9,7 +9,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>찜하기 목록</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSD / 찜하기</title>
 </head>
 <body>
 	<h2>찜한 공연</h2>
