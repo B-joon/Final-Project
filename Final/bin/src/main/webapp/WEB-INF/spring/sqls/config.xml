@@ -4,12 +4,26 @@
 
 	<typeAliases>
 		<typeAlias type="com.ptsd.mvc.notice.NoticeDto" alias="noticeDto" />
-		<typeAlias type="com.mvc.test.dto.UserDto" alias="userDto" />
+		<typeAlias type="com.ptsd.mvc.user.UserDto" alias="userDto" />
+		<typeAlias type="com.ptsd.mvc.product.ProductDto" alias="productDto" />
+		<typeAlias type="com.ptsd.mvc.streaming.StreamingDto" alias="streamingDto"/>
+		<typeAlias type="com.ptsd.mvc.wish.WishDto" alias="wishDto" />
+		<typeAlias type="com.ptsd.mvc.coupon.MakeCouponDto" alias="makeCouponDto"/>
+		<typeAlias type="com.ptsd.mvc.coupon.CouponDto" alias="couponDto"/>
+		<typeAlias type="com.ptsd.mvc.like.LikeDto" alias="likeDto"/>
+		<typeAlias type="com.ptsd.mvc.review.ReviewDto" alias="reviewDto"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="/mybatis/notice-mapper.xml" />
 		<mapper resource="/mybatis/user-mapper.xml" />
+		<mapper resource="/mybatis/product-mapper.xml"/>
+		<mapper resource="/mybatis/streaming-mapper.xml"/>
+		<mapper resource="/mybatis/wish-mapper.xml"/>
+		<mapper resource="/mybatis/makecoupon-mapper.xml"/>
+		<mapper resource="/mybatis/downloadcoupon-mapper.xml"/>
+		<mapper resource="/mybatis/like-mapper.xml"/>
+		<mapper resource="/mybatis/review-mapper.xml"/>
 	</mappers>
 
 </configuration>

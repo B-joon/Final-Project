@@ -23,7 +23,7 @@ UserDto login = (UserDto) session.getAttribute("login");
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment-with-locales.min.js" integrity="sha512-EATaemfsDRVs6gs1pHbvhc6+rKFGv8+w4Wnxk4LmkC0fzdVoyWb+Xtexfrszd1YuUMBEhucNuorkf8LpFBhj6w==" crossorigin="anonymous"></script>
 <!-- include summernote css/js -->
 
 <link
@@ -44,7 +44,7 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script type="text/javascript" src="resources/js/weather.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/weather.css">
 
-<<<<<<< HEAD
+
 <script type="text/javascript" src="resources/js/darkmode.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/darkmode.css">
 
@@ -56,16 +56,15 @@ UserDto login = (UserDto) session.getAttribute("login");
 
 
 
-=======
+
 <!-- 지도정보 -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dfb6f83c1347ebbcf6cbda00be7c7b6f&libraries=services,clusterer,drawing"></script>
 <div class="container-lg">
->>>>>>> main
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between sticky-top">
-	<a class="navbar-brand" href="main.do"> <font
-		style="vertical-align: inherit;"><font
-			style="vertical-align: inherit;">PTSD</font></font> <!-- <img src="resources/img/logo.png" width="50" height="100" class="d-inline-block align-top"></img> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger justify-content-between sticky-top font-weight-bold">
+	<a class="navbar-brand" href="main.do">
+		<img src="resources/img/logo.png" width="100" class="d-inline-block align-top"></img>
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarNav" aria-controls="navbarNav"
