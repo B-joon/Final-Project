@@ -64,10 +64,7 @@ public class UserController {
 	public String chart() {
 		return "chart";
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> fbbf8be493f7946c294039194ed58fd612b8972d
 	@RequestMapping("/idpwFind.do")
 	public String idpwFind() {
 		return "userfind";

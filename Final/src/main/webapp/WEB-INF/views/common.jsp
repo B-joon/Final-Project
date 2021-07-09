@@ -44,6 +44,7 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script type="text/javascript" src="resources/js/weather.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/weather.css">
 
+
 <script type="text/javascript" src="resources/js/darkmode.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/darkmode.css">
 
@@ -51,15 +52,15 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/chart.css">
 
+
+
+
+
+
 <!-- 지도정보 -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dfb6f83c1347ebbcf6cbda00be7c7b6f&libraries=services,clusterer,drawing"></script>
 <div class="container-lg">
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between sticky-top">
-	<a class="navbar-brand" href="main.do"> <font
-		style="vertical-align: inherit;"><font
-			style="vertical-align: inherit;">PTSD</font></font> <!-- <img src="resources/img/logo.png" width="50" height="100" class="d-inline-block align-top"></img> -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger justify-content-between sticky-top font-weight-bold">
 	<a class="navbar-brand" href="main.do">
