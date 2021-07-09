@@ -239,42 +239,10 @@ function getProductAllList() {
 				success:function(data) {
 					const partylist = document.querySelector('#partylist');
 					
-					for (var i = 0; i < data.length; i++) {
-						
-//						const div = document.createElement('div');
-//
-//						div.setAttribute("class","partyDiv");
-//						const productname = document.createElement('div');
-//						productname.append(data[i].productname);
-//						const address = document.createElement('div');
-//						address.append(data[i].address);
-//						const img = document.createElement('img');
-//						img.src = data[i].thumbimg;
-//						img.style.witdh = "10em";
-//						img.style.height = "10em";
-//						const productcontent = document.createElement('div');
-//						productcontent.append(data[i].productcontent);
-//						const tellnumber = document.createElement('div');
-//						tellnumber.append(data[i].tellnumber);
-//						const button1 = document.createElement('input');
-//						button1.setAttribute("type","button");
-//						button1.setAttribute("value","예매하기");
-//						button1.setAttribute("onclick","chkReservation("+data[i].productseq+");");
-//
-//						const button2 = document.createElement('input');
-//						button2.setAttribute("type","button");
-//						button2.setAttribute("value","좋아요");
-//						button2.setAttribute("onclick","");
-//						
-//						const button3 = document.createElement('input');
-//						button3.setAttribute("type","button");
-//						button3.setAttribute("value","찜하기");
-//						button3.setAttribute("onclick","");
-						
+					for (var i = 0; i < data.length; i++) {	
 						
 						const cardDeck = document.createElement('div');
 						cardDeck.setAttribute("class","col-sm-3 mb-3");
-						cardDeck.style.wordBreak = 'break-all';
 						
 						const card = document.createElement('div');
 						card.setAttribute("class","card border-info");
@@ -300,24 +268,15 @@ function getProductAllList() {
 						const tel = document.createElement('div');
 						tel.append(data[i].tellnumber);
 						
-						const button = document.createElement('button');
-						button.setAttribute("onclick", 'getAddress("'+data[i].address+'","'+data[i].productname+'");')
-						button.setAttribute("type","button");
-						button.setAttribute("class","btn btn-info m-1");
-						button.setAttribute("data-toggle","modal");
-						button.setAttribute("data-target","#addrModal");
-						button.append("지도보기")
-						
 						const button1 = document.createElement('button');
 						button1.setAttribute("type","button");
 						button1.setAttribute("class","btn btn-info m-1");
-						button1.append("예매하기")
-						button1.setAttribute("onclick","chkReservation("+data[i].productseq+");");
+						button1.append("자세히보기")
+						button1.setAttribute("onclick","location.href='reservation.do?productseq="+data[i].productseq+"';");
 						
 						card.append(title);
 						div.append(addr);
 						div.append(tel);
-						div.append(button);
 						div.append(button1);
 						
 						card.append(img);
@@ -360,7 +319,6 @@ function getProductList(areacode) {
 				
 				const cardDeck = document.createElement('div');
 				cardDeck.setAttribute("class","col-sm-3 mb-3");
-				cardDeck.style.wordBreak = 'break-all';
 				
 				const card = document.createElement('div');
 				card.setAttribute("class","card border-info");
@@ -386,24 +344,23 @@ function getProductList(areacode) {
 				const tel = document.createElement('div');
 				tel.append(data[i].tellnumber);
 				
-				const button = document.createElement('button');
-				button.setAttribute("onclick", 'getAddress("'+data[i].address+'","'+data[i].productname+'");')
-				button.setAttribute("type","button");
-				button.setAttribute("class","btn btn-info m-1");
-				button.setAttribute("data-toggle","modal");
-				button.setAttribute("data-target","#addrModal");
-				button.append("지도보기")
+//				const button = document.createElement('button');
+//				button.setAttribute("onclick", 'getAddress("'+data[i].address+'","'+data[i].productname+'");')
+//				button.setAttribute("type","button");
+//				button.setAttribute("class","btn btn-info m-1");
+//				button.setAttribute("data-toggle","modal");
+//				button.setAttribute("data-target","#addrModal");
+//				button.append("지도보기")
 				
 				const button1 = document.createElement('button');
 				button1.setAttribute("type","button");
 				button1.setAttribute("class","btn btn-info m-1");
-				button1.append("예매하기")
-				button1.setAttribute("onclick","chkReservation("+data[i].productseq+");");
+				button1.append("자세히보기")
+				button1.setAttribute("onclick","location.href='reservation.do?productseq="+data[i].productseq+"';");
 				
 				card.append(title);
 				div.append(addr);
 				div.append(tel);
-				div.append(button);
 				div.append(button1);
 				
 				card.append(img);
@@ -424,31 +381,6 @@ function getProductList(areacode) {
 	
 	
 }
-
-// 예매하기 클릭시 로그인 여부 확인 + 로그인 체크하는 공통된 메소드를 하나 만들어야 할 듯
-function chkReservation(productseq) {
-	
-	var sessionLogin= $("#sessionLogin").val();
-	alert(sessionLogin);
-	
-	if (sessionLogin == null || sessionLogin == "") {
-		
-		alert("로그인을 해주세요.")
-		location.href='loginform.do';
-		
-		
-		
-	} else {
-		
-		location.href='reservation.do?productseq='+productseq;
-		
-	}
-	
-	
-	
-	
-}
-
 
 // 축제정보 가져올시의 파라미터
 function getParams(areacode) {

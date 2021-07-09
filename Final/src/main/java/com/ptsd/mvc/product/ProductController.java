@@ -2,10 +2,13 @@ package com.ptsd.mvc.product;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.JsonObject;
 
 @Controller
 public class ProductController {
@@ -75,24 +80,34 @@ public class ProductController {
 	@RequestMapping(value="productupdateres.do", method=RequestMethod.POST)
 	public String productUpdateRes(@RequestParam("img")MultipartFile file, ProductDto dto, Model model, HttpServletRequest request) throws IllegalStateException, IOException {
 		
-		String path = request.getSession().getServletContext().getRealPath("/resources/image/");
-		System.out.println(path);
-		String fileName = file.getOriginalFilename();
-		
-		dto.setAreacode(getAreacode(dto.getAddress()));
-		
-		String pastImgUrl = biz.selectOne(dto.getProductseq()).getThumbimg();
-		pastImgUrl = request.getSession().getServletContext().getRealPath("") + pastImgUrl;
+		if (!file.isEmpty()) {
+			
+			String path = request.getSession().getServletContext().getRealPath("/resources/image/");
+			System.out.println(path);
+			String fileName = file.getOriginalFilename();
+			
+			dto.setAreacode(getAreacode(dto.getAddress()));
+			
+			String pastImgUrl = biz.selectOne(dto.getProductseq()).getThumbimg();
+			pastImgUrl = request.getSession().getServletContext().getRealPath("") + pastImgUrl;
 
-		System.out.println("삭제할 경로 : " + pastImgUrl);
-		if(!file.getOriginalFilename().isEmpty()) {
-			new File(pastImgUrl).delete();
-			file.transferTo(new File(path, fileName));
-			dto.setThumbimg(FILE_PATH+fileName);
+			System.out.println("삭제할 경로 : " + pastImgUrl);
+			if(!file.getOriginalFilename().isEmpty()) {
+				new File(pastImgUrl).delete();
+				file.transferTo(new File(path, fileName));
+				dto.setThumbimg(FILE_PATH+fileName);
+			} else {
+				model.addAttribute("msg", "유효하지 않은 파일입니다.");
+				return "redirect:productupdate.do?productseq="+dto.getProductseq();
+			}
+			
 		} else {
-			model.addAttribute("msg", "유효하지 않은 파일입니다.");
-			return "redirect:productupdate.do?productseq="+dto.getProductseq();
+			dto.setAreacode(getAreacode(dto.getAddress()));
+			String pastImgUrl = biz.selectOne(dto.getProductseq()).getThumbimg();
+			dto.setThumbimg(pastImgUrl);
 		}
+		
+		
 		
 		int res = biz.update(dto);
 		
@@ -103,6 +118,35 @@ public class ProductController {
 		}
 
 	}
+	
+	@RequestMapping(value="fileupload.do", method=RequestMethod.POST, produces = "application/json; charset=utf8")
+	public String fileUpload(HttpServletRequest request, @RequestParam("file")MultipartFile file) throws IllegalStateException, IOException {
+		
+		JsonObject jsonObject = new JsonObject();
+		
+		String path = request.getSession().getServletContext().getRealPath("/resources/image/");
+		System.out.println(path);
+		String fileName = file.getOriginalFilename();
+
+		File targetFile = new File(path + fileName);	
+		
+		try {
+			InputStream fileStream = file.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
+			jsonObject.addProperty("url", "/resources/image/"+fileName); // contextroot + resources + 저장할 내부 폴더명
+			jsonObject.addProperty("responseCode", "success");
+				
+		} catch (IOException e) {
+			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
+			jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		
+		String a = jsonObject.toString();
+		return a;
+
+	}
+	
 	
 	@RequestMapping("productdelete.do")
 	public String productDelete(HttpServletRequest request, int productseq) {
