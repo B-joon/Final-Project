@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ptsd.mvc.coupon.CouponBiz;
+import com.ptsd.mvc.coupon.CouponDto;
 import com.ptsd.mvc.like.LikeBiz;
 import com.ptsd.mvc.like.LikeDto;
 import com.ptsd.mvc.product.ProductBiz;
@@ -23,6 +25,8 @@ public class ReservationController {
 	private ProductBiz Pbiz;
 	@Autowired
 	private ReviewBiz reviewbiz;
+	@Autowired
+	private CouponBiz mycouponbiz;
 	
 	@RequestMapping("/reservation.do")
 	public String selectList(Model model, int productseq, HttpServletRequest HttpRequest) {
@@ -32,6 +36,10 @@ public class ReservationController {
 		// 후기
 		List<ReviewDto> list = reviewbiz.selectList(productseq);
 		model.addAttribute("reviewlist", list);
+		
+		List<CouponDto> couponlist = mycouponbiz.selectList();
+		
+		model.addAttribute("couponlist", couponlist);
 		
 		return "reservation";
 	}

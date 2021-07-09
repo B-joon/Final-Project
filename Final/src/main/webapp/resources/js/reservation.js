@@ -14,28 +14,17 @@ function chkReservation(productseq) {
 	
 }
 
-function goPayment() {
-	
-	var ticketprice = $("#ticketprice").val();
-	var num = $("[name='ticketcount'] option:selected").val();
-	var name = $("[name='reviewname']").val();
-	var price = ticketprice * num;
-	
-	location.href='pay.do?name='+name+'&price='+price;
-	
-	
-}
-
-
 
 
     function requestPay() {
     
     	var ticketprice = $("#ticketprice").val();
 		var num = $("[name='ticketcount'] option:selected").val();
+		var coupon = $("[name='discount'] option:selected").val();
 		var name = $("#productname").val();
-		var price = ticketprice * num;
-		var username = $("#loginname").val();
+		var price = (ticketprice * num)-coupon;
+		var userseq = $("#loginseq").val();
+		
     
     
         var IMP = window.IMP; // 생략해도 괜찮습니다.
@@ -46,7 +35,7 @@ function goPayment() {
             merchant_uid: "ORD20180131-0000011",
             name: name, //상품이름
             amount: price, //상품가격
-            buyer_name: username, // userseq or username
+            buyer_name: userseq, // 구매자 이름 
             
         }, function (rsp) { // callback (rsp는 결제의 성공여부, 결제 정보, 에러정보 등을 담고있다. )
             if (rsp.success) {
@@ -55,7 +44,7 @@ function goPayment() {
             	msg += "상점 거래 ID:"+ rsp.merchant_uid;
             	msg += "결제 금액 :"+rsp.paid_amount;
             	msg += "카드 승인번호:" +rsp.apply_num;
-            // 결제 성공 시 로직,
+            // 결제 성공 시 로직,성공시 ajax 를 통해 결제내역 insert 예정 
             
     } else {
     	var msg = '결제에 실패하였습니다.';
