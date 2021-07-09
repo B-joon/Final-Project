@@ -115,7 +115,7 @@
 													<input name="like${reviewdto.reviewseq }" value="like${reviewdto.reviewseq }" type="hidden">
 													<input class="like${reviewdto.reviewseq }" type="hidden">
 													<span class="badge badge-pill badge-light">${reviewdto.reviewlikecnt }</span>
-													<span class="likeseq${reviewdto.reviewseq } btn"></span>
+													<span class="likeseq${reviewdto.reviewseq }"></span>
 												</span>
 											</span>
 										</span>
