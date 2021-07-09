@@ -15,7 +15,7 @@
 <%@include file="./common.jsp" %>
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
 	
-	<div>
+	<div class="row">
 		<c:choose>
 
 
@@ -26,24 +26,44 @@
                 <c:forEach items="${list }" var="dto">
                 	<c:choose>
                 	<c:when test="${login.userrole eq 'admin' }">
-                		<h3>${dto.streamingname }</h3>
-                		<a href="https://b-joon.github.io/Final-Project/livestreaming/livestreaming.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }">방송하기</a><br>
-						
+						<div class="col-sm-3 mb-3">
+							<div class="card border-danger">
+								<div class="card-body">
+									<h5 class="card-title">${dto.streamingname }</h5>
+									<a href="https://b-joon.github.io/Final-Project/livestreaming/livestreaming.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }" class="btn btn-danger">방송하기</a>
+								</div>
+							</div>
+						</div>
 					</c:when>
 					<c:when test="${login.userrole eq 'user' }">
-						<h3>${dto.streamingname }</h3>
-						<a href="https://b-joon.github.io/Final-Project/livestreaming/livewatch.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }">시청하기</a><br>
-						
+						<div class="col-sm-3 mb-3">
+							<div class="card border-danger">
+								<div class="card-body">
+									<h5 class="card-title text-center">${dto.streamingname }</h5>
+									<a href="https://b-joon.github.io/Final-Project/livestreaming/livewatch.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }" class="btn btn-danger">시청하기</a>
+								</div>
+							</div>
+						</div>	
 					</c:when>
+					<c:otherwise>
+						<div class="col-sm-3 mb-3">
+							<div class="card border-danger">
+								<div class="card-body">
+									<h5 class="card-title">${dto.streamingname }</h5>
+									<p class="card-text">방송에 접속할 수 없습니다. 로그인을 해주세요.</p>
+									<button class="btn btn-danger" disabled>시청불가</button>
+								</div>
+							</div>
+						</div>
+					</c:otherwise>
 					</c:choose>
-                	
                 </c:forEach>
             </c:otherwise>
         </c:choose>
 	</div>
 	<c:choose>
 		<c:when test="${login.userrole eq 'admin' }">
-			<input id="btn" type="button" value="방송 생성" onclick="location.href='streaminginsert.do'">
+			<input class="btn btn-danger" type="button" value="방송 생성" onclick="location.href='streaminginsert.do'">
 		</c:when>
 	</c:choose>
 
