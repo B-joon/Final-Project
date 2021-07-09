@@ -18,41 +18,133 @@
 	<input type="hidden" value="${dto.productname }" id="productname">
 	
 	<div class="row">
-		<div class="col-sm-9 overflow-auto">			
+		<div class="col-sm-9">			
 			<div class="card border border-danger">
 				<div class="card-body text-center">
 					<h5 class="card-title font-weight-bold">${dto.productname }</h5>
 				</div>
 				<div class="card-body m-3">
 					<div class="row">
-						<div class="col-sm-5">
+						<div class="col-sm-4">
 							<img src="${dto.thumbimg }" class="card-img-top border border-danger m-2" onerror="this.src='resources/img/noimage.png'" width="300" alt="${dto.productname }">
 							<p class="card-text m-2"><i class="far fa-heart"></i> 찜하기 / <b>${dto.wishcount }</b></p>
 						</div>
-						<div class="col-sm-7">
-							<div class="row">
+						<div class="col-sm-8">
+							<div class="row mb-3">
 								<div class="col-sm-3">
 									<p class="card-text">장소</p>
-									<p class="card-text">공연기간</p>
-									<p class="card-text">공연시간</p>
-									<p class="card-text">관람등급</p>
-									<p class="card-text">가격</p>
 								</div>
 								<div class="col-sm-9">
 									<p class="card-text"><a href="#" class="text-reset">${dto.address }</a></p>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<p class="card-text">공연기간</p>
+								</div>
+								<div class="col-sm-9">
 									<p class="card-text">${dto.startdate } ~ ${dto.enddate }</p>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<p class="card-text">공연시간</p>
+								</div>
+								<div class="col-sm-9">
 									<p class="card-text">${dto.runtime }</p>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<p class="card-text">관람등급</p>
+								</div>
+								<div class="col-sm-9">
 									<p class="card-text">${dto.rating }</p>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<p class="card-text">가격</p>
+								</div>
+								<div class="col-sm-9">
 									<p class="card-text">${dto.price } 원</p>
 									<input type="hidden" id="ticketprice" value="${dto.price }">
 								</div>
-							</div>
-							
+							</div>							
 						</div>
 					</div>
 				</div>
 				<div class="card-body border-top m-3">
 					${dto.productcontent }
+				</div>
+				<div class="card m-3">
+				<div class="card-body">
+					<form action="reviewinsert.do">
+						<input type="hidden" name="productseq" value="${dto.productseq }">
+						<input type="hidden" name="userseq" value="${login.userseq }">
+						<input type="hidden" name="reviewname" value="${login.name }">
+						<div class="form-group">
+							<label for="commentarea"><i class="fas fa-user">  ${login.name }</i>
+							</label>
+							  <div class="col-sm-10">
+							   <textarea class="form-control" name="reviewcontent" id="commentarea" rows="3" placeholder="댓글을 입력하세요."></textarea>
+							  </div>
+						</div>
+						<button type="submit" class="btn btn-danger btn-sm">댓글 작성</button> 
+					</form>
+				</div>
+				</div>
+				<div class="card-body m-3">
+					<h3 class="text-center font-weight-bold">댓글 확인</h3>
+					<c:choose>
+						<c:when test="${empty reviewlist }">
+							리뷰가 없습니다.
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${reviewlist }" var="reviewdto">
+								<div class="card m-3">
+									  <div class="card-body">
+									    <h5 class="card-title"><i class="fas fa-user">  ${reviewdto.reviewname }</i></h5>
+									    <p class="card-text">${reviewdto.reviewcontent }</p><small class="text-muted">${reviewdto.reviewdate }</small>
+
+									  </div>
+									<div class="card-body">
+										<span class="list${reviewdto.reviewseq }">
+											<span class="button" tabindex="0" onclick="like(${reviewdto.reviewseq }, ${login.userseq });">
+												<span onclick="likeEvent(${reviewdto.reviewseq });">
+													<input name="like${reviewdto.reviewseq }" value="like${reviewdto.reviewseq }" type="hidden">
+													<input class="like${reviewdto.reviewseq }" type="hidden">
+													<span class="badge badge-pill badge-light">${reviewdto.reviewlikecnt }</span>
+													<span class="likeseq${reviewdto.reviewseq } btn"></span>
+												</span>
+											</span>
+										</span>
+								    	<button class="btn btn-danger btn-sm ml-3" onclick="Update(${reviewdto.reviewseq });">수정</button>
+										<button class="btn btn-dark btn-sm" onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
+								    </div>
+							    </div>
+								<div class="update${reviewdto.reviewseq }" style="display: none">
+								<div class="card">
+									<div class="card-body">
+									
+									<form action="reviewupdate.do">
+										<input type="hidden" name="reviewseq" value="${reviewdto.reviewseq}">
+										<input type="hidden" name="productseq" value="${reviewdto.productseq }">
+										<div class="form-group">
+											<label for="reviewarea"><i class="fas fa-user">  ${login.name }</i></label>
+									  	<div class="col-sm-10">
+									   		<textarea class="form-control" name="reviewcontent" id="reviewarea" rows="3" >${reviewdto.reviewcontent }</textarea>
+									  	</div>
+										</div>
+										<button type="submit" class="btn btn-danger btn-sm">수정하기</button> 
+										<button type="button" onclick="NoUpdate(${reviewdto.reviewseq });" class="btn btn-dark btn-sm">취소</button> 							
+									</form>
+									</div>
+								</div>
+								</div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>					
 				</div>
 			</div>
 		</div>
@@ -96,49 +188,8 @@
 	<!-- 댓글 후기 -->
 
 	<script type="text/javascript" src="resources/js/reviewandlike.js"></script>
-	<form action="reviewinsert.do">
-		<input type="hidden" name="productseq" value="${dto.productseq }">
-		<input type="hidden" name="userseq" value="${login.userseq }">
-		<input type="text" name="reviewname" value="${login.name }"
-			readonly="readonly"><br>
-		<textarea rows="2" cols="80" name="reviewcontent"></textarea>
-		<br> <input type="submit" value="댓글 작성">
-	</form>
-	<c:choose>
-		<c:when test="${empty reviewlist }">
-----------작성된 글이 존재하지 않습니다---------
-			</c:when>
-		<c:otherwise>
-			<c:forEach items="${reviewlist }" var="reviewdto">
-				<div class="list${reviewdto.reviewseq }" style="display: block">
-					<div onclick="like(${reviewdto.reviewseq }, ${login.userseq });">
-						<div style="text-align: right;" onclick="likeEvent(${reviewdto.reviewseq });">
-							<input name="like${reviewdto.reviewseq }" value="like${reviewdto.reviewseq }" type="hidden">
-							<input class="like${reviewdto.reviewseq }" name="" type="hidden">
-							<div class="likeseq${reviewdto.reviewseq }">${reviewdto.reviewlikecnt } </div>
-						</div>
-					</div>
-					${reviewdto.reviewname }<br> ${reviewdto.reviewcontent }
-					<div class="review-btn">
-					<button onclick="Update(${reviewdto.reviewseq });">수정</button>
-					<button onclick="location.href='reviewdel.do?reviewseq=${reviewdto.reviewseq}&productseq=${dto.productseq }'">삭제</button>
-					</div>
-					<span>${reviewdto.reviewdate }</span><br>
-				</div>
-				<div class="update${reviewdto.reviewseq }" style="display: none">
-				<form action="reviewupdate.do">
-					<input type="hidden" name="reviewseq" value="${reviewdto.reviewseq}">
-					<input type="hidden" name="productseq" value="${reviewdto.productseq }">
-					<input type="text" name="reviewname" value="${reviewdto.reviewname }" readonly="readonly"><br>
-					<textarea rows="2" cols="80" name="reviewcontent"></textarea><br>
-					<input type="submit" value="수정">
-					<input type="button" value="취소" onclick="NoUpdate(${reviewdto.reviewseq });">
-					
-				</form>
-				</div>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>
+
+
 
 
 </div>
