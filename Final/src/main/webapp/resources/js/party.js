@@ -222,16 +222,8 @@ function getProductAllList() {
 	
 	$("#partylist").children().remove();
 
-	const arrCode = [1, 31, 2, 34, 33, 3, 8, 32, 38, 37, 5, 7, 4, 36, 35, 6, 39];
-	
-	for (var i = 0; i < arrCode.length; i++) {
-		
-		var areacode = arrCode[i];
-		
-		(function(){
-		
 			$.ajax({
-				url: "getProductList.do?areacode="+areacode,
+				url: "getProductAllList.do",
 				method: "post",
 				contentType : "application/json",
 				dataType: "json",
@@ -293,12 +285,6 @@ function getProductAllList() {
 					alert("실패")
 				}
 				})
-			
-			
-			
-	})();
-	
-	}
 	
 }
 
@@ -343,15 +329,7 @@ function getProductList(areacode) {
 
 				const tel = document.createElement('div');
 				tel.append(data[i].tellnumber);
-				
-//				const button = document.createElement('button');
-//				button.setAttribute("onclick", 'getAddress("'+data[i].address+'","'+data[i].productname+'");')
-//				button.setAttribute("type","button");
-//				button.setAttribute("class","btn btn-info m-1");
-//				button.setAttribute("data-toggle","modal");
-//				button.setAttribute("data-target","#addrModal");
-//				button.append("지도보기")
-				
+
 				const button1 = document.createElement('button');
 				button1.setAttribute("type","button");
 				button1.setAttribute("class","btn btn-info m-1");

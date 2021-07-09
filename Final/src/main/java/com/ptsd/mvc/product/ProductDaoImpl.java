@@ -18,7 +18,7 @@ public class ProductDaoImpl implements ProductDao {
 		List<ProductDto> list = new ArrayList<ProductDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectAllList");			
+			list = sqlSession.selectList(NAMESPACE+"selectAllList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

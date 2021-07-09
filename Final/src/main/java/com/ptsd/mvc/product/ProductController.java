@@ -69,6 +69,15 @@ public class ProductController {
 		return list;
 	}
 	
+	@RequestMapping("getProductAllList.do")
+	@ResponseBody
+	public List<ProductDto> getProductAllList() {
+		
+		List<ProductDto> list = biz.selectAllList();
+		
+		return list;
+	}
+	
 	@RequestMapping("productupdate.do")
 	public String productUpdateForm(Model model, int productseq) {
 		
@@ -128,7 +137,7 @@ public class ProductController {
 		System.out.println(path);
 		String fileName = file.getOriginalFilename();
 
-		File targetFile = new File(path + fileName);	
+		File targetFile = new File(path + fileName);
 		
 		try {
 			InputStream fileStream = file.getInputStream();

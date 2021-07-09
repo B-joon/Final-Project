@@ -88,14 +88,8 @@ function getProductAllList() {
 	tr.append(th18);
 	table.append(tr);
 	
-	for (var i = 0; i < arrCode.length; i++) {
-		
-		var areacode = arrCode[i];
-		
-		(function(){
-			
 			$.ajax({
-				url: "getProductList.do?areacode="+areacode,
+				url: "getProductAllList.do",
 				method: "post",
 				contentType : "application/json",
 				dataType: "json",
@@ -207,13 +201,8 @@ function getProductAllList() {
 				error:function() {
 					alert("실패")
 				}
-				})
-			
-			
-			
-	})();
-	
-	}
+		})
+
 	
 }
 
