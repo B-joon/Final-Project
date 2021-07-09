@@ -24,8 +24,6 @@ function getProductAllList() {
 	
 	$("#partylist").children().remove();
 
-	const arrCode = [1, 31, 2, 34, 33, 3, 8, 32, 38, 37, 5, 7, 4, 36, 35, 6, 39];
-	
 	const partylist = document.querySelector('#partylist');
 	
 	const table = document.createElement('table');

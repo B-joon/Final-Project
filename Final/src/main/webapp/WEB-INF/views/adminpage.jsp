@@ -42,22 +42,22 @@
 		<option value="39">제주</option>
 	</select>
 	
-	<select name="category">
-		<option value="" disabled selected>카테고리 선택</option>
-		<option value="전체">전체</option>
-		<option value="뮤지컬">뮤지컬</option>
-		<option value="콘서트">콘서트</option>
-		<option value="연극">연극</option>
-		<option value="클래식/무용">클래식/무용</option>
-		<option value="스포츠">스포츠</option>
-		<option value="레저">레저</option>
-		<option value="전시/행사">전시/행사</option>
-		<option value="아동/가족">아동/가족</option>
-	</select>
-	
 	<div id="partylist">
-	
-		
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">상품번호</th>
+		      <th scope="col">카테고리</th>
+		      <th scope="col">상품명</th>
+		      <th scope="col">주소</th>
+		      <th scope="col">전화번호</th>
+		      <th scope="col">관람등급</th>
+		      <th scope="col">관객수</th>
+		      <th scope="col">티켓가격</th>
+		      <th scope="col">관리</th>
+		    </tr>
+		  </thead>
+		</table>
 	
 	</div>
 
