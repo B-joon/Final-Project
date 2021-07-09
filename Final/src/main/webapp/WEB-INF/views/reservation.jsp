@@ -14,7 +14,7 @@
 <body>
 	<%@include file="./common.jsp"%>
 	
-	<input type="hidden" value="${login.name }" id="loginname">
+	<input type="hidden" value="${login.userseq }" id="loginseq">
 	<input type="hidden" value="${dto.productname }" id="productname">
 	
 	<div class="row">
@@ -86,6 +86,28 @@
 						<p class="font-weight-bold">남은좌석수</p><p class="font-weight-normal">0 / ${dto.seatcount }</p>
 						
 					</div>
+					
+					<div>
+						<div>할인쿠폰</div>
+						<select class="mycoupon" name="discount">
+						<option value="" disabled selected>쿠폰선택</option>
+						<c:choose>
+
+							<c:when test="${empty couponlist }">
+								<option value="쿠폰이 없습니다" disabled selected></option>
+							</c:when>
+							<c:otherwise>
+
+							<c:forEach items="${couponlist }" var="coupondto">
+								<c:if test="${coupondto.userseq == login.userseq }">
+							<option value="${coupondto.discount }">${coupondto.coupontitle }, ${coupondto.discount }원 </option>
+								</c:if>
+						</c:forEach>
+						</c:otherwise>
+						</c:choose>
+						</select>
+					</div>
+					
 					<div class="m-2">
 						<button type="button" class="btn btn-danger" onclick="requestPay();">예매하기</button>
 					</div>
