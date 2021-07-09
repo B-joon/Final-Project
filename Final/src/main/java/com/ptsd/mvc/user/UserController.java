@@ -82,13 +82,23 @@ public class UserController {
 
 	}
 	
+	@RequestMapping("mypageupdateres.do")
+	public String mypageupdateres(UserDto dto) {
+		System.out.println("유저 정보 업데이트 시작");
+		if(biz.updateUser(dto) > 0) {
+			return "redirect:mypage.do?userseq="+dto.getUserseq();
+		}
+		return "redirect:mypageupdate.do?userseq="+dto.getUserseq();
+	}
+	
 	@RequestMapping("/userdelete.do")
 	public String delete(int userseq) {
-		
+		System.out.println("삭제 시작한다.");
 		if(biz.delete(userseq) > 0) {
+			System.out.println("삭제 성공");
 			return "../../index";
 		}
-		
+		System.out.println("삭제 실패");
 		return "redirect:mypage.do?userseq=" + userseq;
 	}
 	

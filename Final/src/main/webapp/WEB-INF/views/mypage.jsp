@@ -17,22 +17,15 @@
 <p>${login.getName() }님의 마이페이지 입니다.</p>
 
 	<table align="center">
-<%
-	String userid = login.getUserid();
-	String temp = userid.substring(userid.length()-2, userid.length());
-	if(temp.equals("@n") || temp.equals("@k") || temp.equals("@g")){
-%>		
 
-<%
-	} else {
-%>	
-		<tr>
+
+		<tr id="idframe">
 			<th>아이디</th>
-			<td>${dto.userid }</td>
+			<td>${dto.userid }
+				<input type="hidden" id="userid" value="${dto.userid }">
+			</td>
 		</tr>
-<%
-	}
-%>
+		
 		<tr>
 			<th>이름</th>
 			<td>${dto.name }</td>
@@ -64,6 +57,13 @@
 <script type="text/javascript">
 $(function() {
 	$("#delete2").hide();
+	var userid = $("#userid").val().trim();
+	var temp = userid.substring(userid.length()-2, userid.length());
+	if(temp.equals("@n") || temp.equals("@k") || temp.equals("@g")){
+		$("#idframe").hide();
+	}
+	
+	
 });
 
 function userDelete(){

@@ -54,8 +54,16 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int updateUser(UserDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "updateUser", dto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override

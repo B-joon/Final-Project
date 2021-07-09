@@ -64,7 +64,13 @@
 	
 	<delete id="userdelete" parameterType="int">
   		DELETE FROM PTSD_USER
-  		WHERE USERSEQ = #{userseq};
+  		WHERE USERSEQ = #{userseq}
   	</delete>
+	
+	<update id="updateUser" parameterType="userDto">
+		UPDATE PTSD_USER
+		SET USERPW = #{userpw}, EMAIL = #{email}, ADDRESS = #{address}, PHONE = #{phone}, NAME = #{name}
+		WHERE USERSEQ= #{userseq}
+	</update>
 	
 </mapper>
