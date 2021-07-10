@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -99,9 +100,26 @@ public class UserController {
 			return "../../index";
 		}
 		System.out.println("삭제 실패");
-		return "redirect:mypage.do?userseq=" + userseq;
+		return "redirect:/";
 	}
 	
+	@RequestMapping("userlist.do")
+	public String userlist(Model model) {
+		
+		model.addAttribute("list", biz.AllUser());
+		
+		return "userlist";
+	}
+	
+	@RequestMapping("usersearchpage.do")
+	public String userSearchpage(String name) {
+		
+		return "usersearch";
+	}
+	
+	
+	
+		
 	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String , Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto){ //@RequestBody�� json���� �� ��ü�� java Object�� �ٲ��ش�
@@ -401,6 +419,16 @@ public class UserController {
 		map.put("check", check);
 		
 		return map;
+	}
+    
+    @RequestMapping(value="usersearch.do", method=RequestMethod.POST)
+	@ResponseBody
+	public List<UserDto> userSearch(@RequestBody String name) { 
+		
+		List<UserDto> list = biz.usersearch(name);
+		
+		return list;
+		
 	}
 	
     

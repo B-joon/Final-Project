@@ -19,7 +19,7 @@ INSERT INTO PTSD_USER
 VALUES(USERSEQ.NEXTVAL, 'test', '1234', 'test1234@naver.com', '서울특별시 강남구 테헤란로14길 6 남도빌딩', '010-1234-5678', 'admin', 'TEST', NULL);
 
 INSERT INTO PTSD_USER
-VALUES(USERSEQ.NEXTVAL, 'user', '1234', 'user1234@naver.com', 'userhouse', '010-1235-5678', 'USER', 'USER', NULL);
+VALUES(USERSEQ.NEXTVAL, 'user', '1234', 'user1234@naver.com', 'userhouse', '010-1235-5678', 'user', 'USER', NULL);
 
 SELECT * FROM PTSD_USER ORDER BY USERSEQ DESC;
 

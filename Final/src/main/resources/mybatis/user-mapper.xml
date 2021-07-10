@@ -73,4 +73,16 @@
 		WHERE USERSEQ= #{userseq}
 	</update>
 	
+	<select id="userlist" resultType="userDto">
+		SELECT USERSEQ, USERID, EMAIL, ADDRESS, PHONE, USERROLE, NAME
+		FROM PTSD_USER	
+		ORDER BY USERSEQ DESC
+	</select>
+	
+	<select id="usersearch" resultType="userDto">
+		SELECT USERSEQ, USERID, EMAIL, ADDRESS, PHONE, USERROLE, NAME
+		FROM PTSD_USER
+		WHERE NAME LIKE '%' || #{name} || '%'
+	</select>
+	
 </mapper>

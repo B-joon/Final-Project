@@ -41,11 +41,7 @@ public class UserBizImpl implements UserBiz {
 		return dao.updateUser(dto);
 	}
 
-	@Override
-	public int deleteUser(int userseq) {
-		// TODO Auto-generated method stub
-		return dao.deleteUser(userseq);
-	}
+	
 
 	@Override
 	public String idCheck(String userid) {
@@ -58,17 +54,8 @@ public class UserBizImpl implements UserBiz {
 		return dao.emailCheck(email);
 	}
 
-	@Override
-	public UserDto nicnameCheck(String nickname) {
-		// TODO Auto-generated method stub
-		return dao.nicnameCheck(nickname);
-	}
+	
 
-	@Override
-	public List<UserDto> userSearch(String userid) {
-		// TODO Auto-generated method stub
-		return dao.userSearch(userid);
-	}
 	
 	@Override
 	public String phoneCheck(String phone) {
@@ -110,6 +97,12 @@ public class UserBizImpl implements UserBiz {
 	public int delete(int userseq) {
 		
 		return dao.delete(userseq);
+	}
+	
+	@Override
+	public List<UserDto> usersearch(String name){
+		
+		return dao.usersearch(name);
 	}
 	
 }
