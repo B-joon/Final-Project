@@ -122,12 +122,14 @@ UserDto login = (UserDto) session.getAttribute("login");
 
 <%-- 상단으로 이동하기 버튼 시작 --%>
 <div class="top">
-	<button id="btn" onClick="GoTop()">▲</button>
+	<button type="button" id="btn" onClick="GoTop()" class="btn btn-outline-secondary"><i class="fas fa-arrow-alt-circle-up"></i></button>
+
 </div>
 <%-- 상단으로 이동하기 버튼 끝 --%>
 
 <div>
-	<input type="button" id="darkbtn" onclick="dayAndNight(this);" value="다크모드"></input>
+	<button type="button" id="darkbtn" onclick="dayAndNight(this);" class="btn btn-outline-secondary">다크모드</button>
+	
 </div>
 
 <input type="hidden" id="sessionLogin" value="${login }">
