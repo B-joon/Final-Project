@@ -66,8 +66,7 @@ function getProductAllList() {
 	th16.append("조회수");
 	const th17 = document.createElement('th');
 	th17.append("관리");
-	const th18 = document.createElement('th');
-	th18.append("찜하기");
+
 	tr.append(th1);
 	tr.append(th2);
 	tr.append(th3);
@@ -85,7 +84,6 @@ function getProductAllList() {
 	tr.append(th15);
 	tr.append(th16);
 	tr.append(th17);
-	tr.append(th18);
 	table.append(tr);
 	
 	for (var i = 0; i < arrCode.length; i++) {
@@ -157,28 +155,8 @@ function getProductAllList() {
 						edit.append(update);
 						edit.append(del);
 						
-						const insert = document.createElement('td');
-						const wishinsert = document.createElement('form');
-						wishinsert.setAttribute("name","form1");
-						wishinsert.setAttribute("method","Post");
-						wishinsert.setAttribute("action","wishInsert.do");
-						
-						const input01 = document.createElement('input');
-						input01.setAttribute("type","hidden");
-						input01.setAttribute("name","productseq");
-						input01.setAttribute("value","data[i].productseq")
-						
-						const input02 = document.createElement('input');
-						input02.setAttribute("type","button");
-						input02.setAttribute("value","찜하기");
-						insert.append(input02);
-						
-						const a = document.createElement('a');
-						a.setAttribute("href","wishList.do");
-						
-						insert.append(a);
-						
-						
+	
+												
 						tr.append(productseq);
 						tr.append(category);
 						tr.append(productname);
@@ -196,7 +174,6 @@ function getProductAllList() {
 						tr.append(wishcount);
 						tr.append(productcount);
 						tr.append(edit);
-						tr.append(insert);
 
 						table.append(tr);
 						
@@ -269,8 +246,7 @@ function getProductList(areacode) {
 			th16.append("조회수");
 			const th17 = document.createElement('th');
 			th17.append("관리");
-			const th18 = document.createElement('th');
-			th18.append("찜하기");
+
 			tr.append(th1);
 			tr.append(th2);
 			tr.append(th3);
@@ -288,7 +264,6 @@ function getProductList(areacode) {
 			tr.append(th15);
 			tr.append(th16);
 			tr.append(th17);
-			tr.append(th18);
 			table.append(tr);
 			
 			for (var i = 0; i < data.length; i++) {
@@ -346,27 +321,8 @@ function getProductList(areacode) {
 				edit.append(update);
 				edit.append(del);
 				
-				const insert = document.createElement('td');
-				const wishinsert = document.createElement('form');
-				wishinsert.setAttribute("name","form1");
-				wishinsert.setAttribute("method","Post");
-				wishinsert.setAttribute("action","wishInsert.do");
-						
-				const input01 = document.createElement('input');
-				input01.setAttribute("type","hidden");
-				input01.setAttribute("name","productseq");
-				input01.setAttribute("value","+data[i].productseq+")
-						
-				const input02 = document.createElement('input');
-				input02.setAttribute("type","button");
-				input02.setAttribute("value","찜하기");
-				insert.append(input02);
-						
-				const a = document.createElement('a');
-				a.setAttribute("href","wishList.do");
-				insert.append(a);
-						
 
+				
 				tr.append(productseq);
 				tr.append(category);
 				tr.append(productname);
@@ -384,8 +340,7 @@ function getProductList(areacode) {
 				tr.append(wishcount);
 				tr.append(productcount);
 				tr.append(edit);
-				tr.append(insert);
-
+	
 				table.append(tr);
 				
 			}

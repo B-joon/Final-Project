@@ -47,6 +47,7 @@
   		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(31);">경기</a>
   		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(2);">인천</a>
   		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(34);">충남</a>
+  		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(1);">서울</a>
   		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(33);">충북</a>
   		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(3);">대전</a>
   		<a class="dropdown-item" href="#" onclick="chkProductAreaCode(8);">세종</a>

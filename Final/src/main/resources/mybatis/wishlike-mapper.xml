@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="wishlike">
+
+	<insert id="wishlikeInsert" parameterType="wishlikeDto">
+		INSERT INTO WISHLIKE
+		VALUES(WISHLIKESEQ.NEXTVAL, #{wishseq), #{userseq})
+	</insert>
+	
+	<delete id="wishlikeDelete" parameterType="wishlikeDto">
+		DELETE FROM WISHLIKE
+		WHERE WISHSEQ = #{wishseq} AND USERSEQ = #{userseq}
+	</delete>
+	
+	<update id="wishlikeUpdate" parameterType="wishlikeDto">
+		UPDATE WISH
+		SET
+		WISHLIKECNT = (SELECT COUNT(*)
+		FROM WISHLIKE
+		WHERE WISHSEQ = #{wishseq})
+		WHERE WISHSEQ = #{wishseq}
+	</update>
+	
+	<select id="wishlikeCnt" resultType="int" parameterType="wishDto">
+		SELECT COUNT(WISHSEQ)
+		FROM WISHLIKE
+		WHERE WISHSEQ = #{wishseq} AND USERSEQ = #{wishseq}
+	</select>
+	
+</mapper>

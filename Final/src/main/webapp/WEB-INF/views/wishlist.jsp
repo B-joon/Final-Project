@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.ptsd.mvc.product.ProductDto"%>
 <%@page import="com.ptsd.mvc.user.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,31 +13,36 @@
 <title>찜하기 목록</title>
 </head>
 <body>
-	<h2>찜한 공연</h2>
-<%@include file="./common.jsp" %>
+	<%@include file="./common.jsp"%>
+	<h1>${login.getName() } 님의 찜하기</h1>
 	<table border="1">
+
 		<tr>
-			<th>이름</th>
+			<th>제목</th>
 			<th>주소</th>
 			<th>사진</th>
 			<th>전화번호</th>
 			<th>삭제</th>
 		</tr>
+
 		<c:choose>
 			<c:when test="${map.count == 0 }">
 				<tr>
-					<td colspan="5" align="center">----------찜한 공연이 없습니다----------<//td>
+					<td colspan="6" align="center">----------찜한 공연이 없습니다----------</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
-				<c:forEach items="${map.list }" var="row" varStatus="status">
-					<tr>
-						<td>${row.productname }</td>
-						<td>${row.address }</td>
-						<td><img src="${row.thumbimg }">
-						<td>${row.tellnumber}</td>
-						<td><a href="wishDelete.do?wishseq=${row.wishseq}">[삭제]</a></td>
-					</tr>
+				<c:forEach items="${map.list }" var="dto" varStatus="status">
+					<c:if test="${dto.userseq == login.userseq }">
+						<tr>
+							<td>${dto.productname }</td>
+							<td>${dto.address }</td>
+							<td><img src="${dto.thumbimg }">
+							<td>${dto.tellnumber}</td>
+							<td><input type="button" value="삭제"
+								onclick="location.href='wishDelete.do?wishseq=${dto.wishseq}'" /></td>
+						</tr>
+					</c:if>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>

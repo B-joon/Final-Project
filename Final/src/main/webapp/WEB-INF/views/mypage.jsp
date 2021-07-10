@@ -54,6 +54,7 @@
 			<td colspan="2" align="center">
 				<input type="button" value="내 정보 수정" onclick="location.href='mypageupdate.do?userseq=${dto.userseq }'">
 				<input type="button" value="내 쿠폰함" onclick="location.href='mycoupon.do'">
+				<input type="button" value="찜한 공연" onclick="location.href='wishList.do'">
 				<input type="button" value="회원 탈퇴" id="delete1" onclick="userDelete();">
 				<input type="button" value="회원 탈퇴" id="delete2" onclick="location.href='userdelete.do?userseq=${dto.userseq }'">
 			</td>
