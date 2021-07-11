@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -82,16 +83,43 @@ public class UserController {
 
 	}
 	
-	@RequestMapping("/userdelete.do")
-	public String delete(int userseq) {
-		
-		if(biz.delete(userseq) > 0) {
-			return "../../index";
+	@RequestMapping("mypageupdateres.do")
+	public String mypageupdateres(UserDto dto) {
+		System.out.println("유저 정보 업데이트 시작");
+		if(biz.updateUser(dto) > 0) {
+			return "redirect:mypage.do?userseq="+dto.getUserseq();
 		}
-		
-		return "redirect:mypage.do?userseq=" + userseq;
+		return "redirect:mypageupdate.do?userseq="+dto.getUserseq();
 	}
 	
+	@RequestMapping("/userdelete.do")
+	public String delete(int userseq) {
+		System.out.println("삭제 시작한다.");
+		if(biz.delete(userseq) > 0) {
+			System.out.println("삭제 성공");
+			return "../../index";
+		}
+		System.out.println("삭제 실패");
+		return "redirect:/";
+	}
+	
+	@RequestMapping("userlist.do")
+	public String userlist(Model model) {
+		
+		model.addAttribute("list", biz.AllUser());
+		
+		return "userlist";
+	}
+	
+	@RequestMapping("usersearchpage.do")
+	public String userSearchpage(String name) {
+		
+		return "usersearch";
+	}
+	
+	
+	
+		
 	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String , Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto){ //@RequestBody�� json���� �� ��ü�� java Object�� �ٲ��ش�
@@ -391,6 +419,16 @@ public class UserController {
 		map.put("check", check);
 		
 		return map;
+	}
+    
+    @RequestMapping(value="usersearch.do", method=RequestMethod.POST)
+	@ResponseBody
+	public List<UserDto> userSearch(@RequestBody String name) { 
+		
+		List<UserDto> list = biz.usersearch(name);
+		
+		return list;
+		
 	}
 	
     
