@@ -27,6 +27,9 @@ public class ReservationController {
 	private ReviewBiz reviewbiz;
 	@Autowired
 	private CouponBiz mycouponbiz;
+	@Autowired
+	private ReservationBiz reservationbiz;
+
 	
 	@RequestMapping("/reservation.do")
 	public String selectList(Model model, int productseq, HttpServletRequest HttpRequest) {
@@ -36,12 +39,22 @@ public class ReservationController {
 		// 후기
 		List<ReviewDto> list = reviewbiz.selectList(productseq);
 		model.addAttribute("reviewlist", list);
-		
+		//쿠폰목록
 		List<CouponDto> couponlist = mycouponbiz.selectList();
 		
 		model.addAttribute("couponlist", couponlist);
 		
 		return "reservation";
 	}
+	
+	@RequestMapping("/myreservation.do")
+	public String reservationList(Model model) {
+		List<ReservationDto> list = reservationbiz.selectList();
+		model.addAttribute("list", list);
+		return "mypage";
+		
+	}
+	
+	
 	
 }
