@@ -18,6 +18,8 @@ function chkReservation(productseq) {
 
     function requestPay() {
     
+    	
+    
     	var ticketprice = $("#ticketprice").val();
 		var num = $("[name='ticketcount'] option:selected").val();
 		var coupon = $("[name='discount'] option:selected").val();
@@ -26,6 +28,18 @@ function chkReservation(productseq) {
 		var userseq = $("#loginseq").val();
 		
     
+    	if(confirm('결제금액'+price+'원을 결제하시겠습니까?')){
+    	
+    		return callPay(name,price,userseq);
+    	}else{
+    		alert('결제가 취소되었습니다');
+    	}
+    	
+ 
+};
+
+	function callPay(name,price,userseq){
+		   	
     
         var IMP = window.IMP; // 생략해도 괜찮습니다.
         IMP.init("imp05572754"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
@@ -54,4 +68,5 @@ function chkReservation(productseq) {
     }
         alert(msg);
   })
-};
+	
+	};
