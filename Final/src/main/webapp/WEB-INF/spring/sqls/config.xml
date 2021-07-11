@@ -12,6 +12,7 @@
 		<typeAlias type="com.ptsd.mvc.coupon.CouponDto" alias="couponDto"/>
 		<typeAlias type="com.ptsd.mvc.like.LikeDto" alias="likeDto"/>
 		<typeAlias type="com.ptsd.mvc.review.ReviewDto" alias="reviewDto"/>
+		<typeAlias type="com.ptsd.mvc.reservation.ReservationDto" alias="reservationDto"/>
 	</typeAliases>
 
 	<mappers>
@@ -24,6 +25,7 @@
 		<mapper resource="/mybatis/downloadcoupon-mapper.xml"/>
 		<mapper resource="/mybatis/like-mapper.xml"/>
 		<mapper resource="/mybatis/review-mapper.xml"/>
+		<mapper resource="/mybatis/reservation-mapper.xml"/>
 	</mappers>
 
 </configuration>
