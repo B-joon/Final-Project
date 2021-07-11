@@ -87,9 +87,9 @@
 						<button type="button" class="btn btn-danger" onclick="goPayment();">예매하기</button>
 					</div>
 					<div class="m-2">
-					<form name="form1" method="post" action="wishInsert.do">
-					<input type="hidden" name="productseq" value="${dto.productseq }">
-						<button type="submit" class="btn btn-danger">찜하기</button>
+					<form name="form1" id="form1" method="post" action="wishInsert.do">
+						<input type="hidden" name="productseq" value="${dto.productseq }">
+						<button type="button" class="btn btn-danger" onclick="document.getElementById('form1').submit();" value="찜하기">👍 찜하기</button>
 					</form>
 					</div>
 			</div>

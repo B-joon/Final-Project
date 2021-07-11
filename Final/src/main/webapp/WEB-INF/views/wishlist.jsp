@@ -16,6 +16,11 @@
 	<%@include file="./common.jsp"%>
 	<h1>${login.getName() } 님의 찜하기</h1>
 	<table border="1">
+		<col width="200">
+		<col width="500">
+		<col width="200">
+		<col width="100">
+		<col width="40">
 
 		<tr>
 			<th>제목</th>
