@@ -18,7 +18,8 @@
 	<a href="chart.do">차트</a>
 	<!-- 상품 등록 페이지 (어드민 권한이 있는 경우에만 나타나게 해야함) -->
 	<a href="productinsert.do">상품등록</a>
-	
+	<a href="userlist.do">회원전체목록조회 </a>
+	<a href="usersearchpage.do">회원정보검색</a>
 	<h3>상품리스트</h3>
 	<select name="productareaCode"  onchange="chkProductAreaCode();">
 	<!-- 축제 정보를 ajax로 받기 -->

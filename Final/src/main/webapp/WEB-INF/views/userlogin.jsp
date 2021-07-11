@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<td><input type="text" id="userpw"></td>
+			<td><input type="password" id="userpw"></td>
 		</tr>
 		<tr>
 			<td><input type="button" value="로그인" onclick="login();"></td>
