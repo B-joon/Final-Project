@@ -11,8 +11,8 @@ public class ReservationBizImpl implements ReservationBiz {
 	private ReservationDao dao;
 	
 	@Override
-	public List<ReservationDto> selectList() {
-		return dao.selectList();
+	public List<ReservationDto> selectList(int userseq) {
+		return dao.selectList(userseq);
 	}
 
 

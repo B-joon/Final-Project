@@ -26,10 +26,6 @@
 		<col width="100">
 
 
-		<tr>
-			<td>${login.userseq }</td>
-
-		</tr>
 
 		<tr>
 			<th>번호</th>
