@@ -5,6 +5,7 @@
 	<select id="selectList" resultType="reservationDto">
 		SELECT RESERVATIONSEQ,USERSEQ,PRODUCTNAME,PRICE,PLAYDATE,PEOPLE,PAYDATE
 		FROM RESERVATION 
+		WHERE USERSEQ= #{userseq}
 		ORDER BY RESERVATIONSEQ DESC
 	</select>
 	
@@ -16,7 +17,7 @@
 	
 	<insert id="insert" parameterType="reservationDto">
 		INSERT INTO RESERVATION 
-		VALUES(RESERVATIONSEQ.NEXTVAL,#{userseq},{productname},#{price},SYSDATE,#{people},SYSDATE)
+		VALUES(RESERVATIONSEQ.NEXTVAL,#{userseq},#{productname},#{price},#{playdate},#{people},SYSDATE)
 	</insert>
 	
 	<update id="update" parameterType="reservationDto">

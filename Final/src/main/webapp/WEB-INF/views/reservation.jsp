@@ -153,7 +153,7 @@
 		</div>
 		<div class="col-sm-3 border border-danger text-center rounded float-right">
 			<div class="font-weight-bold m-2">예약날짜 선택</div>
-			<div id="datetimepicker"></div>
+			<div id="datetimepicker" class='datepicker'></div>
 			<div class="m-3 border-top">
 				<div class="font-weight-bold m-2">예매인원 선택</div>
 				<div class="m-2">
@@ -206,6 +206,8 @@
 					<div class="m-2">
 						<button type="button" class="btn btn-danger" onclick="chkReservation();">예매하기</button>
 					</div>
+					<input type="hidden" value="" name="playdate" id="playdate">
+					
 			</div>
 		</div>
 	</div>

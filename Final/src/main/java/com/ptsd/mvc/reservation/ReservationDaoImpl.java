@@ -14,11 +14,11 @@ public class ReservationDaoImpl implements ReservationDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<ReservationDto> selectList() {
+	public List<ReservationDto> selectList(int userseq) {
 		List<ReservationDto> list = new ArrayList<ReservationDto>();
 
 		try {
-			list = sqlSession.selectList(NAMESPACE + "selectList");
+			list = sqlSession.selectList(NAMESPACE + "selectList",userseq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
