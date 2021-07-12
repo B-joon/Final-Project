@@ -31,12 +31,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.ptsd.mvc.reservation.ReservationBiz;
+import com.ptsd.mvc.reservation.ReservationDto;
 
 @Controller
 public class UserController {
 	
 	@Autowired
 	private UserBiz biz;
+	@Autowired
+	private ReservationBiz reservationbiz;
 	
 	@Autowired
 	private EmailSender emailSender;
@@ -56,6 +60,9 @@ public class UserController {
 	public String User(Model model, int userseq) {
 		
 		model.addAttribute("dto", biz.mypage(userseq));
+		//예매내역 
+		List<ReservationDto> reservationlist = reservationbiz.selectList();
+		model.addAttribute("reservationlist", reservationlist);
 		
 		return "mypage";
 	}

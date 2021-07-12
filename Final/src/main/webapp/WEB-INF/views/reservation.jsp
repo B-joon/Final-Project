@@ -204,7 +204,7 @@
 					</div>
 					
 					<div class="m-2">
-						<button type="button" class="btn btn-danger" onclick="requestPay();">예매하기</button>
+						<button type="button" class="btn btn-danger" onclick="chkReservation();">예매하기</button>
 					</div>
 			</div>
 		</div>

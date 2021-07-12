@@ -16,7 +16,7 @@
 	
 	<insert id="insert" parameterType="reservationDto">
 		INSERT INTO RESERVATION 
-		VALUES(RESERVATIONSEQ.NEXTVAL,#{userseq},{productname},#{price},#{playdate},#{people},#{paydate})
+		VALUES(RESERVATIONSEQ.NEXTVAL,#{userseq},{productname},#{price},SYSDATE,#{people},SYSDATE)
 	</insert>
 	
 	<update id="update" parameterType="reservationDto">
