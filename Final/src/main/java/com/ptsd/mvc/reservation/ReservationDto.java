@@ -6,25 +6,26 @@ public class ReservationDto {
 
 	private int reservationseq;
 	private int userseq;
-	private int productseq;
+	private String productname;
 	private int price;
-	private String paycontent;
+	private String playdate;
+	private int people;
 	private Date paydate;
-	private int couponseq;
-	
+
 	public ReservationDto() {
-		
+
 	}
 
-	public ReservationDto(int reservationseq, int userseq, int productseq, int price, String paycontent, Date paydate,
-			int couponseq) {
+	public ReservationDto(int reservationseq, int userseq, String productname, int price, String playdate, int people,
+			Date paydate) {
+		super();
 		this.reservationseq = reservationseq;
 		this.userseq = userseq;
-		this.productseq = productseq;
+		this.productname = productname;
 		this.price = price;
-		this.paycontent = paycontent;
+		this.playdate = playdate;
+		this.people = people;
 		this.paydate = paydate;
-		this.couponseq = couponseq;
 	}
 
 	public int getReservationseq() {
@@ -43,12 +44,12 @@ public class ReservationDto {
 		this.userseq = userseq;
 	}
 
-	public int getProductseq() {
-		return productseq;
+	public String getProductname() {
+		return productname;
 	}
 
-	public void setProductseq(int productseq) {
-		this.productseq = productseq;
+	public void setProductname(String productname) {
+		this.productname = productname;
 	}
 
 	public int getPrice() {
@@ -59,12 +60,20 @@ public class ReservationDto {
 		this.price = price;
 	}
 
-	public String getPaycontent() {
-		return paycontent;
+	public String getPlaydate() {
+		return playdate;
 	}
 
-	public void setPaycontent(String paycontent) {
-		this.paycontent = paycontent;
+	public void setPlaydate(String playdate) {
+		this.playdate = playdate;
+	}
+
+	public int getPeople() {
+		return people;
+	}
+
+	public void setPeople(int people) {
+		this.people = people;
 	}
 
 	public Date getPaydate() {
@@ -75,12 +84,4 @@ public class ReservationDto {
 		this.paydate = paydate;
 	}
 
-	public int getCouponseq() {
-		return couponseq;
-	}
-
-	public void setCouponseq(int couponseq) {
-		this.couponseq = couponseq;
-	}
-	
 }

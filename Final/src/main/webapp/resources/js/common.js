@@ -6,7 +6,7 @@
 function loginChk() {
 	
 	var sessionLogin= $("#sessionLogin").val();
-	alert(sessionLogin);
+	
 	
 	if (sessionLogin == null || sessionLogin == "") {
 
