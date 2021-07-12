@@ -32,11 +32,9 @@ public class RecommandController {
 		
 		if (recommandseq >= 1) {
 			biz.recommandDelete(dto);
-			biz.recommandUpdate(productseq);
 			recommandseq = 0;
 		} else {
-			biz.recommandDelete(dto);
-			biz.recommandUpdate(productseq);
+			biz.recommandInsert(dto);
 			recommandseq = 1;
 		}
 		

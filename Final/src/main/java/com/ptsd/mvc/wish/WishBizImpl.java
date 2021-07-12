@@ -14,8 +14,8 @@ public class WishBizImpl implements WishBiz {
 	private WishDao dao;
 	
 	@Override
-	public List<WishDto> wishList() {
-		return dao.wishList();
+	public List<WishDto> wishList(int userseq ) {
+		return dao.wishList(userseq);
 	}
 
 	@Override

@@ -37,11 +37,13 @@ public class WIshController {
 		}
 	
 	@RequestMapping("/wishList.do")
-	public ModelAndView wishList(ModelAndView mav) {
+	public ModelAndView wishList(ModelAndView mav, HttpServletRequest request) {
 
+		int userseq = ((UserDto) request.getSession().getAttribute("login")).getUserseq();
+		
 		Map<String, Object> map = new HashMap<>();
 
-		List<WishDto> list = wishbiz.wishList();
+		List<WishDto> list = wishbiz.wishList(userseq);
 
 		map.put("list", list);
 		map.put("count", list.size());

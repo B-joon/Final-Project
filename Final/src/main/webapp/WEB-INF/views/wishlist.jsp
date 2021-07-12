@@ -14,12 +14,12 @@
 </head>
 <body>
 	<%@include file="./common.jsp"%>
-	<h1>${login.getName() } 님의 찜하기</h1>
-	<table border="1">
+	<h1>${login.getName() } 님의 찜하기</h1><br/>
+	<table border="1" style="text-align:center;">
+		<col width="150">
+		<col width="520">
 		<col width="200">
-		<col width="500">
-		<col width="200">
-		<col width="100">
+		<col width="170">
 		<col width="40">
 
 		<tr>
@@ -31,7 +31,7 @@
 		</tr>
 
 		<c:choose>
-			<c:when test="${map.count == 0 }">
+			<c:when test="${map.list == null }">
 				<tr>
 					<td colspan="6" align="center">----------찜한 공연이 없습니다----------</td>
 				</tr>
@@ -40,7 +40,7 @@
 				<c:forEach items="${map.list }" var="dto" varStatus="status">
 					<c:if test="${dto.userseq == login.userseq }">
 						<tr>
-							<td>${dto.productname }</td>
+							<td><a href="reservation.do?productseq=${dto.productseq }">${dto.productname }</a></td>
 							<td>${dto.address }</td>
 							<td><img src="${dto.thumbimg }">
 							<td>${dto.tellnumber}</td>

@@ -15,12 +15,12 @@ public class WishDaoImpl implements WishDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<WishDto> wishList() {
+	public List<WishDto> wishList(int userseq) {
 
 		List<WishDto> list = new ArrayList<WishDto>();
 
 		try {
-			list = sqlSession.selectList(NAMESPACE + "wishList");
+			list = sqlSession.selectList(NAMESPACE + "wishList", userseq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
