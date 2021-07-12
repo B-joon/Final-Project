@@ -27,32 +27,34 @@
 
 <body>
 <%@include file="./common.jsp" %>	
-	<table id="table" align="center">
+	<div class="container-sm border border-danger rounded" style="width:30em;">
+	<table class="table table-borderless m-3" id="table">
 		<tr>
 			<th>아이디</th>
-			<td><input type="text" id="userid" /></td>
+			<td><input type="text" class="form-control" id="userid" /></td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<td><input type="password" id="userpw"></td>
+			<td><input type="password" class="form-control" id="userpw"></td>
 		</tr>
 		<tr>
-			<td><input type="button" value="로그인" onclick="login();"></td>
-			<td align="center"><input type="button" value="아이디/비빌번호찾기" onclick="location.href='idpwFind.do'"></td>
-			<td><input type="button" value="회원가입" onclick="location.href='userInsert.do'"></td>
+			<td><input type="button" value="로그인" class="btn btn-success" onclick="login();"></td>
+			<td><input type="button" value="아이디/비빌번호찾기" class="btn btn-danger mr-3" onclick="location.href='idpwFind.do'">
+			<input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='userInsert.do'"></td>		
 		</tr>
 		<tr>
-			<td colspan="2" align="center" id="loginChk"></td>
+			<td id="loginChk"></td>
 		</tr>
 		
 	</table>
-	<div style="text-align:center">
+	
+	<div class="mx-auto text-center m-3">
 	<a href="${url}"><img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" id="naver_id_login"/></a><br/>
 	<a><img width="223" src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png?hl=ko" id="glogin"></a><br/>
 	<a><img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png" id="kakaologin"></a>
 	</div>	
-	
-	<br/>
+	</div>
+
 	
 	<script type="text/javascript">
 	

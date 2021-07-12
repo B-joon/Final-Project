@@ -14,51 +14,45 @@
 </head>
 <body>
 	<%@include file="./common.jsp"%>
-	<h1>MYPAGE</h1>
+	<h3 class="display-4">MYPAGE</h3>
+	<p>${login.getName() }님의 마이페이지입니다.</p>
 
-
-
-	<p>${login.getName() }님의마이페이지입니다.</p>
-
-	<table align="center">
-
-
+	<div class="container border border-danger rounded">
+	<table class="table">
 		<tr id="idframe">
-			<th>아이디</th>
+			<th scope="col">아이디</th>
 			<td>${dto.userid }<input type="hidden" id="userid"
 				value="${dto.userid }">
 			</td>
 		</tr>
 
 		<tr>
-			<th>이름</th>
+			<th scope="col">이름</th>
 			<td>${dto.name }</td>
 		</tr>
 		<tr>
-			<th>이메일</th>
+			<th scope="col">이메일</th>
 			<td>${dto.email }</td>
 		</tr>
 		<tr>
-			<th>주소</th>
+			<th scope="col">주소</th>
 			<td>${dto.address }</td>
 		</tr>
 		<tr>
-			<th>전화번호</th>
+			<th scope="col">전화번호</th>
 			<td>${dto.phone }</td>
 		</tr>
 		<tr>
 
-			<td colspan="2" align="center"><input type="button"
-				value="내 정보 수정"
-				onclick="location.href='mypageupdate.do?userseq=${dto.userseq }'">
-				<input type="button" value="내 쿠폰함"
-				onclick="location.href='mycoupon.do'"> <input type="button"
-				value="회원 탈퇴" id="delete1" onclick="userDelete();"> <input
-				type="button" value="회원 탈퇴" id="delete2"
-				onclick="location.href='userdelete.do?userseq=${dto.userseq }'">
+			<td colspan="2" align="center">
+			<input type="button" class="btn btn-danger"	value="내 정보 수정" onclick="location.href='mypageupdate.do?userseq=${dto.userseq }'">
+			<input type="button" value="내 쿠폰함" class="btn btn-success"	onclick="location.href='mycoupon.do'"> 
+			<input type="button"value="회원 탈퇴" id="delete1" class="btn btn-light" onclick="userDelete();"> 
+			<input type="button" value="회원 탈퇴" id="delete2" class="btn btn-dark" onclick="location.href='userdelete.do?userseq=${dto.userseq }'">
 			</td>
 		</tr>
 	</table>
+	</div>
 
 
 

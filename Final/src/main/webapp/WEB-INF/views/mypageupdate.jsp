@@ -11,23 +11,22 @@
 <body>
 
 <%@include file="./common.jsp" %>
-	<h1>MYPAGE</h1>
-
+	<h3 class="display-4">MYPAGEUPDATE</h3>
 	<p>${dto.name }님의 정보 수정 페이지 입니다.</p>
-
+	<div class="container border border-danger rounded">
 	<form action="mypageupdateres.do" method="post">
 		<input type="hidden" name="userseq" value="${dto.userseq} ">
-		<table align="center">
+		<table class="table table-borderless m-3">
 		<tr id="idfram">
-			<th>아이디</th>
-			<td><input type="text" id="userid" value="${dto.userid }" readonly="readonly">
+			<th scope="row">아이디</th>
+			<td><input type="text" id="userid" class="form-control" value="${dto.userid }" readonly="readonly">
 				<input type="hidden" id="hiddenuserid" value="${dto.userid }">
 			</td>
 		</tr>
 		<tr id="pwfram">
 			<th>비밀번호</th>
 			<td>
-				<input type="password" name="userpw" id="pw1" placeholder="비밀번호를 적어주세요" onkeyup="checkPwd1();">
+				<input type="password" name="userpw" class="form-control" id="pw1" placeholder="비밀번호를 적어주세요" onkeyup="checkPwd1();">
 				<input type="hidden" id="Chk1" value="false">	
 			</td>
 		</tr>
@@ -37,7 +36,7 @@
 		<tr id="pw2fram">
 			<th>비밀번호 확인</th>
 			<td>
-				<input type="password" id="pw2" placeholder="비밀번호를 확인해주세요" onkeyup="checkPwd2();">
+				<input type="password" class="form-control" id="pw2" placeholder="비밀번호를 확인해주세요" onkeyup="checkPwd2();">
 				<input type="hidden" id="Chk2" value="false">	
 			</td>
 		</tr>
@@ -46,7 +45,7 @@
 		</tr>
 			<tr>
 				<th>이름</th>
-				<td><input type="text" name="name" id="username"
+				<td><input type="text" class="form-control" name="name" id="username"
 					placeholder="이름을 적어주세요" onkeyup="nameChk();" value="${dto.name }">
 					<input type="hidden" id="Chk3" value="true">
 					<input type="hidden" id="hiddenname" value="${dto.name }">
@@ -54,8 +53,8 @@
 			</tr>
 			<tr>
 				<th>EMAIL</th>
-				<td><input type="text" name="email" id="email"
-					value="${dto.email }"> <input type="button"
+				<td><input type="text" class="form-control" name="email" id="email"
+					value="${dto.email }"> <input type="button" class="btn btn-secondary"
 					id="emailChkBtn" value="이메일 중복 확인"> 
 					<input type="hidden" id="hiddenemail" value="${dto.email }">
 					<input type="hidden"
@@ -66,7 +65,7 @@
 			</tr>
 			<tr>
 				<th>주소</th>
-				<td><input style="width: 300px;" type="text" name="address" value="${dto.address }"
+				<td><input class="form-control" type="text" name="address" value="${dto.address }"
 					id="address" class="form-control" readonly="readonly"
 					placeholder="주소를 입력하려면 여기를 클릭하세요" onclick="goPopup();"> <input
 					type="hidden" id="Chk5" value="true">
@@ -75,7 +74,7 @@
 			</tr>
 			<tr>
 				<th>핸드폰 번호</th>
-				<td><input type="text" name="phone" id="phone" value="${dto.phone }"
+				<td><input type="text" class="form-control" name="phone" id="phone" value="${dto.phone }"
 					placeholder="숫자만 입력하세요" style="ime-mode: disabled"> <input
 					type="hidden" id="Chk6" value="true">
 					<input type="hidden" id="hiddenphone" value="${dto.phone }">	
@@ -86,20 +85,21 @@
 			</tr>
 			<tr>
 				<td id="submitBtn" colspan="2" align="center"><input
-					type="button" value="내 정보 수정" disabled="disabled"></td>
+					type="button" value="내 정보 수정" class="btn btn-danger" disabled="disabled"></td>
 			</tr>
 			<tr>
 				<td id="submitRes" colspan="2" align="center">
-					<input type="submit" value="내 정보 수정">
+					<input type="submit" class="btn btn-danger" value="내 정보 수정">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="취소" onclick="location.href='mypage.do?userseq=${dto.userseq }'">
+					<input type="button" value="취소" class="btn btn-dark" onclick="location.href='mypage.do?userseq=${dto.userseq }'">
 				</td>
 			</tr>
 		</table>
 	</form>
+	</div>
 
 </body>
 <script type="text/javascript">

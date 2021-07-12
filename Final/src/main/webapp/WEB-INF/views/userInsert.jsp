@@ -22,19 +22,20 @@ response.setContentType("text/html; charset=UTF-8");
 </style>
 <body>
 <%@include file="./common.jsp" %>
+<div class="border border-danger rounded m-3">
 	<form action="userInsertres.do" method="post">
-		<table id="table" align="center">
+		<table id="table" class="table table-borderless m-3" style="width:60em;">
 			<tr>
 				<th>이름</th>
 				<td>
-					<input type="text" name="name" id="username" placeholder="이름을 적어주세요" onkeyup="nameChk();">
+					<input class="form-control" type="text" name="name" id="username" placeholder="이름을 적어주세요" onkeyup="nameChk();">
 					<input type="hidden" id="Chk7" value="false">
 				</td>
 			</tr>
 			<tr>
 				<th>아이디</th>
 				<td>
-					<input style="ime-mode: disabled" type="text" name="userid" id="userid" placeholder="4~13자만 가능합니다">
+					<input class="form-control" style="ime-mode: disabled" type="text" name="userid" id="userid" placeholder="4~13자만 가능합니다">
 					<input type="hidden" id="Chk1" value="false">
 				</td>
 			</tr>
@@ -44,7 +45,7 @@ response.setContentType("text/html; charset=UTF-8");
 			<tr>
 				<th>비밀번호</th>
 				<td>
-					<input type="password" name="userpw" id="pw1" placeholder="비밀번호를 적어주세요" onkeyup="checkPwd1();">
+					<input class="form-control" type="password" name="userpw" id="pw1" placeholder="비밀번호를 적어주세요" onkeyup="checkPwd1();">
 					<input type="hidden" id="Chk2" value="false">	
 				</td>
 			</tr>
@@ -54,7 +55,7 @@ response.setContentType("text/html; charset=UTF-8");
 			<tr>
 				<th>비밀번호 확인</th>
 				<td>
-					<input type="password" id="pw2" placeholder="비밀번호를 확인해주세요" onkeyup="checkPwd2();">
+					<input class="form-control" type="password" id="pw2" placeholder="비밀번호를 확인해주세요" onkeyup="checkPwd2();">
 					<input type="hidden" id="Chk3" value="false">
 				</td>
 			</tr>
@@ -66,10 +67,16 @@ response.setContentType("text/html; charset=UTF-8");
 			<tr>
 				<th>EMAIL</th>
 				<td>
-					<input type="hidden" name="email" id="email">
-					<input type="text" name="femail" id="femail" style="ime-mode: disabled" placeholder="이메일을 적어주세요">@
-					 <input id="textEmail" placeholder="이메일을 선택하세요" readonly="readonly"> 
-					<select name="bemail" id="bemail">
+				  <div class="row">
+				  	<input type="hidden" name="email" id="email">
+				    <div class="col">
+				      <input class="form-control" type="text" name="femail" id="femail" style="ime-mode: disabled" placeholder="이메일을 적어주세요">
+				      <input type="button" class="btn btn-secondary" id="emailChkBtn" value="이메일 중복 확인">
+				    </div>
+				    <span>@</span>
+				    <div class="col">
+				      <input class="form-control" id="textEmail" placeholder="이메일을 선택하세요" readonly="readonly"> 
+					<select class="form-control" name="bemail" id="bemail">
 						<option value="" disabled selected>이메일을 선택해주세요.</option> 
 						<option value="naver.com">naver.com</option> 
 						<option value="hanmail.net">hanmail.net</option> 
@@ -78,7 +85,9 @@ response.setContentType("text/html; charset=UTF-8");
 						<option value="gmail.com">gmail.com</option>
 						<option value="directly">직접입력</option>  
 					</select>
-					<input type="button" id="emailChkBtn" value="이메일 중복 확인">
+				    </div>
+				  </div>
+				  
 				</td>
 			</tr>
 			<tr>
@@ -88,7 +97,7 @@ response.setContentType("text/html; charset=UTF-8");
 			<tr>
 				<th>인증 번호 확인</th>
 				<td>
-					<input type="text" id="prooftext" placeholder="이메일로 보낸 인증번호를 입력해주세요">
+					<input class="form-control" type="text" id="prooftext" placeholder="이메일로 보낸 인증번호를 입력해주세요">
 					<input type="hidden" id="proofBtn" value="인증번호 발송">
 					<input type="hidden" id="Chk4" value="false">
 				</td>
@@ -100,7 +109,7 @@ response.setContentType("text/html; charset=UTF-8");
 			<tr>
 				<th>핸드폰 번호</th>
 				<td>
-					<input type="text" name="phone" id="phone" placeholder="숫자만 입력하세요" style="ime-mode: disabled">
+					<input class="form-control" type="text" name="phone" id="phone" placeholder="숫자만 입력하세요" style="ime-mode: disabled">
 					<input type="hidden" id="Chk5" value="false">
 					<input type="hidden" id="Chk6" value="false">
 				</td>
@@ -111,27 +120,28 @@ response.setContentType("text/html; charset=UTF-8");
 			</tr>
 			<tr>
 				<th>주소</th>
-				<td><input style="width: 300px;" type="text" name="address"
+				<td><input class="form-control" type="text" name="address"
 					id="address" class="form-control" readonly="readonly"
 					placeholder="주소를 입력하려면 여기를 클릭하세요" onclick="goPopup();">
 				</td>
 			</tr>
 			<tr>
 				<td id="submitBtn" colspan="2" align="center" >
-					<input type="button" value="회원가입" disabled="disabled">
+					<input type="button" class="btn btn-danger"  value="회원가입" disabled="disabled">
 				</td>
 			</tr>
 			<tr>
 				<td id="submitRes" colspan="2" align="center">
-					<input type="submit" value="회원가입">
+					<input type="submit" class="btn btn-danger"  value="회원가입">
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="button" value="취소" onclick="location.href='loginform.do'" /></td>
+				<td colspan="2" align="center"><input type="button" class="btn btn-dark" value="취소" onclick="location.href='loginform.do'" /></td>
 			</tr>
 		</table>
 	</form>
-	<div align="center"><script src="doomcaptcha/script.js?version=17" countdown="on" label="Captcha" enemies="4"></script></div>
+	
+	<div align="center"><script src="doomcaptcha/script.js?version=17" countdown="on" label="Captcha" enemies="4"></script></div></div>
 </body>
 <script type="text/javascript">
 	
