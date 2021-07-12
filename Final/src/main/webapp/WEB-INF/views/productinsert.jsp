@@ -84,8 +84,7 @@
 		    <div class="form-group col-md-12">
 		      <label for="inputImg">상품썸네일</label>
 		      <div class="custom-file">
-				  <input name="img" type="file" class="custom-file-input" id="customFile" accept="image/*">
-				  <label class="custom-file-label" for="customFile">파일 선택</label>
+				  <input name="img" type="file" class="form-control-file" accept="image/*">
 			  </div>
 		    </div>		
 		</div>

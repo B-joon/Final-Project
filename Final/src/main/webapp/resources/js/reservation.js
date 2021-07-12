@@ -2,6 +2,18 @@ $(function(){
 	
 	
 		$('#datetimepicker').datetimepicker();
+		var playdate = $('#datetimepicker').datetimepicker('viewDate')
+		var date = new Date(playdate);
+		var year = date.getFullYear();
+		var month = ('0' + (date.getMonth() + 1)).slice(-2);
+		var day = ('0' + date.getDate()).slice(-2);
+
+		var dateString = year + '-' + month  + '-' + day;
+
+		console.log(dateString);
+		$("#playdate").prop("value", dateString);
+		
+		
 		$('#datetimepicker').on("change.datetimepicker", function(e) {
 			var playdate = (e.date.format('YYYY-MM-DD'));
 			console.log(playdate);
