@@ -35,7 +35,9 @@
 									<p class="card-text">장소</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="card-text"><a href="#" class="text-reset">${dto.address }</a></p>
+									<p class="card-text">
+									<a href="javascript:void(0);" class="text-reset" data-toggle="modal" data-target="#addrModal" onclick="getAddress('${dto.address }','${dto.productname }');">${dto.address }</a>
+									</p>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -58,8 +60,13 @@
 								<div class="col-sm-3">
 									<p class="card-text">관람등급</p>
 								</div>
-								<div class="col-sm-9">
-									<p class="card-text">${dto.rating }</p>
+								<div class="col-sm-9">								
+									<p class="card-text">
+										<c:if test="${dto.rating == 0}">전체이용가</c:if>
+										<c:if test="${dto.rating == 12}">12세 이상 관람가</c:if>
+										<c:if test="${dto.rating == 15}">15세 이상 관람가</c:if>
+										<c:if test="${dto.rating == 19}">청소년 관람불가</c:if>
+									</p>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -211,9 +218,32 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="addrModal" tabindex="-1" role="dialog" aria-labelledby="addrModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="addrModalLabel"></h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+		      <div class="container-fluid">
+		      	<div class="row">
+		      		<div class="col" id="map" style="width: 400px; height: 400px; display:none;"></div>
+		      	</div>
+		      </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </div>
 </body>
 <script type="text/javascript" src="resources/js/reviewandlike.js"></script>
 <script type="text/javascript" src="resources/js/datepicker.js"></script>
 <script type="text/javascript" src="resources/js/reservation.js"></script>
+<script type="text/javascript" src="resources/js/map.js"></script>
 </html>
