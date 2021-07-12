@@ -47,10 +47,13 @@ public class ReservationController {
 		return "reservation";
 	}
 	
-	@RequestMapping("/myreservation.do")
-	public String reservationList(Model model) {
-		List<ReservationDto> list = reservationbiz.selectList();
-		model.addAttribute("list", list);
+	//결제 시 결제 데이터 insert
+	@RequestMapping("/insertreservation.do")
+	public String insert( ReservationDto dto) {
+		if(reservationbiz.insert(dto)>0) {
+			reservationbiz.insert(dto);
+			
+		}
 		return "mypage";
 		
 	}
