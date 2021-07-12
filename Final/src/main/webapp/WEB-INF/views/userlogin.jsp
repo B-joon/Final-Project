@@ -12,6 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PTSD / 로그인</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 <script src="https://apis.google.com/js/client:platform.js?onload=init" async defer></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>

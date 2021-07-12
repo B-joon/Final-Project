@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PTSD / 회원 목록</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 <body>
 <%@include file="./common.jsp" %>	

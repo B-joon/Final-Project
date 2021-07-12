@@ -11,6 +11,7 @@ response.setContentType("text/html; charset=UTF-8");
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PTSD / 회원가입</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 <style type="text/css">
 

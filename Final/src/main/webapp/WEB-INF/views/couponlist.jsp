@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PTSD / 쿠폰</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 
 
