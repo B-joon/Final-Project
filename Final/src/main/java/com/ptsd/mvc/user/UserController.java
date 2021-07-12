@@ -61,7 +61,7 @@ public class UserController {
 		
 		model.addAttribute("dto", biz.mypage(userseq));
 		//예매내역 
-		List<ReservationDto> reservationlist = reservationbiz.selectList();
+		List<ReservationDto> reservationlist = reservationbiz.selectList(userseq);
 		model.addAttribute("reservationlist", reservationlist);
 		
 		return "mypage";

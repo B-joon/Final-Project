@@ -9,14 +9,14 @@ public class ReservationDto {
 	private String productname;
 	private int price;
 	private String playdate;
-	private int people;
+	private String people;
 	private Date paydate;
 
 	public ReservationDto() {
 
 	}
 
-	public ReservationDto(int reservationseq, int userseq, String productname, int price, String playdate, int people,
+	public ReservationDto(int reservationseq, int userseq, String productname, int price, String playdate, String people,
 			Date paydate) {
 		super();
 		this.reservationseq = reservationseq;
@@ -68,11 +68,11 @@ public class ReservationDto {
 		this.playdate = playdate;
 	}
 
-	public int getPeople() {
+	public String getPeople() {
 		return people;
 	}
 
-	public void setPeople(int people) {
+	public void setPeople(String people) {
 		this.people = people;
 	}
 

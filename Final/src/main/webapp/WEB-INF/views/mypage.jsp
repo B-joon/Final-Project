@@ -18,7 +18,7 @@
 
 
 
-	<p>${login.getName() }님의마이페이지 입니다.</p>
+	<p>${login.getName() }님의마이페이지입니다.</p>
 
 	<table align="center">
 
@@ -61,22 +61,51 @@
 	</table>
 
 
-	<div>
-		<c:choose>
-			<c:when test="${empty reservationlist }">
+
+
+
+	
+	<c:choose>
+		<c:when test="${empty reservationlist }">
+			
 				예매내역이 존재하지 않습니다. 
+			
 			</c:when>
-			<c:otherwise>
-				<c:forEach items="${reservationlist }" var="reservationdto">
-					<div>
-					
+		<c:otherwise>
+
+			<div class="divTableHeading">
+				<div class="divTableRow">
+					<div class="divTableHead">주문번호</div>
+					<div class="divTableHead">상품명</div>
+					<div class="divTableHead">관람일자</div>
+					<div class="divTableHead">인원</div>
+					<div class="divTableHead">가격</div>
+					<div class="divTableHead">결제일자</div>
+				</div>
+			</div>
+			
+			<c:forEach items="${reservationlist }" var="reservationdto">
+				
+					<div class="container" id="divtable">
+
+						<div class="divTableBody">
+							<div class="divTableRow">
+								<div class="divTableCell" id="${reservationdto.reservationseq}">${reservationdto.reservationseq}</div>
+								<div class="divTableCell">${reservationdto.productname}</div>
+								<div class="divTableCell">${reservationdto.playdate}</div>
+								<div class="divTableCell">${reservationdto.people}</div>
+								<div class="divTableCell">${reservationdto.price}</div>
+								<div class="divTableCell">${reservationdto.paydate}</div>
+								<p align="right"><input type="button" value="환불신청" onclick="refund(${reservationdto.reservationseq})"></p>
+							</div>
+						</div>
+						
 					</div>
-
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
-	</div>
-
+				
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
+	
 
 </body>
 <script type="text/javascript">
@@ -95,5 +124,22 @@
 		$("#delete1").hide();
 		$("#delete2").show();
 	}
+	
+	function refund(reservationseq){
+		
+		var reseq = $("#"+reservationseq).text();
+		console.log(reseq);
+		var userseq = ${login.userseq};
+		if(reservationseq == reseq) {
+				alert('결제 취소를 요청하시겠습니까? ');
+				location.href="refund.do?reservationseq="+reseq+"&userseq="+userseq;
+				}
+		
+	}
+
+	
 </script>
+<link rel="stylesheet" type="text/css"
+	href="resources/css/reservation.css">
+
 </html>
