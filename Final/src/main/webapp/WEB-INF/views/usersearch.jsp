@@ -14,7 +14,7 @@
 		$("#userlist").children().remove();
 		const partylist = document.querySelector('#userlist');
 		const table = document.createElement('table');
-		table.setAttribute("border","1");
+		table.setAttribute("class","table table-dark m-3");
 		const tr = document.createElement('tr');
 		const th1 = document.createElement('th');
 		th1.append("번호");
@@ -77,6 +77,7 @@
 						const userdelete = document.createElement('input');
 						userdelete.setAttribute("type","button");
 						userdelete.setAttribute("value","회원탈퇴");
+						userdelete.setAttribute("class","btn btn-danger");
 						userdelete.setAttribute("onclick","location.href='userdelete.do?userseq="+data[i].userseq+"'");
 						edit.append(userdelete);
 						
@@ -108,28 +109,27 @@
 </head>
 <body>
 <%@include file="./common.jsp" %>	
-	
-	<br />
-	<div class="container">
-		<div class="form-group row pull-right">
-			<div class="col-xs-8">
-				<input class="form-cotrol" id="name"
-					type="text" size="20" placeholder="회원 이름을 입력해주세요!">
-			</div>
 
+	<div class="container border border-danger rounded">
+		<div class="form-group row m-3">
+			<div class="mr-3 col-xs-8">
+				<input class="form-cotrol" id="name"
+					type="text" size="30" placeholder="회원 이름을 입력해주세요!">
+			</div>
 			<div class="col-xs-2">
-				<button class="btn btn-primary" onclick="searchFunction();"
+				<button class="btn btn-danger btn-sm"  onclick="searchFunction();"
 					type="button">검색</button>
 			</div>
 			
 			<br>
 
 		</div>
-		<div id="userlist">
+		
+	</div>
+	<div class="m-3" id="userlist">
 	
 		
 	
-			</div>
 	</div>
 	
 

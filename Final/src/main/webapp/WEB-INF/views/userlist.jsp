@@ -14,7 +14,7 @@
 
 	<h1>가입 유저 리스트</h1>
 	
-	<table border="1" class="tbl-ex">
+	<table class="table table-dark tbl-ex">
 		<tr>
 			<th>번호</th>
 			<th>이름</th>
@@ -41,15 +41,15 @@
 						<td>${dto.address }</td>
 						<td>${dto.phone }</td>
 						<td>${dto.userrole }</td>
-						<td><input type="button" value="유저 탈퇴" onclick="location.href='userdelete.do?userseq=${dto.userseq }'"></td>
+						<td><input type="button" class="btn btn-danger" value="유저 탈퇴" onclick="location.href='userdelete.do?userseq=${dto.userseq }'"></td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 		<tr>
 			<td colspan="8" align="right">
-				<input type="button" value="관리자페이지" onclick="location.href='admin.do'">
-				<input type="button" value="회원 정보 검색" onclick="location.href='usersearchpage.do'">
+				<input type="button" class="btn btn-danger" value="관리자페이지" onclick="location.href='admin.do'">
+				<input type="button" class="btn btn-info" value="회원 정보 검색" onclick="location.href='usersearchpage.do'">
 			</td>
 		</tr>
 	</table>

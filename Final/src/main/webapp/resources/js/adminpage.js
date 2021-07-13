@@ -27,7 +27,7 @@ function getProductAllList() {
 	const partylist = document.querySelector('#partylist');
 	
 	const table = document.createElement('table');
-	table.setAttribute("border","1");
+	table.setAttribute("class","table table-dark");
 	
 	const tr = document.createElement('tr');
 	const th1 = document.createElement('th');
@@ -57,13 +57,7 @@ function getProductAllList() {
 	const th13 = document.createElement('th');
 	th13.append("티켓가격");
 	const th14 = document.createElement('th');
-	th14.append("좋아요수");
-	const th15 = document.createElement('th');
-	th15.append("찜하기수");
-	const th16 = document.createElement('th');
-	th16.append("조회수");
-	const th17 = document.createElement('th');
-	th17.append("관리");
+	th14.append("관리");
 
 	tr.append(th1);
 	tr.append(th2);
@@ -79,9 +73,6 @@ function getProductAllList() {
 	tr.append(th12);
 	tr.append(th13);
 	tr.append(th14);
-	tr.append(th15);
-	tr.append(th16);
-	tr.append(th17);
 	table.append(tr);
 	
 			$.ajax({
@@ -108,6 +99,7 @@ function getProductAllList() {
 						enddate.append(data[i].enddate);
 						const thumbimg = document.createElement('td');
 						const img = document.createElement('img');
+						img.setAttribute("onerror","this.src='resources/img/noimage.png'");
 						img.src = data[i].thumbimg;
 						img.style.witdh = "3em";
 						img.style.height = "3em";
@@ -126,23 +118,19 @@ function getProductAllList() {
 						seatcount.append(data[i].seatcount);
 						const price = document.createElement('td');
 						price.append(data[i].price);
-						const likecount = document.createElement('td');
-						likecount.append(data[i].likecount);
-						const wishcount = document.createElement('td');
-						wishcount.append(data[i].wishcount);
-						const productcount = document.createElement('td');
-						productcount.append(data[i].productcount);
 						
 						const edit = document.createElement('td');
 						
 						const update = document.createElement('input');
 						update.setAttribute("type","button");
 						update.setAttribute("value","수정");
+						update.setAttribute("class","btn btn-danger");
 						update.setAttribute("onclick","location.href='productupdate.do?productseq="+data[i].productseq+"'");
 
 						const del = document.createElement('input');
 						del.setAttribute("type","button");
 						del.setAttribute("value","삭제");
+						del.setAttribute("class","btn btn-secondary");
 						del.setAttribute("onclick","productdelCon("+data[i].productseq+");");
 						edit.append(update);
 						edit.append(del);
@@ -162,9 +150,6 @@ function getProductAllList() {
 						tr.append(rating);
 						tr.append(seatcount);
 						tr.append(price);
-						tr.append(likecount);
-						tr.append(wishcount);
-						tr.append(productcount);
 						tr.append(edit);
 
 						table.append(tr);
@@ -196,7 +181,7 @@ function getProductList(areacode) {
 			const partylist = document.querySelector('#partylist');
 			
 			const table = document.createElement('table');
-			table.setAttribute("border","1");
+			table.setAttribute("class","table table-dark");
 			
 			const tr = document.createElement('tr');
 			const th1 = document.createElement('th');
@@ -226,13 +211,7 @@ function getProductList(areacode) {
 			const th13 = document.createElement('th');
 			th13.append("티켓가격");
 			const th14 = document.createElement('th');
-			th14.append("좋아요수");
-			const th15 = document.createElement('th');
-			th15.append("찜하기수");
-			const th16 = document.createElement('th');
-			th16.append("조회수");
-			const th17 = document.createElement('th');
-			th17.append("관리");
+			th14.append("관리");
 
 			tr.append(th1);
 			tr.append(th2);
@@ -248,9 +227,6 @@ function getProductList(areacode) {
 			tr.append(th12);
 			tr.append(th13);
 			tr.append(th14);
-			tr.append(th15);
-			tr.append(th16);
-			tr.append(th17);
 			table.append(tr);
 			
 			for (var i = 0; i < data.length; i++) {
@@ -269,6 +245,7 @@ function getProductList(areacode) {
 				enddate.append(data[i].enddate);
 				const thumbimg = document.createElement('td');
 				const img = document.createElement('img');
+				img.setAttribute("onerror","this.src='resources/img/noimage.png'");
 				img.src = data[i].thumbimg;
 				img.style.witdh = "3em";
 				img.style.height = "3em";
@@ -287,23 +264,19 @@ function getProductList(areacode) {
 				seatcount.append(data[i].seatcount);
 				const price = document.createElement('td');
 				price.append(data[i].price);
-				const likecount = document.createElement('td');
-				likecount.append(data[i].likecount);
-				const wishcount = document.createElement('td');
-				wishcount.append(data[i].wishcount);
-				const productcount = document.createElement('td');
-				productcount.append(data[i].productcount);
 				
 				const edit = document.createElement('td');
 				
 				const update = document.createElement('input');
 				update.setAttribute("type","button");
 				update.setAttribute("value","수정");
+				update.setAttribute("class","btn btn-danger");
 				update.setAttribute("onclick","location.href='productupdate.do?productseq="+data[i].productseq+"'");
 
 				const del = document.createElement('input');
 				del.setAttribute("type","button");
 				del.setAttribute("value","삭제");
+				del.setAttribute("class","btn btn-secondary");
 				del.setAttribute("onclick","productdelCon("+data[i].productseq+");");
 				edit.append(update);
 				edit.append(del);
@@ -323,9 +296,6 @@ function getProductList(areacode) {
 				tr.append(rating);
 				tr.append(seatcount);
 				tr.append(price);
-				tr.append(likecount);
-				tr.append(wishcount);
-				tr.append(productcount);
 				tr.append(edit);
 	
 				table.append(tr);

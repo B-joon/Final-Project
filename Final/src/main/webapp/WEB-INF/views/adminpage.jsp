@@ -13,17 +13,18 @@
 <%@include file="./common.jsp" %>
 
 	<h1>ADMIN</h1>
-
-	<a href="coupon.do">쿠폰관리</a>
-	<a href="mailform.do">email..</a>
-	<a href="chart.do">차트</a>
-	<!-- 상품 등록 페이지 (어드민 권한이 있는 경우에만 나타나게 해야함) -->
-	<a href="productinsert.do">상품등록</a>
-	<a href="userlist.do">회원전체목록조회 </a>
-	<a href="usersearchpage.do">회원정보검색</a>
-	<h3>상품리스트</h3>
-	<select name="productareaCode"  onchange="chkProductAreaCode();">
-	<!-- 축제 정보를 ajax로 받기 -->
+	
+	<div class="border border-danger rounded">
+		<a class="btn btn-danger m-3" href="coupon.do">쿠폰관리</a>
+		<a class="btn btn-danger m-3" href="mailform.do">email</a>
+		<a class="btn btn-danger m-3" href="productinsert.do">상품등록</a>
+		<a class="btn btn-danger m-3" href="userlist.do">회원전체목록조회 </a>
+		<a class="btn btn-danger m-3" href="usersearchpage.do">회원정보검색</a>
+	</div>
+	<div class="border border-danger rounded m-3">
+	<h3 class="m-3">상품리스트</h3>
+	<div class="row m-3">
+	<select class="form-control col-sm-3" name="productareaCode"  onchange="chkProductAreaCode();">
 		<option value="0" selected>전체</option>
 		<option value="1">서울</option>
 		<option value="31">경기</option>
@@ -43,8 +44,8 @@
 		<option value="6">부산</option>
 		<option value="39">제주</option>
 	</select>
-	
-	<div id="partylist">
+	</div>
+	<div class="m-3" id="partylist">
 		<table class="table">
 		  <thead>
 		    <tr>
@@ -62,7 +63,7 @@
 		</table>
 	
 	</div>
-
+	</div>
 </body>
 <script type="text/javascript" src="resources/js/adminpage.js"></script>
 </html>

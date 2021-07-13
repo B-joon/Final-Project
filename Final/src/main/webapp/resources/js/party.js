@@ -63,6 +63,7 @@ function getPartyAllList() {
 					const img = document.createElement('img');
 					img.setAttribute("class","card-img-top");
 					img.setAttribute("alt","Card image cap");
+					img.setAttribute("onerror","this.src='resources/img/noimage.png'");
 					img.src = list[i].firstimage;
 					img.style.witdh = "10em";
 					img.style.height = "10em";
@@ -164,6 +165,7 @@ function getPartyList(areacode) {
 				const img = document.createElement('img');
 				img.setAttribute("class","card-img-top");
 				img.setAttribute("alt","Card image cap");
+				img.setAttribute("onerror","this.src='resources/img/noimage.png'");
 				img.src = list[i].firstimage;
 				img.style.witdh = "10em";
 				img.style.height = "10em";
@@ -242,6 +244,7 @@ function getProductAllList() {
 						const img = document.createElement('img');
 						img.setAttribute("class","card-img-top");
 						img.setAttribute("alt","Card image cap");
+						img.setAttribute("onerror","this.src='resources/img/noimage.png'");
 						img.src = data[i].thumbimg;
 						img.style.witdh = "10em";
 						img.style.height = "10em";
@@ -312,6 +315,7 @@ function getProductList(areacode) {
 				const img = document.createElement('img');
 				img.setAttribute("class","card-img-top");
 				img.setAttribute("alt","Card image cap");
+				img.setAttribute("onerror","this.src='resources/img/noimage.png'");
 				img.src = data[i].thumbimg;
 				img.style.witdh = "10em";
 				img.style.height = "10em";
