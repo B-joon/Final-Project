@@ -36,7 +36,7 @@ response.setContentType("text/html; charset=UTF-8");
 			<tr>
 				<th>아이디</th>
 				<td>
-					<input class="form-control" style="ime-mode: disabled" type="text" name="userid" id="userid" placeholder="4~13자만 가능합니다">
+					<input class="form-control" style="ime-mode: disabled" type="text" name="userid" id="userid" placeholder="영어와 숫자만 사용가능하고 4~13자로 만들어주세요">
 					<input type="hidden" id="Chk1" value="false">
 				</td>
 			</tr>
@@ -135,6 +135,9 @@ response.setContentType("text/html; charset=UTF-8");
 				<td id="submitRes" colspan="2" align="center">
 					<input type="submit" class="btn btn-danger"  value="회원가입">
 				</td>
+			</tr>
+			<tr id="notice">
+				<th colspan="2" align="center">모든 빈칸을 채우시고 밑에 둠게임을 성공하시면 회원가입 버튼이 활성화됩니다.</th>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="button" class="btn btn-dark" value="취소" onclick="location.href='loginform.do'" /></td>
@@ -304,7 +307,7 @@ $("#userid").keyup(function(){
 		var bemailChk = "null@"+ bemail;
 		var email = femail + "@" + bemail;
 		console.log(email)
-		if (email == null || email == "@null" ||email == femailChk || email == bemailChk) {
+		if (email == null || email == "@null" ||email == femailChk || email == bemailChk || email == "@") {
 			$("#emailChk").show();
 			$("#emailChk").html('email을 입력해 주세요.');
 			$("#emailChk").css("color", "red");
@@ -489,9 +492,11 @@ $("#userid").keyup(function(){
 				&& $("#Chk7").val() == 'true'){
 			$("#submitBtn").hide();
 			$("#submitRes").show();
+			$("#notice").hide();
 		} else{
 			$("#submitBtn").show();
 			$("#submitRes").hide();
+			$("#notice").show();
 		}
 	}
 	
