@@ -35,7 +35,7 @@
 				<label class="col-sm-2 control-label">내용</label>
 				<div class="col-sm-10">
 
-					<textarea class="form-control" rows="3">${dto.boardcontent }</textarea>
+					<textarea class="form-control" rows="3" id="summernote">${dto.boardcontent }</textarea>
 				</div>
 			</div>
 
@@ -55,5 +55,7 @@
 
 </body>
 <script type="text/javascript" src="resources/js/setsummernote.js"></script>
-
+<script type="text/javascript">
+$('#summernote').summernote('disable');
+</script>
 </html>
