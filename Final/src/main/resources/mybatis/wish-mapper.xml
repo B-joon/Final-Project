@@ -26,7 +26,7 @@
 	</insert>
 
 	<select id="wishList" resultType="wishDto">
-		SELECT DISTINCT W.WISHSEQ, P.PRODUCTSEQ,
+		SELECT W.WISHSEQ, P.PRODUCTSEQ,
 		U.USERSEQ, P.PRODUCTNAME, P.THUMBIMG, P.ADDRESS, P.TELLNUMBER, P.PRICE
 		FROM WISH W, PTSD_USER U, PRODUCT P
 		WHERE U.USERSEQ = W.USERSEQ AND
@@ -38,5 +38,10 @@
 		DELETE FROM WISH 
 		WHERE WISHSEQ = #{wishseq}
 	</delete>
+	
+	<select id="wishCount" resultType="int">
+		SELECT COUNT(*) FROM WISH
+		WHERE USERSEQ = #{userseq} AND PRODUCTSEQ = #{productseq}
+	</select>
 
 </mapper>

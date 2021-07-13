@@ -1,6 +1,11 @@
 
 
-$(function() {
+
+$(function(){
+	$(".notice-admin-btn").hide();
+	if ($(".userrole").val() == "admin") {
+		$(".notice-admin-btn").show();
+	}
 	insertControl();
 });
 
@@ -33,7 +38,6 @@ function insertControl() {
 	if (loginseq != null && loginrole == 'admin') {
 		$("#insertControl").show();
 	}
-
 }
 
 function downControl() {
@@ -46,12 +50,8 @@ function downControl() {
 		$("#downControl").click(function() {
 			alert("로그인을 해주세요 ! ");
 			location.href = 'loginform.do';
-		})
-
-
+		});
 	}
-
-
 }
 
 

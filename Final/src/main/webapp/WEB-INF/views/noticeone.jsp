@@ -41,9 +41,10 @@
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10" align="right">
-					<input type="button" value="수정" class="btn btn-success"
+          <input type="hidden" class="userrole" value="${login.userrole }">
+					<input type="button" value="수정" class="btn btn-success notice-admin-btn"
 						onclick="location.href='updateform.do?boardseq=${dto.boardseq}'">
-					<input type="button" value="삭제" class="btn btn-danger"
+					<input type="button" value="삭제" class="btn btn-danger notice-admin-btn"
 						onclick="location.href='delete.do?boardseq=${dto.boardseq}'">
 					<input type="button" value="목록" class="btn btn-info"
 						onclick="location.href='noticelist.do'">
@@ -54,6 +55,7 @@
 	</form>
 
 </body>
+<script type="text/javascript" src="resources/js/notice.js"></script>
 <script type="text/javascript" src="resources/js/setsummernote.js"></script>
 <script type="text/javascript">
 $('#summernote').summernote('disable');

@@ -1,8 +1,9 @@
 package com.ptsd.mvc.wish;
 
-import java.util.ArrayList;  
-
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,14 @@ public class WishDaoImpl implements WishDao {
 			e.printStackTrace();
 		}
 		return res;
+	}
+
+	@Override
+	public int wishCount(int productseq, int userseq) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("productseq", productseq);
+		map.put("userseq", userseq);
+		return sqlSession.selectOne(NAMESPACE + "wishCount", map);
 	}
 		
 
