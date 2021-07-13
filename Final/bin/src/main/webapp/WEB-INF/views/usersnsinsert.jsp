@@ -10,7 +10,7 @@
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
 
-
+<%@include file="./common.jsp" %>
 	<form action="usersnsInsertres.do" method="post">
 		<input type="hidden" name="userid" value="${res.userid }">
 		<input type="hidden" name="userpw" value="1234">

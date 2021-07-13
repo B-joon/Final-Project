@@ -8,6 +8,9 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<!-- common.js  -->
+<script type="text/javascript" src="resources/js/common.js"></script>
+
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -44,15 +47,17 @@ UserDto login = (UserDto) session.getAttribute("login");
 <script type="text/javascript" src="resources/js/weather.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/weather.css">
 
-
+<!-- 다크모드 -->
 <script type="text/javascript" src="resources/js/darkmode.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/darkmode.css">
 
-
+<!-- 차트 -->
 <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/chart.css">
 
-
+<!-- 결제 -->
+<!--iamport-->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 
 
@@ -82,8 +87,6 @@ UserDto login = (UserDto) session.getAttribute("login");
 					class="fas fa-tv"></i>&nbsp;&nbsp;Live방송</a></li>
 			<li class="nav-item"><a class="nav-link" href="chatbot.do"><i
 					class="fas fa-robot"></i>&nbsp;&nbsp;챗봇대화</a></li>
-			<li class="nav-item"><a class="nav-link" href="pay.do"><i
-					class="fas fa-money-check"></i>&nbsp;&nbsp;결제테스트</a></li>
 		</ul>
 		<ul class="navbar-nav">
 				<%
@@ -92,7 +95,7 @@ UserDto login = (UserDto) session.getAttribute("login");
 				<li class="nav-item"><a class="nav-link" href="logout.do"><i
 						class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;logout</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="mypage.do"><i
+				<li class="nav-item"><a class="nav-link" href="mypage.do?userseq=${login.getUserseq()}"><i
 						class="fas fa-user"></i>&nbsp;&nbsp;mypage</a></li>
 
 				<%
@@ -122,12 +125,14 @@ UserDto login = (UserDto) session.getAttribute("login");
 
 <%-- 상단으로 이동하기 버튼 시작 --%>
 <div class="top">
-	<button id="btn" onClick="GoTop()">▲</button>
+	<button type="button" id="btn" onClick="GoTop()" class="btn btn-outline-secondary"><i class="fas fa-arrow-alt-circle-up"></i></button>
+
 </div>
 <%-- 상단으로 이동하기 버튼 끝 --%>
 
 <div>
-	<input type="button" id="darkbtn" onclick="dayAndNight(this);" value="다크모드"></input>
+	<button type="button" id="darkbtn" onclick="dayAndNight(this);" class="btn btn-outline-secondary">다크모드</button>
+	
 </div>
 
 <input type="hidden" id="sessionLogin" value="${login }">

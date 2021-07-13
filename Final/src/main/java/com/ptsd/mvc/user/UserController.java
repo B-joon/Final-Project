@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -30,12 +31,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.ptsd.mvc.reservation.ReservationBiz;
+import com.ptsd.mvc.reservation.ReservationDto;
 
 @Controller
 public class UserController {
 	
 	@Autowired
 	private UserBiz biz;
+	@Autowired
+	private ReservationBiz reservationbiz;
 	
 	@Autowired
 	private EmailSender emailSender;
@@ -52,9 +57,24 @@ public class UserController {
 		return "adminpage";
 	}
 	@RequestMapping("/mypage.do")
-	public String User() {
+	public String User(Model model, int userseq) {
+		
+		model.addAttribute("dto", biz.mypage(userseq));
+		//예매내역 
+		List<ReservationDto> reservationlist = reservationbiz.selectList(userseq);
+		model.addAttribute("reservationlist", reservationlist);
+		
 		return "mypage";
 	}
+	
+	@RequestMapping("/mypageupdate.do")
+	public String mypageupdate(Model model, int userseq) {
+		
+		model.addAttribute("dto", biz.mypage(userseq));
+		
+		return "mypageupdate";
+	}
+	
 	@RequestMapping("pay.do")
 	public String pay() {
 		return "payment";
@@ -64,14 +84,49 @@ public class UserController {
 	public String chart() {
 		return "chart";
 	}
-
 	@RequestMapping("/idpwFind.do")
 	public String idpwFind() {
 		return "userfind";
 
 	}
 	
+	@RequestMapping("mypageupdateres.do")
+	public String mypageupdateres(UserDto dto) {
+		System.out.println("유저 정보 업데이트 시작");
+		if(biz.updateUser(dto) > 0) {
+			return "redirect:mypage.do?userseq="+dto.getUserseq();
+		}
+		return "redirect:mypageupdate.do?userseq="+dto.getUserseq();
+	}
 	
+	@RequestMapping("/userdelete.do")
+	public String delete(int userseq) {
+		System.out.println("삭제 시작한다.");
+		if(biz.delete(userseq) > 0) {
+			System.out.println("삭제 성공");
+			return "../../index";
+		}
+		System.out.println("삭제 실패");
+		return "redirect:/";
+	}
+	
+	@RequestMapping("userlist.do")
+	public String userlist(Model model) {
+		
+		model.addAttribute("list", biz.AllUser());
+		
+		return "userlist";
+	}
+	
+	@RequestMapping("usersearchpage.do")
+	public String userSearchpage(String name) {
+		
+		return "usersearch";
+	}
+	
+	
+	
+		
 	@RequestMapping(value="/ajaxlogin.do", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String , Boolean> ajaxLogin(HttpSession session, @RequestBody UserDto dto){ //@RequestBody�� json���� �� ��ü�� java Object�� �ٲ��ش�
@@ -371,6 +426,16 @@ public class UserController {
 		map.put("check", check);
 		
 		return map;
+	}
+    
+    @RequestMapping(value="usersearch.do", method=RequestMethod.POST)
+	@ResponseBody
+	public List<UserDto> userSearch(@RequestBody String name) { 
+		
+		List<UserDto> list = biz.usersearch(name);
+		
+		return list;
+		
 	}
 	
     

@@ -35,7 +35,7 @@ public class CouponController {
 	}
 	
 	// 관리자가 쿠폰을 만들었을 때
-		// 관리자페이지에서 쿠폰생성페이지 이동
+	// 관리자페이지에서 쿠폰생성페이지 이동
 	@RequestMapping("makecoupon.do")
 	public String makeCoupon() {
 		return "createcoupon";
@@ -77,12 +77,12 @@ public class CouponController {
 
 	
 
-	// 쿠폰 등록 (화면에 쿠폰 뿌려주기)
+	// 관리자가 쿠폰 생성 -> 생성후 관리자 main 
 	@RequestMapping("createcoupon.do")
 	public String createCoupon(int discount, Model model, MakeCouponDto dto) {
 		model.addAttribute("discount", discount);
 		if (couponbiz.insert(dto) > 0) {
-			return "coupon.do";
+			return "redirect:admin.do";
 		}
 		System.out.println(discount);
 		return "couponinsert";

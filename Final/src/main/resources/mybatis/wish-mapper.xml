@@ -20,9 +20,9 @@
 		<result column="PRODUCTCOUNT" property="productcount" />
 	</resultMap>
 	
-	<insert id="wishInsert">
-		INSERT INTO WISH
-		VALUES (WISHSEQ.NEXTVAL, #(userseq), #(productseq)		
+	<insert id="wishInsert" parameterType="wishDto">
+		INSERT INTO WISH(WISHSEQ, USERSEQ, PRODUCTSEQ)
+		VALUES (WISHSEQ.NEXTVAL, #{userseq}, #{productseq})		
 	</insert>
 
 	<select id="wishList" resultType="wishDto">
@@ -38,5 +38,10 @@
 		DELETE FROM WISH 
 		WHERE WISHSEQ = #{wishseq}
 	</delete>
+	
+	<select id="wishCount" resultType="int">
+		SELECT COUNT(*) FROM WISH
+		WHERE USERSEQ = #{userseq} AND PRODUCTSEQ = #{productseq}
+	</select>
 
 </mapper>

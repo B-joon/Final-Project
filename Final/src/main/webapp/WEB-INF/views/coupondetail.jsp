@@ -5,13 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSD / 쿠폰삭제</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 <body>
 <%@include file="./common.jsp" %>
 
 
-<table border="1">
+<table class="table table-bordered">
 
 		
 		<tr>
@@ -30,9 +33,9 @@
 
 		<tr>
 			<td colspan="4" align="right">
-				<input type="button" value="수정" onclick="location.href='couponupdateform.do?makeseq=${dto.makeseq}'">
-				<input type="button" value="삭제" onclick="location.href='coupondelete.do?makeseq=${dto.makeseq}'">
-				<input type="button" value="목록" onclick="location.href='coupon.do'">
+				<input type="button" value="수정" class="btn btn-danger" onclick="location.href='couponupdateform.do?makeseq=${dto.makeseq}'">
+				<input type="button" value="삭제" class="btn btn-danger" onclick="location.href='coupondelete.do?makeseq=${dto.makeseq}'">
+				<input type="button" value="목록" class="btn btn-danger" onclick="location.href='coupon.do'">
 			</td>
 		</tr>
 

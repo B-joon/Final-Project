@@ -5,7 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSD / 쿠폰</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 
 
@@ -14,10 +17,10 @@
 <body>
 <%@include file="./common.jsp" %>
 
-	<a href="makecoupon.do">쿠폰생성</a>
 	
-	<h1>발급 된 쿠폰 내역</h1>
-	<table border="1">
+	
+	<h3>발급 된 쿠폰 내역</h3>
+	<table class="table table-bordered">
 
 
 		<col width="50">
@@ -58,8 +61,9 @@
 
 
 		<tr>
-			<td colspan="4" align="right"><input type="button" value="글작성"
-				class="insertControl" onclick="location.href='eventinsertform.do'">
+			<td colspan="4" align="right">
+			<button type="button"
+				 class="btn btn-danger" onclick="location.href='makecoupon.do'">쿠폰생성</button>
 			</td>
 		</tr>
 

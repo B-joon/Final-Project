@@ -14,8 +14,8 @@ public class WishBizImpl implements WishBiz {
 	private WishDao dao;
 	
 	@Override
-	public List<WishDto> wishList() {
-		return dao.wishList();
+	public List<WishDto> wishList(int userseq ) {
+		return dao.wishList(userseq);
 	}
 
 	@Override
@@ -27,5 +27,11 @@ public class WishBizImpl implements WishBiz {
 	public int wishDelete(int wishseq) {
 		return dao.wishDelete(wishseq);
 	}
+
+	@Override
+	public int wishCount(int productseq, int userseq) {
+		return dao.wishCount(productseq, userseq);
+	}
+	
 
 }

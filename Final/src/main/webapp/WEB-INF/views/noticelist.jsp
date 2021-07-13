@@ -6,7 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSD / 공지</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 <body>
 <%@include file="./common.jsp" %>
@@ -14,7 +17,7 @@
 	<input type="hidden" value="${login.userseq }" id="loginseq">
 	<input type="hidden" value="${login.userrole }" id="loginrole">
 
-	<table border="1">
+	<table class="table table-bordered">
 		<col width="50">
 		<col width="100">
 		<col width="500">
@@ -51,8 +54,8 @@
 		</c:choose>
 		<tr>
 			<td colspan="4" align="right">
-			<input type="button" value="글작성" class ="insertControl"
-				onclick="location.href='insertform.do'"></td>
+			<input type="button" value="글작성" id ="insertControl"
+				class="btn btn-danger" onclick="location.href='insertform.do'"></td>
 		</tr>
 
 	</table>
@@ -112,4 +115,5 @@
 </body>
 <link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="resources/js/notice.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/notice.css">
 </html>

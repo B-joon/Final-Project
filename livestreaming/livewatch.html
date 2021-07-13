@@ -6,27 +6,79 @@
   <title>PTSD LiveWatch</title>
   <style rel="stylesheet" type="text/css" href="css/livewatch.css"></style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment-with-locales.min.js" integrity="sha512-EATaemfsDRVs6gs1pHbvhc6+rKFGv8+w4Wnxk4LmkC0fzdVoyWb+Xtexfrszd1YuUMBEhucNuorkf8LpFBhj6w==" crossorigin="anonymous"></script>
+<!-- include summernote css/js -->
+
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
-  <div id="wingleft"></div>
-  <div id="mymain">
-    <h2>시청</h2>
-    <video id="remoteVideo" autoplay controls playsinline></video>
-    <br>
-    <button id="mystart" class="btn btn-main">Start</button>
-    <button id="mystop" class="btn btn-main" disabled>Stop</button>
-  </div>
-  <div id="wingright"></div>
-  <div id="chatarea">
-
-
-  </div>
-  <div>
-    <input id="chatmessage" type="text" placeholder="메세지를 입력하세요.">
-    <button id="sendmessage" onclick="sendMessage()">전송</button>
+  <div class="container-lg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger justify-content-between sticky-top font-weight-bold">
+      <a class="navbar-brand" href="http://qclass.iptime.org:8787/Final_PTSD/main.do">
+        <img src="img/logo.png" width="100" class="d-inline-block align-top"></img>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <ul class="navbar-nav">
+          <li class="nav-item active"><a class="nav-link" href="http://qclass.iptime.org:8787/Final_PTSD/streaming.do"><i
+              class="fas fa-tv"></i>&nbsp;&nbsp;돌아가기</a></li>
+        </ul>
+      </ul>
+      </div>
+      </nav>
+      <div class="container border border-danger rounded mt-3">
+        <div class="alert alert-danger mt-3">
+          <span><h2 class="text-center">시청 : <b id="streamingname"></b></h2></span>
+        </div>
+          <div class="row">
+            <div class="col-sm-7 ">
+              <video id="remoteVideo" style="height: 30em; width: 39em;" autoplay controls playsinline></video>
+              <div class="mb-2">
+                <button id="mystart" class="btn btn-info">시청하기</button>
+                <button id="mystop" class="btn btn-danger" disabled>시청중지</button>
+              </div>
+              
+            </div>
+            <div class="col-sm-5">
+            <div class="border border-info rounded ">
+              <div id="chatarea" class="overflow-auto" style="height: 20em;">
+                    
+              </div>
+              <div id="textarea" class="">
+                <textarea id="summernote"></textarea>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
   </div>
   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@remotemonster/sdk/remon.min.js"></script>
   <script src="js/livewatch.js"></script>
+  <script src="js/setsummernote.js"></script>
 </body>
 </html>
