@@ -100,11 +100,23 @@ public class UserController {
 	}
 	
 	@RequestMapping("/userdelete.do")
-	public String delete(int userseq) {
+	public String delete(int userseq, HttpSession session) {
 		System.out.println("삭제 시작한다.");
 		if(biz.delete(userseq) > 0) {
 			System.out.println("삭제 성공");
+			session.invalidate();
 			return "../../index";
+		}
+		System.out.println("삭제 실패");
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/admindelete.do")
+	public String admindelete(int userseq, HttpSession session) {
+		System.out.println("삭제 시작한다.");
+		if(biz.delete(userseq) > 0) {
+			System.out.println("삭제 성공");
+			return "redirect:/";
 		}
 		System.out.println("삭제 실패");
 		return "redirect:/";
@@ -134,6 +146,7 @@ public class UserController {
 		boolean check = false;
 		if (login != null) {
 			session.setAttribute("login", login);
+			session.setMaxInactiveInterval(30*60);
 			check = true;
 		}
 		
@@ -152,6 +165,11 @@ public class UserController {
 	public String insertUserRes(HttpServletResponse response, UserDto dto) throws IOException {
 		
 		if (biz.insertUser(dto) > 0) {
+			response.setContentType("text/html; charset=euc-kr");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('PTSD에 회원가입 해주셔서 감사합니다'); </script>");
+			out.flush();
+
 			return "userlogin";
 		}else {
 			return "redirect:userInsert.do";
@@ -291,6 +309,7 @@ public class UserController {
         
         if(login != null) {
         	session.setAttribute("login", login);
+        	session.setMaxInactiveInterval(30*60);
         	return "redirect:/";
         } else {
         	model.addAttribute("res", res);
@@ -319,6 +338,7 @@ public class UserController {
         
         if(login != null) {
         	session.setAttribute("login", login);
+        	session.setMaxInactiveInterval(30*60);
         	return "redirect:/";
         } else {
         	model.addAttribute("res", res);
@@ -339,6 +359,7 @@ public class UserController {
         
         if(login != null) {
         	session.setAttribute("login", login);
+        	session.setMaxInactiveInterval(30*60);
         	return "redirect:/";
         } else {
         	model.addAttribute("res", res);
@@ -353,6 +374,12 @@ public class UserController {
 		if (biz.insertUser(dto) > 0) {
 			UserDto login = biz.snsCheck(dto);
 			session.setAttribute("login", login);
+			session.setMaxInactiveInterval(30*60);
+			response.setContentType("text/html; charset=euc-kr");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('PTSD에 회원가입 해주셔서 감사합니다.'); </script>");
+			out.flush();
+
 			return "redirect:main.do";
 		}else {
 			return "redirect:userInsert.do";

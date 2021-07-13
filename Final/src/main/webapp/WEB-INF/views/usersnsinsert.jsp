@@ -119,9 +119,7 @@ $("#emailChkBtn").click(function(){
 					$("#emailChkBtn").attr('type', 'hidden');
 					$("#Chk2").val('true');
 					submitChk();
-					setTimeout(function() {
-						$("#emailChk").hide();
-						}, 2000);
+					
 				} else {
 					$("#emailChk").html('이미 존재하는 email입니다.');
 					$("#emailChk").css("color", "red");
@@ -187,9 +185,7 @@ $("#phone").keyup(function(){
 					$("#Chk4").val('true');
 					submitChk();
 					console.log(phone)
-					setTimeout(function() {
-						$("#phoneChk").hide();
-						}, 2000);
+					
 				} else if(check == "true") {
 					$("#phoneChk").html('이미 존재하는 번호입니다.');
 					$("#phoneChk").css("color", "red");

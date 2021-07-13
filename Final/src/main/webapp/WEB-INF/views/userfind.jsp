@@ -96,7 +96,7 @@ function idFind(){
 	$("#proofframe").show();
 	$("#okbutton").val("아이디 찾기");
 	$("#okbutton").show();
-	$("#res").hide();
+	$("#res").show();
 	$("#idFind").hide();
 	$("#pwFind").hide();
 	$("#userid").val('');
@@ -149,9 +149,7 @@ $("#proofBtn").click(function(){
 	var bool = true;
 	if(email == null || email== ""){
 		$("#proofChk").html('이메일을 적어주세요');
-		setTimeout(function() {
-			$("#proofChk").hide();
-			}, 2000);
+		
 	}else if (bool) {
 		$.ajax({
 			type : "post",
@@ -185,9 +183,7 @@ $("#proofBtn").click(function(){
 					$("#Chk3").val('true');
 					submitChk();
 					console.log(proof)
-					setTimeout(function() {
-						$("#proofChk").hide();
-						}, 2000);
+					
 				} else{
 					$("#proofChk").html('인증번호를 다시 확인해주시거나 재발송을 눌러주세요.<br> 복사 붙여넣기하신 경우 맨뒤에 숫자를 지웠다 다시 적어주세요');
 					event.preventDefault();
@@ -211,9 +207,7 @@ $("#idFind").click(function() {
 
 	if (name == null || name == "") {
 		$("#idFindChk").html('이름을 작성해주세요');
-		setTimeout(function() {
-			$("#idFindChk").hide();
-			}, 5000);
+		
 	} else {
 		$.ajax({
 			type : "post",
@@ -232,9 +226,7 @@ $("#idFind").click(function() {
 				} else {
 					$("#idFindChk").html('이름과 이메일에 일치하는 아이디가 없습니다.');
 					$("#idFindChk").css("color", "red");
-					setTimeout(function() {
-						$("#idFindChk").hide();
-						}, 5000);
+					
 				}
 			},
 			error : function() {
@@ -277,15 +269,11 @@ $("#pwFind").click(function(){
 				} else if(msg.check == false) {
 					$("#pwFindChk").html('아이디와 이메일에 일치하는 비밀번호가 없습니다.');
 					$("#pwFindChk").css("color", "red");
-					setTimeout(function() {
-						$("#idFindChk").hide();
-						}, 2000);
+					
 				} else{
 					$("#pwFindChk").html('아이디와 이메일에 일치하는 비밀번호가 없습니다.');
 					$("#pwFindChk").css("color", "red");
-					setTimeout(function() {
-						$("#idFindChk").hide();
-						}, 2000);
+					
 				}
 			},
 			error : function() {
