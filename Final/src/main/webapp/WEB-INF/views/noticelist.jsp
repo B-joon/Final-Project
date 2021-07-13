@@ -55,7 +55,7 @@
 		<tr>
 			<td colspan="4" align="right">
 			<input type="button" value="글작성" id ="insertControl"
-				class="btn btn-danger" onclick="location.href='insertform.do'"></td>
+				class="btn btn-danger notice-admin-btn" onclick="location.href='insertform.do'"></td>
 		</tr>
 
 	</table>
