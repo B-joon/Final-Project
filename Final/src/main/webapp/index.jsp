@@ -80,7 +80,19 @@
 				</div>
 			</div>
 		</div>
-
+		<form action="search.do" class="form-inline my-2 my-lg-0">
+				<div class="m-3">
+					<input class="form-control mr-sm-2" type="search" name="keyword"
+						placeholder="지역명, 제목명" aria-label="Search" id="speech_result">
+						<span class="ml-1">
+		    			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		    			<span id="speecharea">
+							<button type="button" class="btn btn-primary btn-sm" onclick="startSpeechRecognition();"><i class="fas fa-microphone"></i></button>
+						</span>
+		    			</span>
+						
+		    	</div>
+		</form>
 
 		<hr />
 		<div id="partylist" class="row"></div>
