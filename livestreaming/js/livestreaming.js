@@ -94,9 +94,10 @@ function addMesssage(isMine, msg) {
     Username.innerHTML = isMine ? name : msg.split('-')[0];
 
 		var outmsg = msg.replace(/<(\/?)p>/gi, '');
-
+    var outmsg = outmsg.replace('<br>', '');
+    console.log(outmsg)
     var content = document.createElement("p");
-    content.innerHTML = outmsg;
+    content.append(outmsg);
 
     mediaBody.append(Username);
     mediaBody.append(content);
