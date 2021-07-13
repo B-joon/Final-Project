@@ -115,9 +115,12 @@
 										<h3>${dto.coupontitle}</h3>
 										<p>사용기간 : ${dto.endday }</p>
 										<p>
+									
 											<a
 												href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}"
-												class="btn btn-danger" id="downControl" role="button">다운로드</a>
+												class="btn btn-danger downControl" id="downControl" role="button">다운로드</a>
+									
+										
 									</div>
 								</div>
 							</div>
@@ -133,7 +136,7 @@
 										<p>
 											<a
 												href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}"
-												class="btn btn-danger" id="downControl" role="button">다운로드</a>
+												class="btn btn-danger downControl" id="downControl" role="button">다운로드</a>
 									</div>
 								</div>
 							</div>
@@ -148,7 +151,7 @@
 										<p>
 											<a 
 												href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}"
-												class="btn btn-danger" id="downControl" role="button">다운로드</a>
+												class="btn btn-danger downControl" id="downControl" role="button">다운로드</a>
 									</div>
 								</div>
 							</div>
