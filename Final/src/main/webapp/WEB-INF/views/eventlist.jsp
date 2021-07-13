@@ -62,7 +62,7 @@
 
 			<tr>
 				<td colspan="4" align="right"><input type="button" value="글작성"
-					class="btn btn-danger" id="insertControl"
+					class="btn btn-danger notice-admin-btn" id="insertControl"
 					onclick="location.href='eventinsertform.do'"></td>
 			</tr>
 
