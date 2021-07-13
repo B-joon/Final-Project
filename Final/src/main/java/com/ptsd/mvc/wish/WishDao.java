@@ -9,6 +9,7 @@ public interface WishDao {
 	
 	public List<WishDto> wishList(int userseq);
 	public int wishInsert(WishDto dto);
-	public int wishDelete(int wishseq);
-	public int wishCount(int productseq, int userseq);
+	public int wishDelete(WishDto dto);
+	public int wishCount(WishDto dto);
+	public int chkWish(WishDto dto);
 }

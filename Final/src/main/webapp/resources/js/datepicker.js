@@ -1,10 +1,26 @@
 $(function () {
+	
+	var minDate = $("#startDate").val();
+	var maxDate = $("#endDate").val();
+
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = ('0' + (date.getMonth() + 1)).slice(-2);
+	var day = ('0' + date.getDate()).slice(-2);
+
+	var today = year + '-' + month  + '-' + day;
+
+	if (today > minDate) {
+		minDate = today;
+	}
+	
   $('#datetimepicker').datetimepicker({
      inline: true,
      sideBySide: true,
      format: 'L',
      locale: 'ko',
-     minDate: new Date(),
+     minDate: minDate,
+     maxDate: maxDate,
      buttons: {
     	 showToday: true,
     	 showClear: true,

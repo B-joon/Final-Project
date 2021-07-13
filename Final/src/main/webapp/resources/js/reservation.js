@@ -1,6 +1,12 @@
 $(function(){
-	
-	
+
+		var seatCount = $("#seatCount").val();
+		var productName = $("#productname").val();
+		console.log(productName);
+		console.log(seatCount);
+		getSeatCount(seatCount, productName);
+		chkWish();
+		getWishCount();
 		$('#datetimepicker').datetimepicker();
 		var playdate = $('#datetimepicker').datetimepicker('viewDate')
 		var date = new Date(playdate);
@@ -22,6 +28,25 @@ $(function(){
 		});
 })
 
+function getSeatCount(seatCount, productName) {
+	
+	$.ajax({
+		
+		url: "getSeatCount.do?productname="+productName,
+		type: "POST",
+		dataType: "text",
+		success: function(data) {
+			var ableSeatCount = seatCount - data;
+			$("#ableSeatCount").append(ableSeatCount + "개");
+		},
+		error: function() {
+			alert("통신 실패.....");
+		}
+	
+		
+	})
+	
+}
 
 function chkReservation() {
 

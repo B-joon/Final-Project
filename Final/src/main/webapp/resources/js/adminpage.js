@@ -314,7 +314,6 @@ function getProductList(areacode) {
 }
 
 function productdelCon(productseq) {
-	
 	var con = confirm("해당 상품을 삭제하시겠습니까?");
 	
 	if(con) {

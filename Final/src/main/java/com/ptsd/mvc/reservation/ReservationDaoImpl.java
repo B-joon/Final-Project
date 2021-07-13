@@ -77,4 +77,15 @@ public class ReservationDaoImpl implements ReservationDao {
 		return res;
 	}
 
+	@Override
+	public int getSeatCount(String productname) {
+		int res = 0; 
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"getSeatCount",productname);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 }

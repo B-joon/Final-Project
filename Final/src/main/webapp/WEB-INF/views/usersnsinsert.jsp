@@ -14,21 +14,22 @@
 <body>
 
 <%@include file="./common.jsp" %>
+	<div class="border border-danger rounded">
 	<form action="usersnsInsertres.do" method="post">
 		<input type="hidden" name="userid" value="${res.userid }">
 		<input type="hidden" name="userpw" value="1234">
-		<table id="table" align="center">
+		<table id="table" class="table table-borderless text-center">
 			<tr>
 				<th>이름</th>
-				<td><input type="text" name="name" id="username"
+				<td><input type="text" class="form-control" name="name" id="username"
 					placeholder="이름을 적어주세요" onkeyup="nameChk();" value="${res.name }">
 					<input type="hidden" id="Chk1" value="false"></td>
 			</tr>
 			<tr>
 				<th>EMAIL</th>
-				<td><input type="text" name="email" id="email"
+				<td><input type="text" class="form-control" name="email" id="email"
 					value="${res.email }"> <input type="button"
-					id="emailChkBtn" value="이메일 중복 확인"> <input type="hidden"
+					id="emailChkBtn" class="btn btn-secondary" value="이메일 중복 확인"> <input type="hidden"
 					id="Chk2" value="false"></td>
 			</tr>
 			<tr>
@@ -36,14 +37,14 @@
 			</tr>
 			<tr>
 				<th>주소</th>
-				<td><input style="width: 300px;" type="text" name="address"
+				<td><input class="form-control" type="text" name="address"
 					id="address" class="form-control" readonly="readonly"
 					placeholder="주소를 입력하려면 여기를 클릭하세요" onclick="goPopup();"> <input
 					type="hidden" id="Chk3" value="false"></td>
 			</tr>
 			<tr>
 				<th>핸드폰 번호</th>
-				<td><input type="text" name="phone" id="phone"
+				<td><input type="text" class="form-control"  name="phone" id="phone"
 					placeholder="숫자만 입력하세요" style="ime-mode: disabled"> <input
 					type="hidden" id="Chk4" value="false"></td>
 			</tr>
@@ -52,19 +53,19 @@
 			</tr>
 			<tr>
 				<td id="submitBtn" colspan="2" align="center"><input
-					type="button" value="회원가입" disabled="disabled"></td>
+					type="button" class="btn btn-danger" value="회원가입" disabled="disabled"></td>
 			</tr>
 			<tr>
 				<td id="submitRes" colspan="2" align="center"><input
-					type="submit" value="회원가입"></td>
+					type="submit" class="btn btn-danger" value="회원가입"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="button" value="취소"
+				<td colspan="2" align="center"><input type="button" class="btn btn-dark" value="취소"
 					onclick="location.href='loginform.do'" /></td>
 			</tr>
 		</table>
 	</form>
-
+</div>
 </body>
 <script type="text/javascript">
 

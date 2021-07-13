@@ -36,4 +36,10 @@ public class ReservationBizImpl implements ReservationBiz {
 		return dao.delete(reservationseq);
 	}
 
+
+	@Override
+	public int getSeatCount(String productname) {
+		return dao.getSeatCount(productname);
+	}
+
 }

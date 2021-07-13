@@ -29,7 +29,7 @@
 						<div class="col-sm-4">
 							<img src="${dto.thumbimg }" class="card-img-top border border-danger m-2" onerror="this.src='resources/img/noimage.png'" width="300" alt="${dto.productname }">
 							<script type="text/javascript" src="resources/js/recommand.js"></script>
-							<p class="card-text m-2"><i class="far fa-heart"></i> 찜하기 / <b>${dto.wishcount }</b></p>
+							<p class="card-text m-2"><a id="wisharea" href="javascript:void(0);" onclick="addWish();"></a> 찜하기 / <b id="wishcount">0</b></p>
 						</div>
 						<div class="col-sm-8">
 							<div class="row mb-3">
@@ -47,6 +47,8 @@
 									<p class="card-text">공연기간</p>
 								</div>
 								<div class="col-sm-9">
+									<input type="hidden" id="startDate" value="${dto.startdate }">
+									<input type="hidden" id="endDate" value="${dto.enddate }">
 									<p class="card-text">${dto.startdate } ~ ${dto.enddate }</p>
 								</div>
 							</div>
@@ -89,8 +91,8 @@
 				<div class="card m-3">
 				<div class="card-body">
 					<form action="reviewinsert.do">
-						<input type="hidden" name="productseq" value="${dto.productseq }">
-						<input type="hidden" name="userseq" value="${login.userseq }">
+						<input type="hidden" name="productseq" id="productseq" value="${dto.productseq }">
+						<input type="hidden" name="userseq" id="userseq" value="${login.userseq }">
 						<input type="hidden" name="reviewname" value="${login.name }">
 						<div class="form-group">
 							<label for="commentarea"><i class="fas fa-user">  ${login.name }</i>
@@ -187,7 +189,9 @@
 					</div>
 				</div>
 					<div class="m-2 border-bottom">
-						<p class="font-weight-bold">남은좌석수</p><p class="font-weight-normal">0 / ${dto.seatcount }</p>
+						<input type="hidden" id="seatCount" value="${dto.seatcount }">
+						<p class="font-weight-bold">남은좌석수</p><p class="font-weight-normal" id="ableSeatCount"></p>
+						
 						
 					</div>	
 					<div>
@@ -215,16 +219,6 @@
 						<button type="button" class="btn btn-danger" onclick="chkReservation();">예매하기</button>
 					</div>
 					<input type="hidden" value="" name="playdate" id="playdate">
-										<%
-					if (login != null) {
-					%>
-					<div class="m-2">
-					<form name="form1" id="form1" method="post" action="wishInsert.do">
-						<input type="hidden" name="productseq" value="${dto.productseq }">
-						<button type="button" class="btn btn-danger" onclick="addWish();" value="찜하기">👍 찜하기</button>
-					</form>
-					</div>
-					<% } %>
 			</div>
 		</div>
 	</div>
