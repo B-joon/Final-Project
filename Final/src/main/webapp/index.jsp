@@ -102,5 +102,4 @@
 <script type="text/javascript" src="resources/js/party.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/index.css">
 <script type="text/javascript" src="resources/js/map.js"></script>
-
 </html>

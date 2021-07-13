@@ -204,4 +204,5 @@
 <link rel="stylesheet" type="text/css" href="resources/css/coupon.css">
 <link rel="stylesheet" type="text/css" href="resources/css/notice.css">
 <script type="text/javascript" src="resources/js/notice.js"></script>
+
 </html>
