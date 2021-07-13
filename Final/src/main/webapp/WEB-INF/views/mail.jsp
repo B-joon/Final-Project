@@ -9,6 +9,14 @@
 <title>PTSD / Mail</title>
 	<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
+
+<script type="text/javascript">
+
+	function goBack(){
+		window.history.back();
+	}
+
+</script>
 <body>
 <%@include file="./common.jsp" %>
 	<h1>메일 보내기</h1>
@@ -30,6 +38,7 @@
 			</div>
 			<div align="center">
 				<input type="submit" value="메일 보내기" />
+				<button type="button" onclick="goBack()">돌아가기</button>
 			</div>
 		</div>
 	</form>

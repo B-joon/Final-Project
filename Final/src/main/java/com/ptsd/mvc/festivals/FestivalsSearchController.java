@@ -86,7 +86,7 @@ public class FestivalsSearchController {
 		}
 
 		model.addAttribute("list", list);
-		model.addAttribute("keyword", keyword);
+		// model.addAttribute("keyword", keyword);
 		
 
 		return "searchfestivalslist";
