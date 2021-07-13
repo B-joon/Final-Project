@@ -11,28 +11,53 @@
 </head>
 <body>
 <%@include file="./common.jsp" %>
-<script type="text/javascript" src="resources/js/notice.js"></script>
-	<table border="1">
-		<tr>
-			<th>작성자</th>
-			<td>${dto.boardname }</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td>${dto.boardtitle }</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td><textarea rows="10" cols="60" readonly="readonly">${dto.boardcontent }</textarea></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<input type="hidden" class="userrole" value="${login.userrole }">
-				<input class="notice-admin-btn" type="button" value="수정" onclick="location.href='updateform.do?boardseq=${dto.boardseq}'">
-				<input class="notice-admin-btn" type="button" value="삭제" onclick="location.href='delete.do?boardseq=${dto.boardseq}'">
-				<input type="button" value="목록" onclick="location.href='noticelist.do'">
-			</td>
-		</tr>
-	</table>
+	<form class="form-horizontal">
+		<div class="border border-danger rounded p-3">
+			<div class="form-group">
+
+				<label for="boardname" class="col-sm-2 control-label">작성자</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="boardname"
+						value="${dto.boardname }" readonly>
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<label for="boardtitle" class="col-sm-2 control-label">제목</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="boardtitle"
+						value="${dto.boardtitle }" readonly>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">내용</label>
+				<div class="col-sm-10">
+
+					<textarea class="form-control" rows="3" id="summernote">${dto.boardcontent }</textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10" align="right">
+          <input type="hidden" class="userrole" value="${login.userrole }">
+					<input type="button" value="수정" class="btn btn-success notice-admin-btn"
+						onclick="location.href='updateform.do?boardseq=${dto.boardseq}'">
+					<input type="button" value="삭제" class="btn btn-danger notice-admin-btn"
+						onclick="location.href='delete.do?boardseq=${dto.boardseq}'">
+					<input type="button" value="목록" class="btn btn-info"
+						onclick="location.href='noticelist.do'">
+				</div>
+			</div>
+			
+		</div>
+	</form>
+
 </body>
+<script type="text/javascript" src="resources/js/notice.js"></script>
+<script type="text/javascript" src="resources/js/setsummernote.js"></script>
+<script type="text/javascript">
+$('#summernote').summernote('disable');
+</script>
 </html>
