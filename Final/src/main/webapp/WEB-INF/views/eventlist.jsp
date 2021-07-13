@@ -17,8 +17,8 @@
 
 	<input type="hidden" value="${login.userseq }" id="loginseq">
 	<input type="hidden" value="${login.userrole }" id="loginrole">
-	<div class="container-lg">
-	<table border="1">
+	<div>
+	<table class="table table-bordered">
 
 
 		<col width="50">
@@ -61,7 +61,7 @@
 
 		<tr>
 			<td colspan="4" align="right"><input type="button" value="글작성"
-				class="insertControl" onclick="location.href='eventinsertform.do'">
+				class="btn btn-danger" id="insertControl" onclick="location.href='eventinsertform.do'">
 			</td>
 		</tr>
 
@@ -185,5 +185,6 @@
 </body>
 <link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="resources/css/coupon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/notice.css">
 <script type="text/javascript" src="resources/js/notice.js"></script>
 </html>

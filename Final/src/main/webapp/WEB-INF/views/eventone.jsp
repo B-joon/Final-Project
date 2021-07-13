@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,32 +7,51 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PTSD / 이벤트</title>
-	<link href="resources/img/favicon.png" rel="shortcut icon">
+<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 <body>
-<%@include file="./common.jsp" %>
+	<%@include file="./common.jsp"%>
+	<form class="form-horizontal">
+		<div class="border border-danger rounded p-3">
+			<div class="form-group">
 
-<table border="1">
-		<tr>
-			<th>작성자</th>
-			<td>${dto.boardname }</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td>${dto.boardtitle }</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td><textarea rows="10" cols="60" readonly="readonly">${dto.boardcontent }</textarea></td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<input type="button" value="수정" onclick="location.href='eventupdateform.do?boardseq=${dto.boardseq}'">
-				<input type="button" value="삭제" onclick="location.href='eventdelete.do?boardseq=${dto.boardseq}'">
-				<input type="button" value="목록" onclick="location.href='eventlist.do'">
-			</td>
-		</tr>
-	</table>
+				<label for="boardname" class="col-sm-2 control-label">작성자</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="boardname"
+						value="${dto.boardname }" readonly>
+				</div>
+			</div>
 
+			<div class="form-group">
+
+				<label for="boardtitle" class="col-sm-2 control-label">제목</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="boardtitle"
+						value="${dto.boardtitle }" readonly>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">내용</label>
+				<div class="col-sm-10">
+
+					<textarea class="form-control" rows="3">${dto.boardcontent }</textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10" align="right">
+					<input type="button" value="수정" class="btn btn-success"
+						onclick="location.href='eventupdateform.do?boardseq=${dto.boardseq}'">
+					<input type="button" value="삭제" class="btn btn-danger"
+						onclick="location.href='eventdelete.do?boardseq=${dto.boardseq}'">
+					<input type="button" value="목록" class="btn btn-info"
+						onclick="location.href='eventlist.do'">
+				</div>
+			</div>
+			
+		</div>
+	</form>
 </body>
+
 </html>
