@@ -23,7 +23,7 @@
 		<col width="520">
 		<col width="200">
 		<col width="170">
-		<col width="40">
+		<col width="70">
 
 		<tr>
 			<th>제목</th>
@@ -47,7 +47,7 @@
 							<td>${dto.address }</td>
 							<td><img src="${dto.thumbimg }">
 							<td>${dto.tellnumber}</td>
-							<td><input type="button" value="삭제"
+							<td><input type="button" value="삭제하기"
 								onclick="location.href='wishDelete.do?wishseq=${dto.wishseq}'" /></td>
 						</tr>
 					</c:if>
@@ -55,5 +55,7 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
+	<br/>
+	<input type="button" class="btn btn-danger" style="float:right;" value="메인화면" onclick="location.href='main.do'" />
 </body>
 </html>
