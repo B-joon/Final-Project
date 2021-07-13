@@ -51,8 +51,8 @@
 	
 	<div class="mx-auto text-center m-3">
 	<a href="${url}"><img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png" id="naver_id_login"/></a><br/>
-	<a><img width="223" src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png?hl=ko" id="glogin"></a><br/>
-	<a><img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png" id="kakaologin"></a>
+	<a><img width="223" src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png" id="kakaologin"></a><br/>
+	<input type="image" width="223" src="resources/img/google_btn.png" id="glogin" onclick="init();">
 	</div>	
 	</div>
 
@@ -102,16 +102,16 @@
     <script type="text/javascript">
     // google login
     function init() {
-        gapi.load('auth2', function() {
-            auth2 = gapi.auth2.init({
-                client_id: '598123668214-i2590f1kq85bg1lm2u1hga0ilps88h69.apps.googleusercontent.com',
-                cookiepolicy: 'single_host_origin',
-                scope: 'profile email'
-            });
-            element = document.getElementById('glogin');
-            auth2.attachClickHandler(element, {}, onSignUp, onFailure);
-        });
-    }
+		        gapi.load('auth2', function() {
+		            auth2 = gapi.auth2.init({
+		                client_id: '598123668214-i2590f1kq85bg1lm2u1hga0ilps88h69.apps.googleusercontent.com',
+		                cookiepolicy: 'single_host_origin',
+		                scope: 'profile email'
+		            });
+		            element = document.getElementById('glogin');
+		            auth2.attachClickHandler(element, {}, onSignUp, onFailure);
+		        });
+		    }
     
     function onSignUp(googleUser) {
       var profile = googleUser.getBasicProfile();
