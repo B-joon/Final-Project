@@ -87,6 +87,20 @@ public class ReservationController {
 		return "redirect:mypage.do?userseq="+userseq;
 	}
 	
+	@RequestMapping(value = "getSeatCount.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int getSeatCount(String productname) {
+		
+		int res = reservationbiz.getSeatCount(productname);
+		System.out.println(res);
+		if (res > 0) {
+			return res;
+		} else {
+			return 0;
+		}
+
+		
+	}
 	
 	
 }

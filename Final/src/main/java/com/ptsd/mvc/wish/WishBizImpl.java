@@ -24,13 +24,18 @@ public class WishBizImpl implements WishBiz {
 	}
 
 	@Override
-	public int wishDelete(int wishseq) {
-		return dao.wishDelete(wishseq);
+	public int wishDelete(WishDto dto) {
+		return dao.wishDelete(dto);
 	}
 
 	@Override
-	public int wishCount(int productseq, int userseq) {
-		return dao.wishCount(productseq, userseq);
+	public int wishCount(WishDto dto) {
+		return dao.wishCount(dto);
+	}
+
+	@Override
+	public int chkWish(WishDto dto) {
+		return dao.chkWish(dto);
 	}
 	
 

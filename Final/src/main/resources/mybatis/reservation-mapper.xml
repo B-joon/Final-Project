@@ -15,6 +15,12 @@
 		WHERE RESERVATIONSEQ = #{reservationseq}
 	</select>
 	
+	<select id="getSeatCount" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM RESERVATION
+		WHERE PRODUCTNAME = #{productname}
+	</select>
+	
 	<insert id="insert" parameterType="reservationDto">
 		INSERT INTO RESERVATION 
 		VALUES(RESERVATIONSEQ.NEXTVAL,#{userseq},#{productname},#{price},#{playdate},#{people},SYSDATE)
