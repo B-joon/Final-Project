@@ -40,7 +40,7 @@ public class StreamingController {
 	public String streamingRes(StreamingDto dto) {
 		
 		if (biz.insert(dto) > 0) {
-			return "redirect:streamingselect.do?streamingseq=" + dto.getStreamingseq();
+			return "redirect:streaming.do";
 		}
 		
 		return "redirect:streamingres.do";
