@@ -225,14 +225,25 @@
 			<version>1.0.0.RELEASE</version>
 		</dependency>
 
-	<!-- 	 스프링 스케줄러 
+		<!-- 스프링 스케줄러 <dependency> <groupId>org.quartz-scheduler</groupId> <artifactId>quartz</artifactId> 
+			<version>2.3.2</version> </dependency> -->
+
+		<!-- 추가: 엘라스틱서치 서버로 보낼 클래스 -->
+		<!-- https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-high-level-client -->
 		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.3.2</version>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>elasticsearch-rest-high-level-client</artifactId>
+			<version>7.13.2</version>
 		</dependency>
 
- -->
+
+		<!-- 추가: json object -->
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20200518</version>
+		</dependency>
 
 	</dependencies>
 	<build>
