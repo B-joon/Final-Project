@@ -44,10 +44,10 @@
 			<td>${dto.phone }</td>
 		</tr>
 		<tr>
-
 			<td colspan="2" align="center">
 			<input type="button" class="btn btn-danger"	value="내 정보 수정" onclick="location.href='mypageupdate.do?userseq=${dto.userseq }'">
 			<input type="button" value="내 쿠폰함" class="btn btn-success"	onclick="location.href='mycoupon.do'"> 
+      <input type="button" value="찜한 공연" onclick="location.href='wishList.do'">
 			<input type="button"value="회원 탈퇴" id="delete1" class="btn btn-light" onclick="userDelete();"> 
 			<input type="button" value="회원 탈퇴" id="delete2" class="btn btn-dark" onclick="location.href='userdelete.do?userseq=${dto.userseq }'">
 			</td>

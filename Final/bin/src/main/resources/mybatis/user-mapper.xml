@@ -39,7 +39,7 @@
 	</select> 
 	
 	<select id="idFind" resultType="userDto">
-		SELECT USERID, USERPW, EMAIL, NAME
+		SELECT USERSEQ, USERID, USERPW, EMAIL, ADDRESS, PHONE, USERROLE, NAME
 		FROM PTSD_USER
 		WHERE EMAIL = #{email}
 	</select>
@@ -49,10 +49,22 @@
 		FROM PTSD_USER
 		WHERE EMAIL = #{email}
 	</select>
+	
+	<select id="mypage" resultType="userDto">
+		SELECT USERSEQ, USERID, USERPW, EMAIL, ADDRESS, PHONE, USERROLE, NAME
+		FROM PTSD_USER
+		WHERE USERSEQ = #{userseq}	
+	</select>
+	
 	<update id="pwupdate" parameterType="userDto">
 		UPDATE PTSD_USER
 		SET USERPW = #{userpw}
 		WHERE EMAIL= #{email}
 	</update>
+	
+	<delete id="userdelete" parameterType="int">
+  		DELETE FROM PTSD_USER
+  		WHERE USERSEQ = #{userseq};
+  	</delete>
 	
 </mapper>

@@ -9,7 +9,7 @@
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
+<%@include file="./common.jsp" %>
 	<table align="center">
 		<tr>
 			<td colspan="2" align="center">

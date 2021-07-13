@@ -28,6 +28,7 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<img src="${dto.thumbimg }" class="card-img-top border border-danger m-2" onerror="this.src='resources/img/noimage.png'" width="300" alt="${dto.productname }">
+							<script type="text/javascript" src="resources/js/recommand.js"></script>
 							<p class="card-text m-2"><i class="far fa-heart"></i> 찜하기 / <b>${dto.wishcount }</b></p>
 						</div>
 						<div class="col-sm-8">
@@ -189,6 +190,22 @@
 						<p class="font-weight-bold">남은좌석수</p><p class="font-weight-normal">0 / ${dto.seatcount }</p>
 						
 					</div>
+					<div class="m-2">
+						<button type="button" class="btn btn-danger" onclick="goPayment();">예매하기</button>
+					</div>
+					<%
+					if (login != null) {
+					%>
+					<div class="m-2">
+					<form name="form1" id="form1" method="post" action="wishInsert.do">
+						<input type="hidden" name="productseq" value="${dto.productseq }">
+						<button type="button" class="btn btn-danger" onclick="addWish();" value="찜하기">👍 찜하기</button>
+					</form>
+					</div>
+					<% } %>
+			</div>
+		</div>
+	</div>
 					
 					<div>
 						<div>할인쿠폰</div>
@@ -243,6 +260,7 @@
 	</div>
 </div>
 </body>
+<script type="text/javascript" src="resources/js/wish.js"></script>
 <script type="text/javascript" src="resources/js/reviewandlike.js"></script>
 <script type="text/javascript" src="resources/js/datepicker.js"></script>
 <script type="text/javascript" src="resources/js/reservation.js"></script>
