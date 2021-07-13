@@ -14,14 +14,13 @@
 	<form class="form-horizontal">
 		<div class="border border-danger rounded p-3">
 			<div class="form-group">
-
 				<label for="boardname" class="col-sm-2 control-label">작성자</label>
 				<div class="col-sm-10">
 					<input class="form-control" type="text" id="boardname"
 						value="${dto.boardname }" readonly>
 				</div>
 			</div>
-
+    
 			<div class="form-group">
 
 				<label for="boardtitle" class="col-sm-2 control-label">제목</label>
@@ -41,9 +40,10 @@
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10" align="right">
-					<input type="button" value="수정" class="btn btn-success"
+          <input type="hidden" class="userrole" value="${login.userrole }">
+					<input type="button" value="수정" class="btn btn-success notice-admin-btn"
 						onclick="location.href='eventupdateform.do?boardseq=${dto.boardseq}'">
-					<input type="button" value="삭제" class="btn btn-danger"
+					<input type="button" value="삭제" class="btn btn-danger notice-admin-btn"
 						onclick="location.href='eventdelete.do?boardseq=${dto.boardseq}'">
 					<input type="button" value="목록" class="btn btn-info"
 						onclick="location.href='eventlist.do'">
@@ -57,4 +57,5 @@
 <script type="text/javascript">
 $('#summernote').summernote('disable');
 </script>
+<script type="text/javascript" src="resources/js/notice.js"></script>
 </html>

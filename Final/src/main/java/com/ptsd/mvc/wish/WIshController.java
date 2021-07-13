@@ -1,6 +1,6 @@
 package com.ptsd.mvc.wish;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ptsd.mvc.user.UserDto;
@@ -26,15 +25,17 @@ public class WIshController {
 	public String wishInsert(@ModelAttribute WishDto dto, HttpServletRequest request) {
 		
 		int userseq = ((UserDto) request.getSession().getAttribute("login")).getUserseq();
-		
-		if (userseq == 0) {
-			return "redirect:loginform.do";
-		}
 		dto.setUserseq(userseq);
-		wishbiz.wishInsert(dto);
 		
-		return "redirect:wishList.do";
+		int count = wishbiz.wishCount(dto.getProductseq(), userseq);
+		if(count == 0) {
+			wishbiz.wishInsert(dto);
+		} else {
+			return "redirect:wishList.do";
 		}
+		return "redirect:wishList.do";
+		
+	}
 	
 	@RequestMapping("/wishList.do")
 	public ModelAndView wishList(ModelAndView mav, HttpServletRequest request) {
@@ -50,7 +51,7 @@ public class WIshController {
 
 		mav.setViewName("wishlist");
 		mav.addObject("map", map);
-
+		
 		return mav;
 
 	}
