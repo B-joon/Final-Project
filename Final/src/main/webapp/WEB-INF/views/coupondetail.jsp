@@ -13,7 +13,7 @@
 <%@include file="./common.jsp" %>
 
 
-<table border="1">
+<table class="table table-bordered">
 
 		
 		<tr>
@@ -32,9 +32,9 @@
 
 		<tr>
 			<td colspan="4" align="right">
-				<input type="button" value="수정" onclick="location.href='couponupdateform.do?makeseq=${dto.makeseq}'">
-				<input type="button" value="삭제" onclick="location.href='coupondelete.do?makeseq=${dto.makeseq}'">
-				<input type="button" value="목록" onclick="location.href='coupon.do'">
+				<input type="button" value="수정" class="btn btn-danger" onclick="location.href='couponupdateform.do?makeseq=${dto.makeseq}'">
+				<input type="button" value="삭제" class="btn btn-danger" onclick="location.href='coupondelete.do?makeseq=${dto.makeseq}'">
+				<input type="button" value="목록" class="btn btn-danger" onclick="location.href='coupon.do'">
 			</td>
 		</tr>
 
