@@ -14,6 +14,13 @@
 
 <body>
 <%@include file="WEB-INF/views/common.jsp" %>	
+	
+	<div class="mainSearch">
+		<form action="search.do" class="searchform">
+			<input type="text" class="searchtxt" name="keyword" placeholder="지역, 제목">
+		</form>
+	</div>
+
 	<!-- 축제 정보를 ajax로 받기 + 직접 상품 등록으로 등록한 공연도 보이게끔 해야함 + 위치기반 조회도??? -->
 	<div class="container-lg">
 	<div id="weatherarea" class="float-right"></div>
