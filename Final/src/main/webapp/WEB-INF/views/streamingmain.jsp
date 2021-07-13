@@ -10,16 +10,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PTSD / 방송</title>
 	<link href="resources/img/favicon.png" rel="shortcut icon">
-<link rel="stylesheet" type="text/css" href="resources/css/chat.css">
 </head>
 <body>
 <%@include file="./common.jsp" %>
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
 	
 	<div class="row">
 		<c:choose>
-
-
             <c:when test="${empty list }">
             	<h2>현제 방송중인 공연 및 축제가 없습니다.</h2>
             </c:when>
@@ -32,6 +28,8 @@
 								<div class="card-body">
 									<h5 class="card-title">${dto.streamingname }</h5>
 									<a href="https://b-joon.github.io/Final-Project/livestreaming/livestreaming.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }" class="btn btn-danger">방송하기</a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="streamingdel.do?streamingseq=${dto.streamingseq }" class="btn btn-info">방송삭제</a>
 								</div>
 							</div>
 						</div>
