@@ -102,9 +102,7 @@ function addMesssage(isMine, msg) {
   Username.setAttribute("class","mt-0");
   Username.innerHTML = isMine ? name : msg.split('-')[0];
 
-  var outmsg = msg.split('-')[1];
-  console.log(outmsg)
-  outmsg.replace(/<(\/?)p>/gi, '');
+  var outmsg = msg.replace(/<(\/?)p>/gi, '');
   outmsg = outmsg.replace('<br>', '');
   // console.log(outmsg)
   var content = document.createElement("p");
