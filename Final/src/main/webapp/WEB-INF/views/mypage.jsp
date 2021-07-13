@@ -58,7 +58,20 @@
 
 
 
-
+	<table class="table table-bordered">
+	
+	
+				<tr>
+				
+					<th class="divTableHead">주문번호</th>
+					<th class="divTableHead">상품명</th>
+					<th class="divTableHead">관람일자</th>
+					<th class="divTableHead">인원</th>
+					<th class="divTableHead">가격</th>
+					
+				
+				</tr>
+	
 	
 	<c:choose>
 		<c:when test="${empty reservationlist }">
@@ -68,39 +81,29 @@
 			</c:when>
 		<c:otherwise>
 
-			<div class="divTableHeading">
-				<div class="divTableRow">
-					<div class="divTableHead">주문번호</div>
-					<div class="divTableHead">상품명</div>
-					<div class="divTableHead">관람일자</div>
-					<div class="divTableHead">인원</div>
-					<div class="divTableHead">가격</div>
-					<div class="divTableHead">결제일자</div>
-				</div>
-			</div>
+				
 			
 			<c:forEach items="${reservationlist }" var="reservationdto">
 				
-					<div class="container" id="divtable">
+					
 
-						<div class="divTableBody">
-							<div class="divTableRow">
-								<div class="divTableCell" id="${reservationdto.reservationseq}">${reservationdto.reservationseq}</div>
-								<div class="divTableCell">${reservationdto.productname}</div>
-								<div class="divTableCell">${reservationdto.playdate}</div>
-								<div class="divTableCell">${reservationdto.people}</div>
-								<div class="divTableCell">${reservationdto.price}</div>
-								<div class="divTableCell">${reservationdto.paydate}</div>
-								<p align="right"><input type="button" value="환불신청" onclick="refund(${reservationdto.reservationseq})"></p>
-							</div>
-						</div>
 						
-					</div>
+							<tr class="divTableRow">
+								<td id="${reservationdto.reservationseq}">${reservationdto.reservationseq}</td>
+								<td>${reservationdto.productname}</td>
+								<td>${reservationdto.playdate}</td>
+								<td>${reservationdto.people}</td>
+								<td>${reservationdto.price}</td>
+								<td align="right"><input type="button" class="btn btn-danger" value="환불신청" onclick="refund(${reservationdto.reservationseq})"></td>
+							</tr>
+						
+						
+					
 				
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
-	
+	</table>
 
 </body>
 <script type="text/javascript">

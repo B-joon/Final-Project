@@ -90,15 +90,18 @@ function callPay(name, price, userseq,playdate, num) {
 					msg += "카드 승인번호:" + rsp.apply_num;
 
 					alert(msg);
-					location.href="redirect:mypage.do?userseq="+userseq;
+					location.href="mypage.do?userseq="+userseq;
+					
 
 				},
 				error: function() {
 					alert("통신 실패.....");
 				}
+				
+				
 			})
 
-
+				
 
 		} else {
 			var msg = '결제에 실패하였습니다.';

@@ -11,39 +11,42 @@
 </head>
 <body>
 	<%@include file="./common.jsp"%>
-
-	<form action="couponupdateres.do">
+	<form action="couponupdateres.do" class="form-horizontal">
 		<input type="hidden" name="userseq" value="${login.userseq }">
 		<input type="hidden" name="makeseq" value="${dto.makeseq}">
-		<table>
+		<div class="form-group">
 
-			<tr>
-				<th>제목</th>
-				<td><input type="text" name="coupontitle"
-					value="${dto.coupontitle }"></td>
+			<label for="coupontitle" class="col-sm-2 control-label">쿠폰명</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="coupontitle"
+					id="coupontitle" value="${dto.coupontitle }">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="discount" class="col-sm-2 control-label"> 금액선택 </label>
+			<div class="col-sm-10">
+				<select class="form-control" name="discount" id="discount">
+					<option value="10000">10000원</option>
+					<option value="5000">5000원</option>
+					<option value="2000">2000원</option>
+				</select>
+			</div>
+		</div>
 
-			</tr>
-
-			<tr>
-				<th>금액</th>
-				<td><select name="discount" id="discount">
-						<option value="10000">10000원</option>
-						<option value="5000">5000원</option>
-						<option value="2000">2000원</option>
-				</select></td>
-			</tr>
-
-			<tr>
-				<th>쿠폰 만료일</th>
-				<td><input type="date" name="endday" value="${dto.endday }"></td>
-			</tr>
-			<tr>
-			<td colspan="3" align="right">
-			<input type="submit" value="수정하기">
-			</td>
-			</tr>
-		</table>
+		<div class="form-group">
+			<label for="endday" class="col-sm-2 control-label"> 쿠폰 만료일 </label>
+			<div class="col-sm-10">
+				<input type="date" class="form-control" name="endday" id="endday" value="${dto.endday }">
+			</div>
+		</div>
+		<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+		<button type="submit" class="btn btn-danger">수정하기</button>
+		</div>
+		</div>
 	</form>
+	
+	
 
 </body>
 </html>
