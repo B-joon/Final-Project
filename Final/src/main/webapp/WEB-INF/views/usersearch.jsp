@@ -78,7 +78,7 @@
 						userdelete.setAttribute("type","button");
 						userdelete.setAttribute("value","회원탈퇴");
 						userdelete.setAttribute("class","btn btn-danger");
-						userdelete.setAttribute("onclick","location.href='userdelete.do?userseq="+data[i].userseq+"'");
+						userdelete.setAttribute("onclick","location.href='admindelete.do?userseq="+data[i].userseq+"'");
 						edit.append(userdelete);
 						
 						tr2.append(userseq);

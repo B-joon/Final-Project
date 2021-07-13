@@ -110,8 +110,8 @@
 	$(function() {
 		$("#delete2").hide();
 		var userid = $("#userid").val().trim();
-		var temp = userid.substring(userid.length() - 2, userid.length());
-		if (temp.equals("@n") || temp.equals("@k") || temp.equals("@g")) {
+		var temp = userid.substring(userid.length - 2, userid.length);
+		if (temp == "@n" || temp == "@k" || temp== "@g") {
 			$("#idframe").hide();
 		}
 

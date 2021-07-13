@@ -214,9 +214,7 @@ response.setContentType("text/html; charset=UTF-8");
 			$("#Chk3").val('true');
 			submitChk();
 			console.log(pw2)
-			setTimeout(function() {
-				$("#checkPwd2").hide();
-				}, 2000);
+			
 		}
 
 	}
@@ -249,9 +247,7 @@ $("#userid").keyup(function(){
 						$("#Chk1").val('true');
 						submitChk();
 						console.log(userid)
-						setTimeout(function() {
-							$("#idChkres").hide();
-							}, 2000);
+						
 					} else {
 						$("#idChkres").html('이미 존재하는 ID입니다.');
 						$("#idChkres").css("color", "red");
@@ -331,9 +327,7 @@ $("#userid").keyup(function(){
 						$("#bemail").attr('disabled', true);
 						$("#emailChkBtn").attr('type', 'hidden');
 						$("#proofBtn").attr('type', 'button');
-						setTimeout(function() {
-							$("#emailChk").hide();
-							}, 2000);
+						
 					} else {
 						$("#emailChk").html('이미 존재하는 email입니다.');
 						$("#emailChk").css("color", "red");
@@ -383,9 +377,7 @@ $("#userid").keyup(function(){
 						
 						submitChk();
 						console.log(proof)
-						setTimeout(function() {
-							$("#proofChk").hide();
-							}, 2000);
+						
 					} else{
 						$("#proofChk").html('인증번호를 다시 확인해주시거나 재발송을 눌러주세요.');
 						event.preventDefault();
@@ -444,9 +436,7 @@ $("#userid").keyup(function(){
 						$("#Chk5").val('true');
 						submitChk();
 						console.log(phone)
-						setTimeout(function() {
-							$("#phoneChk").hide();
-							}, 2000);
+						
 					} else if(check == "true") {
 						$("#phoneChk").html('이미 존재하는 번호입니다.');
 						$("#phoneChk").css("color", "red");
@@ -499,6 +489,8 @@ $("#userid").keyup(function(){
 			$("#notice").show();
 		}
 	}
+	
+
 	
 </script>
 </html>

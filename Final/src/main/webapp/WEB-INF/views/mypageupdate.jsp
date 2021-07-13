@@ -172,9 +172,7 @@ function checkPwd2() {
 		$("#Chk2").val('true');
 		submitChk();
 		console.log(pw2)
-		setTimeout(function() {
-			$("#checkPwd2").hide();
-			}, 2000);
+		
 	}
 
 }
@@ -198,9 +196,7 @@ $("#emailChkBtn").click(function(){
 		$("#emailChk").css("color", "blue");
 		$("#Chk4").val('true');
 		submitChk();
-		setTimeout(function() {
-			$("#emailChk").hide();
-			}, 2000);
+		
 	}else {
 		$.ajax({
 			type : "post",
@@ -218,9 +214,7 @@ $("#emailChkBtn").click(function(){
 					$("#emailChkBtn").attr('type', 'hidden');
 					$("#Chk4").val('true');
 					submitChk();
-					setTimeout(function() {
-						$("#emailChk").hide();
-						}, 2000);
+					
 				} else {
 					$("#emailChk").html('이미 존재하는 email입니다.');
 					$("#emailChk").css("color", "red");
@@ -248,13 +242,19 @@ function jusoCallBack(roadFullAddr){
 	$("#Chk5").val('true');
 }
 
+$("#phone").keyup(function(event){
+    var inputVal = $(this).val();
+    $(this).val(inputVal.replace(/[^0-9]/gi,''));
+});
+
 // 핸드폰 번호 중복확인
 $("#phone").keyup(function(){
 	var phone = $("#phone").val();
 	var fphone = phone.substring(0,3);
-	var hphone = $("hiddenphone").val();
+	var hphone = $("#hiddenphone").val();
 	console.log(phone)
 	console.log(fphone)
+	console.log(hphone)
 	if (phone == null || phone == "") {
 		$("#phoneChk").show();
 		$("#phoneChk").html('핸드폰 번호를 입력해 주세요.');
@@ -279,9 +279,7 @@ $("#phone").keyup(function(){
 		$("#Chk6").val('true');
 		submitChk();
 		console.log(phone)
-		setTimeout(function() {
-			$("#phoneChk").hide();
-			}, 2000);
+		
 	}else{
 		$.ajax({
 			type : "post",
@@ -298,9 +296,7 @@ $("#phone").keyup(function(){
 					$("#Chk6").val('true');
 					submitChk();
 					console.log(phone)
-					setTimeout(function() {
-						$("#phoneChk").hide();
-						}, 2000);
+					
 				} else if(check == "true") {
 					$("#phoneChk").html('이미 존재하는 번호입니다.');
 					$("#phoneChk").css("color", "red");
@@ -352,6 +348,7 @@ function submitChk() {
 		}
 	}
 }
+
 
 </script>
 
