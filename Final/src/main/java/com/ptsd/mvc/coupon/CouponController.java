@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ptsd.mvc.notice.NoticeDto;
+import com.ptsd.mvc.user.UserBiz;
 
 @Controller
 public class CouponController {
@@ -22,6 +23,9 @@ public class CouponController {
 
 	@Autowired // 쿠폰 생성 biz
 	private MakeCouponBiz couponbiz;
+	
+	@Autowired
+	private UserBiz userbiz;
 
 	//Admin
 	//관리자 페이지에서 쿠폰 페이지로 이동 -> 리스트 보여주기
@@ -91,10 +95,11 @@ public class CouponController {
 	// user
 	// 다운로드 쿠폰
 	@RequestMapping("downloadcoupon.do")
-	public String downloadcoupon(CouponDto dto) {
+	public String downloadcoupon(CouponDto dto, int userseq) {
+		
 		
 		if (biz.insert(dto) > 0) {
-			return "redirect:main.do";
+			return "redirect:mypage.do";
 		}
 
 		return "mypage";
