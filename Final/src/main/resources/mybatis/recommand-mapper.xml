@@ -21,7 +21,7 @@
 		WHERE PRODUCTSEQ = #{productseq}
 	</select>
 	
-	<select id="recommandCount" resultType="int" parameterType="productDto">
+	<select id="recommandSelectOne" resultType="int" parameterType="productDto">
 		SELECT COUNT(RECOMMANDSEQ) 
 		FROM RECOMMAND 
 		WHERE PRODUCTSEQ = #{productseq} AND USERSEQ = #{userseq}
