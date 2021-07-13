@@ -46,8 +46,8 @@ function downControl() {
 	console.log("loginseq=" + loginseq);
 
 	if (loginseq == null || loginseq == "") {
-		$("#downControl").removeAttr('href');
-		$("#downControl").click(function() {
+		$(".downControl").removeAttr('href');
+		$(".downControl").click(function() {
 			alert("로그인을 해주세요 ! ");
 			location.href = 'loginform.do';
 		});

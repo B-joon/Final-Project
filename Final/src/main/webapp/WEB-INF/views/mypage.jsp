@@ -130,6 +130,7 @@
 		var userseq = ${login.userseq};
 		if(reservationseq == reseq) {
 				alert('결제 취소를 요청하시겠습니까? ');
+				alert('환불요청이 완료되었습니다. 실제 환불은 시간이 소요 될 수 있습니다.');
 				location.href="refund.do?reservationseq="+reseq+"&userseq="+userseq;
 				}
 		

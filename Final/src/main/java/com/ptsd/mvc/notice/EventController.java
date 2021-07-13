@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ptsd.mvc.coupon.CouponBiz;
+import com.ptsd.mvc.coupon.CouponDto;
 import com.ptsd.mvc.coupon.MakeCouponBiz;
 import com.ptsd.mvc.coupon.MakeCouponDto;
 
@@ -18,7 +20,8 @@ public class EventController {
 	private NoticeBiz biz;
 	@Autowired
 	private MakeCouponBiz couponbiz;
-	
+	@Autowired // 쿠폰 다운로드 biz
+	private CouponBiz downcouponbiz;
 	
 	
 	@RequestMapping("/eventlist.do")
@@ -26,11 +29,13 @@ public class EventController {
 		
 		List<NoticeDto> list = biz.selectList(cri);
 		List<MakeCouponDto> Couponlist = couponbiz.selectList();
+		List<CouponDto> downcouponlist = downcouponbiz.selectList();
 		
 		int total = biz.totalCnt();
 		
 		model.addAttribute("list", list);
 		model.addAttribute("couponlist", Couponlist);
+		model.addAttribute("downcouponlist", downcouponlist);
 		model.addAttribute("paging", new PageMaker(cri, total));
 		
 		
