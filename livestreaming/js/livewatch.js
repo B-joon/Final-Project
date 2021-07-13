@@ -88,11 +88,6 @@ function sendMessage(outmsg) {
 
 function addMesssage(isMine, msg) {
 
-  const msgsplit = msg.split('-');
-  const sender = msgsplit[0];
-  const outmsg = msgsplit[1];
-
-
   const name = searchParam('name');
 
   const chatarea = document.getElementById("chatarea");
@@ -105,7 +100,16 @@ function addMesssage(isMine, msg) {
 
   var Username = document.createElement("h5");
   Username.setAttribute("class","mt-0");
-  Username.innerHTML = isMine ? name : sender;
+
+  if (isMine) {
+    var outmsg = msg;
+    Username.innerHTML = name;
+  } else {
+    var msgsplit = msg.split('-');
+    var sender = msgsplit[0];
+    var outmsg = msgsplit[1];
+    Username.innerHTML = sender;
+  }
 
   outmsg = outmsg.replace(/<(\/?)p>/gi, '');
   outmsg = outmsg.replace('<br>', '');
