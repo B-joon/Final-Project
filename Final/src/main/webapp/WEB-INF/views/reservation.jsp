@@ -189,24 +189,7 @@
 					<div class="m-2 border-bottom">
 						<p class="font-weight-bold">남은좌석수</p><p class="font-weight-normal">0 / ${dto.seatcount }</p>
 						
-					</div>
-					<div class="m-2">
-						<button type="button" class="btn btn-danger" onclick="goPayment();">예매하기</button>
-					</div>
-					<%
-					if (login != null) {
-					%>
-					<div class="m-2">
-					<form name="form1" id="form1" method="post" action="wishInsert.do">
-						<input type="hidden" name="productseq" value="${dto.productseq }">
-						<button type="button" class="btn btn-danger" onclick="addWish();" value="찜하기">👍 찜하기</button>
-					</form>
-					</div>
-					<% } %>
-			</div>
-		</div>
-	</div>
-					
+					</div>	
 					<div>
 						<div>할인쿠폰</div>
 						<select class="mycoupon" name="discount">
@@ -232,7 +215,16 @@
 						<button type="button" class="btn btn-danger" onclick="chkReservation();">예매하기</button>
 					</div>
 					<input type="hidden" value="" name="playdate" id="playdate">
-					
+										<%
+					if (login != null) {
+					%>
+					<div class="m-2">
+					<form name="form1" id="form1" method="post" action="wishInsert.do">
+						<input type="hidden" name="productseq" value="${dto.productseq }">
+						<button type="button" class="btn btn-danger" onclick="addWish();" value="찜하기">👍 찜하기</button>
+					</form>
+					</div>
+					<% } %>
 			</div>
 		</div>
 	</div>
