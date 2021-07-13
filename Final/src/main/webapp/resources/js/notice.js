@@ -1,6 +1,10 @@
 
 
 $(function(){
+	$(".notice-admin-btn").hide();
+	if ($(".userrole").val() == "admin") {
+		$(".notice-admin-btn").show();
+	}
 	insertControl();
 });
 
@@ -19,7 +23,6 @@ function insertControl(){
 	if (loginseq != null && loginrole == 'admin'){
 		$(".insertControl").show();
 	}
-	
 }
 
 function downControl(){
@@ -34,10 +37,7 @@ function downControl(){
 			location.href='loginform.do';
 		})
 	
-	
 	}
-	
-	
 }
 
 

@@ -27,12 +27,14 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="button" value="수정" onclick="location.href='eventupdateform.do?boardseq=${dto.boardseq}'">
-				<input type="button" value="삭제" onclick="location.href='eventdelete.do?boardseq=${dto.boardseq}'">
+				<input type="hidden" class="userrole" value="${login.userrole }">
+				<input class="notice-admin-btn" type="button" value="수정" onclick="location.href='eventupdateform.do?boardseq=${dto.boardseq}'">
+				<input class="notice-admin-btn" type="button" value="삭제" onclick="location.href='eventdelete.do?boardseq=${dto.boardseq}'">
 				<input type="button" value="목록" onclick="location.href='eventlist.do'">
 			</td>
 		</tr>
 	</table>
 
 </body>
+<script type="text/javascript" src="resources/js/notice.js"></script>
 </html>

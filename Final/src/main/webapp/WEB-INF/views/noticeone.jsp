@@ -11,6 +11,7 @@
 </head>
 <body>
 <%@include file="./common.jsp" %>
+<script type="text/javascript" src="resources/js/notice.js"></script>
 	<table border="1">
 		<tr>
 			<th>작성자</th>
@@ -25,13 +26,13 @@
 			<td><textarea rows="10" cols="60" readonly="readonly">${dto.boardcontent }</textarea></td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<input type="button" value="수정" onclick="location.href='updateform.do?boardseq=${dto.boardseq}'">
-				<input type="button" value="삭제" onclick="location.href='delete.do?boardseq=${dto.boardseq}'">
+			<td colspan="3">
+				<input type="hidden" class="userrole" value="${login.userrole }">
+				<input class="notice-admin-btn" type="button" value="수정" onclick="location.href='updateform.do?boardseq=${dto.boardseq}'">
+				<input class="notice-admin-btn" type="button" value="삭제" onclick="location.href='delete.do?boardseq=${dto.boardseq}'">
 				<input type="button" value="목록" onclick="location.href='noticelist.do'">
 			</td>
 		</tr>
 	</table>
-
 </body>
 </html>
