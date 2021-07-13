@@ -78,7 +78,7 @@ function sendMessage() {
     }else{
         if (!outmsg) {}outmsg = "Test Message";
     }
-    
+    console.log("msg : " + msg)
     var outmsg = msg.replace(/<(\/?)p>/gi, '');
         console.log(outmsg)
 
@@ -102,7 +102,9 @@ function addMesssage(isMine, msg) {
   Username.setAttribute("class","mt-0");
   Username.innerHTML = isMine ? name : msg.split('-')[0];
 
-  var outmsg = msg.replace(/<(\/?)p>/gi, '');
+  var outmsg = msg.split('-')[1];
+  console.log(outmsg)
+  outmsg.replace(/<(\/?)p>/gi, '');
   outmsg = outmsg.replace('<br>', '');
   // console.log(outmsg)
   var content = document.createElement("p");

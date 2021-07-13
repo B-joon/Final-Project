@@ -78,12 +78,12 @@ function sendMessage() {
     }else{
         if (!outmsg) {}outmsg = "Test Message";
     }
-
+    console.log("msg : " + msg)
     var outmsg = msg.replace(/<(\/?)p>/gi, '');
       console.log(outmsg)
 
-    remon.sendMessage(name + '-' + msg);
-    addMesssage(true, msg);
+    remon.sendMessage(name + '-' + outmsg);
+    addMesssage(true, outmsg);
 }
 
 function addMesssage(isMine, msg) {
