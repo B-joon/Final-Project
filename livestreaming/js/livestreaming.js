@@ -44,7 +44,9 @@ const listener = {
   onError(error) { console.log(`EVENT FIRED: onError: ${error}`); },
   onStat(result) { console.log(`EVENT FIRED: onStat: ${result}`); },
   onMessage(msg) {
-    addMesssage(false, msg);
+    var outmsg = msg.replace(/<(\/?)p>/gi, '');
+        console.log(outmsg)
+    addMesssage(false, outmsg);
 }
 };
 
@@ -68,11 +70,18 @@ function sendMessage() {
     // }
 
     if (summernote.value){
-        msg = summernote.value;
-        summernote.value="";
+      msg = summernote.value;
+      summernote.value="";
+
+      
+
     }else{
-        if (!msg) {}msg = "Test Message";
+        if (!outmsg) {}outmsg = "Test Message";
     }
+
+    var outmsg = msg.replace(/<(\/?)p>/gi, '');
+      console.log(outmsg)
+
     remon.sendMessage(name + '-' + msg);
     addMesssage(true, msg);
 }
@@ -93,11 +102,12 @@ function addMesssage(isMine, msg) {
     Username.setAttribute("class","mt-0");
     Username.innerHTML = isMine ? name : msg.split('-')[0];
 
-		var outmsg = msg.replace(/<(\/?)p>/gi, '');
-    var outmsg = outmsg.replace('<br>', '');
-    console.log(outmsg)
+    var outmsg = msg.replace(/<(\/?)p>/gi, '');
+    outmsg = outmsg.replace('<br>', '');
+    // console.log(outmsg)
     var content = document.createElement("p");
-    content.append(outmsg);
+    content.innerHTML = outmsg;
+    console.log(content)
 
     mediaBody.append(Username);
     mediaBody.append(content);
