@@ -61,7 +61,7 @@ $('#mystart').click(function(){
   remon.joinCast(streamingseq);
 });
 
-function sendMessage() {
+function sendMessage(outmsg) {
 
     const name = searchParam('name');
 
@@ -69,17 +69,17 @@ function sendMessage() {
     //     name = nameInput.value;
     // }
 
-    if (summernote.value){
-        msg = summernote.value;
-        summernote.value="";
+    // if (summernote.value){
+    //     msg = summernote.value;
+    //     summernote.value="";
 
         
 
-    }else{
-        if (!outmsg) {}outmsg = "Test Message";
-    }
-    console.log("msg : " + msg)
-    var outmsg = msg.replace(/<(\/?)p>/gi, '');
+    // }else{
+    //     if (!outmsg) {}outmsg = "Test Message";
+    // }
+    // console.log("msg : " + msg)
+
         console.log(outmsg)
 
     remon.sendMessage(name + '-' + outmsg);
