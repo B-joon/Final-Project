@@ -28,4 +28,10 @@ public class WishBizImpl implements WishBiz {
 		return dao.wishDelete(wishseq);
 	}
 
+	@Override
+	public int wishCount(int productseq, int userseq) {
+		return dao.wishCount(productseq, userseq);
+	}
+	
+
 }
