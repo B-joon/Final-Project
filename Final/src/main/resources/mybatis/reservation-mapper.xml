@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reservation">
+
+	<select id="selectList" resultType="reservationDto">
+		SELECT RESERVATIONSEQ,USERSEQ,PRODUCTNAME,PRICE,PLAYDATE,PEOPLE,PAYDATE
+		FROM RESERVATION 
+		WHERE USERSEQ= #{userseq}
+		ORDER BY RESERVATIONSEQ DESC
+	</select>
+	
+	<select id="selectOne" resultType="reservationDto">
+		SELECT RESERVATIONSEQ,USERSEQ,PRODUCTNAME,PRICE,PLAYDATE,PEOPLE,PAYDATE
+		FROM RESERVATION 
+		WHERE RESERVATIONSEQ = #{reservationseq}
+	</select>
+	
+	<insert id="insert" parameterType="reservationDto">
+		INSERT INTO RESERVATION 
+		VALUES(RESERVATIONSEQ.NEXTVAL,#{userseq},#{productname},#{price},#{playdate},#{people},SYSDATE)
+	</insert>
+	
+	<update id="update" parameterType="reservationDto">
+	
+	</update>
+	
+	<delete id="delete" parameterType="reservationDto">
+		DELETE FROM RESERVATION
+		WHERE RESERVATIONSEQ = #{reservationseq}
+	</delete>
+
+</mapper>

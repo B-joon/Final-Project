@@ -1,5 +1,6 @@
 package com.ptsd.mvc.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -14,8 +15,17 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<UserDto> AllUser() {
-		// TODO Auto-generated method stub
-		return null;
+		List<UserDto> list = new ArrayList<UserDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"userlist");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return list;
 	}
 
 	@Override
@@ -54,15 +64,19 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int updateUser(UserDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "updateUser", dto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
-	@Override
-	public int deleteUser(int userseq) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public String idCheck(String userid) {
@@ -90,17 +104,9 @@ public class UserDaoImpl implements UserDao {
 		return res;
 	}
 
-	@Override
-	public UserDto nicnameCheck(String nickname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
-	@Override
-	public List<UserDto> userSearch(String userid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	@Override
 	public String phoneCheck(String phone) {
@@ -201,6 +207,21 @@ public class UserDaoImpl implements UserDao {
 		
 		return res;
 		
+	}
+	
+	@Override
+	public List<UserDto> usersearch(String name){
+List<UserDto> list = new ArrayList<UserDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"usersearch", name);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return list;
 	}
 	
 }

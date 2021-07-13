@@ -24,8 +24,6 @@ function getProductAllList() {
 	
 	$("#partylist").children().remove();
 
-	const arrCode = [1, 31, 2, 34, 33, 3, 8, 32, 38, 37, 5, 7, 4, 36, 35, 6, 39];
-	
 	const partylist = document.querySelector('#partylist');
 	
 	const table = document.createElement('table');
@@ -86,14 +84,8 @@ function getProductAllList() {
 	tr.append(th17);
 	table.append(tr);
 	
-	for (var i = 0; i < arrCode.length; i++) {
-		
-		var areacode = arrCode[i];
-		
-		(function(){
-			
 			$.ajax({
-				url: "getProductList.do?areacode="+areacode,
+				url: "getProductAllList.do",
 				method: "post",
 				contentType : "application/json",
 				dataType: "json",
@@ -184,13 +176,8 @@ function getProductAllList() {
 				error:function() {
 					alert("실패")
 				}
-				})
-			
-			
-			
-	})();
-	
-	}
+		})
+
 	
 }
 

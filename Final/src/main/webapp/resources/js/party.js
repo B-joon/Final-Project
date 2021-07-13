@@ -222,16 +222,8 @@ function getProductAllList() {
 	
 	$("#partylist").children().remove();
 
-	const arrCode = [1, 31, 2, 34, 33, 3, 8, 32, 38, 37, 5, 7, 4, 36, 35, 6, 39];
-	
-	for (var i = 0; i < arrCode.length; i++) {
-		
-		var areacode = arrCode[i];
-		
-		(function(){
-		
 			$.ajax({
-				url: "getProductList.do?areacode="+areacode,
+				url: "getProductAllList.do",
 				method: "post",
 				contentType : "application/json",
 				dataType: "json",
@@ -245,7 +237,7 @@ function getProductAllList() {
 						cardDeck.setAttribute("class","col-sm-3 mb-3");
 						
 						const card = document.createElement('div');
-						card.setAttribute("class","card border-info");
+						card.setAttribute("class","card border-danger");
 						
 						const img = document.createElement('img');
 						img.setAttribute("class","card-img-top");
@@ -259,7 +251,7 @@ function getProductAllList() {
 				
 						const title = document.createElement('h5');
 						title.append(data[i].productname);
-						title.setAttribute("class","card-header bg-info mb-3");
+						title.setAttribute("class","card-header bg-danger mb-3");
 						title.style.fontweight = 'bold';
 						
 						const addr = document.createElement('div');
@@ -270,7 +262,7 @@ function getProductAllList() {
 						
 						const button1 = document.createElement('button');
 						button1.setAttribute("type","button");
-						button1.setAttribute("class","btn btn-info m-1");
+						button1.setAttribute("class","btn btn-danger m-1");
 						button1.append("자세히보기")
 						button1.setAttribute("onclick","location.href='reservation.do?productseq="+data[i].productseq+"';");
 						
@@ -293,12 +285,6 @@ function getProductAllList() {
 					alert("실패")
 				}
 				})
-			
-			
-			
-	})();
-	
-	}
 	
 }
 
@@ -321,7 +307,7 @@ function getProductList(areacode) {
 				cardDeck.setAttribute("class","col-sm-3 mb-3");
 				
 				const card = document.createElement('div');
-				card.setAttribute("class","card border-info");
+				card.setAttribute("class","card border-danger");
 				
 				const img = document.createElement('img');
 				img.setAttribute("class","card-img-top");
@@ -335,7 +321,7 @@ function getProductList(areacode) {
 		
 				const title = document.createElement('h5');
 				title.append(data[i].productname);
-				title.setAttribute("class","card-header bg-info mb-3");
+				title.setAttribute("class","card-header bg-danger mb-3");
 				title.style.fontweight = 'bold';
 				
 				const addr = document.createElement('div');
@@ -343,18 +329,10 @@ function getProductList(areacode) {
 
 				const tel = document.createElement('div');
 				tel.append(data[i].tellnumber);
-				
-//				const button = document.createElement('button');
-//				button.setAttribute("onclick", 'getAddress("'+data[i].address+'","'+data[i].productname+'");')
-//				button.setAttribute("type","button");
-//				button.setAttribute("class","btn btn-info m-1");
-//				button.setAttribute("data-toggle","modal");
-//				button.setAttribute("data-target","#addrModal");
-//				button.append("지도보기")
-				
+
 				const button1 = document.createElement('button');
 				button1.setAttribute("type","button");
-				button1.setAttribute("class","btn btn-info m-1");
+				button1.setAttribute("class","btn btn-danger m-1");
 				button1.append("자세히보기")
 				button1.setAttribute("onclick","location.href='reservation.do?productseq="+data[i].productseq+"';");
 				
