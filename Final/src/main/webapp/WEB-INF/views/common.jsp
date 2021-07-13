@@ -71,6 +71,10 @@
 <!-- 지도정보 -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dfb6f83c1347ebbcf6cbda00be7c7b6f&libraries=services,clusterer,drawing"></script>
+	
+<!-- 음성검색 -->
+<script src="resources/js/speechToText.js"></script>
+
 <div class="container-lg">
 
 	<nav
@@ -130,14 +134,24 @@
 	<div class="container mt-3 mb-3">
 		<div id="weatherarea" class=""></div>
 	</div>
-	<form action="search.do" class="searchform">
-		<fieldset>
-			<input type="text" class="searchtext" name="keyword"
+	
+	<form action="search.do" class="form-inline my-2 my-lg-0">
+		<div class="m-3">
+			<input class="form-control mr-sm-2" type="search" name="keyword"
+				placeholder="지역명, 제목명" aria-label="Search" id="speech_result">
+				<span class="ml-1">
+    			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    			<span id="speecharea">
+					<button type="button" class="btn btn-primary btn-sm" onclick="startSpeechRecognition();"><i class="fas fa-microphone"></i></button>
+				</span>
+    			</span>
+				
+    	</div>
+			<!-- <input type="text" class="searchtext" name="keyword"
 				placeholder="지역명, 제목명" />
 			<button type="submit" class="submitbtn">
 				<i class="fa fa-search"></i>
-			</button>
-		</fieldset>
+			</button> -->
 	</form>
 
 

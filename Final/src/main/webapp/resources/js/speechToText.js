@@ -9,6 +9,9 @@ let recognition = null;
         }
     }
 
+    
+	
+    
     function startSpeechRecognition(){
         console.log('Start');
 
@@ -26,10 +29,18 @@ let recognition = null;
         });
 
         recognition.start();
+        
+        $("#speecharea").children().remove();
+        $("#speecharea").append('<button type="button" class="btn btn-primary btn-sm" onclick="endSpeechRecognition()"><i class="fas fa-microphone-slash"></i></button>');
+  
     }
 
     function endSpeechRecognition(){
         recognition.stop();
+        
+        $("#speecharea").children().remove();
+        $("#speecharea").append('<button type="button" class="btn btn-primary btn-sm" onclick="startSpeechRecognition();"><i class="fas fa-microphone"></i></button>');
+        
     }
 
     window.addEventListener('load', checkCompatibility)
