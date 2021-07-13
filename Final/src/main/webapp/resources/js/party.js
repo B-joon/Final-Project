@@ -1,6 +1,6 @@
 $(function(){
 
-	//chkPartyAreaCode();
+	chkPartyAreaCode(1);
 	
 })
 
