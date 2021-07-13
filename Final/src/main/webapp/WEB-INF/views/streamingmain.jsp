@@ -28,7 +28,7 @@
 								<div class="card-body">
 									<h5 class="card-title">${dto.streamingname }</h5>
 									<a href="https://b-joon.github.io/Final-Project/livestreaming/livestreaming.html?streamingseq=${dto.streamingseq }&streamingname=${dto.streamingname }&userid=${login.userid }&name=${login.name }" class="btn btn-danger">방송하기</a>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="streamingdel.do?streamingseq=${dto.streamingseq }" class="btn btn-info">방송삭제</a>
 								</div>
 							</div>
