@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>PTSD / 관리자 페이지</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 <body>
 <%@include file="./common.jsp" %>
@@ -18,7 +19,8 @@
 	<a href="chart.do">차트</a>
 	<!-- 상품 등록 페이지 (어드민 권한이 있는 경우에만 나타나게 해야함) -->
 	<a href="productinsert.do">상품등록</a>
-	
+	<a href="userlist.do">회원전체목록조회 </a>
+	<a href="usersearchpage.do">회원정보검색</a>
 	<h3>상품리스트</h3>
 	<select name="productareaCode"  onchange="chkProductAreaCode();">
 	<!-- 축제 정보를 ajax로 받기 -->
@@ -42,22 +44,22 @@
 		<option value="39">제주</option>
 	</select>
 	
-	<select name="category">
-		<option value="" disabled selected>카테고리 선택</option>
-		<option value="0">전체</option>
-		<option value="1">뮤지컬</option>
-		<option value="2">콘서트</option>
-		<option value="3">연극</option>
-		<option value="4">클래식/무용</option>
-		<option value="5">스포츠</option>
-		<option value="6">레저</option>
-		<option value="7">전시/행사</option>
-		<option value="8">아동/가족</option>
-	</select>
-	
 	<div id="partylist">
-	
-		
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">상품번호</th>
+		      <th scope="col">카테고리</th>
+		      <th scope="col">상품명</th>
+		      <th scope="col">주소</th>
+		      <th scope="col">전화번호</th>
+		      <th scope="col">관람등급</th>
+		      <th scope="col">관객수</th>
+		      <th scope="col">티켓가격</th>
+		      <th scope="col">관리</th>
+		    </tr>
+		  </thead>
+		</table>
 	
 	</div>
 
