@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.ptsd.mvc.product.ProductDto"%>
 <%@page import="com.ptsd.mvc.user.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,37 +10,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>찜하기 목록</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSD / 찜하기</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 <body>
-	<h2>찜한 공연</h2>
-<%@include file="./common.jsp" %>
-	<table border="1">
+	<%@include file="./common.jsp"%>
+	<h1>${login.getName() } 님의 찜하기</h1><br/>
+	<table border="1" style="text-align:center;">
+		<col width="150">
+		<col width="520">
+		<col width="200">
+		<col width="170">
+		<col width="70">
+
 		<tr>
-			<th>이름</th>
+			<th>제목</th>
 			<th>주소</th>
 			<th>사진</th>
 			<th>전화번호</th>
 			<th>삭제</th>
 		</tr>
+
 		<c:choose>
-			<c:when test="${map.count == 0 }">
+			<c:when test="${map.list == null }">
 				<tr>
-					<td colspan="5" align="center">----------찜한 공연이 없습니다----------<//td>
+					<td colspan="6" align="center">----------찜한 공연이 없습니다----------</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
-				<c:forEach items="${map.list }" var="row" varStatus="status">
-					<tr>
-						<td>${row.productname }</td>
-						<td>${row.address }</td>
-						<td><img src="${row.thumbimg }">
-						<td>${row.tellnumber}</td>
-						<td><a href="wishDelete.do?wishseq=${row.wishseq}">[삭제]</a></td>
-					</tr>
+				<c:forEach items="${map.list }" var="dto" varStatus="status">
+					<c:if test="${dto.userseq == login.userseq }">
+						<tr>
+							<td><a href="reservation.do?productseq=${dto.productseq }">${dto.productname }</a></td>
+							<td>${dto.address }</td>
+							<td><img src="${dto.thumbimg }">
+							<td>${dto.tellnumber}</td>
+							<td><input type="button" value="삭제하기"
+								onclick="location.href='wishDelete.do?wishseq=${dto.wishseq}'" /></td>
+						</tr>
+					</c:if>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 	</table>
+	<br/>
+	<input type="button" class="btn btn-danger" style="float:right;" value="메인화면" onclick="location.href='main.do'" />
 </body>
 </html>
