@@ -1,5 +1,7 @@
 package com.ptsd.mvc.mail;
 
+import java.util.StringTokenizer;
+
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,22 +28,29 @@ public class MailController {
 		
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
-		String from = "hanjiyeon.dev@gmail.com";
+		String from = "kas7894.dev@naver.com";
 		String to = request.getParameter("tomail");
 		// String filename = request.getParameter("submitFile");
 		
+		StringTokenizer st = new StringTokenizer(to,",");
+		String[] toMail = new String[st.countTokens()];
+		int index = 0;
+		while (st.hasMoreTokens()) {
+			toMail[index] = st.nextToken();
+			index++;
+		}
 		try {
 			MimeMessage mail = mailSender.createMimeMessage();
 			MimeMessageHelper mailHelper = new MimeMessageHelper(mail, true, "UTF-8");
-			// true´Â ¸ÖÆ¼ÆÄÆ® ¸Þ¼¼Áö¸¦ »ç¿ëÇÏ°Ú´Ù´Â ÀÇ¹Ì. true¾È ¾²¸é ´Ü¼ø ÅØ½ºÆ® ¸Þ¼¼Áö
+			// trueï¿½ï¿½ ï¿½ï¿½Æ¼ï¿½ï¿½Æ® ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°Ú´Ù´ï¿½ ï¿½Ç¹ï¿½. trueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¼ï¿½ ï¿½Ø½ï¿½Æ® ï¿½Þ¼ï¿½ï¿½ï¿½
 			
-			mailHelper.setFrom(from);	// º¸³»´Â »ç¶÷ »ý·«ÇÏ¸é Á¤»ó ÀÛµ¿ ¾ÈµÊ
-			mailHelper.setTo(to);
+			mailHelper.setFrom(from);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ ï¿½Èµï¿½
+			mailHelper.setTo(toMail);
 			mailHelper.setSubject(subject);
 			mailHelper.setText(content, true);
-			// true´Â htmlÀ» »ç¿ë. true ¾È¾²¸é ´Ü¼ø ÅØ½ºÆ®¸¸ »ç¿ë
+			// trueï¿½ï¿½ htmlï¿½ï¿½ ï¿½ï¿½ï¿½. true ï¿½È¾ï¿½ï¿½ï¿½ ï¿½Ü¼ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½
 			
-			// ÆÄÀÏ ¾÷·Îµå ÄÚµå·Î °¡Á®¿Í¾ß ÇÒ µí
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ï¿½ ï¿½ï¿½ ï¿½ï¿½
 			// FileSystemResource file = new FileSystemResource();
 			// mailHelper.addAttachment(filename, file);
 			
