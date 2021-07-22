@@ -18,7 +18,7 @@
 <body>
 	<%@include file="./common.jsp"%>
 	<h1>${login.getName() } 님의 찜하기</h1><br/>
-	<table border="1" style="text-align:center;">
+	<table class="table table-dark" style="text-align:center;">
 		<col width="150">
 		<col width="520">
 		<col width="200">
@@ -47,7 +47,7 @@
 							<td>${dto.address }</td>
 							<td><img src="${dto.thumbimg }">
 							<td>${dto.tellnumber}</td>
-							<td><input type="button" value="삭제하기"
+							<td><input type="button" value="삭제하기" class="btn btn-danger"
 								onclick="location.href='wishDelete.do?wishseq=${dto.wishseq}'" /></td>
 						</tr>
 					</c:if>

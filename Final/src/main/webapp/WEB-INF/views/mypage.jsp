@@ -47,7 +47,7 @@
 			<td colspan="2" align="center">
 			<input type="button" class="btn btn-danger"	value="내 정보 수정" onclick="location.href='mypageupdate.do?userseq=${dto.userseq }'">
 			<input type="button" value="내 쿠폰함" class="btn btn-success"	onclick="location.href='mycoupon.do'"> 
-      <input type="button" value="찜한 공연" class="btn btn-danger" onclick="location.href='wishList.do'">
+      <input type="button" value="찜한 공연" class="btn btn-primary" onclick="location.href='wishList.do'">
 			<input type="button"value="회원 탈퇴" id="delete1" class="btn btn-light" onclick="userDelete();"> 
 			<input type="button" value="회원 탈퇴" id="delete2" class="btn btn-dark" onclick="location.href='userdelete.do?userseq=${dto.userseq }'">
 			</td>
@@ -110,8 +110,8 @@
 	$(function() {
 		$("#delete2").hide();
 		var userid = $("#userid").val().trim();
-		var temp = userid.substring(userid.length() - 2, userid.length());
-		if (temp.equals("@n") || temp.equals("@k") || temp.equals("@g")) {
+		var temp = userid.substring(userid.length - 2, userid.length);
+		if (temp == "@n" || temp == "@k" || temp== "@g") {
 			$("#idframe").hide();
 		}
 
@@ -130,6 +130,7 @@
 		var userseq = ${login.userseq};
 		if(reservationseq == reseq) {
 				alert('결제 취소를 요청하시겠습니까? ');
+				alert('환불요청이 완료되었습니다. 실제 환불은 시간이 소요 될 수 있습니다.');
 				location.href="refund.do?reservationseq="+reseq+"&userseq="+userseq;
 				}
 		

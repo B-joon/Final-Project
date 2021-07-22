@@ -36,10 +36,15 @@
 	
 	<delete id="wishDelete" parameterType="wishDto">
 		DELETE FROM WISH 
-		WHERE WISHSEQ = #{wishseq}
+		WHERE USERSEQ = #{userseq} AND PRODUCTSEQ = #{productseq}
 	</delete>
 	
-	<select id="wishCount" resultType="int">
+	<select id="wishCount" parameterType="wishDto" resultType="int">
+		SELECT COUNT(*) FROM WISH
+		WHERE USERSEQ = #{userseq} AND PRODUCTSEQ = #{productseq}
+	</select>
+	
+	<select id="chkWish" parameterType="wishDto" resultType="int">
 		SELECT COUNT(*) FROM WISH
 		WHERE USERSEQ = #{userseq} AND PRODUCTSEQ = #{productseq}
 	</select>

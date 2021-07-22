@@ -7,7 +7,10 @@ $(function(){
 		    contents: '<span id="sendButton" >SEND</span>',
 		    tooltip: 'send',
 		    click: function () {
-                sendMessage();
+				var inputmsg = $('#summernote').val();
+				var outmsg = inputmsg.replace(/<(\/?)p>/gi, '');
+				outmsg = outmsg.replace('<br>', '');
+			sendMessage(outmsg);
 				$('#summernote').summernote('reset');
                
 		    }
@@ -62,7 +65,10 @@ $(function(){
 						// 엔터 입력시 에어리어 초기화 및 값 전송
 						$('#summernote').on('summernote.enter', function() {
 							$(function() {
-                            sendMessage();
+								var inputmsg = $('#summernote').val();
+								var outmsg = inputmsg.replace(/<(\/?)p>/gi, '');
+								outmsg = outmsg.replace('<br>', '');
+                            sendMessage(outmsg);
 							$('#summernote').summernote('reset');
                             
 							})

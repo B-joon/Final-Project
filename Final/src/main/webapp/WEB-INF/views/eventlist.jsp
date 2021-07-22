@@ -62,7 +62,7 @@
 
 			<tr>
 				<td colspan="4" align="right"><input type="button" value="글작성"
-					class="btn btn-danger" id="insertControl"
+					class="btn btn-danger notice-admin-btn" id="insertControl"
 					onclick="location.href='eventinsertform.do'"></td>
 			</tr>
 
@@ -115,9 +115,12 @@
 										<h3>${dto.coupontitle}</h3>
 										<p>사용기간 : ${dto.endday }</p>
 										<p>
+									
 											<a
 												href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}"
-												class="btn btn-danger" id="downControl" role="button">다운로드</a>
+												class="btn btn-danger downControl" id="downControl" role="button">다운로드</a>
+									
+										
 									</div>
 								</div>
 							</div>
@@ -133,7 +136,7 @@
 										<p>
 											<a
 												href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}"
-												class="btn btn-danger" id="downControl" role="button">다운로드</a>
+												class="btn btn-danger downControl" id="downControl" role="button">다운로드</a>
 									</div>
 								</div>
 							</div>
@@ -148,7 +151,7 @@
 										<p>
 											<a 
 												href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}"
-												class="btn btn-danger" id="downControl" role="button">다운로드</a>
+												class="btn btn-danger downControl" id="downControl" role="button">다운로드</a>
 									</div>
 								</div>
 							</div>
@@ -201,4 +204,5 @@
 <link rel="stylesheet" type="text/css" href="resources/css/coupon.css">
 <link rel="stylesheet" type="text/css" href="resources/css/notice.css">
 <script type="text/javascript" src="resources/js/notice.js"></script>
+
 </html>

@@ -7,10 +7,7 @@ function dayAndNight(self){
 		
 	
         self.innerHTML = "라이트모드";
-        var aTag = document.querySelectorAll("a");
-        for(var i=0; i<aTag.length;i++){
-            aTag[i].style.color = "black";
-        }
+        
         button.setAttribute("class","btn btn-outline-light bg-gray")
         
     }else{
@@ -20,10 +17,10 @@ function dayAndNight(self){
 	
         self.innerHTML = "다크모드";
         var aTag = document.querySelectorAll("a");
-        for(var i=0; i<aTag.length;i++){
-            aTag[i].style.color = "black";
+        
+            
         
         button.setAttribute("class","btn btn-outline-secondary")
-    }
+    
 }
 }

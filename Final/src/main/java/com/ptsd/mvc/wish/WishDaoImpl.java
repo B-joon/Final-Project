@@ -42,12 +42,12 @@ public class WishDaoImpl implements WishDao {
 	}
 
 	@Override
-	public int wishDelete(int wishseq) {
+	public int wishDelete(WishDto dto) {
 		
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE + "wishDelete", wishseq);
+			res = sqlSession.delete(NAMESPACE + "wishDelete", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,11 +55,27 @@ public class WishDaoImpl implements WishDao {
 	}
 
 	@Override
-	public int wishCount(int productseq, int userseq) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("productseq", productseq);
-		map.put("userseq", userseq);
-		return sqlSession.selectOne(NAMESPACE + "wishCount", map);
+	public int wishCount(WishDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "wishCount", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int chkWish(WishDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "chkWish", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 		
 

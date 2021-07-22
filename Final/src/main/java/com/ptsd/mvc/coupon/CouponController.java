@@ -95,11 +95,10 @@ public class CouponController {
 	// user
 	// 다운로드 쿠폰
 	@RequestMapping("downloadcoupon.do")
-	public String downloadcoupon(CouponDto dto, int userseq) {
-		
-		
+	public String downloadcoupon(CouponDto dto) {
+
 		if (biz.insert(dto) > 0) {
-			return "redirect:mypage.do";
+			return "redirect:mypage.do?userseq="+dto.getUserseq();
 		}
 
 		return "mypage";

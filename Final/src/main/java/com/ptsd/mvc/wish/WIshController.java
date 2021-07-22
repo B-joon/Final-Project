@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ptsd.mvc.user.UserDto;
@@ -21,19 +23,21 @@ public class WIshController {
 	@Autowired
 	WishBiz wishbiz;
 
-	@RequestMapping("/wishInsert.do")
-	public String wishInsert(@ModelAttribute WishDto dto, HttpServletRequest request) {
+	@RequestMapping(value = "/wishInsert.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int wishInsert(int productseq, int userseq) {
 		
-		int userseq = ((UserDto) request.getSession().getAttribute("login")).getUserseq();
+		WishDto dto = new WishDto();
+		dto.setProductseq(productseq);
 		dto.setUserseq(userseq);
-		
-		int count = wishbiz.wishCount(dto.getProductseq(), userseq);
-		if(count == 0) {
-			wishbiz.wishInsert(dto);
+
+		int res = wishbiz.wishInsert(dto);
+
+		if (res > 0) {
+			return res;
 		} else {
-			return "redirect:wishList.do";
+			return 0;
 		}
-		return "redirect:wishList.do";
 		
 	}
 	
@@ -56,12 +60,46 @@ public class WIshController {
 
 	}
 
-	@RequestMapping("/wishDelete.do")
-	public String wishDelete(@RequestParam int wishseq) {
+	@RequestMapping(value = "/wishDelete.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String wishDelete(int productseq, int userseq) {
 
-		wishbiz.wishDelete(wishseq);
+		WishDto dto = new WishDto();
+		dto.setProductseq(productseq);
+		dto.setUserseq(userseq);
+		
+		wishbiz.wishDelete(dto);
 
 		return "redirect:wishList.do";
 	}
-
+	
+	@RequestMapping("chkWish.do")
+	@ResponseBody
+	public int chkWish(int productseq, int userseq) {
+		
+		WishDto dto = new WishDto();
+		dto.setProductseq(productseq);
+		dto.setUserseq(userseq);
+		
+		int res = wishbiz.chkWish(dto);
+		
+		System.out.println(res);
+		
+		return res;
+	}
+	
+	@RequestMapping("getWishCount.do")
+	@ResponseBody
+	public int getWishCount(int productseq, int userseq) {
+		
+		WishDto dto = new WishDto();
+		dto.setProductseq(productseq);
+		dto.setUserseq(userseq);
+		
+		int res = wishbiz.wishCount(dto);
+		
+		System.out.println(res);
+		
+		return res;
+	}
 }

@@ -160,12 +160,14 @@ public class ProductController {
 	@RequestMapping("productdelete.do")
 	public String productDelete(HttpServletRequest request, int productseq) {
 
+		System.out.println("productseq : " + productseq);
+		
 		String pastImgUrl = biz.selectOne(productseq).getThumbimg();
 		pastImgUrl = request.getSession().getServletContext().getRealPath("") + pastImgUrl;
 		boolean fileDelete = new File(pastImgUrl).delete();
 		int res = biz.delete(productseq);
 		
-		if (res > 0 && fileDelete == true) {
+		if (res > 0) {
 			return "redirect:admin.do";
 		} else {
 			return "redirect:admin.do";

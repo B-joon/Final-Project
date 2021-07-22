@@ -41,7 +41,7 @@
 						<td>${dto.address }</td>
 						<td>${dto.phone }</td>
 						<td>${dto.userrole }</td>
-						<td><input type="button" class="btn btn-danger" value="유저 탈퇴" onclick="location.href='userdelete.do?userseq=${dto.userseq }'"></td>
+						<td><input type="button" class="btn btn-danger" value="유저 탈퇴" onclick="location.href='admindelete.do?userseq=${dto.userseq }'"></td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>

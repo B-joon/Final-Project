@@ -65,12 +65,13 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
-<!-- 검색바 -->
-<link rel="stylesheet" type="text/css" href="resources/css/searchbar.css">
-
 <!-- 지도정보 -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dfb6f83c1347ebbcf6cbda00be7c7b6f&libraries=services,clusterer,drawing"></script>
+	
+<!-- 음성검색 -->
+<script src="resources/js/speechToText.js"></script>
+
 <div class="container-lg">
 
 	<nav
@@ -130,15 +131,6 @@
 	<div class="container mt-3 mb-3">
 		<div id="weatherarea" class=""></div>
 	</div>
-	<form action="search.do" class="searchform">
-		<fieldset>
-			<input type="text" class="searchtext" name="keyword"
-				placeholder="지역명, 제목명" />
-			<button type="submit" class="submitbtn">
-				<i class="fa fa-search"></i>
-			</button>
-		</fieldset>
-	</form>
 
 
 	<%-- 상단으로 이동하기 버튼 시작 --%>

@@ -45,7 +45,9 @@ const listener = {
   onError(error) { console.log(`EVENT FIRED: onError: ${error}`); },
   onStat(result) { console.log(`EVENT FIRED: onStat: ${result}`); },
   onMessage(msg) {
-    addMesssage(false, msg);
+    var outmsg = msg.replace(/<(\/?)p>/gi, '');
+        console.log(outmsg)
+    addMesssage(false, outmsg);
 }
 };
 
@@ -59,7 +61,7 @@ $('#mystart').click(function(){
   remon.joinCast(streamingseq);
 });
 
-function sendMessage() {
+function sendMessage(outmsg) {
 
     const name = searchParam('name');
 
@@ -67,14 +69,21 @@ function sendMessage() {
     //     name = nameInput.value;
     // }
 
-    if (summernote.value){
-        msg = summernote.value;
-        summernote.value="";
-    }else{
-        if (!msg) {}msg = "Test Message";
-    }
-    remon.sendMessage(name + '-' + msg);
-    addMesssage(true, msg);
+    // if (summernote.value){
+    //     msg = summernote.value;
+    //     summernote.value="";
+
+        
+
+    // }else{
+    //     if (!outmsg) {}outmsg = "Test Message";
+    // }
+    // console.log("msg : " + msg)
+
+        console.log(outmsg)
+
+    remon.sendMessage(name + '-' + outmsg);
+    addMesssage(true, outmsg);
 }
 
 function addMesssage(isMine, msg) {
@@ -91,12 +100,23 @@ function addMesssage(isMine, msg) {
 
   var Username = document.createElement("h5");
   Username.setAttribute("class","mt-0");
-  Username.innerHTML = isMine ? name : msg.split('-')[0];
 
-  var outmsg = msg.replace(/<(\/?)p>/gi, '');
+  if (isMine) {
+    var outmsg = msg;
+    Username.innerHTML = name;
+  } else {
+    var msgsplit = msg.split('-');
+    var sender = msgsplit[0];
+    var outmsg = msgsplit[1];
+    Username.innerHTML = sender;
+  }
 
+  outmsg = outmsg.replace(/<(\/?)p>/gi, '');
+  outmsg = outmsg.replace('<br>', '');
+  // console.log(outmsg)
   var content = document.createElement("p");
   content.innerHTML = outmsg;
+  console.log(content)
 
   mediaBody.append(Username);
   mediaBody.append(content);

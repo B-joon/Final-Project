@@ -11,6 +11,7 @@ public interface ReservationDao {
 	public int insert(ReservationDto dto);
 	public int update(ReservationDto dto);
 	public int delete(int reservationseq);
+	public int getSeatCount(String productname);
 	
 	
 	

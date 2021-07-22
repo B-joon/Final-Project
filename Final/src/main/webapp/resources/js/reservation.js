@@ -1,6 +1,12 @@
 $(function(){
-	
-	
+
+		var seatCount = $("#seatCount").val();
+		var productName = $("#productname").val();
+		console.log(productName);
+		console.log(seatCount);
+		getSeatCount(seatCount, productName);
+		chkWish();
+		getWishCount();
 		$('#datetimepicker').datetimepicker();
 		var playdate = $('#datetimepicker').datetimepicker('viewDate')
 		var date = new Date(playdate);
@@ -22,6 +28,25 @@ $(function(){
 		});
 })
 
+function getSeatCount(seatCount, productName) {
+	
+	$.ajax({
+		
+		url: "getSeatCount.do?productname="+productName,
+		type: "POST",
+		dataType: "text",
+		success: function(data) {
+			var ableSeatCount = seatCount - data;
+			$("#ableSeatCount").append(ableSeatCount + "개");
+		},
+		error: function() {
+			alert("통신 실패.....");
+		}
+	
+		
+	})
+	
+}
 
 function chkReservation() {
 
@@ -84,11 +109,6 @@ function callPay(name, price, userseq,playdate, num) {
 				data: insertdata,
 				success: function(data) {
 					var msg = '결제가 완료되었습니다.';
-					msg += "고유 ID: " + rsp.imp_uid;
-					msg += "상점 거래 ID:" + rsp.merchant_uid;
-					msg += "결제 금액 :" + rsp.paid_amount;
-					msg += "카드 승인번호:" + rsp.apply_num;
-
 					alert(msg);
 					location.href="mypage.do?userseq="+userseq;
 					
