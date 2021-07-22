@@ -128,4 +128,11 @@
 <script type="text/javascript" src="resources/js/party.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/index.css">
 <script type="text/javascript" src="resources/js/map.js"></script>
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="PTSD챗봇"
+  agent-id="e832c8a8-7dc5-481a-98bb-5d04cbe9109b"
+  language-code="ko">
+</df-messenger>
 </html>
