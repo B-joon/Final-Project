@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="recommand">
+
+	<insert id="recommandInsert" parameterType="recommandDto">
+		INSERT INTO RECOMMAND
+		VALUES (RECOMMANDSEQ.NEXTVAL, #{productseq}, #{userseq})
+	</insert>
+	
+	<delete id="recommandDelete" parameterType="recommandDto">
+		DELETE FROM RECOMMAND
+		WHERE PRODUCTSEQ = #{productseq} AND USERSEQ = #{userseq}
+	</delete>
+	
+	<select id="recommandUpdate" parameterType="recommandDto">
+		UPDATE RECOMMAND
+		SET
+		PRODUCTCOUNT = (SELECT COUNT(*)
+		FROM RECOMMAND
+		WHERE PRODUCTSEQ = #{productseq})
+		WHERE PRODUCTSEQ = #{productseq}
+	</select>
+	
+	<select id="recommandSelectOne" resultType="int" parameterType="productDto">
+		SELECT COUNT(RECOMMANDSEQ) 
+		FROM RECOMMAND 
+		WHERE PRODUCTSEQ = #{productseq} AND USERSEQ = #{userseq}
+	</select>
+	
+</mapper>

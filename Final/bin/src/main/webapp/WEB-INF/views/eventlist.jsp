@@ -5,68 +5,68 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSD / 이벤트</title>
+<link href="resources/img/favicon.png" rel="shortcut icon">
 </head>
 
 <body>
-	<%@include file="./common.jsp"%>
 
+	<%@include file="./common.jsp"%>
+	<h4 class="display-4">Event & Coupon</h4>
 
 	<input type="hidden" value="${login.userseq }" id="loginseq">
 	<input type="hidden" value="${login.userrole }" id="loginrole">
 	<div class="container-lg">
-	<table border="1">
+		<table class="table table-bordered">
 
 
-		<col width="50">
-		<col width="100">
-		<col width="500">
-		<col width="100">
+			<col width="50">
+			<col width="100">
+			<col width="500">
+			<col width="100">
 
 
-		<tr>
-			<td>${login.userseq }</td>
 
-		</tr>
+			<tr>
+				<th>번호</th>
+				<th>작성자</th>
+				<th>제목</th>
+				<th>작성일</th>
+			</tr>
+			<c:choose>
+				<c:when test="${empty list }">
+					<tr>
+						<td colspan="4" align="center">----------작성된 글이 존재하지
+							않습니다---------</td>
+					</tr>
 
-		<tr>
-			<th>번호</th>
-			<th>작성자</th>
-			<th>제목</th>
-			<th>작성일</th>
-		</tr>
-		<c:choose>
-			<c:when test="${empty list }">
-				<tr>
-					<td colspan="4" align="center">----------작성된 글이 존재하지
-						않습니다---------</td>
-				</tr>
+				</c:when>
+				<c:otherwise>
 
-			</c:when>
-			<c:otherwise>
+					<c:forEach items="${list }" var="dto">
+						<c:if test="${dto.boardkind == 'EVENT'}">
+							<tr>
+								<td>${dto.boardseq }</td>
+								<td>${dto.boardname }</td>
+								<td><a href="${dto.boardseq}">${dto.boardtitle }</a></td>
+								<td>${dto.boarddate }</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 
-				<c:forEach items="${list }" var="dto">
-					<c:if test="${dto.boardkind == 'EVENT'}">
-						<tr>
-							<td>${dto.boardseq }</td>
-							<td>${dto.boardname }</td>
-							<td><a href="${dto.boardseq}">${dto.boardtitle }</a></td>
-							<td>${dto.boarddate }</td>
-						</tr>
-					</c:if>
-				</c:forEach>
-
-			</c:otherwise>
-		</c:choose>
+				</c:otherwise>
+			</c:choose>
 
 
-		<tr>
-			<td colspan="4" align="right"><input type="button" value="글작성"
-				class="insertControl" onclick="location.href='eventinsertform.do'">
-			</td>
-		</tr>
+			<tr>
+				<td colspan="4" align="right"><input type="button" value="글작성"
+					class="btn btn-danger notice-admin-btn" id="insertControl"
+					onclick="location.href='eventinsertform.do'"></td>
+			</tr>
 
-	</table>
+		</table>
 	</div>
 
 	<!-- 페이지 앞으로 이동 -->
@@ -91,8 +91,8 @@
 			id="amount" name="amount" value="${paging.cri.amount }">
 	</form>
 
-	
-<div class="row">
+
+
 	<c:choose>
 		<c:when test="${empty couponlist }">
 			<div>
@@ -101,52 +101,68 @@
 
 		</c:when>
 		<c:otherwise>
-			<div class="col-sm-3 md-3">
+			<div class="row">
 				<c:forEach items="${couponlist }" var="dto">
 
 					<c:choose>
 						<c:when test="${dto.discount == 10000 }">
-							<div class="card-body">
-							<i>${dto.makeseq }</i>
-							<div>${dto.coupontitle}</div>
-							<a class="downControl"
-								href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
-								<img alt="10000원 쿠폰" class="coupon"
-								src="resources/img/10000.png">
-							</a>
-							<div>사용기간 : ${dto.endday }</div>
+
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail" align="center">
+									<img alt="10000원 쿠폰" class="coupon"
+										src="resources/img/10000.png">
+									<div class="caption">
+										<h3>${dto.coupontitle}</h3>
+										<p>사용기간 : ${dto.endday }</p>
+										<p>
+									
+											<a
+												href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}"
+												class="btn btn-danger downControl" id="downControl" role="button">다운로드</a>
+									
+										
+									</div>
+								</div>
 							</div>
+
 						</c:when>
 						<c:when test="${dto.discount == 5000 }">
-							<div class="card-body">
-							<i>${dto.makeseq }</i>
-							<div>${dto.coupontitle}</div>
-							<a class="downControl"
-								href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
-								<img alt="5000원 쿠폰" class="coupon" src="resources/img/5000.png">
-							</a>
-							<div>사용기간 : ${dto.endday }</div>
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail" align="center">
+									<img alt="5000원 쿠폰" class="coupon" src="resources/img/5000.png">
+									<div class="caption">
+										<h3>${dto.coupontitle}</h3>
+										<p>사용기간 : ${dto.endday }</p>
+										<p>
+											<a
+												href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}"
+												class="btn btn-danger downControl" id="downControl" role="button">다운로드</a>
+									</div>
+								</div>
 							</div>
 						</c:when>
 						<c:otherwise>
-							<div class="card-body">
-							<i>${dto.makeseq }</i>
-							<div>${dto.coupontitle}</div>
-							<a class="downControl"
-								href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}">
-								<img alt="2000원 쿠폰" class="coupon" src="resources/img/2000.png">
-							</a>
-							<div>사용기간 : ${dto.endday }</div>
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail" align="center">
+									<img alt="2000원 쿠폰" class="coupon" src="resources/img/2000.png">
+									<div class="caption">
+										<h3>${dto.coupontitle}</h3>
+										<p>사용기간 : ${dto.endday }</p>
+										<p>
+											<a 
+												href="downloadcoupon.do?makeseq=${dto.makeseq }&coupontitle=${dto.coupontitle}&endday=${dto.endday}&discount=${dto.discount}&userseq=${login.userseq}"
+												class="btn btn-danger downControl" id="downControl" role="button">다운로드</a>
+									</div>
+								</div>
 							</div>
-
 						</c:otherwise>
+
 					</c:choose>
 				</c:forEach>
-				</div>
+			</div>
 		</c:otherwise>
-		
+
 	</c:choose>
-	</div>
 
 
 
@@ -186,5 +202,7 @@
 </body>
 <link href="./resources/css/paging.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="resources/css/coupon.css">
+<link rel="stylesheet" type="text/css" href="resources/css/notice.css">
 <script type="text/javascript" src="resources/js/notice.js"></script>
+
 </html>

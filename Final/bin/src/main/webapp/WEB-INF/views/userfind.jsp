@@ -4,73 +4,77 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSD / 회원정보찾기</title>
+	<link href="resources/img/favicon.png" rel="shortcut icon">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <%@include file="./common.jsp" %>
-	<table align="center">
+
+	<div class="border border-danger rounded">
+	<div class="m-3">
+	<input type="button" class="btn btn-danger mr-3" value="아이디찾기" onclick="idFind();">
+	<input type="button" class="btn btn-warning" value="비밀번호찾기" onclick="pwFind();"></div>
+	<div class="m-3" style="width:30em;">
+	<table class="table table-borderless m-3">
 		<tr>
-			<td colspan="2" align="center">
-				<input type="button" value="아이디찾기" onclick="idFind();">
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" value="비밀번호찾기" onclick="pwFind();">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center" id="res"></td>
-			<td colspan="2" align="center" id="pwres"></td>
+			<td id="res"></td>
+			<td id="pwres"></td>
 		</tr>
 		<tr id="nameframe">
 			<th>이름</th>
 			<td>
-				<input type="text" id="name" placeholder="이름을 입력해 주세요">
+				<input type="text" id="name" class="form-control" placeholder="이름을 입력해 주세요">
 				<input type="hidden"id="Chk1" value="false">
 			</td>
 		</tr>
 		<tr id="idframe">
 			<th>아이디</th>
 			<td>
-				<input type="text" id="userid" placeholder="아이디를 입력해 주세요">
+				<input type="text" id="userid" class="form-control"  placeholder="아이디를 입력해 주세요">
 				<input type="hidden"id="Chk2" value="false">
 			</td>
 		</tr>
 		<tr id="emailframe" >
 			<th>EMAIL</th>
 			<td>
-				<input type="text" id="email" placeholder="이메일을 입력해 주세요"> 
-				<input type="button"id="proofBtn" value="인증번호 발송"> 
+				<input type="text" id="email" class="form-control"  placeholder="이메일을 입력해 주세요"> 
+				<input type="button"id="proofBtn" class="btn btn-secondary" value="인증번호 발송"> 
 				<input type="hidden"id="Chk3" value="false">
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center" id="emailChk">
+			<td id="emailChk">
 			</td>
 		</tr>
 		<tr id="proofframe">
 			<th>인증번호 확인</th>
 			<td>
-				<input type="text" id="prooftext" placeholder="이메일로 보낸 인증번호를 입력해주세요">
+				<input type="text" id="prooftext" class="form-control"  placeholder="이메일로 보낸 인증번호를 입력해주세요">
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center" id="proofChk"></td>
+			<td id="proofChk"></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center" id="idFindChk"></td>
+			<td id="idFindChk"></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center" id="pwFindChk"></td>
+			<td id="pwFindChk"></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center">
-				<input type="button" id="okbutton" value="확인" disabled="disabled">
-				<input type="button" id="idFind" value="아이디 찾기">
-				<input type="button" id="pwFind" value="비밀번호 찾기">
+			<td>
+				<input type="button" class="btn btn-secondary" id="okbutton" value="확인" disabled="disabled">
+				<input type="button" class="btn btn-secondary" id="idFind" value="아이디 찾기">
+				<input type="button" class="btn btn-secondary" id="pwFind" value="비밀번호 찾기">
 			</td>
 		</tr>
 	</table>
+	</div>
+	</div>
 	
 </body>
 <script type="text/javascript">
@@ -92,7 +96,7 @@ function idFind(){
 	$("#proofframe").show();
 	$("#okbutton").val("아이디 찾기");
 	$("#okbutton").show();
-	$("#res").hide();
+	$("#res").show();
 	$("#idFind").hide();
 	$("#pwFind").hide();
 	$("#userid").val('');
@@ -145,9 +149,7 @@ $("#proofBtn").click(function(){
 	var bool = true;
 	if(email == null || email== ""){
 		$("#proofChk").html('이메일을 적어주세요');
-		setTimeout(function() {
-			$("#proofChk").hide();
-			}, 2000);
+		
 	}else if (bool) {
 		$.ajax({
 			type : "post",
@@ -181,9 +183,7 @@ $("#proofBtn").click(function(){
 					$("#Chk3").val('true');
 					submitChk();
 					console.log(proof)
-					setTimeout(function() {
-						$("#proofChk").hide();
-						}, 2000);
+					
 				} else{
 					$("#proofChk").html('인증번호를 다시 확인해주시거나 재발송을 눌러주세요.<br> 복사 붙여넣기하신 경우 맨뒤에 숫자를 지웠다 다시 적어주세요');
 					event.preventDefault();
@@ -207,9 +207,7 @@ $("#idFind").click(function() {
 
 	if (name == null || name == "") {
 		$("#idFindChk").html('이름을 작성해주세요');
-		setTimeout(function() {
-			$("#idFindChk").hide();
-			}, 5000);
+		
 	} else {
 		$.ajax({
 			type : "post",
@@ -228,9 +226,7 @@ $("#idFind").click(function() {
 				} else {
 					$("#idFindChk").html('이름과 이메일에 일치하는 아이디가 없습니다.');
 					$("#idFindChk").css("color", "red");
-					setTimeout(function() {
-						$("#idFindChk").hide();
-						}, 5000);
+					
 				}
 			},
 			error : function() {
@@ -273,15 +269,11 @@ $("#pwFind").click(function(){
 				} else if(msg.check == false) {
 					$("#pwFindChk").html('아이디와 이메일에 일치하는 비밀번호가 없습니다.');
 					$("#pwFindChk").css("color", "red");
-					setTimeout(function() {
-						$("#idFindChk").hide();
-						}, 2000);
+					
 				} else{
 					$("#pwFindChk").html('아이디와 이메일에 일치하는 비밀번호가 없습니다.');
 					$("#pwFindChk").css("color", "red");
-					setTimeout(function() {
-						$("#idFindChk").hide();
-						}, 2000);
+					
 				}
 			},
 			error : function() {

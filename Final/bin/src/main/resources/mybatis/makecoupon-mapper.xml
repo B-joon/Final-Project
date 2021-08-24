@@ -22,7 +22,7 @@
 	
 	<update id="update" parameterType="makeCouponDto">
 		UPDATE MAKECOUPON
-		SET COUPONTITLE = #{coupontitle},DISCOUNT = #{discount}
+		SET COUPONTITLE = #{coupontitle},DISCOUNT = #{discount}, ENDDAY=#{endday}
 		WHERE MAKESEQ = #{makeseq}
 	</update>
 	
